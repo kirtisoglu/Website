@@ -6,7 +6,6 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "svelte": "dist/index.js",
-
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",
@@ -14,6 +13,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.5",
+    "@sveltejs/adapter-vercel": "^5.4.6",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "svelte": "^4.2.18",
     "vite": "^5.4.1"
