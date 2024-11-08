@@ -60,9 +60,8 @@
           I'm Alaittin - fourth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a><Emoji symbol="🧑‍💻" />
         </p>
         <p>
-          at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫🏯" />
+          at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />
           <Emoji symbol="⚖️" />
-          Sonunda!
         </p>
       </div>
       <span
