@@ -8,7 +8,7 @@
     export let segment;
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let twitter = "https://x.com/kirtisoglu";
-    let github = "https://github.com/alaittinkirtisoglu";
+    let github = "https://github.com/akirtisoglu";
 </script>
 
 <nav>
@@ -52,18 +52,21 @@
     <div class="divider" />
       <a
         aria-label="LinkedIn"
+        target="_blank"
         class="icon"
         href={linkedIn}>
         <FaLinkedin aria-label="linked in" />
       </a>
       <a
         aria-label="twitter"
+        target="_blank"
         class="icon"
         href={twitter}>
         <FaTwitter aria-label="twitter" />
       </a>
       <a
         aria-label="github"
+        target="_blank"
         class="icon"
         href={github}>
         <FaGithub aria-label="GitHub" />

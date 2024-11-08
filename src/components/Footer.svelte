@@ -14,7 +14,7 @@
     let day = date.getDate().toString().padStart(2, '0');
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let twitter = "https://x.com/kirtisoglu";
-    let github = "https://github.com/alaittinkirtisoglu";
+    let github = "https://github.com/kirtisoglu";
   
     onMount(() => {
       const annotation = annotate(element, { type: 'underline', color: 'red' });

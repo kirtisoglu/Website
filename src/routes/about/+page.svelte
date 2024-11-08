@@ -8,7 +8,7 @@
   
   <main>
     <h1>About Us</h1>
-    <p>This is the about page for our website.</p>
+    <p>This is the about page for my website.</p>
     <!-- Add more content as needed -->
   </main>
   

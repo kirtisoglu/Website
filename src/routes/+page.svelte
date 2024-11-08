@@ -61,7 +61,6 @@
         </p>
         <p>
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />
-          <Emoji symbol="⚖️" />
         </p>
       </div>
       <span
