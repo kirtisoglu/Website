@@ -81,6 +81,7 @@
           <em>Let's
             <a bind:this={element}
                aria-label="Let's Talk Data on LinkedIn"
+               target="_blank"
                href={linkedIn}>
               Talk Data
             </a>
@@ -107,6 +108,7 @@
       <div class="links">
         <a
           aria-label="LinkedIn"
+          target="_blank"
           href={linkedIn}
           class="icon">
           <FaLinkedin />
@@ -114,6 +116,7 @@
         <div class="divider" />
         <a
           aria-label="twitter"
+          target="_blank"
           class="icon"
           href={twitter}>
           <FaTwitter />
@@ -121,6 +124,7 @@
         <div class="divider" />
         <a
           aria-label="Github"
+          target="_blank"
           href={github}
           class="icon">
           <FaGithub />
