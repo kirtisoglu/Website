@@ -57,25 +57,11 @@
           <Emoji symbol="👋" />
         </h1>
         <p>
-          I'm Alaittin - fourth-year Ph.D. student 
-          in applied mathematics
+          I'm Alaittin - fourth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a><Emoji symbol="🧑‍💻" />
         </p>
         <p>
-          <a
-            aria-label="Illinois Institute of Technology"
-            href="https://www.iit.edu/applied-math">
-            in applied mathematics at Illinois Institute of Technology
-          </a>
+          at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫🏯" />
           <Emoji symbol="⚖️" />
-        </p>
-        <p>
-          And graduate student
-          <Emoji symbol="🧑‍💻" />
-          at the
-          <a aria-label="University of Oxford" href="http://www.ox.ac.uk/">
-            Hacettepe University
-          </a>
-          <Emoji symbol="🏫🏯" />
         </p>
       </div>
       <span
