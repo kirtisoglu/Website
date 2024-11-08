@@ -1,6 +1,6 @@
 {
-    "buildCommand": "vite build",
-    "outputDirectory": ".svelte-kit",
-    "devCommand": "vite dev",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".svelte-kit/output",
+    "devCommand": "npm run dev",
     "installCommand": "npm install"
   }
