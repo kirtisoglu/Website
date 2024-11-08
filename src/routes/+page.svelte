@@ -59,11 +59,8 @@
         <p>
           I'm Alaittin - fourth-year Ph.D. student 
           in applied mathematics
-          <Emoji symbol="📈" />
-          working on
         </p>
         <p>
-          Previously a PhD student at IIT
           <a
             aria-label="Illinois Institute of Technology"
             href="https://www.iit.edu/applied-math">
