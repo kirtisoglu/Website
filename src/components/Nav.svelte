@@ -8,7 +8,7 @@
     export let segment;
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let twitter = "https://x.com/kirtisoglu";
-    let github = "https://github.com/akirtisoglu";
+    let github = "https://github.com/kirtisoglu";
 </script>
 
 <nav>
