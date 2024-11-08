@@ -62,6 +62,7 @@
         <p>
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫🏯" />
           <Emoji symbol="⚖️" />
+          Sonunda!
         </p>
       </div>
       <span
