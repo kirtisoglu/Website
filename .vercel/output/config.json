@@ -1,4 +1,3 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
 {
     "version": 3
   }
