@@ -62,7 +62,11 @@
         <p>
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />
         </p>
+        <p>
+          I am moving my old website to here. I hope to provide more info about me soon. 
+        </p>
       </div>
+
       <span
         style="opacity: {1 - Math.max(0, y / 500)}"
         class="down-arrow">
