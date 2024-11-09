@@ -58,7 +58,7 @@
         </h1>
         <p>
           I'm Alaittin - fourth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a><Emoji symbol="🧑‍💻" />
-          at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />
+          at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
           I am moving my old website here. I hope to provide more information about myself soon. 
