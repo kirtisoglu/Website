@@ -63,7 +63,7 @@
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />
         </p>
         <p>
-          I am moving my old website to here. I hope to provide more info about me soon. 
+          I am moving my old website to here. I hope to provide more info about myself soon. 
         </p>
       </div>
 
