@@ -21,6 +21,11 @@
     </a>
     <div class="links">
       <a
+      aria-label="Home"
+      href=".">
+      Home
+    </a>
+      <a
         aria-label="Resume"
         target="_blank"
         href="alaittin-kirtisoglu-resume.pdf">
