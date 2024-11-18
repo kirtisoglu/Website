@@ -3,9 +3,9 @@ import { marked } from 'marked';
 export async function load({ fetch }) {
   try {
     const [intro, content, booklist] = await Promise.all([
-      fetch('/md/intro.md').then(res => res.text()),
-      fetch('/md/content.md').then(res => res.text()),
-      fetch('/md/booklist.md').then(res => res.text())
+      fetch('static/about/intro.md').then(res => res.text()),
+      fetch('static/about/content.md').then(res => res.text()),
+      fetch('static/about/booklist.md').then(res => res.text())
     ]);
 
     return {
