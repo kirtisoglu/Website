@@ -27,7 +27,9 @@
           in:fly={{ delay: 500, y: 50, duration: 500 }}
           out:fly={{ y: 50, duration: 300 }}>
           {data.intro.title}
-          <Emoji symbol={data.intro.emoji} />
+          {#if data.intro.emoji}
+            <Emoji symbol={data.intro.emoji} />
+          {/if}
         </h1>
         <div
           in:fly={{ delay: 800, y: 50, duration: 500 }}
@@ -35,14 +37,7 @@
           {@html data.intro.html}
         </div>
       </div>
-      <picture
-        rel="preload"
-        in:fade={{ delay: 600, duration: 200 }}
-        out:fly={{ y: 50, duration: 100 }}>
-        <source type="image/webp" srcset="{data.intro.image}.webp" />
-        <source type="image/jpeg" srcset="{data.intro.image}.png" />
-        <img src="{data.intro.image}.webp" alt={data.intro.image} />
-      </picture>
+      <!-- Remove the picture element if you don't have an image in your markdown -->
     </span>
     <div
       in:fade={{ delay: 1100, duration: 500 }}
