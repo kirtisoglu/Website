@@ -1,20 +1,13 @@
-
-<script context="module">
-  export async function preload({ params, query }) {
-    const intro = await this.fetch(`about/intro.json`).then(r => r.json());
-    const content = await this.fetch(`./content.json`).then(r => r.json());
-    return { intro, content };
-  }
-</script>
-
 <script>
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { fly, fade } from "svelte/transition";
-  import Head from "../../components/Head.svelte"
+  import Head from "../../components/Head.svelte";
   import Emoji from "../../components/Emoji.svelte";
+  import HiddenLinks from "../../components/HiddenLinks.svelte";
+
+  export let data;
+  let { intro, content, booklist } = data;
   let visible = false;
-  export let intro;
-  export let content;
 
   onMount(() => {
     visible = true;
@@ -50,7 +43,7 @@
   }
   :global(img) {
     max-width: 100%;
-    max-height: 30rem
+    max-height: 30rem;
   }
   :global(ol) {
     padding-left: 0px;
@@ -69,7 +62,7 @@
     padding-left: 20px;
     display: block;
     max-width: 15rem;
-    list-style: initial
+    list-style: initial;
   }
 
   @media (max-width: 60rem) {
@@ -99,7 +92,9 @@
   }
 </style>
 
-{#if visible}
+{#if data.error}
+  <p>Error: {data.error}</p>
+{:else if visible}
   <div class="container">
     <span>
       <div class="intro">
@@ -130,6 +125,13 @@
       {@html content.html}
     </div>
   </div>
+
+  <div class="container">
+    <span>
+      {@html booklist.html}
+    </span>
+  </div>
 {/if}
 
 <Head/>
+<HiddenLinks/>
