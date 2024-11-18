@@ -6,13 +6,20 @@
   import HiddenLinks from "../../components/HiddenLinks.svelte";
 
   export let data;
-  let { intro, content, booklist } = data;
   let visible = false;
 
   onMount(() => {
     visible = true;
   });
 </script>
+
+{#if data.error}
+  <p>Error: {data.error}</p>
+{:else}
+  <div>{@html data.intro}</div>
+  <div>{@html data.content}</div>
+  <div>{@html data.booklist}</div>
+{/if}
 
 <style>
   .container {

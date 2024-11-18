@@ -1,20 +1,23 @@
-export async function load({ fetch }) {
-    try {
-      const [introRes, contentRes, booklistRes] = await Promise.all([
-        fetch('/static/about/intro'),
-        fetch('/static/about/content'),
-        fetch('/static/about/booklist')
-      ]);
-  
-      return {
-        intro: await introRes.json(),
-        content: await contentRes.json(),
-        booklist: await booklistRes.json()
-      };
-    } catch (error) {
-      console.error('Error loading data:', error);
-      return {
-        error: 'Failed to load data'
-      };
-    }
+import { promises as fs } from 'fs';
+import { marked } from 'marked';
+
+export async function load() {
+  try {
+    const [intro, content, booklist] = await Promise.all([
+      fs.readFile('src/lib/md/intro.md', 'utf-8'),
+      fs.readFile('src/lib/md/content.md', 'utf-8'),
+      fs.readFile('src/lib/md/booklist.md', 'utf-8')
+    ]);
+
+    return {
+      intro: marked(intro),
+      content: marked(content),
+      booklist: marked(booklist)
+    };
+  } catch (error) {
+    console.error('Error loading markdown files:', error);
+    return {
+      error: 'Failed to load data'
+    };
   }
+}
