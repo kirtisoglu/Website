@@ -1,6 +1,6 @@
 <script context="module">
     export async function preload({ params, query }) {
-      const booklist = await this.fetch(`./booklist.json`).then(r =>
+      const booklist = await this.fetch(`./booklist.json.js`).then(r =>
         r.json()
       );
       return { booklist };
