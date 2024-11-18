@@ -1,5 +1,5 @@
 ---
-image: "about/portrait"
+image: "about/portrait.webp"
 title: "Nice to meet you"
 emoji: "🙋‍♂️"
 ---
