@@ -1,4 +1,4 @@
-import { intro } from "/_about.js";
+import { intro } from "./_about.js";
 
 const contents = JSON.stringify(intro);
 export function get(req, res) {
