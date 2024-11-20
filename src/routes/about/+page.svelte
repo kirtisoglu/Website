@@ -75,7 +75,6 @@
   .intro-container {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
     width: 100%; /* Ensure it takes full width of container */
     max-width: inherit; /* Inherit max-width from container */
     padding-top: 3rem; /* Add some space at the top */
