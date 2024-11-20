@@ -6,29 +6,16 @@
   import HiddenLinks from "../../components/HiddenLinks.svelte";
 
   export let data;
-  let visible = false;
-
-  console.log('Initial data:', data);  // Add this line
+  let visible = true;  // Changed to true
 
   onMount(() => {
-    console.log('Component mounted');  // Add this line
-    visible = true;
-    console.log('Visible set to true');  // Add this line
+    console.log('Component mounted');
   });
-
-  $: console.log('Data changed:', data);  // Add this reactive statement
 </script>
-
-<style>
-  /* Your existing styles here */
-</style>
-
 
 {#if data.error}
   <p>Error: {data.error}</p>
-{:else if !data}
-  <p>Loading...</p>
-{:else if visible}
+{:else}  <!-- Removed the visible check -->
   <div class="container">
     <span>
       <div class="intro">
