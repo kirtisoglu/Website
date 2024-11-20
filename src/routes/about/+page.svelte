@@ -60,24 +60,59 @@
 <HiddenLinks/>
 
 <style>
+  .container {
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: auto; /* Center the container */
+    padding: 0 20px; /* Add some padding on the sides */
+    /* Optional for better visual spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Space between sections */
+  }
+
   .intro-container {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
+    width: 100%; /* Ensure it takes full width of container */
+    max-width: inherit; /* Inherit max-width from container */
+    padding-top: 2rem; /* Add some space at the top */
+    padding-bottom: 2rem; /* Add some space at the bottom */
+    justify-content: center; /* Center content with gaps on sides */
   }
+
   .text-content {
     flex: 1;
+    max-width: calc(60% - 1rem); /* Limit text width and leave space for image */
+    margin-right: auto; /* Push text to the left side */
   }
+
   .portrait-image {
-    max-width: 40%;
-    height: auto;
+    max-width: 30%; /* Set maximum width for the image */
+    height: auto; 
+    max-height: 200px; /* Limit height to make it shorter */
+    object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
+    margin-left: auto; /* Push image to the right side */
+    margin-right: auto; /* Center image horizontally if there's space */
   }
+
   @media (max-width: 768px) {
     .intro-container {
-      flex-direction: column;
+      flex-direction: column; /* Stack vertically on smaller screens */
+      align-items: center; /* Center items in column layout */
+      text-align: center; /* Center text alignment */
     }
+    
     .portrait-image {
-      max-width: 100%;
+      max-width:100%; /* Make image responsive on smaller screens */
+      max-height:none; /* Remove height limit on small screens */
     }
-  }
+    
+    .text-content {
+      max-width:none; /* Allow full width for text on small screens */
+      margin-right:auto; /* Reset margin to avoid spacing issues */
+    }
+    
+   }
 </style>
