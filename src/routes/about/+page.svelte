@@ -78,28 +78,28 @@
     gap: 2rem;
     width: 100%; /* Ensure it takes full width of container */
     max-width: inherit; /* Inherit max-width from container */
-    padding-top: 2rem; /* Add some space at the top */
+    padding-top: 3rem; /* Add some space at the top */
     padding-bottom: 2rem; /* Add some space at the bottom */
     justify-content: center; /* Center content with gaps on sides */
   }
 
   .text-content {
     flex: 1;
-    max-width: 70%; /* Limit text width and leave space for image */
+    max-width: 50%; /* Limit text width and leave space for image */
     margin-right: auto; /* Push text to the left side */
   }
 
   .portrait-image {
-    max-width: 40%; /* Set maximum width for the image */
+    max-width: 50%; /* Set maximum width for the image */
     height: auto; 
-    max-height: 500px; /* Limit height to make it shorter */
+    max-height: 600px; /* Limit height to make it shorter */
     object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
     margin-left: auto; /* Push image to the right side */
     margin-right: auto; /* Center image horizontally if there's space */
   }
 
   .title {
-    font-size: 28px;
+    font-size: 30px;
     margin-bottom: 1rem;
   }
 
