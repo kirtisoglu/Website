@@ -21,7 +21,8 @@
 
 ## Academic Publications and Conference Presentations 📝
 
-Raymond, C., Ouyang, D., D'Agostino, A., Rudman, S. L., & Ho, D. E. (2023). Automated vs. manual case investigation and contact tracing for pandemic surveillance: Evidence from a stepped wedge cluster randomized trial. *eClinicalMedicine, 55*, 101726.
+Kirtisoglu, A., Ozkahya, L. (2024). Coloring of graphs avoiding bicolored paths of a fixed length. *Graphs and
+Combinatorics, vol. 40, no. 1, p. 11, 2024.
 
 
 ## Professional Affiliations
