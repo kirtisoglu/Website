@@ -20,7 +20,7 @@
     <div class="intro-container">
       <div class="text-content">
         <h1
-          class="title" <!-- Added a class to the h1 -->
+          class:title={true}
           in:fly={{ delay: 500, y: 50, duration: 500 }}
           out:fly={{ y: 50, duration: 300 }}>
           {data.intro.title}
@@ -62,62 +62,61 @@
 
 <style>
   .container {
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin: auto; /* Center the container */
-    padding: 0 20px; /* Add some padding on the sides */
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem; /* Space between sections */
+    gap: 2rem;
   }
 
   .intro-container {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    width: 100%; /* Ensure it takes full width of container */
-    max-width: inherit; /* Inherit max-width from container */
-    padding-top: 2rem; /* Add some space at the top */
-    padding-bottom: 2rem; /* Add some space at the bottom */
-    justify-content: center; /* Center content with gaps on sides */
+    width: 100%;
+    max-width: inherit;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-content: center;
   }
 
   .text-content {
     flex: 1;
-    max-width: calc(60% - 1rem); /* Limit text width and leave space for image */
-    margin-right: auto; /* Push text to the left side */
+    max-width: calc(60% - 1rem);
+    margin-right: auto;
   }
 
   .portrait-image {
-    max-width: 30%; /* Set maximum width for the image */
+    max-width: 30%;
     height: auto; 
-    max-height: 200px; /* Limit height to make it shorter */
-    object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
-    margin-left: auto; /* Push image to the right side */
-    margin-right: auto; /* Center image horizontally if there's space */
+    max-height: 200px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .title {
-    font-size: 24px; /* Adjust this value to lower or raise the font size */
-    margin-bottom: 1rem; /* Optional spacing below the title */
+    font-size: 24px;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 768px) {
     .intro-container {
-      flex-direction: column; /* Stack vertically on smaller screens */
-      align-items: center; /* Center items in column layout */
-      text-align: center; /* Center text alignment */
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     
     .portrait-image {
-      max-width:100%; /* Make image responsive on smaller screens */
-      max-height:none; /* Remove height limit on small screens */
+      max-width: 100%;
+      max-height: none;
     }
     
     .text-content {
-      max-width:none; /* Allow full width for text on small screens */
-      margin-right:auto; /* Reset margin to avoid spacing issues */
+      max-width: none;
+      margin-right: auto;
     }
-    
-   }
+  }
 </style>
