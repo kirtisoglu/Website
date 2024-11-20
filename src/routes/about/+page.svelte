@@ -91,7 +91,7 @@
   .portrait-image {
     max-width: 40%; /* Set maximum width for the image */
     height: auto; 
-    max-height: 400px; /* Limit height to make it shorter */
+    max-height: 600px; /* Limit height to make it shorter */
     object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
     margin-left: auto; /* Push image to the right side */
     margin-right: auto; /* Center image horizontally if there's space */
