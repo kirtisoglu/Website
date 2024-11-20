@@ -21,7 +21,7 @@
 
 ## Academic Publications and Conference Presentations 📝
 
-Kirtisoglu, A., Ozkahya, L. (2024). Coloring of graphs avoiding bicolored paths of a fixed length. *Graphs and
+Kirtisoglu, A., Ozkahya, L. (2024). [Coloring of graphs avoiding bicolored paths of a fixed length.][https://link.springer.com/article/10.1007/s00373-023-02739-4] *Graphs and
 Combinatorics*, vol. 40, no. 1, p. 11, 2024.
 
 ## Current Meme
