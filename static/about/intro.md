@@ -1,6 +1,6 @@
 ---
 image: "/about/portrait.webp"
-title: "Nice to meet you"
+title: "NICE TO MEET YOU"
 emoji: "🙋‍♂️"
 ---
 ### This page is under construction
