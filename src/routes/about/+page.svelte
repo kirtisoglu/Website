@@ -20,6 +20,7 @@
     <div class="intro-container">
       <div class="text-content">
         <h1
+          class="title" <!-- Added a class to the h1 -->
           in:fly={{ delay: 500, y: 50, duration: 500 }}
           out:fly={{ y: 50, duration: 300 }}>
           {data.intro.title}
@@ -64,7 +65,6 @@
     max-width: 1200px; /* Set a maximum width for the container */
     margin: auto; /* Center the container */
     padding: 0 20px; /* Add some padding on the sides */
-    /* Optional for better visual spacing */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,12 +89,17 @@
   }
 
   .portrait-image {
-    max-width: 40%; /* Set maximum width for the image */
+    max-width: 30%; /* Set maximum width for the image */
     height: auto; 
-    max-height: 600px; /* Limit height to make it shorter */
+    max-height: 200px; /* Limit height to make it shorter */
     object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
     margin-left: auto; /* Push image to the right side */
     margin-right: auto; /* Center image horizontally if there's space */
+  }
+
+  .title {
+    font-size: 24px; /* Adjust this value to lower or raise the font size */
+    margin-bottom: 1rem; /* Optional spacing below the title */
   }
 
   @media (max-width: 768px) {
