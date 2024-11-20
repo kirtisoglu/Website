@@ -85,7 +85,7 @@
 
   .text-content {
     flex: 1;
-    max-width: calc(60% - 1rem); /* Limit text width and leave space for image */
+    max-width: 70%; /* Limit text width and leave space for image */
     margin-right: auto; /* Push text to the left side */
   }
 
