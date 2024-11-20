@@ -37,7 +37,6 @@
           {@html data.intro.html}
         </div>
       </div>
-      <!-- Remove the picture element if you don't have an image in your markdown -->
     </span>
     <div
       in:fade={{ delay: 1100, duration: 500 }}
