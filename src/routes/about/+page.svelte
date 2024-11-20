@@ -6,16 +6,17 @@
   import HiddenLinks from "../../components/HiddenLinks.svelte";
 
   export let data;
-  let visible = true;  // Changed to true
+  let visible = true;
 
   onMount(() => {
     console.log('Component mounted');
+    console.log('Intro data:', data.intro); // For debugging
   });
 </script>
 
 {#if data.error}
   <p>Error: {data.error}</p>
-{:else}  <!-- Removed the visible check -->
+{:else}
   <div class="container">
     <span>
       <div class="intro">
@@ -27,6 +28,13 @@
             <Emoji symbol={data.intro.emoji} />
           {/if}
         </h1>
+        {#if data.intro.image}
+          <img 
+            src={data.intro.image} 
+            alt="Portrait"
+            in:fade={{ duration: 500, delay: 600 }}
+          />
+        {/if}
         <div
           in:fly={{ delay: 800, y: 50, duration: 500 }}
           out:fly={{ y: 50, duration: 300 }}>
@@ -50,3 +58,17 @@
 
 <Head/>
 <HiddenLinks/>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+</style>
