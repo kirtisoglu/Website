@@ -23,9 +23,13 @@ export async function load({ fetch }) {
 }
 
 function parseMarkdown(md) {
+  // Parse front matter
   const { data, content } = matter(md);
+  
+  // Parse the remaining content as Markdown
   const parsed = marked(content);
-  // Extract title and emoji from the first line if it's a heading
+  
+  // Extract title, emoji, and image from front matter
   const title = data.title || '';
   const emoji = data.emoji || '';
   const image = data.image || '';
