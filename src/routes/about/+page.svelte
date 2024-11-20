@@ -84,7 +84,7 @@
 
   .text-content {
     flex: 1;
-    max-width: 50%; /* Limit text width and leave space for image */
+    max-width: 55%; /* Limit text width and leave space for image */
     margin-right: auto; /* Push text to the left side */
   }
 
@@ -94,6 +94,7 @@
     max-height: 600px; /* Limit height to make it shorter */
     object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
     margin-right: auto; /* Center image horizontally if there's space */
+    margin-left: -1rem;
   }
 
   .title {
