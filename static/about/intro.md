@@ -4,7 +4,6 @@ title: "Nice to meet you"
 emoji: "🙋‍♂️"
 ---
 
-# UNDER CONSTRUCTION
 I'm X – a researcher scientist from ... I'm a Member of... Previously I was a... I completed my MSc at ... where I researched ... I did my undergrad at ... in ...
 
 I've been lucky enough to work and do research at institutions like the University of Toronto's Computational Social Science Lab; Princeton's Stigma and Social Perception Lab; Stanford's Regulation Evaluation and Governance Lab; and the Oxford Internet Institute. I've had my work accepted to venues like [ICWSM](https://www.icwsm.org),...
