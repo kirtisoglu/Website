@@ -15,7 +15,7 @@
 
 ## Awards 🏆 and Talks 💬
 
-**💬 Talk** (MIT Media Lab, 2023). Presented on trust, regulatory policy, and audits.
+**💬 Talk** ...
 
 **🏆 Prize** 
 
@@ -23,13 +23,6 @@
 
 Kirtisoglu, A., Ozkahya, L. (2024). Coloring of graphs avoiding bicolored paths of a fixed length. *Graphs and
 Combinatorics*, vol. 40, no. 1, p. 11, 2024.
-
-
-## Professional Affiliations
-
-**Trust & Safety Professional Association** (Affiliated Member).
-
-**The Young Researcher** (Editorial Board Member). 
 
 ## Current Meme
 
