@@ -14,4 +14,4 @@ My broad background is characterized by three areas. First, the problem space: I
 If you want to chat, go for a run, or have a recent read you want to share, reach out at the link below 😇
 
 ✌️<br/>
-X
+Alaittin

@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import matter from 'gray-matter';
 
 export async function load({ fetch }) {
   try {
@@ -22,16 +23,17 @@ export async function load({ fetch }) {
 }
 
 function parseMarkdown(md) {
-  const parsed = marked(md);
+  const { data, content } = matter(md);
+  const parsed = marked(content);
   // Extract title and emoji from the first line if it's a heading
-  const titleMatch = parsed.match(/<h1.*?>(.*?)<\/h1>/);
-  const title = titleMatch ? titleMatch[1] : '';
-  const emojiMatch = title.match(/(\p{Emoji_Presentation}|\p{Emoji}\uFE0F)/gu);
-  const emoji = emojiMatch ? emojiMatch[0] : '';
+  const title = data.title || '';
+  const emoji = data.emoji || '';
+  const image = data.image || '';
   
   return {
     title,
     emoji,
+    image,
     html: parsed
   };
 }
