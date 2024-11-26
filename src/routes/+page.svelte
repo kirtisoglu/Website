@@ -61,9 +61,14 @@
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
-          My research interest lies in network design and optimization, broadly speaking, in operations of research. MoI like analyzing datasets, 
-          implementing machine learning algorithms, developing AI systems with large language models.
+          My research interest lies in network design and optimization, broadly speaking, in operations of research.
         </p>
+        <p>  
+          I like analyzing datasets, implementing machine learning algorithms, and developing AI systems with large language models.
+        </p>
+        <p>
+          I would love to work as a research or applied scientist to solve customer problems.
+       </p>
       </div>
 
       <span
