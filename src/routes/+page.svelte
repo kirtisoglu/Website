@@ -61,13 +61,13 @@
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
-          My research interest lies in network design and optimization, broadly speaking, in operations of research.
-        </p>
-        <p>  
-          I like analyzing datasets, implementing machine learning algorithms, and developing AI systems with large language models.
+          My research interests lie in operations research and graph theory, especially resource allocation, transportation networks, graph algorithms, and related machine learning algorithms.
         </p>
         <p>
-          I would love to work as a research or applied scientist to solve customer problems.
+         In addition to that, I develop Agentic workflows using large language models, neural networks and reinforcement learning.
+        </p>
+        <p>
+          I will apply for research and applied scientist positions in industry.
        </p>
       </div>
 
