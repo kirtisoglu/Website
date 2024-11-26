@@ -5,7 +5,7 @@ emoji: "🙋‍♂️"
 ---
 ### This page is under construction
 
-## Education]
+## Education
 I'm Alaittin – a fourth year Ph.D. student in [applied mathematics](https://www.iit.edu/applied-math) and a member of [Discrete Applied Math group](https://www.math.iit.edu/~kaul/DAM/DAM.html) 
 at [Illinois Institute of Technology](https://www.iit.edu/). Broadly speaking, my research interest lies in network design and combinatorial optimization.
 
