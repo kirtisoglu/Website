@@ -21,9 +21,9 @@
 
 ## Academic Publications and Conference Presentations 📝
 
-Kaul, H., Kirtisoglu, A. Designing an equitable primary care network: Chicago case study. Preparing for submission.
+- Kaul, H., Kirtisoglu, A. Designing an equitable primary care network: Chicago case study. Preparing for submission.
 
-Kirtisoglu, A., Ozkahya, L. (2024). <a href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank">Coloring of graphs avoiding bicolored paths of a fixed length.</a> *Graphs and
+- Kirtisoglu, A., Ozkahya, L. (2024). <a href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank">Coloring of graphs avoiding bicolored paths of a fixed length.</a> *Graphs and
 Combinatorics*, vol. 40, no. 1, p. 11, 2024.
 
 
