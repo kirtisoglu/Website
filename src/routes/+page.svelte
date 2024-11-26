@@ -61,7 +61,8 @@
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
-          I am moving my old website here. I hope to provide more information about myself soon. 
+          My research interest lies in network design and optimization, broadly speaking, in operations of research. MoI like analyzing datasets, 
+          implementing machine learning algorithms, developing AI systems with large language models.
         </p>
       </div>
 
