@@ -64,10 +64,10 @@
           My research interests lie in operations research and graph theory, especially resource allocation, transportation networks, graph algorithms, and related machine learning algorithms.
         </p>
         <p>
-         In addition to that, I develop Agentic workflows using large language models, neural networks and reinforcement learning.
+         In addition to that, I design agentic workflows using large language models and widely utilize neural networks, and reinforcement learning.
         </p>
         <p>
-          I will apply for research and applied scientist positions in industry.
+          I am open for research and applied scientist positions.
        </p>
       </div>
 

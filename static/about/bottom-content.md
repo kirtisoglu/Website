@@ -19,7 +19,7 @@
 
 **🏆 Prize** 
 
-## Academic Publications and Conference Presentations 📝
+## Academic Publications 📝
 
 - Kaul, H., Kirtisoglu, A. Designing an equitable primary care network: Chicago case study. Preparing for submission.
 
