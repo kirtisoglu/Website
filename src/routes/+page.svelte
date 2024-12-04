@@ -61,8 +61,8 @@
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
-          My research interests lie in operations research and graph theory, especially resource allocation, transportation networks, <br> 
-          graph algorithms, and related machine learning algorithms.
+          <b>My research interests</b> lie in operations research and graph theory, especially resource allocation, <br> 
+          transportation networks, graph algorithms, and related machine learning algorithms.
         </p>
         <p>
          In addition to that, I design agentic workflows using large language models and widely utilize neural networks, and reinforcement learning.
