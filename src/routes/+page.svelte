@@ -67,7 +67,8 @@
           graph algorithms and graph colorings.
         </p>
         <p>
-         In addition to that, I design agentic workflows using large language models and widely utilize neural networks, and reinforcement learning.
+         <b>In addition to that</b>, I design agentic workflows using large language models, <br>
+         utilize neural networks, and reinforcement learning.
         </p>
         <p>
           I am open for research and applied scientist positions.
