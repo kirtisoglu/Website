@@ -64,7 +64,7 @@
           <b>My research interests</b> lie in operations research and graph theory, especially, <br>
           resource allocation, <br> 
           transportation networks, <br>
-          graph algorithms and graph colorings.
+          graph algorithms and graph coloring.
         </p>
         <p>
          <b>In addition to that</b>, I design agentic workflows using large language models, <br>
