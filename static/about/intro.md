@@ -33,30 +33,22 @@ If you want to chat, go for a run, or have a recent read you wa nbvto share, rea
 ✌️<br/>
 Alaittin
 
-
+INTERNSHIP
 High Energy Physics neutrino experiments: When neutrinos interact within detectors, the resulting charged particles 
 leave energy deposits which can be recorded as 3D point clouds. The 3D point cloud can be used to accurately reconstruct 
 the neutrino interaction that occurred within the detector. To do this reconstruction process, we need to infer the 
 trajectories of the all the particles that appeared during the interaction, along with and the hierarchical relationship 
 of those particles to each other.
 Graph-based methods are well suited for reconstructing from LArTPCs because particle physics interactions are naturally 
-graph structured. For instance, a tau neutrino may interact in the detector producing a tau lepton and a proton. The tau 
-lepton may further decay into a chain of other unstable particles, ultimately producing a set of stable particles which 
-can produce either a linear pattern of energy deposits (tracks) or a cluster of energy deposits (showers). We are part of 
-the Exa.TrkX project, which has successfully developed message passing graph neural networks to infer particle trajectories. 
-This works by constructing an initial guess at a graph where nodes are energy deposits and edges are causal connections 
-representing the trajectory of the particle that created the nodes.
+graph structured. We are part of the Exa.TrkX project, which has successfully developed message passing graph neural networks 
+to infer particle trajectories. This works by constructing an initial guess at a graph where nodes are energy deposits and 
+edges are causal connections representing the trajectory of the particle that created the nodes.
 Then, the message passing algorithm learns to deemphasize edges which do not correspond to true trajectories. However, 
 this algorithm does not determine the hierarchical relationships between individual reconstructed trajectories.
-Hierarchical graph neural networks provide a framework for understanding data-containing communities. For LArTPCs, this could 
-be used to find collections of nodes and edges which correspond to tracks and showers, collections of tracks and showers that 
-correspond to the decay of unstable particles, and the separating the collections of particles coming from the interaction of 
-the neutrino itself, the reaction of the nucleus to the interaction, and external activity. A crucial ingredient to building a 
-hierarchical graph neural network is developing community detector for constructing an initial plausible graph which will be 
-refined using message passing. Techniques like the Louvain algorithm are unlikely to be capable of uncovering physically 
-meaningful communities, but other options like spectral clustering or metric space embeddings may be feasible.
-As an intern, you will together with high energy physicists to help define methods and algorithms for locating and identifying 
-particles trajectories in data obtained from state-of-the-art 3D detectors using graph theory and related machine learning techniques. 
-This trajectory information is a critical aspect of obtaining precision measurements needed to further neutrino science, so results 
-must be highly accurate. You will have the opportunity to see some of the extensive simulation capabilities in high energy physics 
-for generating good training data.
+Hierarchical graph neural networks provide a framework for understanding data-containing communities. 
+A crucial ingredient to building a hierarchical graph neural network is developing community detector for constructing an 
+initial plausible graph which will be refined using message passing.
+As an intern, I defined a density-based hierarchical clustering algorithm and applied hierarchical graph neural network together 
+for locating and identifying particle's trajectories in data obtained from state-of-the-art 3D detectors.
+This trajectory information was a critical aspect of obtaining precision measurements needed to further neutrino science, so results 
+needed to be highly accurate. We successfully obtained an accurate result in the end. 
