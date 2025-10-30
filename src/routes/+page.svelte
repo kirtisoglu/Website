@@ -57,7 +57,7 @@
           <Emoji symbol="👋" />
         </h1>
         <p>
-          <b>I'm Alaittin</b> - fourth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a><Emoji symbol="🧑‍💻" />
+          <b>I'm Alaittin</b> - fifth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a><Emoji symbol="🧑‍💻" />
           at <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a><Emoji symbol="🏫" />.
         </p>
         <p>
