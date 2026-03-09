@@ -35,13 +35,13 @@
     <ul class="interest-list">
       <li>Algorithm Design &amp; Optimization</li>
       <li>Graph Theory and Combinatorics</li>
-      <li>Resource Location-Allocation at Large-scale</li>
+      <li>Resource Allocation at Large-scale</li>
       <li>Equitable Network Design</li>
     </ul>
   </section>
 
   <div class="divider"></div>
-  
+
   <!-- Education -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 450 }}>
     <h2 class="section-title">Education</h2>
