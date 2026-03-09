@@ -39,28 +39,45 @@
         my papers and interactive tools built from this research.
       </p>
     </div>
-    <!-- Districting dual graph: map regions + dual graph overlay -->
-    <svg class="graph-deco" viewBox="0 0 220 200" aria-hidden="true" fill="none">
-      <!-- Map regions (districting polygons) -->
-      <polygon points="10,10 110,10 110,95 10,95"   fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.2"/>
-      <polygon points="110,10 210,10 210,95 110,95"  fill="#e5e7eb" stroke="#d1d5db" stroke-width="1.2"/>
-      <polygon points="10,95 75,95 75,190 10,190"    fill="#e5e7eb" stroke="#d1d5db" stroke-width="1.2"/>
-      <polygon points="75,95 155,95 155,190 75,190"  fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.2"/>
-      <polygon points="155,95 210,95 210,190 155,190" fill="#e5e7eb" stroke="#d1d5db" stroke-width="1.2"/>
-      <!-- Dual graph edges (connecting region centroids) -->
-      <line x1="60" y1="52" x2="160" y2="52"  stroke="#374151" stroke-width="1.6"/>
-      <line x1="60" y1="52" x2="42"  y2="142" stroke="#374151" stroke-width="1.6"/>
-      <line x1="60" y1="52" x2="115" y2="142" stroke="#374151" stroke-width="1.6"/>
-      <line x1="160" y1="52" x2="115" y2="142" stroke="#374151" stroke-width="1.6"/>
-      <line x1="160" y1="52" x2="182" y2="142" stroke="#374151" stroke-width="1.6"/>
-      <line x1="42" y1="142" x2="115" y2="142" stroke="#374151" stroke-width="1.6"/>
-      <line x1="115" y1="142" x2="182" y2="142" stroke="#374151" stroke-width="1.6"/>
-      <!-- Dual graph nodes (region centroids) -->
-      <circle cx="60"  cy="52"  r="7" fill="#111827"/>
-      <circle cx="160" cy="52"  r="7" fill="#111827"/>
-      <circle cx="42"  cy="142" r="7" fill="#111827"/>
-      <circle cx="115" cy="142" r="7" fill="#111827"/>
-      <circle cx="182" cy="142" r="7" fill="#111827"/>
+    <!-- Network infographic: city grid + facility nodes + coverage + spanning tree -->
+    <svg class="graph-deco" viewBox="0 0 220 210" aria-hidden="true" fill="none">
+      <!-- Street grid (faint) -->
+      <line x1="10"  y1="42"  x2="210" y2="42"  stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="10"  y1="84"  x2="210" y2="84"  stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="10"  y1="126" x2="210" y2="126" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="10"  y1="168" x2="210" y2="168" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="42"  y1="10"  x2="42"  y2="200" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="84"  y1="10"  x2="84"  y2="200" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="126" y1="10"  x2="126" y2="200" stroke="#e5e7eb" stroke-width="0.8"/>
+      <line x1="168" y1="10"  x2="168" y2="200" stroke="#e5e7eb" stroke-width="0.8"/>
+      <!-- Coverage rings (soft) -->
+      <circle cx="84"  cy="84"  r="38" fill="#e0e7ff" fill-opacity="0.45" stroke="#c7d2fe" stroke-width="0.8"/>
+      <circle cx="168" cy="42"  r="28" fill="#e0e7ff" fill-opacity="0.35" stroke="#c7d2fe" stroke-width="0.8"/>
+      <circle cx="126" cy="168" r="34" fill="#e0e7ff" fill-opacity="0.40" stroke="#c7d2fe" stroke-width="0.8"/>
+      <circle cx="42"  cy="155" r="26" fill="#e0e7ff" fill-opacity="0.35" stroke="#c7d2fe" stroke-width="0.8"/>
+      <!-- Spanning network edges -->
+      <line x1="84"  y1="84"  x2="168" y2="42"  stroke="#6366f1" stroke-width="1.4" stroke-opacity="0.6"/>
+      <line x1="84"  y1="84"  x2="126" y2="168" stroke="#6366f1" stroke-width="1.4" stroke-opacity="0.6"/>
+      <line x1="84"  y1="84"  x2="42"  y2="155" stroke="#6366f1" stroke-width="1.4" stroke-opacity="0.6"/>
+      <line x1="126" y1="168" x2="42"  y2="155" stroke="#6366f1" stroke-width="1.1" stroke-opacity="0.45"/>
+      <line x1="168" y1="42"  x2="126" y2="168" stroke="#6366f1" stroke-width="1.1" stroke-opacity="0.35" stroke-dasharray="4 3"/>
+      <!-- Demand nodes (small, scattered) -->
+      <circle cx="55"  cy="42"  r="2.5" fill="#9ca3af"/>
+      <circle cx="126" cy="42"  r="2.5" fill="#9ca3af"/>
+      <circle cx="168" cy="84"  r="2.5" fill="#9ca3af"/>
+      <circle cx="168" cy="126" r="2.5" fill="#9ca3af"/>
+      <circle cx="84"  cy="126" r="2.5" fill="#9ca3af"/>
+      <circle cx="42"  cy="84"  r="2.5" fill="#9ca3af"/>
+      <circle cx="55"  cy="168" r="2.5" fill="#9ca3af"/>
+      <circle cx="196" cy="168" r="2.5" fill="#9ca3af"/>
+      <!-- Facility nodes (larger, indigo) -->
+      <circle cx="84"  cy="84"  r="7" fill="#4f46e5"/>
+      <circle cx="168" cy="42"  r="6" fill="#4f46e5"/>
+      <circle cx="126" cy="168" r="6" fill="#4f46e5"/>
+      <circle cx="42"  cy="155" r="5" fill="#6366f1"/>
+      <!-- Cross icon on main facility -->
+      <line x1="84" y1="80" x2="84" y2="88" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="80" y1="84" x2="88" y2="84" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
     </svg>
   </section>
 
@@ -254,17 +271,12 @@
     margin-top: 0.5rem;
   }
 
-  :global(.dark) .graph-deco polygon {
-    fill: rgba(255,255,255,0.04);
-    stroke: rgba(255,255,255,0.12);
-  }
-
   :global(.dark) .graph-deco line {
-    stroke: rgba(255,255,255,0.55);
+    stroke: rgba(255,255,255,0.08);
   }
 
-  :global(.dark) .graph-deco circle {
-    fill: rgba(255,255,255,0.8);
+  :global(.dark) .graph-deco circle[r="2.5"] {
+    fill: rgba(255,255,255,0.25);
   }
 
   @media (max-width: 640px) {
