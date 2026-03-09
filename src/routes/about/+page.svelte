@@ -34,9 +34,9 @@
     <h2 class="section-title">Research Interests</h2>
     <ul class="interest-list">
       <li>Optimization &amp; Algorithm Design</li>
-      <li>Large-Scale Resource Allocation</li>
-      <li>Equitable Network Design</li>
       <li>Graph Theory</li>
+      <li>Resource Allocation</li>
+      <li>Equitable Network Design</li>
     </ul>
   </section>
 
