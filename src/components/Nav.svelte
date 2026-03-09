@@ -30,6 +30,7 @@
 </script>
 
 <nav class:dark={dark}>
+  <div class="nav-inner">
     <a
       rel="prefetch"
       aria-label="Home"
@@ -84,6 +85,7 @@
         {dark ? '☀️' : '🌙'}
       </button>
     </div>
+  </div>
 </nav>
 
 
@@ -95,12 +97,22 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: 0 1.5rem;
       font-weight: 400;
       z-index: 3;
       background-color: #ffffff;
       border-bottom: 1px solid rgba(0,0,0,0.08);
       transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+      position: relative;
     }
 
     nav.dark {
