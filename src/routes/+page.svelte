@@ -83,11 +83,11 @@
 
   /* ── Hero ── */
   .hero {
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 4rem);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: 6rem 2rem 3rem;
+    justify-content: center;
+    padding: 4rem 2rem 3rem;
     max-width: 780px;
     margin: 0 auto;
     width: 100%;
