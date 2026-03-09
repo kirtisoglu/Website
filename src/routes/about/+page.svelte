@@ -153,33 +153,6 @@
 
   <div class="divider"></div>
 
-
-  <!-- Skills -->
-  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 850 }}>
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <span class="skill-label">Technical</span>
-        <span class="skill-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Graph Algorithms</span>
-          <span class="tag">Optimization Libraries</span>
-          <span class="tag">Data Analysis</span>
-        </span>
-      </div>
-      <div class="skill-group">
-        <span class="skill-label">Tools</span>
-        <span class="skill-tags">
-          <span class="tag">LaTeX</span>
-          <span class="tag">Git</span>
-          <span class="tag">Numerical Computing</span>
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- Personal Interests -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
     <h2 class="section-title">Personal Interests</h2>
