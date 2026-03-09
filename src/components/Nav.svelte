@@ -30,16 +30,15 @@
 </script>
 
 <nav class:dark={dark}>
+    <a
+      rel="prefetch"
+      aria-label="Home"
+      aria-current={segment === undefined ? 'page' : undefined}
+      href="."
+      class="site-name">
+      Alaittin's Homepage
+    </a>
     <div class="links">
-      <a
-        rel="prefetch"
-        aria-label="Home"
-        aria-current={segment === undefined ? 'page' : undefined}
-        href="."
-        class="site-name">
-        Alaittin's Homepage
-      </a>
-      <div class="divider" />
       <a
         aria-label="About"
         rel="prefetch"
@@ -95,9 +94,9 @@
       height: 4rem;
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       font-weight: 400;
       z-index: 3;
       background-color: #ffffff;

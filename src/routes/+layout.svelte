@@ -211,7 +211,6 @@
 
 <div class="layout-body">
   <div class="sidebar-wrapper">
-    <a href="." class="sidebar-header-link">Alaittin's Homepage</a>
     <aside class="sidebar">
       <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="sidebar-photo" />
       <p class="sidebar-name">Alaittin Kirtisoglu</p>
