@@ -79,17 +79,17 @@
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Graduate Teaching Assistant</span>
-          <span class="badge">2021-2026</span>
           <span class="org">Illinois Institute of Technology</span>
+          <span class="badge">2021-2026</span>
         </div>
       </div>
 
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Research Intern</span>
-          <span class="badge">2019 -2021</span>
           <span class="org">
             <a href="https://www.fnal.gov/" target="_blank" rel="noopener">Fermi National Accelerator Laboratory</a>
+            <span class="badge">2019 -2021</span>
           </span>
         </div>
         <p class="entry-desc">
@@ -103,6 +103,7 @@
         <div class="entry-meta">
           <span class="degree">Graduate Teaching Assistant</span>
           <span class="org">TED University</span>
+          <span class="badge">2019 -2021</span>
         </div>
       </div>
 
