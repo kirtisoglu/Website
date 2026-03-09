@@ -2,7 +2,7 @@
   import { fade } from "svelte/transition";
   import Head from "../../../../components/Head.svelte";
 
-  const dashboardUrl = "https://chicago-healthcare-dashboard-production-47de.up.railway.app/dashboard";
+  const dashboardUrl = "https://chicago-healthcare-dashboard-production-47de.up.railway.app/";
 </script>
 
 <svelte:head>
