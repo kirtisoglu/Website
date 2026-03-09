@@ -108,9 +108,9 @@
       display: flex;
       align-items: center;
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
       box-sizing: border-box;
       position: relative;
     }

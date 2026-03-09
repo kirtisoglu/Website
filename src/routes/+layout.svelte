@@ -31,12 +31,12 @@
   .layout-body {
     display: flex;
     align-items: flex-start;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem 2rem 1rem;
     box-sizing: border-box;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   /* ── Sidebar ── */
