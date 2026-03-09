@@ -2,6 +2,14 @@
   import { fly, fade } from "svelte/transition";
   import Head from "../../components/Head.svelte";
   import HiddenLinks from "../../components/HiddenLinks.svelte";
+
+  let emailCopied = false;
+  function copyEmail() {
+    navigator.clipboard.writeText('akirtisoglu@hawk.iit.edu').then(() => {
+      emailCopied = true;
+      setTimeout(() => { emailCopied = false; }, 2000);
+    });
+  }
 </script>
 
 <div class="page" in:fade={{ duration: 500, delay: 200 }}>
@@ -153,7 +161,16 @@
     <div class="contact-grid">
       <div class="contact-row">
         <span class="contact-label">Email</span>
-        <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
+        <span class="email-inline">
+          <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
+          {#if emailCopied}
+            <span class="copied-tip">Copied!</span>
+          {:else}
+            <button class="copy-btn" on:click={copyEmail} title="Copy email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          {/if}
+        </span>
       </div>
       <div class="contact-row">
         <span class="contact-label">LinkedIn</span>
@@ -528,9 +545,37 @@
 
   .contact-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1.25rem;
   }
+
+  .email-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s;
+  }
+  .copy-btn svg { width: 13px; height: 13px; }
+  .copy-btn:hover { color: #4f46e5; }
+
+  .copied-tip {
+    font-size: 0.72rem;
+    color: #22c55e;
+    white-space: nowrap;
+  }
+
+  :global(.dark) .copy-btn { color: rgba(255,255,255,0.3); }
+  :global(.dark) .copy-btn:hover { color: #818cf8; }
 
   .contact-label {
     font-size: 0.78rem;

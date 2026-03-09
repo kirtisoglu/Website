@@ -167,6 +167,7 @@
   }
 
   .mobile-info { display: none; }
+  .mobile-email-row { display: none; }
 
   @media (max-width: 700px) {
     .layout-body { flex-direction: column; padding: 0.75rem; gap: 0.75rem; }
@@ -180,6 +181,13 @@
     .mobile-info { display: flex; flex-direction: column; gap: 0.15rem; }
     .mobile-name { margin: 0; font-size: 0.88rem; font-weight: 700; color: #111827; line-height: 1.3; }
     .mobile-title { margin: 0; font-size: 0.75rem; color: #6b7280; line-height: 1.4; white-space: normal; }
+    .mobile-email-row { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem; }
+    .mobile-email-btn { background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; color: #6b7280; font-size: 0.7rem; text-align: left; }
+    .mobile-email-btn svg { width: 11px; height: 11px; flex-shrink: 0; color: #9ca3af; }
+    .mobile-copy-icon { background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; color: #9ca3af; transition: color 0.15s; }
+    .mobile-copy-icon svg { width: 11px; height: 11px; }
+    .mobile-copy-icon:hover { color: #4f46e5; }
+    .mobile-copied-tip { font-size: 0.68rem; color: #22c55e; white-space: nowrap; }
   }
 
   :global(.dark) .mobile-name { color: #f9fafb; }
@@ -223,6 +231,19 @@
           <p class="mobile-name">Alaittin Kirtisoglu</p>
           <p class="mobile-title">PhD in Applied Mathematics</p>
         {/if}
+        <div class="mobile-email-row">
+          <button class="mobile-email-btn" on:click={copyEmail} title="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>akirtisoglu@hawk.iit.edu</span>
+          </button>
+          {#if emailCopied}
+            <span class="mobile-copied-tip">Copied!</span>
+          {:else}
+            <button class="mobile-copy-icon" on:click={copyEmail} title="Copy email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          {/if}
+        </div>
       </div>
       <div class="sidebar-divider"></div>
 
