@@ -11,11 +11,10 @@
   // ── Sidebar ───────────────────────────────────────────────────────────────
   let filterOpen = true;
 
-  // ── Deck.gl / MapLibre refs ───────────────────────────────────────────────
+  // ── Refs ──────────────────────────────────────────────────────────────────
   let mapContainer;
-  let deckCanvas;
   let map;
-  let deck;
+  let overlay;
   let buildLayers;
 
   // ── Category counts ───────────────────────────────────────────────────────
@@ -30,19 +29,19 @@
   const FAC_COLOR      = [79, 70, 229, 220];
 
   // Rebuild layers when toggles change
-  $: if (buildLayers && deck) {
+  $: if (buildLayers && overlay) {
     showCityBoundary; showCommunityAreas; showHealthCenters; showFacilities;
-    deck.setProps({ layers: buildLayers() });
+    overlay.setProps({ layers: buildLayers() });
   }
 
   onMount(async () => {
     const [
       { Map },
-      { Deck },
+      { MapboxOverlay },
       { GeoJsonLayer, ScatterplotLayer },
     ] = await Promise.all([
       import("maplibre-gl"),
-      import("@deck.gl/core"),
+      import("@deck.gl/mapbox"),
       import("@deck.gl/layers"),
     ]);
 
@@ -55,29 +54,11 @@
 
     await new Promise(r => map.on("load", r));
 
-    deck = new Deck({
-      canvas: deckCanvas,
-      width: "100%",
-      height: "100%",
-      initialViewState: { longitude: -87.6298, latitude: 41.8781, zoom: 10, pitch: 0, bearing: 0 },
-      controller: true,
-      onViewStateChange: ({ viewState }) => {
-        map.jumpTo({
-          center: [viewState.longitude, viewState.latitude],
-          zoom: viewState.zoom,
-          bearing: viewState.bearing,
-          pitch: viewState.pitch,
-        });
-      },
-      getTooltip: ({ object }) => {
-        if (!object) return null;
-        const p = object.properties || {};
-        if (p.community_name) return { html: `<b>${p.community_name}</b>` };
-        if (p.name) return { html: `<b>${p.name}</b><br/>${p.category || p.type || ""}` };
-        return null;
-      },
+    overlay = new MapboxOverlay({
+      interleaved: false,
       layers: [],
     });
+    map.addControl(overlay);
 
     const [cityData, communityData, hcData, facData] = await Promise.all([
       fetch("/data/chicago/city_boundary.geojson").then(r => r.json()),
@@ -89,8 +70,8 @@
     hcTotal       = hcData.features.length;
     facilityTotal = facData.features.length;
 
-    const hcPoints  = hcData.features.map(f  => ({ position: f.geometry.coordinates, properties: f.properties }));
-    const facPoints = facData.features.map(f  => ({ position: f.geometry.coordinates, properties: f.properties }));
+    const hcPoints  = hcData.features.map(f => ({ position: f.geometry.coordinates, properties: f.properties }));
+    const facPoints = facData.features.map(f => ({ position: f.geometry.coordinates, properties: f.properties }));
 
     buildLayers = () => [
       showCityBoundary && new GeoJsonLayer({
@@ -141,9 +122,9 @@
       }),
     ].filter(Boolean);
 
-    deck.setProps({ layers: buildLayers() });
+    overlay.setProps({ layers: buildLayers() });
 
-    onDestroy(() => { deck.finalize(); map.remove(); });
+    onDestroy(() => { map.removeControl(overlay); map.remove(); });
   });
 </script>
 
@@ -219,7 +200,6 @@
 
   <div class="map-wrap">
     <div bind:this={mapContainer} class="map-base"></div>
-    <canvas bind:this={deckCanvas} class="deck-canvas"></canvas>
   </div>
 
 </div>
@@ -228,6 +208,7 @@
 
 <style>
   :global(body) { margin: 0; overflow: hidden; }
+  :global(nav), :global(footer) { display: none !important; }
 
   .dashboard {
     display: flex;
@@ -364,5 +345,4 @@
 
   .map-wrap { flex: 1; position: relative; overflow: hidden; }
   .map-base { position: absolute; inset: 0; }
-  .deck-canvas { position: absolute; inset: 0; pointer-events: none; }
 </style>

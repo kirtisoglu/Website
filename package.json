@@ -19,8 +19,12 @@
     "vite": "^5.4.1"
   },
   "dependencies": {
+    "@deck.gl/core": "^9.2.11",
+    "@deck.gl/layers": "^9.2.11",
+    "@deck.gl/mapbox": "^9.2.11",
     "@vercel/analytics": "^1.6.1",
     "gray-matter": "^4.0.3",
+    "maplibre-gl": "^5.19.0",
     "marked": "^15.0.1",
     "rough-notation": "^0.5.1",
     "svelte-icons": "^2.1.0"
