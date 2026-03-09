@@ -87,6 +87,38 @@
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
     <h2 class="section-title">Papers</h2>
 
+    <!-- Paper 6: Bicolored paths (published) -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-status published">Published</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length
+      </h3>
+      <p class="paper-authors">Kirtisoglu, A. &amp; Özkahya, L.</p>
+      <p class="paper-venue">Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
+      <p class="paper-abstract">
+        We study proper vertex colorings of graphs that avoid bicolored paths of a fixed
+        length — that is, paths whose vertices alternate between exactly two colors. We
+        introduce the P<sub>k</sub>-chromatic number s<sub>k</sub>(G), the minimum number
+        of colors needed for such a coloring. For any graph with maximum degree d ≥ 2 and
+        k ≥ 4, we establish that s<sub>k</sub>(G) = O(d<sup>(k−1)/(k−2)</sup>). We also
+        determine exact values of s<sub>k</sub> for products of cycles and paths when k = 5
+        and k = 6. The problem generalizes classical star coloring and acyclic coloring and
+        connects chromatic theory with Ramsey-type structural questions.
+      </p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank" rel="noopener">Journal →</a>
+        <a class="paper-link" href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv →</a>
+        <button class="bibtex-btn" on:click={copyBibtex}>
+          {bibtexCopied ? '✓ Copied!' : 'Copy BibTeX'}
+        </button>
+      </div>
+    </div>
+
+     <div class="paper-divider"></div>
+     
     <!-- Paper 1: FalCom -->
     <div class="paper">
       <div class="paper-meta">
@@ -204,38 +236,6 @@
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
         deserunt mollit anim id est laborum.
       </p>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 6: Bicolored paths (published) -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-status published">Published</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length
-      </h3>
-      <p class="paper-authors">Kirtisoglu, A. &amp; Özkahya, L.</p>
-      <p class="paper-venue">Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
-      <p class="paper-abstract">
-        We study proper vertex colorings of graphs that avoid bicolored paths of a fixed
-        length — that is, paths whose vertices alternate between exactly two colors. We
-        introduce the P<sub>k</sub>-chromatic number s<sub>k</sub>(G), the minimum number
-        of colors needed for such a coloring. For any graph with maximum degree d ≥ 2 and
-        k ≥ 4, we establish that s<sub>k</sub>(G) = O(d<sup>(k−1)/(k−2)</sup>). We also
-        determine exact values of s<sub>k</sub> for products of cycles and paths when k = 5
-        and k = 6. The problem generalizes classical star coloring and acyclic coloring and
-        connects chromatic theory with Ramsey-type structural questions.
-      </p>
-      <div class="paper-links">
-        <a class="paper-link" href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank" rel="noopener">Journal →</a>
-        <a class="paper-link" href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv →</a>
-        <button class="bibtex-btn" on:click={copyBibtex}>
-          {bibtexCopied ? '✓ Copied!' : 'Copy BibTeX'}
-        </button>
-      </div>
     </div>
 
   </section>
