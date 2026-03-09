@@ -29,6 +29,19 @@
 
   <div class="divider"></div>
 
+  <!-- Research Interests -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 750 }}>
+    <h2 class="section-title">Research Interests</h2>
+    <ul class="interest-list">
+      <li>Algorithm Design &amp; Optimization</li>
+      <li>Graph Theory and Combinatorics</li>
+      <li>Resource Location-Allocation at Large-scale</li>
+      <li>Equitable Network Design</li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+  
   <!-- Education -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 450 }}>
     <h2 class="section-title">Education</h2>
@@ -140,18 +153,6 @@
 
   <div class="divider"></div>
 
-  <!-- Research Interests -->
-  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 750 }}>
-    <h2 class="section-title">Research Interests</h2>
-    <ul class="interest-list">
-      <li>Graph Theory and Combinatorics</li>
-      <li>Algorithm Design &amp; Optimization</li>
-      <li>Resource Location-Allocation at Large-scale</li>
-      <li>Equitable Network Design</li>
-    </ul>
-  </section>
-
-  <div class="divider"></div>
 
   <!-- Skills -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 850 }}>
