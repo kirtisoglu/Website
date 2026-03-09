@@ -122,7 +122,7 @@
     <!-- Paper 1: FalCom -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status submitting">In Preparation</span>
+        <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
@@ -140,7 +140,7 @@
     <!-- Paper 2: Chicago Healthcare -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status submitting">In Preparation</span>
+        <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
       <h3 class="paper-title">
@@ -152,6 +152,20 @@
         <a class="tool-link" href="/research/chicago-healthcare-network/dashboard">Healthcare Accessibility Dashboard →</a>
       </div>
     </div>
+
+    <!-- Paper 4: UAV routing -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-status submitting">In Writing</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        UAV Routing for Maximum Information Collection under Time Windows
+      </h3>
+      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
+    </div>
+
+    <div class="paper-divider"></div>
 
     <div class="paper-divider"></div>
 
@@ -168,19 +182,6 @@
 
     <div class="paper-divider"></div>
 
-    <!-- Paper 4: UAV routing -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-status testing">In Testing</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows
-      </h3>
-      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
-    </div>
-
-    <div class="paper-divider"></div>
 
     <!-- Paper 5: Bike-share -->
     <div class="paper">
