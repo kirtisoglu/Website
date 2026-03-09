@@ -167,14 +167,38 @@
 
   <div class="divider"></div>
 
-  <!-- Personal & Contact -->
+  <!-- Personal Interests -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
     <h2 class="section-title">Personal Interests</h2>
     <p class="body-text">
       Outside academia, I enjoy playing Go, hiking, and reading broadly —
       activities that keep me curious and grounded.
-      Feel free to reach out via the contact link below if you'd like to connect or collaborate.
     </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 1050 }}>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/alaittin-kirtisoglu" target="_blank" rel="noopener">linkedin.com/in/alaittin-kirtisoglu</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">GitHub</span>
+        <a href="https://github.com/kirtisoglu" target="_blank" rel="noopener">github.com/kirtisoglu</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Office</span>
+        <span class="contact-value">Department of Applied Mathematics, Illinois Institute of Technology, Chicago, IL</span>
+      </div>
+    </div>
   </section>
 
 </div>
@@ -251,12 +275,19 @@
   }
 
   .section-title {
-    font-size: 0.7rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #4f46e5;
     margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e7ff;
+  }
+
+  :global(.dark) .section-title {
+    color: #818cf8;
+    border-bottom-color: rgba(129,140,248,0.2);
   }
 
   /* ── Entries ── */
@@ -488,6 +519,38 @@
 
   :global(.dark) .pub-list em {
     color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Contact ── */
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+  }
+
+  .contact-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+
+  .contact-value {
+    font-size: 0.9rem;
+    color: #374151;
+  }
+
+  :global(.dark) .contact-value {
+    color: rgba(255,255,255,0.75);
   }
 
   /* ── Mobile ── */

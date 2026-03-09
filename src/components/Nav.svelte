@@ -165,7 +165,6 @@
       color: rgb(255, 62, 0);
       position: relative;
       display: inline-block;
-      font-size: 20px;
     }
 
     @media (max-width: 40rem) {
