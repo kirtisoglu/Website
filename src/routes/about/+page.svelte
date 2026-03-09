@@ -146,7 +146,7 @@
     <ul class="interest-list">
       <li>Graph Theory and Combinatorics</li>
       <li>Algorithm Design &amp; Optimization</li>
-      <li>Computational Methods &amp; Machine Learning for Structured Data</li>
+      <li>Resource Location-Allocation at Large-scale</li>
       <li>Equitable Network Design</li>
     </ul>
   </section>
