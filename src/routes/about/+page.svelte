@@ -96,10 +96,6 @@
           Worked with the <strong>Exa.TrkX</strong> project applying hierarchical graph neural networks
           for particle trajectory reconstruction in 3D detector data.
         </p>
-        <ul class="bullets">
-          <li>Defined a density-based hierarchical clustering algorithm to support downstream message-passing models.</li>
-          <li>Results contributed to more accurate particle identification for precision measurements in neutrino physics.</li>
-        </ul>
       </div>
       <div class="entries">
 
