@@ -34,9 +34,9 @@
     <h2 class="section-title">Research Interests</h2>
     <ul class="interest-list">
       <li>Algorithm Design &amp; Optimization</li>
-      <li>Graph Theory and Combinatorics</li>
       <li>Resource Allocation at Large-scale</li>
       <li>Equitable Network Design</li>
+      <li>Graph Theory</li>
     </ul>
   </section>
 
