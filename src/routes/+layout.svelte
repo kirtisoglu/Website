@@ -179,7 +179,7 @@
     .email-row { display: none; }
     .mobile-info { display: flex; flex-direction: column; gap: 0.15rem; }
     .mobile-name { margin: 0; font-size: 0.88rem; font-weight: 700; color: #111827; line-height: 1.3; }
-    .mobile-title { margin: 0; font-size: 0.75rem; color: #6b7280; line-height: 1.4; }
+    .mobile-title { margin: 0; font-size: 0.75rem; color: #6b7280; line-height: 1.4; white-space: normal; }
   }
 
   :global(.dark) .mobile-name { color: #f9fafb; }
@@ -213,8 +213,13 @@
       <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="sidebar-photo" />
       <p class="sidebar-name">Alaittin Kirtisoglu</p>
       <div class="mobile-info">
-        <p class="mobile-name">Alaittin Kirtisoglu</p>
-        <p class="mobile-title">PhD in Applied Mathematics</p>
+        {#if segment === 'research'}
+          <p class="mobile-name">Work &amp; Projects</p>
+          <p class="mobile-title">Combinatorial optimization, algorithm design, and equitable network design.</p>
+        {:else}
+          <p class="mobile-name">Alaittin Kirtisoglu</p>
+          <p class="mobile-title">PhD in Applied Mathematics</p>
+        {/if}
       </div>
       <div class="sidebar-divider"></div>
 
