@@ -82,11 +82,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2.5rem 2rem 1.5rem;
-    max-width: 780px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 2rem 0 1.5rem;
     position: relative;
     z-index: 1;
   }
@@ -249,11 +245,7 @@
 
   /* ── Tools ── */
   .tools-section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 1rem 2rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 0.5rem 0 1.5rem;
     position: relative;
     z-index: 1;
   }
@@ -319,11 +311,7 @@
 
   /* ── News ── */
   .news {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 2rem 3rem;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 0 0 3rem;
     position: relative;
     z-index: 1;
   }

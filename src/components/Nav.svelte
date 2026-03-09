@@ -37,7 +37,7 @@
         aria-current={segment === undefined ? 'page' : undefined}
         href="."
         class="site-name">
-        Home
+        Alaittin's Homepage
       </a>
       <div class="divider" />
       <a

@@ -8,23 +8,20 @@
 
   <!-- Hero / Intro -->
   <section class="hero" in:fly={{ y: 40, duration: 500, delay: 300 }}>
-    <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="portrait" />
-    <div class="hero-text">
-      <h1>Alaittin Kirtisoglu</h1>
-      <p class="subtitle">
-        Ph.D. Candidate in Applied Mathematics · Illinois Institute of Technology
-      </p>
-      <p class="intro-body">
-        I'm a fifth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener">Applied Mathematics</a> at IIT,
-        a member of the <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener">Discrete Applied Mathematics Group</a>,
-        and a Teaching Assistant. My research lies at the intersection of graph theory,
-        algorithmic optimization, and computational methods for complex, data-driven problems
-        in mathematics and applied sciences.
-      </p>
-      <span class="cv-download cv-disabled">
-        Download CV (PDF) — coming soon
-      </span>
-    </div>
+    <h1>Alaittin Kirtisoglu</h1>
+    <p class="subtitle">
+      Ph.D. Candidate in Applied Mathematics · Illinois Institute of Technology
+    </p>
+    <p class="intro-body">
+      I'm a fifth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener">Applied Mathematics</a> at IIT,
+      a member of the <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener">Discrete Applied Mathematics Group</a>,
+      and a Teaching Assistant. My research lies at the intersection of graph theory,
+      algorithmic optimization, and computational methods for complex, data-driven problems
+      in mathematics and applied sciences.
+    </p>
+    <span class="cv-download cv-disabled">
+      Download CV (PDF) — coming soon
+    </span>
   </section>
 
   <div class="divider"></div>
@@ -185,38 +182,21 @@
 <style>
   /* ── Layout ── */
   .page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
+    padding: 1.5rem 0 5rem;
   }
 
   /* ── Hero ── */
   .hero {
     display: flex;
-    align-items: flex-start;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
   }
 
-  .portrait {
-    width: 190px;
-    height: 230px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 8px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-  }
-
-  .hero-text {
-    flex: 1;
-    padding-top: 0.25rem;
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
+  .hero h1 {
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.2rem;
     line-height: 1.2;
     color: #111827;
   }
@@ -466,7 +446,7 @@
   }
 
   /* ── Dark mode ── */
-  :global(.dark) .hero-text h1,
+  :global(.dark) .hero h1,
   :global(.dark) .degree {
     color: #f9fafb;
   }
@@ -560,23 +540,7 @@
   /* ── Mobile ── */
   @media (max-width: 640px) {
     .page {
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    .hero {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.5rem;
-    }
-
-    .portrait {
-      width: 150px;
-      height: 185px;
-    }
-
-    .hero-text h1 {
-      font-size: 1.6rem;
+      padding: 1rem 0 4rem;
     }
 
     .interest-list {

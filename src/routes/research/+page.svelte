@@ -202,11 +202,7 @@
 
 <style>
   .page {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 1.5rem 0 5rem;
     display: flex;
     flex-direction: column;
     gap: 0;
