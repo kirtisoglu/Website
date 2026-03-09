@@ -24,17 +24,12 @@
   </div>
 
   <div class="embed-container">
-    <!-- Replace the src below with your actual embed URL -->
     <iframe
-      src="about:blank"
+      src="https://chicago-healthcare-dashboard.up.railway.app/dashboard"
       title="Chicago Healthcare Access Dashboard"
       allowfullscreen
       loading="lazy"
     ></iframe>
-    <div class="placeholder">
-      <p class="placeholder-text">Dashboard embed coming soon.</p>
-      <p class="placeholder-sub">Paste your iframe or Railway/Panel URL here.</p>
-    </div>
   </div>
 
 </div>
@@ -119,33 +114,6 @@
     display: block;
   }
 
-  /* Hide placeholder once you add a real src */
-  .placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    pointer-events: none;
-  }
-
-  .placeholder-text {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #9ca3af;
-    margin: 0;
-  }
-
-  .placeholder-sub {
-    font-size: 0.8rem;
-    color: #d1d5db;
-    margin: 0;
-  }
-
-  :global(.dark) .placeholder-text { color: rgba(255,255,255,0.3); }
-  :global(.dark) .placeholder-sub { color: rgba(255,255,255,0.15); }
 
   @media (max-width: 640px) {
     .dashboard-page { padding: 1rem; }
