@@ -129,14 +129,6 @@
         <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <a class="tool-link" href="/research/falcom/dashboard">FalCom Visualizer →</a>
@@ -155,14 +147,6 @@
         <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</p>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <a class="tool-link" href="/research/chicago-healthcare-network/dashboard">Healthcare Accessibility Dashboard →</a>
@@ -180,14 +164,6 @@
       <h3 class="paper-title">
         A Diffusion Model for Political Redistricting
       </h3>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <span class="tool-coming">Redistricting Visualizer (coming soon)</span>
@@ -206,14 +182,6 @@
         UAV Routing for Maximum Information Collection under Time Windows
       </h3>
       <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
     </div>
 
     <div class="paper-divider"></div>
@@ -228,14 +196,6 @@
         Bike-Share Stations: An Equity Analysis and Location Optimization
       </h3>
       <p class="paper-venue">with Ishaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</p>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
     </div>
 
   </section>

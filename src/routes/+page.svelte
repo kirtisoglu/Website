@@ -431,12 +431,6 @@
     My research spans graph theory, combinatorial optimization, and computational methods
     for real-world structured problems.
   </p>
-  <div class="tags">
-    <span class="tag">Combinatorial Optimization</span>
-    <span class="tag">Algorithm Design</span>
-    <span class="tag">Equitable Networks</span>
-    <span class="tag">Graph Theory</span>
-  </div>
   <div class="collab-badge">
     <span class="collab-dot"></span>
     Open to collaboration &amp; consulting
