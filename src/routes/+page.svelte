@@ -253,43 +253,49 @@
   }
 
   .scroll-hint {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
-    padding: 1.5rem 0 0.5rem;
-    opacity: 0.35;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
+    gap: 0.35rem;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .scroll-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #6b7280;
-    max-width: 780px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    position: relative;
-    z-index: 1;
+    color: #9ca3af;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
   }
 
-  .scroll-line {
-    width: 1px;
-    height: 2rem;
-    background: #6b7280;
-    animation: scrollpulse 1.8s ease-in-out infinite;
+  :global(.dark) .scroll-label { color: rgba(255,255,255,0.25); }
+
+  .scroll-chevron {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: #9ca3af;
+    animation: bounce-down 1.6s ease-in-out infinite;
   }
 
-  @keyframes scrollpulse {
-    0%, 100% { transform: scaleY(1); opacity: 0.4; }
-    50% { transform: scaleY(0.5); opacity: 1; }
+  :global(.dark) .scroll-chevron { color: rgba(255,255,255,0.25); }
+
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(4px); opacity: 1; }
   }
 
   /* ── Tools ── */
   .tools-section {
     max-width: 780px;
     margin: 0 auto;
-    padding: 0 2rem 3rem;
+    padding: 3rem 2rem 3rem;
     width: 100%;
     box-sizing: border-box;
     position: relative;
@@ -484,8 +490,10 @@
 
 {#if y < 80}
   <div class="scroll-hint" out:fade={{ duration: 300 }}>
-    <div class="scroll-line"></div>
-    scroll
+    <span class="scroll-label">scroll</span>
+    <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+    </svg>
   </div>
 {/if}
 
