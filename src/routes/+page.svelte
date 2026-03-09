@@ -502,7 +502,7 @@
   <div class="tools-grid">
     <a class="tool-card" href="/research/falcom/">
       <p class="tool-name">FalCom Visualizer</p>
-      <p class="tool-desc">Animated Markov chain sampling for facility location &amp; redistricting.</p>
+      <p class="tool-desc">Animated Markov chain sampling for facility location &amp; districting.</p>
       <span class="tool-badge">Coming soon</span>
     </a>
     <a class="tool-card" href="/research/chicago-healthcare-network/">
