@@ -176,6 +176,7 @@
       <h3 class="paper-title">
         A Diffusion Model for Political Redistricting
       </h3>
+      <p class="paper-venue">Alaittin Kirtisoglu</p>
     </div>
 
     <div class="paper-divider"></div>
