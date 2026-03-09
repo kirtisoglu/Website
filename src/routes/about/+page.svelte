@@ -73,23 +73,21 @@
 
   <!-- Research Experience -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 550 }}>
-    <h2 class="section-title">Research Experience</h2>
+    <h2 class="section-title">Work Experience</h2>
     <div class="entries">
 
       <div class="entry">
         <div class="entry-meta">
-          <span class="degree">Graduate Researcher</span>
+          <span class="degree">Graduate Teaching Assistant</span>
+          <span class="badge">2021-2026</span>
           <span class="org">Illinois Institute of Technology</span>
         </div>
-        <ul class="bullets">
-          <li>Developing computational frameworks leveraging graph-based models and optimization techniques to solve structured data problems.</li>
-          <li>Methods include algorithm design, simulation, and rigorous performance evaluation.</li>
-        </ul>
       </div>
 
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Research Intern</span>
+          <span class="badge">2019 -2021</span>
           <span class="org">
             <a href="https://www.fnal.gov/" target="_blank" rel="noopener">Fermi National Accelerator Laboratory</a>
           </span>
@@ -102,6 +100,14 @@
           <li>Defined a density-based hierarchical clustering algorithm to support downstream message-passing models.</li>
           <li>Results contributed to more accurate particle identification for precision measurements in neutrino physics.</li>
         </ul>
+      </div>
+      <div class="entries">
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree">Graduate Teaching Assistant</span>
+          <span class="org">TED University</span>
+        </div>
       </div>
 
     </div>
