@@ -53,7 +53,7 @@
           <span class="badge">2026</span>
         </div>
         <span class="institution">
-          <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology, IL, US</a>
+          <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology, Chicago, IL</a>
         </span>
         <span class="detail">Advisor: <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a></span>
       </div>
