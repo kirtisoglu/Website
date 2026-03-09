@@ -38,6 +38,12 @@
         design — from computational redistricting to healthcare access modeling. Below are
         my papers and interactive tools built from this research.
       </p>
+      <p class="lead">
+        I am especially interested in problems that not only present rich theoretical challenges,
+        but also arise from real-world needs with significant social impact. If you have an interesting
+        problem that intersects with some of my work and interest, or are looking for a new problem,
+        please reach out over email.
+      </p>
     </div>
     <!-- Network infographic: city grid + facility nodes + coverage + spanning tree -->
     <svg class="graph-deco" viewBox="0 0 220 210" aria-hidden="true" fill="none">
