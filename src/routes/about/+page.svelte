@@ -33,8 +33,8 @@
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 750 }}>
     <h2 class="section-title">Research Interests</h2>
     <ul class="interest-list">
-      <li>Algorithm Design &amp; Optimization</li>
-      <li>Resource Allocation at Large-scale</li>
+      <li>Optimization &amp; Algorithm Design</li>
+      <li>Large Scale Resource Allocation</li>
       <li>Equitable Network Design</li>
       <li>Graph Theory</li>
     </ul>
