@@ -35,14 +35,14 @@
       <h1>Work & Projects</h1>
       <p class="lead">
         My work spans combinatorial optimization, algorithm design, and equitable network
-        design — from computational redistricting to healthcare access modeling. Below are
+        design — from computational redistricting to healthcare access modeling. I am especially 
+        interested in problems that not only present rich theoretical challenges,
+        but also arise from real-world needs with significant social impact.Below are
         my papers and interactive tools built from this research.
       </p>
       <p class="lead">
-        I am especially interested in problems that not only present rich theoretical challenges,
-        but also arise from real-world needs with significant social impact. If you have an interesting
-        problem that intersects with some of my work and interest, or are looking for a new problem,
-        please reach out over email.
+        If you have an interesting problem that intersects with some of my work and interest, 
+        or are looking for a new problem, please reach out over email.
       </p>
     </div>
     <!-- Network infographic: city grid + facility nodes + coverage + spanning tree -->
@@ -272,7 +272,7 @@
     line-height: 1.75;
     color: #4b5563;
     max-width: 620px;
-    margin: 0;
+    margin: 0 0 1.75rem;
   }
 
   :global(.dark) .lead { color: rgba(255,255,255,0.65); }
