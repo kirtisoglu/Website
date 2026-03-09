@@ -2,14 +2,85 @@
   import Head from "../components/Head.svelte";
   import Emoji from "../components/Emoji.svelte";
   import { fade, fly } from "svelte/transition";
+  import { onMount } from "svelte";
 
   export let data;
   let y;
+
+  const phrases = [
+    "I study graphs & algorithms.",
+    "I design redistricting methods.",
+    "I optimize facility location.",
+    "I build equitable networks.",
+  ];
+
+  let typedText = "";
+  let showCursor = true;
+
+  onMount(() => {
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const TYPING_SPEED = 65;
+    const DELETING_SPEED = 35;
+    const PAUSE_AFTER_TYPE = 1800;
+    const PAUSE_AFTER_DELETE = 400;
+
+    // Cursor blink
+    const cursorInterval = setInterval(() => {
+      showCursor = !showCursor;
+    }, 530);
+
+    function tick() {
+      const current = phrases[phraseIndex];
+      if (!deleting) {
+        charIndex++;
+        typedText = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, PAUSE_AFTER_TYPE);
+          return;
+        }
+        setTimeout(tick, TYPING_SPEED);
+      } else {
+        charIndex--;
+        typedText = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, PAUSE_AFTER_DELETE);
+          return;
+        }
+        setTimeout(tick, DELETING_SPEED);
+      }
+    }
+
+    setTimeout(tick, 600);
+
+    return () => clearInterval(cursorInterval);
+  });
 </script>
 
 <svelte:window bind:scrollY={y} />
 
+<!-- Dot grid background -->
+<div class="page-bg" aria-hidden="true"></div>
+
 <style>
+  /* ── Dot grid background ── */
+  .page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(79,70,229,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  :global(.dark) .page-bg {
+    background-image: radial-gradient(circle, rgba(129,140,248,0.08) 1px, transparent 1px);
+  }
+
   /* ── Hero ── */
   .hero {
     min-height: calc(100vh - 4rem);
@@ -21,6 +92,8 @@
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
@@ -50,10 +123,37 @@
   }
 
   .hero h1 .name {
+    color: inherit;
+  }
+
+  /* ── Typed text ── */
+  .typed-line {
+    display: block;
+    min-height: 1.2em;
+  }
+
+  .typed {
     color: #4f46e5;
   }
 
-  :global(.dark) .hero h1 .name {
+  :global(.dark) .typed {
+    color: #818cf8;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    margin-left: 1px;
+    color: #4f46e5;
+    animation: none;
+    opacity: 1;
+  }
+
+  .cursor.blink {
+    opacity: 0;
+  }
+
+  :global(.dark) .cursor {
     color: #818cf8;
   }
 
@@ -94,7 +194,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .tag {
@@ -114,6 +214,44 @@
     color: #a5b4fc;
   }
 
+  /* ── Collaboration badge ── */
+  .collab-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 2.5rem;
+  }
+
+  :global(.dark) .collab-badge {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .collab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+  }
+
+  :global(.dark) .collab-dot {
+    background: #4ade80;
+    animation: pulse-green-dark 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-green-dark {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+    50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+  }
+
   .scroll-hint {
     display: flex;
     flex-direction: column;
@@ -131,6 +269,8 @@
     box-sizing: border-box;
     padding-left: 2rem;
     padding-right: 2rem;
+    position: relative;
+    z-index: 1;
   }
 
   .scroll-line {
@@ -152,6 +292,8 @@
     padding: 0 2rem 5rem;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
   }
 
   .news-title {
@@ -243,7 +385,12 @@
 
 <section class="hero" in:fly={{ y: 30, duration: 600, delay: 100 }}>
   <p class="eyebrow">Applied Mathematics · IIT Chicago</p>
-  <h1>Hi, I'm <span class="name">Alaittin</span>.<br>I study graphs &amp; algorithms.</h1>
+  <h1>
+    Hi, I'm <span class="name">Alaittin</span>.<br>
+    <span class="typed-line">
+      <span class="typed">{typedText}</span><span class="cursor" class:blink={!showCursor}>|</span>
+    </span>
+  </h1>
   <p class="hero-body">
     Fifth-year Ph.D. candidate at the
     <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
@@ -259,7 +406,10 @@
     <span class="tag">Algorithm Design</span>
     <span class="tag">Machine Learning</span>
   </div>
-
+  <div class="collab-badge">
+    <span class="collab-dot"></span>
+    Open to collaboration &amp; consulting
+  </div>
 </section>
 
 {#if y < 80}

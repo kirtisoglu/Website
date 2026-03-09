@@ -30,7 +30,7 @@
     <!-- Paper 1: FalCom -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status submitting">Submitted</span>
+        <span class="paper-status submitting">In Preparation</span>
         <span class="paper-venue">with Hemanshu Kaul</span>
       </div>
       <h3 class="paper-title">
@@ -51,7 +51,7 @@
     <!-- Paper 2: Chicago Healthcare -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status submitting">Submitted</span>
+        <span class="paper-status submitting">In Preparation</span>
         <span class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</span>
       </div>
       <h3 class="paper-title">
@@ -67,7 +67,7 @@
       </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="#" target="_blank" rel="noopener">Healthcare Accessibility Dashboard →</a>
+        <span class="tool-coming">Healthcare Accessibility Dashboard (coming soon)</span>
       </div>
     </div>
 
@@ -92,7 +92,7 @@
       </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="#" target="_blank" rel="noopener">Redistricting Visualizer →</a>
+        <span class="tool-coming">Redistricting Visualizer (coming soon)</span>
       </div>
     </div>
 
@@ -366,6 +366,14 @@
   .tool-link:hover { text-decoration: underline; }
 
   :global(.dark) .tool-link { color: #818cf8; }
+
+  .tool-coming {
+    font-size: 0.82rem;
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  :global(.dark) .tool-coming { color: rgba(255,255,255,0.3); }
 
   .paper-divider {
     height: 1px;
