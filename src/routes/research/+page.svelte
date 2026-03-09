@@ -36,13 +36,13 @@
       <p class="lead">
         My work spans combinatorial optimization, algorithm design, and equitable network
         design — from computational redistricting to healthcare access modeling. I am especially 
-        interested in problems that not only present rich theoretical challenges,
-        but also arise from real-world needs with significant social impact.Below are
+        interested in problems that are not only present rich theoretical challenges,
+        but also arise from real-world needs with significant social impact. Below are
         my papers and interactive tools built from this research.
       </p>
       <p class="lead">
         If you have an interesting problem that intersects with some of my work and interest, 
-        or are looking for a new problem, please reach out over email.
+        or are looking for a new problem, please reach out by email.
       </p>
     </div>
     <!-- Network infographic: city grid + facility nodes + coverage + spanning tree -->
