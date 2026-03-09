@@ -1,7 +1,7 @@
 <script>
   import Head from "../components/Head.svelte";
   import Emoji from "../components/Emoji.svelte";
-  import { fade, fly } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { onMount } from "svelte";
 
   export let data;
@@ -435,7 +435,7 @@
   }
 </style>
 
-<section class="hero" in:fly={{ y: 30, duration: 600, delay: 100 }}>
+<section class="hero">
   <p class="eyebrow">Applied Mathematics · IIT Chicago</p>
   <h1>
     Hi, I'm <span class="name">Alaittin</span>.<br>
