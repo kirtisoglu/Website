@@ -153,15 +153,6 @@
 
   <div class="divider"></div>
 
-  <!-- Personal Interests -->
-  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
-    <h2 class="section-title">Personal Interests</h2>
-    <p class="body-text">
-      Outside academia, I enjoy playing  <a href="https://en.wikipedia.org/wiki/Go_(game)">Go</a>, hiking, and reading poetry —
-      activities that keep me curious and grounded.
-    </p>
-  </section>
-  <div class="divider"></div>
 
   <!-- Contact -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 1050 }}>
