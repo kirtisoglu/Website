@@ -35,7 +35,7 @@
       <h1>Work & Projects</h1>
       <p class="lead">
         My work spans combinatorial optimization, algorithm design, and equitable network
-        design — from computational redistricting to healthcare access modeling. I am especially 
+        design — from computational districting to healthcare access modeling. I am especially 
         interested in problems that are not only present rich theoretical challenges,
         but also arise from real-world needs with significant social impact. Below are
         my papers and interactive tools built from this research.
