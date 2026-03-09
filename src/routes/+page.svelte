@@ -105,7 +105,7 @@
   }
 
   .hero h1 {
-    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -436,7 +436,6 @@
     <span class="tag">Algorithm Design</span>
     <span class="tag">Equitable Networks</span>
     <span class="tag">Graph Theory</span>
-    <span class="tag">Redistricting</span>
   </div>
   <div class="collab-badge">
     <span class="collab-dot"></span>
