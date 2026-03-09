@@ -25,7 +25,7 @@
 
   <div class="embed-container">
     <iframe
-      src="https://chicago-healthcare-dashboard.up.railway.app/dashboard"
+      src="https://chicago-healthcare-dashboard-production-47de.up.railway.app/dashboard"
       title="Chicago Healthcare Access Dashboard"
       allowfullscreen
       loading="lazy"

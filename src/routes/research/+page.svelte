@@ -168,11 +168,12 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status testing">In Testing</span>
-        <span class="paper-venue">with Melis Boran &amp; Mustafa Tural</span>
+        <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
         UAV Routing for Maximum Information Collection under Time Windows
       </h3>
+      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -189,11 +190,12 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status design">In Design</span>
-        <span class="paper-venue">with Ishaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</span>
+        <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
         Bike-Share Stations: An Equity Analysis and Location Optimization
       </h3>
+      <p class="paper-venue">with Ishaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</p>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -210,12 +212,13 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status published">Published</span>
-        <span class="paper-venue">Graphs and Combinatorics, 40(1), Art. 11, 2024</span>
+        <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
         Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length
       </h3>
       <p class="paper-authors">Kirtisoglu, A. &amp; Özkahya, L.</p>
+      <p class="paper-venue">Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
       <p class="paper-abstract">
         We study proper vertex colorings of graphs that avoid bicolored paths of a fixed
         length — that is, paths whose vertices alternate between exactly two colors. We
@@ -381,9 +384,21 @@
   :global(.dark) .paper-status.testing    { background: rgba(161,98,7,0.15);   color: #fde047; }
   :global(.dark) .paper-status.design     { background: rgba(157,23,77,0.15);  color: #f9a8d4; }
 
-  .paper-venue {
-    font-size: 0.78rem;
+  .paper-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: #9ca3af;
+  }
+
+  :global(.dark) .paper-type { color: rgba(255,255,255,0.3); }
+
+  .paper-venue {
+    font-size: 0.82rem;
+    color: #9ca3af;
+    margin: 0;
+    font-style: italic;
   }
 
   :global(.dark) .paper-venue { color: rgba(255,255,255,0.38); }
