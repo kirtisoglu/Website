@@ -5,8 +5,6 @@
   import { onMount } from "svelte";
 
   export let data;
-  let y;
-
   const phrases = [
     "I study graphs & algorithms.",
     "I design redistricting methods.",
@@ -61,8 +59,6 @@
   });
 </script>
 
-<svelte:window bind:scrollY={y} />
-
 <!-- Dot grid background -->
 <div class="page-bg" aria-hidden="true"></div>
 
@@ -83,11 +79,10 @@
 
   /* ── Hero ── */
   .hero {
-    min-height: calc(100vh - 4rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4rem 2rem 3rem;
+    padding: 2.5rem 2rem 1.5rem;
     max-width: 780px;
     margin: 0 auto;
     width: 100%;
@@ -102,7 +97,7 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: #4f46e5;
-    margin: 0 0 1.25rem;
+    margin: 0 0 0.6rem;
   }
 
   :global(.dark) .eyebrow {
@@ -110,12 +105,12 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: #111827;
-    margin: 0 0 1.5rem;
+    margin: 0 0 0.85rem;
   }
 
   :global(.dark) .hero h1 {
@@ -158,11 +153,11 @@
   }
 
   .hero-body {
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 0.92rem;
+    line-height: 1.7;
     color: #4b5563;
     max-width: 560px;
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
   }
 
   :global(.dark) .hero-body {
@@ -193,8 +188,8 @@
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
   }
 
   .tag {
@@ -221,7 +216,7 @@
     gap: 0.5rem;
     font-size: 0.8rem;
     color: #6b7280;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
   }
 
   :global(.dark) .collab-badge {
@@ -252,26 +247,11 @@
     50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
   }
 
-  .scroll-hint {
-    text-align: center;
-    font-size: 1.2rem;
-    opacity: 0.4;
-    animation: bounce-down 1.6s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
-    padding-bottom: 1rem;
-  }
-
-  @keyframes bounce-down {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-  }
-
   /* ── Tools ── */
   .tools-section {
     max-width: 780px;
     margin: 0 auto;
-    padding: 5rem 2rem 3rem;
+    padding: 1rem 2rem 1.5rem;
     width: 100%;
     box-sizing: border-box;
     position: relative;
@@ -341,7 +321,7 @@
   .news {
     max-width: 780px;
     margin: 0 auto;
-    padding: 0 2rem 5rem;
+    padding: 0 2rem 3rem;
     width: 100%;
     box-sizing: border-box;
     position: relative;
@@ -463,10 +443,6 @@
     Open to collaboration &amp; consulting
   </div>
 </section>
-
-{#if y < 80}
-  <div class="scroll-hint" out:fade={{ duration: 300 }}>↓</div>
-{/if}
 
 <section class="tools-section" in:fade={{ duration: 400, delay: 150 }}>
   <h2 class="news-title">Interactive Tools</h2>
