@@ -181,10 +181,12 @@
   @media (max-width: 700px) {
     .layout-body { flex-direction: column; padding: 1rem; }
     .sidebar-wrapper { width: 100%; position: static; }
-    .sidebar { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-    .sidebar-photo { width: 90px; height: 110px; }
-    .sidebar-name { font-size: 0.82rem; }
+    .sidebar { flex-direction: row; justify-content: center; padding: 0.75rem; }
+    .sidebar-photo { width: 60px; height: 74px; margin-bottom: 0; }
+    .sidebar-name { display: none; }
     .sidebar-divider { display: none; }
+    .sidebar-row { display: none; }
+    .email-row { display: none; }
   }
 </style>
 
