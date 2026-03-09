@@ -79,7 +79,9 @@
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Graduate Teaching Assistant</span>
-          <span class="org">Illinois Institute of Technology</span>
+          <span class="institution">
+          <a href="https://www.iit.edu/" target="_blank" rel="noopener">HIllinois Institute of Technology</a>
+        </span>
           <span class="badge">2021-2026</span>
         </div>
       </div>
