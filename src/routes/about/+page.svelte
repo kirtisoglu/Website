@@ -1,14 +1,9 @@
 <script>
-  import { onMount } from "svelte";
   import { fly, fade } from "svelte/transition";
   import Head from "../../components/Head.svelte";
   import HiddenLinks from "../../components/HiddenLinks.svelte";
-
-  let visible = false;
-  onMount(() => { visible = true; });
 </script>
 
-{#if visible}
 <div class="page" in:fade={{ duration: 500, delay: 200 }}>
 
   <!-- Hero / Intro -->
@@ -183,7 +178,6 @@
   </section>
 
 </div>
-{/if}
 
 <Head/>
 <HiddenLinks/>

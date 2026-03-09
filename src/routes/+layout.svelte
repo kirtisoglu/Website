@@ -4,6 +4,7 @@
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   export let segment;
+  export let data;
   let h = 1000;
   let y = 0;
 
@@ -51,6 +52,6 @@
 <main bind:clientHeight={h}>
   <slot/>
 </main>
-<Footer {h} {y} />
+<Footer {h} {y} lastUpdated={data.lastUpdated} />
 
 

@@ -1,10 +1,12 @@
 <script>
   import Head from "../components/Head.svelte";
   import Emoji from "../components/Emoji.svelte";
-  import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte'
+  import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte';
   import LazyLoad from "../components/LazyLoad.svelte";
+  import { fade } from "svelte/transition";
+
+  export let data;
   let y;
-  import { fly, fade } from "svelte/transition";
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -56,6 +58,81 @@
     z-index: 1;
   }
 
+  /* News section */
+  .news {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .news-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    margin: 0 0 1.25rem;
+  }
+
+  :global(.dark) .news-title {
+    color: #818cf8;
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid rgba(79, 70, 229, 0.25);
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .news-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.9rem 0 0.9rem 1.5rem;
+    position: relative;
+    align-items: baseline;
+  }
+
+  .news-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 1.2rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4f46e5;
+    flex-shrink: 0;
+  }
+
+  :global(.dark) .news-item::before {
+    background: #818cf8;
+  }
+
+  .news-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    white-space: nowrap;
+    min-width: 7rem;
+    padding-top: 0.05rem;
+  }
+
+  .news-text {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: #374151;
+  }
+
+  :global(.dark) .news-text {
+    color: rgba(255,255,255,0.8);
+  }
+
   @media (max-width: 40rem) {
     .intro {
       padding-top: 4rem;
@@ -66,6 +143,13 @@
       bottom: -1rem;
       right: -2rem;
       opacity: 0.35;
+    }
+    .news-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .news-date {
+      min-width: unset;
     }
   }
 </style>
@@ -101,8 +185,19 @@
     </span>
   </LazyLoad>
 
-  <img
-    src="/home/6.png"
-    alt=""
-    class="intro-svg"/>
+  <img src="/home/6.png" alt="" class="intro-svg"/>
 </div>
+
+{#if data.news && data.news.length > 0}
+  <section class="news" in:fade={{ duration: 400, delay: 300 }}>
+    <h2 class="news-title">News &amp; Updates</h2>
+    <ul class="news-list">
+      {#each data.news as item}
+        <li class="news-item">
+          <span class="news-date">{item.date}</span>
+          <span class="news-text">{@html item.text}</span>
+        </li>
+      {/each}
+    </ul>
+  </section>
+{/if}

@@ -7,11 +7,9 @@
     import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
     import LazyLoad from "./LazyLoad.svelte";
 
+    export let lastUpdated = null; // e.g. "March 08, '26" from git, or null
+
     let element;
-    let date = new Date();
-    let year = date.getFullYear().toString().slice(-2);
-    let month = date.toLocaleString('default', { month: 'long' });
-    let day = date.getDate().toString().padStart(2, '0');
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let twitter = "https://x.com/kirtisoglu";
     let github = "https://github.com/kirtisoglu";
@@ -104,12 +102,9 @@
       <Emoji symbol="👷‍♂️" />
       by me
       <br />
-      Last updated
-      <a
-        aria-label="{month} {day}, {year}"
-        href="https://www.onthisday.com/events/{month}/{day}">
-        {month} {day}, '{year}
-      </a>
+      {#if lastUpdated}
+        Last updated {lastUpdated}
+      {/if}
     </p>
 
     <div class="links">
