@@ -96,7 +96,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 2rem;
-      font-weight: 300;
+      font-weight: 400;
       z-index: 3;
       background-color: #ffffff;
       border-bottom: 1px solid rgba(0,0,0,0.08);
