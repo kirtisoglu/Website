@@ -1,9 +1,7 @@
 <script>
   import Head from "../components/Head.svelte";
   import Emoji from "../components/Emoji.svelte";
-  import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte';
-  import LazyLoad from "../components/LazyLoad.svelte";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
 
   export let data;
   let y;
@@ -12,65 +10,153 @@
 <svelte:window bind:scrollY={y} />
 
 <style>
-  .cont {
+  /* ── Hero ── */
+  .hero {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem 3rem;
+    max-width: 780px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
-    min-height: 25rem;
-    height: calc(100vh - 4rem);
-    overflow: hidden;
   }
 
-  .intro {
-    position: relative;
-    z-index: 1;
-    padding: 8rem 2rem 2rem;
-    max-width: 32rem;
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    margin: 0 0 1.25rem;
   }
 
-  .intro h1 {
-    margin-bottom: 0.75rem;
+  :global(.dark) .eyebrow {
+    color: #818cf8;
   }
 
-  .intro p {
-    line-height: 1.75;
-    margin: 0.6rem 0;
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111827;
+    margin: 0 0 1.5rem;
   }
 
-  .intro-svg {
-    position: absolute;
-    bottom: -3rem;
-    right: -1rem;
-    width: 55%;
-    max-width: 42rem;
-    min-width: 18rem;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.9;
+  :global(.dark) .hero h1 {
+    color: #f9fafb;
   }
 
-  .down-arrow {
+  .hero h1 .name {
+    color: #4f46e5;
+  }
+
+  :global(.dark) .hero h1 .name {
+    color: #818cf8;
+  }
+
+  .hero-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 560px;
+    margin: 0 0 2rem;
+  }
+
+  :global(.dark) .hero-body {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-body a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #c7d2fe;
+    transition: border-color 0.15s;
+  }
+
+  .hero-body a:hover {
+    border-color: #4f46e5;
+  }
+
+  :global(.dark) .hero-body a {
+    color: #a5b4fc;
+    border-color: rgba(165,180,252,0.3);
+  }
+
+  :global(.dark) .hero-body a:hover {
+    border-color: #a5b4fc;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    color: #4338ca;
+    border-radius: 99px;
+    padding: 0.25rem 0.85rem;
+    letter-spacing: 0.01em;
+  }
+
+  :global(.dark) .tag {
+    background: rgba(129,140,248,0.1);
+    border-color: rgba(129,140,248,0.25);
+    color: #a5b4fc;
+  }
+
+  .scroll-hint {
     position: absolute;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    color: rgb(255, 62, 0);
-    height: 2.5rem;
-    width: 2.5rem;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.4;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    transition: opacity 0.3s;
   }
 
-  /* News section */
+  .scroll-line {
+    width: 1px;
+    height: 2rem;
+    background: #6b7280;
+    animation: scrollpulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollpulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.4; }
+    50% { transform: scaleY(0.5); opacity: 1; }
+  }
+
+  /* ── News ── */
   .news {
-    max-width: 860px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 3rem 2rem 2rem;
+    padding: 0 2rem 5rem;
     width: 100%;
     box-sizing: border-box;
   }
 
   .news-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #4f46e5;
     margin: 0 0 1.25rem;
@@ -81,19 +167,20 @@
   }
 
   .news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-left: 2px solid rgba(79, 70, 229, 0.25);
-    padding-left: 0;
-    margin: 0;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 2px solid #e0e7ff;
+  }
+
+  :global(.dark) .news-list {
+    border-color: rgba(129,140,248,0.2);
   }
 
   .news-item {
     display: flex;
-    gap: 1.25rem;
-    padding: 0.9rem 0 0.9rem 1.5rem;
+    gap: 1.5rem;
+    padding: 0.85rem 0 0.85rem 1.5rem;
     position: relative;
     align-items: baseline;
   }
@@ -102,12 +189,11 @@
     content: '';
     position: absolute;
     left: -5px;
-    top: 1.2rem;
+    top: 1.15rem;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #4f46e5;
-    flex-shrink: 0;
   }
 
   :global(.dark) .news-item::before {
@@ -115,81 +201,74 @@
   }
 
   .news-date {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    color: #6b7280;
+    color: #9ca3af;
     white-space: nowrap;
     min-width: 7rem;
-    padding-top: 0.05rem;
   }
 
   .news-text {
-    font-size: 0.93rem;
+    font-size: 0.92rem;
     line-height: 1.65;
     color: #374151;
   }
 
   :global(.dark) .news-text {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.78);
   }
 
-  @media (max-width: 40rem) {
-    .intro {
-      padding-top: 4rem;
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .hero {
+      padding: 3rem 1.25rem 4rem;
+      min-height: calc(100vh - 4rem);
     }
-    .intro-svg {
-      width: 80%;
-      min-width: 14rem;
-      bottom: -1rem;
-      right: -2rem;
-      opacity: 0.35;
+
+    .news {
+      padding: 0 1.25rem 4rem;
     }
+
     .news-item {
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.2rem;
     }
+
     .news-date {
       min-width: unset;
     }
   }
 </style>
 
-<div class="cont">
-  <LazyLoad let:hasBeenVisible let:visible>
-    <div class="intro">
-      <h1>
-        Welcome
-        <Emoji symbol="👋" />
-      </h1>
-      <p>
-        <b>I'm Alaittin</b> — fifth-year Ph.D. student in
-        <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">applied mathematics</a>
-        <Emoji symbol="🧑‍💻" /> at
-        <a href="https://www.iit.edu" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>
-        <Emoji symbol="🏫" />.
-      </p>
-      <p>
-        <b>My research interests</b> lie in operations research and graph theory —
-        resource allocation, transportation networks, graph algorithms and graph coloring.
-      </p>
-      <p>
-        <b>In addition</b>, I design agentic workflows using large language models,
-        and utilize neural networks and reinforcement learning.
-      </p>
+<section class="hero" in:fly={{ y: 30, duration: 600, delay: 100 }}>
+  <p class="eyebrow">Applied Mathematics · IIT Chicago</p>
+  <h1>Hi, I'm <span class="name">Alaittin</span>.<br>I study graphs &amp; algorithms.</h1>
+  <p class="hero-body">
+    Fifth-year Ph.D. candidate at the
+    <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
+    working in the
+    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">Discrete Applied Mathematics Group</a>.
+    My research spans graph theory, combinatorial optimization, and computational methods
+    for real-world structured problems.
+  </p>
+  <div class="tags">
+    <span class="tag">Graph Theory</span>
+    <span class="tag">Combinatorics</span>
+    <span class="tag">Optimization</span>
+    <span class="tag">Algorithm Design</span>
+    <span class="tag">Machine Learning</span>
+  </div>
+
+  {#if y < 80}
+    <div class="scroll-hint" out:fade={{ duration: 300 }}>
+      <div class="scroll-line"></div>
+      scroll
     </div>
-
-    <span
-      style="opacity: {1 - Math.max(0, y / 500)}"
-      class="down-arrow">
-      <FaAngleDown />
-    </span>
-  </LazyLoad>
-
-  <img src="/home/6.png" alt="" class="intro-svg"/>
-</div>
+  {/if}
+</section>
 
 {#if data.news && data.news.length > 0}
-  <section class="news" in:fade={{ duration: 400, delay: 300 }}>
+  <section class="news" in:fade={{ duration: 400, delay: 200 }}>
     <h2 class="news-title">News &amp; Updates</h2>
     <ul class="news-list">
       {#each data.news as item}

@@ -1,6 +1,3 @@
 {
-    "buildCommand": "npm run build",
-    "outputDirectory": ".svelte-kit/output",
-    "devCommand": "npm run dev",
-    "installCommand": "npm install"
-  }
+  "installCommand": "npm install"
+}

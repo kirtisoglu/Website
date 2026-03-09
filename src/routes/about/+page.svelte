@@ -168,9 +168,9 @@
   <div class="divider"></div>
 
   <!-- Personal & Contact -->
-  <section class="cv-section personal" in:fly={{ y: 30, duration: 500, delay: 950 }}>
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
     <h2 class="section-title">Personal Interests</h2>
-    <p class="intro-body">
+    <p class="body-text">
       Outside academia, I enjoy playing Go, hiking, and reading broadly —
       activities that keep me curious and grounded.
       Feel free to reach out via the contact link below if you'd like to connect or collaborate.
@@ -183,13 +183,14 @@
 <HiddenLinks/>
 
 <style>
+  /* ── Layout ── */
   .page {
-    max-width: 860px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 1.5rem 5rem;
+    padding: 3rem 2rem 5rem;
   }
 
-  /* Hero */
+  /* ── Hero ── */
   .hero {
     display: flex;
     align-items: flex-start;
@@ -198,13 +199,13 @@
   }
 
   .portrait {
-    width: 200px;
-    height: 240px;
+    width: 190px;
+    height: 230px;
     object-fit: cover;
     object-position: top;
-    border-radius: 6px;
+    border-radius: 8px;
     flex-shrink: 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
   }
 
   .hero-text {
@@ -215,173 +216,176 @@
   .hero-text h1 {
     font-size: 2rem;
     font-weight: 700;
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.35rem;
     line-height: 1.2;
+    color: #111827;
   }
 
   .subtitle {
-    font-size: 0.95rem;
-    color: #9ca3af;
+    font-size: 0.9rem;
+    color: #6b7280;
     margin: 0 0 1rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
 
-  .intro-body {
-    font-size: 0.97rem;
+  .intro-body,
+  .body-text {
+    font-size: 0.95rem;
     line-height: 1.75;
-    color: rgba(255,255,255,0.82);
+    color: #374151;
     margin: 0;
   }
 
-  /* Divider */
+  /* ── Divider ── */
   .divider {
     height: 1px;
-    background: rgba(255,255,255,0.08);
+    background: #e5e7eb;
     margin: 2rem 0;
   }
 
-  /* Section */
+  /* ── Sections ── */
   .cv-section {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .section-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #818cf8;
-    margin: 0 0 0.25rem;
+    color: #4f46e5;
+    margin: 0;
   }
 
-  /* Entries */
+  /* ── Entries ── */
   .entries {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.4rem;
   }
 
   .entry {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
   .entry-meta {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.65rem;
     flex-wrap: wrap;
   }
 
   .degree {
     font-weight: 600;
-    font-size: 0.97rem;
+    font-size: 0.95rem;
+    color: #111827;
   }
 
   .org {
-    font-size: 0.9rem;
-    color: #9ca3af;
+    font-size: 0.88rem;
+    color: #6b7280;
   }
 
   .badge {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    background: rgba(129,140,248,0.15);
-    color: #818cf8;
-    border: 1px solid rgba(129,140,248,0.3);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    background: #eef2ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
     border-radius: 4px;
     padding: 1px 7px;
     text-transform: uppercase;
   }
 
   .institution {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    color: #374151;
   }
 
   .detail {
-    font-size: 0.88rem;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: #9ca3af;
   }
 
   .entry-desc {
-    font-size: 0.93rem;
-    color: rgba(255,255,255,0.75);
-    margin: 0.25rem 0 0;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    color: #374151;
+    margin: 0.2rem 0 0;
+    line-height: 1.65;
   }
 
   .bullets {
-    margin: 0.4rem 0 0 1.1rem;
+    margin: 0.35rem 0 0 1.1rem;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.3rem;
   }
 
   .bullets li {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.72);
+    color: #4b5563;
     line-height: 1.6;
   }
 
-  /* Publications */
+  /* ── Publications ── */
   .pub-category {
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
     text-transform: uppercase;
-    margin: 0.5rem 0 0.5rem;
+    margin: 0.25rem 0 0.4rem;
   }
 
   .pub-list {
-    margin: 0 0 0 1.2rem;
+    margin: 0 0 0.5rem 1.2rem;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
   }
 
   .pub-list li {
-    font-size: 0.93rem;
-    color: rgba(255,255,255,0.8);
+    font-size: 0.92rem;
+    color: #374151;
     line-height: 1.65;
   }
 
   .pub-list em {
     font-style: italic;
-    color: rgba(255,255,255,0.65);
+    color: #6b7280;
   }
 
-  /* Interests */
+  /* ── Research Interests ── */
   .interest-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.5rem;
   }
 
   .interest-list li {
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.88rem;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
     border-radius: 4px;
-    padding: 0.35rem 0.8rem;
-    color: rgba(255,255,255,0.8);
+    padding: 0.3rem 0.75rem;
+    color: #4338ca;
   }
 
-  /* Skills */
+  /* ── Skills ── */
   .skills-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .skill-group {
@@ -392,11 +396,11 @@
   }
 
   .skill-label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #9ca3af;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     min-width: 70px;
     padding-top: 0.3rem;
   }
@@ -404,94 +408,104 @@
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
+    gap: 0.4rem;
   }
 
   .tag {
-    font-size: 0.85rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.83rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
     border-radius: 4px;
-    padding: 0.25rem 0.65rem;
-    color: rgba(255,255,255,0.75);
+    padding: 0.22rem 0.6rem;
+    color: #374151;
   }
 
-  /* Personal */
-  .personal .intro-body {
-    color: rgba(255,255,255,0.75);
-  }
-
-  /* Links */
+  /* ── Links ── */
   a {
-    color: #818cf8;
+    color: #4f46e5;
     text-decoration: none;
   }
   a:hover {
-    color: #a5b4fc;
+    color: #3730a3;
     text-decoration: underline;
   }
 
-  /* Light mode */
-  @media (prefers-color-scheme: light) {
-    .intro-body,
-    .bullets li,
-    .pub-list li,
-    .entry-desc,
-    .institution,
-    .tag {
-      color: #374151;
-    }
-
-    .subtitle,
-    .org,
-    .detail {
-      color: #6b7280;
-    }
-
-    .interest-list li {
-      color: #374151;
-      background: rgba(0,0,0,0.04);
-      border-color: rgba(0,0,0,0.1);
-    }
-
-    .tag {
-      background: rgba(0,0,0,0.04);
-      border-color: rgba(0,0,0,0.1);
-    }
-
-    .divider {
-      background: rgba(0,0,0,0.1);
-    }
-
-    .badge {
-      background: rgba(99,102,241,0.1);
-      color: #4f46e5;
-      border-color: rgba(99,102,241,0.25);
-    }
-
-    .section-title {
-      color: #4f46e5;
-    }
-
-    a {
-      color: #4f46e5;
-    }
-    a:hover {
-      color: #3730a3;
-    }
+  /* ── Dark mode ── */
+  :global(.dark) .hero-text h1,
+  :global(.dark) .degree {
+    color: #f9fafb;
   }
 
-  /* Mobile */
+  :global(.dark) .subtitle,
+  :global(.dark) .org,
+  :global(.dark) .detail,
+  :global(.dark) .pub-category,
+  :global(.dark) .skill-label {
+    color: #6b7280;
+  }
+
+  :global(.dark) .intro-body,
+  :global(.dark) .body-text,
+  :global(.dark) .institution,
+  :global(.dark) .entry-desc,
+  :global(.dark) .pub-list li,
+  :global(.dark) .bullets li {
+    color: rgba(255,255,255,0.78);
+  }
+
+  :global(.dark) .divider {
+    background: rgba(255,255,255,0.08);
+  }
+
+  :global(.dark) .section-title {
+    color: #818cf8;
+  }
+
+  :global(.dark) .badge {
+    background: rgba(129,140,248,0.12);
+    color: #818cf8;
+    border-color: rgba(129,140,248,0.3);
+  }
+
+  :global(.dark) .interest-list li {
+    background: rgba(129,140,248,0.08);
+    border-color: rgba(129,140,248,0.2);
+    color: #a5b4fc;
+  }
+
+  :global(.dark) .tag {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
+  }
+
+  :global(.dark) a {
+    color: #818cf8;
+  }
+  :global(.dark) a:hover {
+    color: #a5b4fc;
+  }
+
+  :global(.dark) .pub-list em {
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Mobile ── */
   @media (max-width: 640px) {
+    .page {
+      padding: 2rem 1.25rem 4rem;
+    }
+
     .hero {
       flex-direction: column;
       align-items: center;
       text-align: center;
+      gap: 1.5rem;
     }
 
     .portrait {
-      width: 160px;
-      height: 200px;
+      width: 150px;
+      height: 185px;
     }
 
     .hero-text h1 {
@@ -504,7 +518,7 @@
 
     .skill-group {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
   }
 </style>

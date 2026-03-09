@@ -41,10 +41,6 @@
       Alaittin Kirtisoglu
     </a>
     <div class="links">
-      <a aria-label="Home" href=".">
-        <span class="hide-on-mobile">Home</span>
-        <span class="show-on-mobile icon"><FaUser aria-label="home" /></span>
-      </a>
       <a
         aria-label="About"
         rel="prefetch"
