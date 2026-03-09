@@ -138,7 +138,7 @@
       </li>
     </ol>
 
-    <h3 class="pub-category">In Preparation / In Progress</h3>
+    <h3 class="pub-category">In Progress</h3>
     <ol class="pub-list">
       <li>Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.</li>
       <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access.</li>
