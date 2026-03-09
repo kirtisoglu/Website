@@ -37,7 +37,7 @@
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Ph.D. in Applied Mathematics</span>
-          <span class="badge">In Progress</span>
+          <span class="badge">2026</span>
         </div>
         <span class="institution">
           <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology</a>
@@ -47,17 +47,19 @@
 
       <div class="entry">
         <div class="entry-meta">
-          <span class="degree">M.Sc. in Mathematics — Graph Theory</span>
+          <span class="degree">M.Sc. in Mathematics</span>
+          <span class="badge">2021</span>
         </div>
         <span class="institution">
           <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>
         </span>
-        <span class="detail">Supervisor: <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a></span>
+        <span class="detail">Advisor: <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a></span>
       </div>
 
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">B.Sc. in Mathematics</span>
+          <span class="badge">2018</span>
         </div>
         <span class="institution">
           <a href="https://www.mku.edu.tr/default.aspx" target="_blank" rel="noopener">Mustafa Kemal University</a>
