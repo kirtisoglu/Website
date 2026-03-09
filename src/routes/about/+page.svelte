@@ -91,7 +91,7 @@
           <span class="degree">Research Intern</span>
           <span class="org">
             <a href="https://www.fnal.gov/" target="_blank" rel="noopener">Fermi National Accelerator Laboratory</a>
-            <span class="badge">2019 -2021</span>
+            <span class="badge">2022</span>
           </span>
         </div>
         <p class="entry-desc">
@@ -104,14 +104,15 @@
       <div class="entry">
         <div class="entry-meta">
           <span class="degree">Graduate Teaching Assistant</span>
-          <span class="org">TED University</span>
-          <span class="badge">2019 -2021</span>
+          <span class="org">
+            <a href="https://www.tedu.edu.tr/en" target="_blank" rel="noopener">TED University</a>
+            <span class="badge">2019 -2021</span>
+          </span>
         </div>
       </div>
 
     </div>
   </section>
-
   <div class="divider"></div>
 
   <!-- Publications -->
