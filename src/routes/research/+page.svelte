@@ -74,11 +74,12 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status submitting">In Preparation</span>
-        <span class="paper-venue">with Hemanshu Kaul</span>
+        <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
         <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
       </h3>
+      <p class="paper-venue">with Hemanshu Kaul</p>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -99,11 +100,12 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status submitting">In Preparation</span>
-        <span class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</span>
+        <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
       <h3 class="paper-title">
         <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
       </h3>
+      <p class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</p>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -124,6 +126,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status testing">In Testing</span>
+        <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
         A Diffusion Model for Political Redistricting
