@@ -21,7 +21,6 @@
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
-    position: relative;
   }
 
   .eyebrow {
@@ -116,20 +115,22 @@
   }
 
   .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    opacity: 0.4;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    padding: 1.5rem 0 0.5rem;
+    opacity: 0.35;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #6b7280;
-    transition: opacity 0.3s;
+    max-width: 780px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .scroll-line {
@@ -259,13 +260,14 @@
     <span class="tag">Machine Learning</span>
   </div>
 
-  {#if y < 80}
-    <div class="scroll-hint" out:fade={{ duration: 300 }}>
-      <div class="scroll-line"></div>
-      scroll
-    </div>
-  {/if}
 </section>
+
+{#if y < 80}
+  <div class="scroll-hint" out:fade={{ duration: 300 }}>
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+{/if}
 
 {#if data.news && data.news.length > 0}
   <section class="news" in:fade={{ duration: 400, delay: 200 }}>

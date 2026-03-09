@@ -58,11 +58,12 @@
         <span class="show-on-mobile icon"><FaPencilAlt aria-label="research" /></span>
       </a>
       <a
-        aria-label="Resume"
-        target="_blank"
-        href="alaittin-kirtisoglu-resume.pdf">
-        <span class="hide-on-mobile">Resume</span>
-        <span class="show-on-mobile icon"><FaNewspaper /></span>
+        aria-label="Teaching"
+        rel="prefetch"
+        aria-current={segment === 'teaching' ? 'page' : undefined}
+        href="teaching/">
+        <span class="hide-on-mobile">Teaching</span>
+        <span class="show-on-mobile icon"><FaNewspaper aria-label="teaching" /></span>
       </a>
       <div class="divider" />
       <a aria-label="LinkedIn" target="_blank" class="icon" href={linkedIn}>
@@ -162,9 +163,13 @@
     }
 
     [aria-current] {
-      color: rgb(255, 62, 0);
+      color: #4f46e5;
       position: relative;
       display: inline-block;
+    }
+
+    nav.dark [aria-current] {
+      color: #818cf8;
     }
 
     @media (max-width: 40rem) {

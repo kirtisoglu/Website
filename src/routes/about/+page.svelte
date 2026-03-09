@@ -21,6 +21,9 @@
         algorithmic optimization, and computational methods for complex, data-driven problems
         in mathematics and applied sciences.
       </p>
+      <a class="cv-download" href="/alaittin-kirtisoglu-resume.pdf" target="_blank" rel="noopener">
+        Download CV (PDF) ↓
+      </a>
     </div>
   </section>
 
@@ -258,6 +261,24 @@
     line-height: 1.75;
     color: #374151;
     margin: 0;
+  }
+
+  .cv-download {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4f46e5;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .cv-download:hover {
+    text-decoration: underline;
+  }
+
+  :global(.dark) .cv-download {
+    color: #818cf8;
   }
 
   /* ── Divider ── */
