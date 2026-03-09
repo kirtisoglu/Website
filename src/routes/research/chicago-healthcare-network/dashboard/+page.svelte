@@ -34,6 +34,7 @@
       Open Dashboard →
     </a>
     <p class="note">Opens in a new tab</p>
+    <p class="testing-note">⚠ This dashboard is currently in testing. Some features may be incomplete or unstable.</p>
   </div>
 
 </div>
@@ -135,6 +136,22 @@
   }
 
   :global(.dark) .note { color: rgba(255,255,255,0.25); }
+
+  .testing-note {
+    font-size: 0.78rem;
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 0.45rem 0.9rem;
+    margin: 0;
+  }
+
+  :global(.dark) .testing-note {
+    color: #fde047;
+    background: rgba(161,98,7,0.12);
+    border-color: rgba(253,224,71,0.2);
+  }
 
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }
