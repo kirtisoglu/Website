@@ -129,18 +129,6 @@
   :global(.dark) .sidebar-row { color: rgba(255,255,255,0.5); }
   :global(.dark) a.sidebar-row:hover { color: #818cf8; }
 
-  .sidebar-header-link {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #4f46e5;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 0.01em;
-    margin-bottom: 0.5rem;
-  }
-  .sidebar-header-link:hover { text-decoration: underline; }
-  :global(.dark) .sidebar-header-link { color: #818cf8; }
-
   .email-row {
     display: flex;
     align-items: center;
@@ -178,16 +166,24 @@
     min-height: 80vh;
   }
 
+  .mobile-info { display: none; }
+
   @media (max-width: 700px) {
-    .layout-body { flex-direction: column; padding: 1rem; }
+    .layout-body { flex-direction: column; padding: 0.75rem; gap: 0.75rem; }
     .sidebar-wrapper { width: 100%; position: static; }
-    .sidebar { flex-direction: row; justify-content: center; padding: 0.75rem; }
-    .sidebar-photo { width: 60px; height: 74px; margin-bottom: 0; }
+    .sidebar { flex-direction: row; justify-content: flex-start; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem; }
+    .sidebar-photo { width: 54px; height: 66px; margin-bottom: 0; flex-shrink: 0; }
     .sidebar-name { display: none; }
     .sidebar-divider { display: none; }
     .sidebar-row { display: none; }
     .email-row { display: none; }
+    .mobile-info { display: flex; flex-direction: column; gap: 0.15rem; }
+    .mobile-name { margin: 0; font-size: 0.88rem; font-weight: 700; color: #111827; line-height: 1.3; }
+    .mobile-title { margin: 0; font-size: 0.75rem; color: #6b7280; line-height: 1.4; }
   }
+
+  :global(.dark) .mobile-name { color: #f9fafb; }
+  :global(.dark) .mobile-title { color: rgba(255,255,255,0.5); }
 </style>
 
 <svelte:head>
@@ -216,6 +212,10 @@
     <aside class="sidebar">
       <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="sidebar-photo" />
       <p class="sidebar-name">Alaittin Kirtisoglu</p>
+      <div class="mobile-info">
+        <p class="mobile-name">Alaittin Kirtisoglu</p>
+        <p class="mobile-title">PhD in Applied Mathematics</p>
+      </div>
       <div class="sidebar-divider"></div>
 
       <!-- City -->

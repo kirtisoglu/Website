@@ -384,12 +384,15 @@
   /* ── Mobile ── */
   @media (max-width: 640px) {
     .hero {
-      padding: 3rem 1.25rem 4rem;
-      min-height: calc(100vh - 4rem);
+      padding: 0.75rem 0 1rem;
+    }
+
+    .tools-section {
+      padding: 0 0 1rem;
     }
 
     .news {
-      padding: 0 1.25rem 4rem;
+      padding: 0 0 2rem;
     }
 
     .news-item {
