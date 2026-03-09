@@ -94,7 +94,6 @@
       height: 4rem;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
       padding: 0 1.5rem;
       font-weight: 400;
@@ -114,6 +113,7 @@
       white-space: nowrap;
       flex-shrink: 0;
       color: #111827;
+      width: 200px;
     }
 
     nav.dark .site-name {
@@ -121,6 +121,9 @@
     }
 
     .links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: row;
       align-items: center;
