@@ -164,10 +164,6 @@
       <h3 class="paper-title">
         A Diffusion Model for Political Redistricting
       </h3>
-      <div class="paper-tools">
-        <span class="tools-label">Tools:</span>
-        <span class="tool-coming">Redistricting Visualizer (coming soon)</span>
-      </div>
     </div>
 
     <div class="paper-divider"></div>
