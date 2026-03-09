@@ -557,6 +557,11 @@
       padding: 1rem 0 4rem;
     }
 
+    .hero h1,
+    .subtitle {
+      display: none;
+    }
+
     .interest-list {
       justify-content: center;
     }

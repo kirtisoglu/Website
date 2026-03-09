@@ -216,6 +216,9 @@
         {#if segment === 'research'}
           <p class="mobile-name">Work &amp; Projects</p>
           <p class="mobile-title">Combinatorial optimization, algorithm design, and equitable network design.</p>
+        {:else if segment === 'about'}
+          <p class="mobile-name">Alaittin Kirtisoglu</p>
+          <p class="mobile-title">Ph.D. Candidate · Applied Mathematics · IIT</p>
         {:else}
           <p class="mobile-name">Alaittin Kirtisoglu</p>
           <p class="mobile-title">PhD in Applied Mathematics</p>

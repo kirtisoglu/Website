@@ -232,10 +232,12 @@
   }
 
   .graph-deco {
-    width: 220px;
+    width: 250px;
     flex-shrink: 0;
     opacity: 0.85;
-    align-self: center;
+    align-self: flex-end;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   :global(.dark) .graph-deco line {
