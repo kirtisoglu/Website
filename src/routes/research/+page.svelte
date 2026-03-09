@@ -77,28 +77,7 @@
         <span class="paper-venue">with Hemanshu Kaul</span>
       </div>
       <h3 class="paper-title">
-        FalCom: A Sampling Method for Districting and Hierarchical Facility Location
-      </h3>
-      <p class="paper-abstract dummy">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-      </p>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 2: Chicago Healthcare -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-status submitting">In Preparation</span>
-        <span class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</span>
-      </div>
-      <h3 class="paper-title">
-        Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access
+        <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
       </h3>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
@@ -110,7 +89,32 @@
       </p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
-        <span class="tool-coming">Healthcare Accessibility Dashboard (coming soon)</span>
+        <a class="tool-link" href="/research/falcom/dashboard">FalCom Visualizer →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 2: Chicago Healthcare -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-status submitting">In Preparation</span>
+        <span class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
+      </h3>
+      <p class="paper-abstract dummy">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+      </p>
+      <div class="paper-tools">
+        <span class="tools-label">Tools:</span>
+        <a class="tool-link" href="/research/chicago-healthcare-network/dashboard">Healthcare Accessibility Dashboard →</a>
       </div>
     </div>
 
@@ -375,6 +379,16 @@
     color: #111827;
     margin: 0;
     line-height: 1.35;
+  }
+
+  .paper-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .paper-title a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   :global(.dark) .paper-title { color: #f9fafb; }

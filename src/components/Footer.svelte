@@ -114,7 +114,7 @@
       display: flex;
       align-items: center;
       color: #9ca3af;
-      transition: color 0.15s;
+      transition: color 0.2s;
     }
 
     .svg-icon svg {
@@ -122,17 +122,21 @@
       height: 100%;
     }
 
-    .icon:hover {
-      color: #111827;
-    }
+    .icon:hover { color: #111827; }
+
+    .icon.linkedin:hover  { color: #0a66c2; }
+    .icon.scholar:hover   { color: #4285f4; }
+    .icon.rgate:hover     { color: #00ccbb; }
+    .icon.github:hover    { color: #24292e; }
 
     :global(.dark) .icon {
       color: rgba(255,255,255,0.35);
     }
 
-    :global(.dark) .icon:hover {
-      color: rgba(255,255,255,0.85);
-    }
+    :global(.dark) .icon.linkedin:hover  { color: #4f9de8; }
+    :global(.dark) .icon.scholar:hover   { color: #7fb3f5; }
+    :global(.dark) .icon.rgate:hover     { color: #33ddcc; }
+    :global(.dark) .icon.github:hover    { color: rgba(255,255,255,0.9); }
 
     @media (max-width: 40rem) {
       .footer {
@@ -165,19 +169,19 @@
   </div>
 
   <div class="links">
-    <a aria-label="LinkedIn" target="_blank" href={linkedIn} class="icon">
+    <a aria-label="LinkedIn" target="_blank" href={linkedIn} class="icon linkedin">
       <FaLinkedin />
     </a>
     <div class="divider" />
-    <a aria-label="Google Scholar" target="_blank" href={scholar} class="icon svg-icon">
+    <a aria-label="Google Scholar" target="_blank" href={scholar} class="icon svg-icon scholar">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
     </a>
     <div class="divider" />
-    <a aria-label="ResearchGate" target="_blank" href={researchgate} class="icon svg-icon">
+    <a aria-label="ResearchGate" target="_blank" href={researchgate} class="icon svg-icon rgate">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.39 12.39 0 0 0-.35 2.133 20.818 20.818 0 0 0-.059 1.055v.78c-.868-.015-1.71.014-2.527.09V5.55c0-.547-.043-1.244-.13-2.09-.085-.848-.333-1.598-.742-2.25C12.092.562 11.388.187 10.48.03 9.573-.127 8.523.015 7.332.44L0 3.217v17.8l7.332-2.9c1.19-.47 2.24-.612 3.148-.426.907.185 1.61.607 2.11 1.267.5.66.8 1.49.9 2.49H24V0h-4.414z"/></svg>
     </a>
     <div class="divider" />
-    <a aria-label="GitHub" target="_blank" href={github} class="icon">
+    <a aria-label="GitHub" target="_blank" href={github} class="icon github">
       <FaGithub />
     </a>
   </div>

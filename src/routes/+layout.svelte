@@ -3,10 +3,13 @@
   import '../app.css';
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
   export let segment;
   export let data;
   let h = 1000;
   let y = 0;
+
+  injectAnalytics();
 
   onMount(() => {
     if (typeof renderMathInElement === 'function') {

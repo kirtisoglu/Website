@@ -124,7 +124,7 @@
     <ol class="pub-list">
       <li>Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.</li>
       <li>Kirtisoglu, A., Kaul, H., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access.</li>
-      <li>Kirtisoglu, A., &amp; DeFord, D. (tentative). A Diffusion Model for Political Redistricting.</li>
+      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting.</li>
       <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
       <li>Kirtisoglu, A., Goel, S., Kaul, H., &amp; Mellacheruvu, T. Bike-Share Stations: An Equity Analysis and Location Optimization.</li>
     </ol>

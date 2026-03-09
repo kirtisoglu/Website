@@ -285,6 +285,76 @@
     50% { transform: scaleY(0.5); opacity: 1; }
   }
 
+  /* ── Tools ── */
+  .tools-section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+
+  .tool-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .tool-card:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 2px 8px rgba(79,70,229,0.08);
+  }
+
+  :global(.dark) .tool-card {
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .tool-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+
+  :global(.dark) .tool-name { color: #f9fafb; }
+
+  .tool-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  :global(.dark) .tool-desc { color: rgba(255,255,255,0.45); }
+
+  .tool-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-top: 0.4rem;
+  }
+
+  :global(.dark) .tool-badge { color: rgba(255,255,255,0.3); }
+
   /* ── News ── */
   .news {
     max-width: 780px;
@@ -418,6 +488,22 @@
     scroll
   </div>
 {/if}
+
+<section class="tools-section" in:fade={{ duration: 400, delay: 150 }}>
+  <h2 class="news-title">Interactive Tools</h2>
+  <div class="tools-grid">
+    <a class="tool-card" href="/research/falcom/">
+      <p class="tool-name">FalCom Visualizer</p>
+      <p class="tool-desc">Animated Markov chain sampling for facility location &amp; redistricting.</p>
+      <span class="tool-badge">Coming soon</span>
+    </a>
+    <a class="tool-card" href="/research/chicago-healthcare-network/">
+      <p class="tool-name">Chicago Healthcare Access</p>
+      <p class="tool-desc">Optimization-based dashboard for equitable healthcare facility placement.</p>
+      <span class="tool-badge">Coming soon</span>
+    </a>
+  </div>
+</section>
 
 {#if data.news && data.news.length > 0}
   <section class="news" in:fade={{ duration: 400, delay: 200 }}>
