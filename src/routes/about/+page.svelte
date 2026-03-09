@@ -129,22 +129,18 @@
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>
 
-    <h3 class="pub-category">Peer-Reviewed</h3>
     <ol class="pub-list">
       <li>
         Kirtisoglu, A., &amp; Özkahya, L. (2024).
         Coloring of graphs avoiding bicolored paths of a fixed length.
         <em>Graphs and Combinatorics</em>, 40(1), 11.
+        <span class="pub-tag peer">Peer-Reviewed</span>
       </li>
-    </ol>
-
-    <h3 class="pub-category">In Progress</h3>
-    <ol class="pub-list">
-      <li>Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.</li>
-      <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access.</li>
-      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting.</li>
-      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
-      <li>Goel, S., &amp; Kaul, H., Kirtisoglu, A.,  &amp; Mellacheruvu, T. Bike-Share Stations: An Equity Analysis and Location Optimization.</li>
+      <li>Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">In Progress</span></li>
+      <li>Goel, S., &amp; Kaul, H., Kirtisoglu, A., &amp; Mellacheruvu, T. Bike-Share Stations: An Equity Analysis and Location Optimization. <span class="pub-tag progress">In Progress</span></li>
     </ol>
   </section>
 
@@ -376,6 +372,24 @@
     font-style: italic;
     color: #6b7280;
   }
+
+  .pub-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 99px;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+  }
+
+  .pub-tag.peer     { background: #dcfce7; color: #15803d; }
+  .pub-tag.progress { background: #e0e7ff; color: #4338ca; }
+
+  :global(.dark) .pub-tag.peer     { background: rgba(21,128,61,0.15); color: #86efac; }
+  :global(.dark) .pub-tag.progress { background: rgba(67,56,202,0.15); color: #a5b4fc; }
 
   /* ── Research Interests ── */
   .interest-list {

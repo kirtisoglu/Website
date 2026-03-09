@@ -96,6 +96,7 @@
     <!-- Paper 6: Bicolored paths (published) -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">1.</span>
         <span class="paper-status published">Published</span>
         <span class="paper-type">Research Paper</span>
       </div>
@@ -128,6 +129,7 @@
     <!-- Paper 1: FalCom -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">2.</span>
         <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
@@ -145,6 +147,7 @@
     <!-- Paper 2: Chicago Healthcare -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">3.</span>
         <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
@@ -161,6 +164,7 @@
     <!-- Paper 3: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">4.</span>
         <span class="paper-status submitting">In Writing</span>
         <span class="paper-type">Research Paper</span>
       </div>
@@ -173,9 +177,10 @@
     <div class="paper-divider"></div>
 
 
-    <!-- Paper 3: Diffusion model redistricting -->
+    <!-- Paper 4: Diffusion model redistricting -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">5.</span>
         <span class="paper-status testing">In Testing</span>
         <span class="paper-type">Research Paper</span>
       </div>
@@ -191,6 +196,7 @@
     <!-- Paper 5: Bike-share -->
     <div class="paper">
       <div class="paper-meta">
+        <span class="paper-num">6.</span>
         <span class="paper-status design">In Design</span>
         <span class="paper-type">Research Paper</span>
       </div>
@@ -226,10 +232,10 @@
   }
 
   .graph-deco {
-    width: 200px;
+    width: 220px;
     flex-shrink: 0;
     opacity: 0.85;
-    margin-top: 0.5rem;
+    align-self: center;
   }
 
   :global(.dark) .graph-deco line {
@@ -322,6 +328,15 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
+
+  .paper-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #6b7280;
+    min-width: 1.2rem;
+  }
+
+  :global(.dark) .paper-num { color: rgba(255,255,255,0.35); }
 
   .paper-status {
     font-size: 0.68rem;

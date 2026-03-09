@@ -1,21 +1,13 @@
 <script>
-    import { onMount } from 'svelte';
-    import { annotate } from 'rough-notation';
     import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
     import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
 
     export let lastUpdated = null;
 
-    let element;
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let github = "https://github.com/kirtisoglu";
     let scholar = "https://scholar.google.com/citations?user=PLACEHOLDER";
     let researchgate = "https://www.researchgate.net/profile/Alaittin-Kirtisoglu";
-
-    onMount(() => {
-      const annotation = annotate(element, { type: 'underline', color: '#4f46e5' });
-      annotation.show();
-    });
 </script>
 
 <style>
@@ -39,13 +31,16 @@
     }
 
     .chat a {
-      text-decoration: none;
       color: #4f46e5;
       font-weight: 500;
+      text-decoration: underline;
+      text-decoration-color: #4f46e5;
+      text-underline-offset: 3px;
     }
 
     :global(.dark) .chat a {
       color: #818cf8;
+      text-decoration-color: #818cf8;
     }
 
     .footer {
@@ -153,10 +148,7 @@
 
 <div class="chat">
   <h3>
-    <em>Let's <a bind:this={element}
-       aria-label="Let's Talk Data on LinkedIn"
-       target="_blank"
-       href={linkedIn}>Talk Data</a></em>
+    <em>Let's <a aria-label="Let's Talk Data on LinkedIn" target="_blank" href={linkedIn}>Talk Data</a></em>
   </h3>
 </div>
 
