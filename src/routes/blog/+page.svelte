@@ -1,6 +1,25 @@
 <script>
   import { fly, fade } from "svelte/transition";
   import Head from "../../components/Head.svelte";
+
+  let bibtexCopied = false;
+  const bibtex = `@article{Kirtisoglu2024,
+  author    = {Kirtisoglu, Alaittin and {\\"{O}}zkahya, Lale},
+  title     = {Coloring of graphs avoiding bicolored paths of a fixed length},
+  journal   = {Graphs and Combinatorics},
+  volume    = {40},
+  number    = {1},
+  pages     = {11},
+  year      = {2024},
+  doi       = {10.1007/s00373-023-02739-4}
+}`;
+
+  function copyBibtex() {
+    navigator.clipboard.writeText(bibtex).then(() => {
+      bibtexCopied = true;
+      setTimeout(() => { bibtexCopied = false; }, 2000);
+    });
+  }
 </script>
 
 <svelte:head>
@@ -11,14 +30,32 @@
 
   <!-- Intro -->
   <section class="intro" in:fly={{ y: 30, duration: 500, delay: 200 }}>
-    <p class="eyebrow">Research</p>
-    <h1>Work & Projects</h1>
-    <p class="lead">
-      My work spans graph theory, combinatorial optimization, and algorithm design —
-      from structural coloring problems to computational frameworks for equitable
-      resource allocation in urban networks. Below are my papers and interactive
-      tools built from this research.
-    </p>
+    <div class="intro-text">
+      <p class="eyebrow">Research</p>
+      <h1>Work & Projects</h1>
+      <p class="lead">
+        My work spans combinatorial optimization, algorithm design, and equitable network
+        design — from computational redistricting to healthcare access modeling. Below are
+        my papers and interactive tools built from this research.
+      </p>
+    </div>
+    <!-- Decorative graph: proper 3-coloring of a small graph -->
+    <svg class="graph-deco" viewBox="0 0 180 160" aria-hidden="true" fill="none">
+      <!-- Edges -->
+      <line x1="90" y1="20" x2="160" y2="70" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="90" y1="20" x2="20"  y2="70" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="160" y1="70" x2="130" y2="145" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="20"  y1="70" x2="50"  y2="145" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="50"  y1="145" x2="130" y2="145" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="160" y1="70" x2="20"  y2="70" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="90"  y1="20" x2="50"  y2="145" stroke="#e0e7ff" stroke-width="1" stroke-dasharray="4 3"/>
+      <!-- Nodes: 3-colored (indigo, rose, emerald) -->
+      <circle cx="90"  cy="20"  r="10" fill="#4f46e5" opacity="0.85"/>
+      <circle cx="160" cy="70"  r="10" fill="#f43f5e" opacity="0.75"/>
+      <circle cx="20"  cy="70"  r="10" fill="#10b981" opacity="0.75"/>
+      <circle cx="130" cy="145" r="10" fill="#10b981" opacity="0.75"/>
+      <circle cx="50"  cy="145" r="10" fill="#f43f5e" opacity="0.75"/>
+    </svg>
   </section>
 
   <div class="divider"></div>
@@ -123,7 +160,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status design">In Design</span>
-        <span class="paper-venue">with Shaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</span>
+        <span class="paper-venue">with Ishaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</span>
       </div>
       <h3 class="paper-title">
         Bike-Share Stations: An Equity Analysis and Location Optimization
@@ -163,6 +200,9 @@
       <div class="paper-links">
         <a class="paper-link" href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank" rel="noopener">Journal →</a>
         <a class="paper-link" href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv →</a>
+        <button class="bibtex-btn" on:click={copyBibtex}>
+          {bibtexCopied ? '✓ Copied!' : 'Copy BibTeX'}
+        </button>
       </div>
     </div>
 
@@ -185,6 +225,32 @@
   }
 
   /* ── Intro ── */
+  .intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .intro-text {
+    flex: 1;
+  }
+
+  .graph-deco {
+    width: 140px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    margin-top: 1rem;
+  }
+
+  :global(.dark) .graph-deco line {
+    stroke: rgba(129,140,248,0.25);
+  }
+
+  @media (max-width: 640px) {
+    .intro { flex-direction: column; }
+    .graph-deco { width: 100px; align-self: center; }
+  }
+
   .eyebrow {
     font-size: 0.72rem;
     font-weight: 700;
@@ -374,6 +440,34 @@
   }
 
   :global(.dark) .tool-coming { color: rgba(255,255,255,0.3); }
+
+  .bibtex-btn {
+    font-size: 0.78rem;
+    font-family: monospace;
+    font-weight: 500;
+    color: #6b7280;
+    background: none;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 0.15rem 0.55rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .bibtex-btn:hover {
+    color: #111827;
+    border-color: #9ca3af;
+  }
+
+  :global(.dark) .bibtex-btn {
+    color: rgba(255,255,255,0.45);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  :global(.dark) .bibtex-btn:hover {
+    color: rgba(255,255,255,0.85);
+    border-color: rgba(255,255,255,0.3);
+  }
 
   .paper-divider {
     height: 1px;

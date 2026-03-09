@@ -120,12 +120,13 @@
       </li>
     </ol>
 
-    <h3 class="pub-category">In Preparation</h3>
+    <h3 class="pub-category">In Preparation / In Progress</h3>
     <ol class="pub-list">
-      <li>
-        Kaul, H., &amp; Kirtisoglu, A. (in preparation).
-        Designing an equitable primary care network: Chicago case study.
-      </li>
+      <li>Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.</li>
+      <li>Kirtisoglu, A., Kaul, H., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access.</li>
+      <li>Kirtisoglu, A., &amp; DeFord, D. (tentative). A Diffusion Model for Political Redistricting.</li>
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
+      <li>Kirtisoglu, A., Goel, S., Kaul, H., &amp; Mellacheruvu, T. Bike-Share Stations: An Equity Analysis and Location Optimization.</li>
     </ol>
   </section>
 

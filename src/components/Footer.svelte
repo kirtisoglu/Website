@@ -2,15 +2,15 @@
     import { onMount } from 'svelte';
     import { annotate } from 'rough-notation';
     import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-    import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
     import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
 
     export let lastUpdated = null;
 
     let element;
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
-    let twitter = "https://x.com/kirtisoglu";
     let github = "https://github.com/kirtisoglu";
+    let scholar = "https://scholar.google.com/citations?user=PLACEHOLDER";
+    let researchgate = "https://www.researchgate.net/profile/Alaittin-Kirtisoglu";
 
     onMount(() => {
       const annotation = annotate(element, { type: 'underline', color: '#4f46e5' });
@@ -117,6 +117,11 @@
       transition: color 0.15s;
     }
 
+    .svg-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .icon:hover {
       color: #111827;
     }
@@ -164,8 +169,12 @@
       <FaLinkedin />
     </a>
     <div class="divider" />
-    <a aria-label="Twitter" target="_blank" class="icon" href={twitter}>
-      <FaTwitter />
+    <a aria-label="Google Scholar" target="_blank" href={scholar} class="icon svg-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+    </a>
+    <div class="divider" />
+    <a aria-label="ResearchGate" target="_blank" href={researchgate} class="icon svg-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.39 12.39 0 0 0-.35 2.133 20.818 20.818 0 0 0-.059 1.055v.78c-.868-.015-1.71.014-2.527.09V5.55c0-.547-.043-1.244-.13-2.09-.085-.848-.333-1.598-.742-2.25C12.092.562 11.388.187 10.48.03 9.573-.127 8.523.015 7.332.44L0 3.217v17.8l7.332-2.9c1.19-.47 2.24-.612 3.148-.426.907.185 1.61.607 2.11 1.267.5.66.8 1.49.9 2.49H24V0h-4.414z"/></svg>
     </a>
     <div class="divider" />
     <a aria-label="GitHub" target="_blank" href={github} class="icon">

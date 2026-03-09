@@ -400,11 +400,11 @@
     for real-world structured problems.
   </p>
   <div class="tags">
-    <span class="tag">Graph Theory</span>
-    <span class="tag">Combinatorics</span>
-    <span class="tag">Optimization</span>
+    <span class="tag">Combinatorial Optimization</span>
     <span class="tag">Algorithm Design</span>
-    <span class="tag">Machine Learning</span>
+    <span class="tag">Equitable Networks</span>
+    <span class="tag">Graph Theory</span>
+    <span class="tag">Redistricting</span>
   </div>
   <div class="collab-badge">
     <span class="collab-dot"></span>
