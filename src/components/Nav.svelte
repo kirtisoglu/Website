@@ -30,15 +30,16 @@
 </script>
 
 <nav class:dark={dark}>
-    <a
-      rel="prefetch"
-      aria-label="Home"
-      aria-current={segment === undefined ? 'page' : undefined}
-      href="."
-      class="site-name">
-      Alaittin Kirtisoglu
-    </a>
     <div class="links">
+      <a
+        rel="prefetch"
+        aria-label="Home"
+        aria-current={segment === undefined ? 'page' : undefined}
+        href="."
+        class="site-name">
+        Home
+      </a>
+      <div class="divider" />
       <a
         aria-label="About"
         rel="prefetch"
@@ -76,7 +77,6 @@
       <a aria-label="GitHub" target="_blank" class="icon github-nav" href={github}>
         <FaGithub aria-label="GitHub" />
       </a>
-      <div class="divider" />
       <button
         class="theme-toggle"
         aria-label="Toggle dark mode"
@@ -95,7 +95,7 @@
       height: 4rem;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 0 2rem;
       font-weight: 400;
