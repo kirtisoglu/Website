@@ -83,7 +83,7 @@
 
   /* ── Hero ── */
   .hero {
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100vh - 12rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
