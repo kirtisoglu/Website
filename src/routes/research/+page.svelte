@@ -135,7 +135,6 @@
       </div>
     </div>
 
-    <div class="paper-divider"></div>
 
     <!-- Paper 2: Chicago Healthcare -->
     <div class="paper">
@@ -153,7 +152,7 @@
       </div>
     </div>
 
-    <!-- Paper 4: UAV routing -->
+    <!-- Paper 3: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-status submitting">In Writing</span>
@@ -167,7 +166,6 @@
 
     <div class="paper-divider"></div>
 
-    <div class="paper-divider"></div>
 
     <!-- Paper 3: Diffusion model redistricting -->
     <div class="paper">
