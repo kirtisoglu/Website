@@ -54,8 +54,8 @@
         rel="prefetch"
         aria-current={segment === 'blog' ? 'page' : undefined}
         href="blog/">
-        <span class="hide-on-mobile">Blog</span>
-        <span class="show-on-mobile icon"><FaPencilAlt aria-label="blog" /></span>
+        <span class="hide-on-mobile">Research</span>
+        <span class="show-on-mobile icon"><FaPencilAlt aria-label="research" /></span>
       </a>
       <a
         aria-label="Resume"
