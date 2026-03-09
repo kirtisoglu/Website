@@ -53,7 +53,7 @@
           <span class="badge">2026</span>
         </div>
         <span class="institution">
-          <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology</a>
+          <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology, IL, US</a>
         </span>
         <span class="detail">Advisor: <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a></span>
       </div>
@@ -64,7 +64,7 @@
           <span class="badge">2021</span>
         </div>
         <span class="institution">
-          <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>
+          <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University, Ankara, Turkey</a>
         </span>
         <span class="detail">Advisor: <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a></span>
       </div>
@@ -75,7 +75,7 @@
           <span class="badge">2018</span>
         </div>
         <span class="institution">
-          <a href="https://www.mku.edu.tr/default.aspx" target="_blank" rel="noopener">Mustafa Kemal University</a>
+          <a href="https://www.mku.edu.tr/default.aspx" target="_blank" rel="noopener">Mustafa Kemal University, Hatay, Turkey</a>
         </span>
       </div>
 
