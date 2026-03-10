@@ -106,13 +106,12 @@
   <section class="section disclosure" in:fly={{ y: 30, duration: 500, delay: 450 }}>
     <h2 class="section-title">AI Usage Disclosure</h2>
     <p class="body-text">
-      This dashboard was developed with assistance from <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> (Anthropic),
-      an AI assistant. AI was used for:
+      This dashboard was developed with assistance from <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> (Anthropic). AI was used for:
     </p>
     <ul class="body-list">
       <li>Deck.gl layer configuration, SvelteKit component structure, and reactive state management to embed the dashboard into this webpage,</li>
-      <li>Querying and interpreting the Chicago Health Atlas REST API</li>
-      <li>Writing Python scripts for exporting GeoJSON files</li>
+      <li>Querying and interpreting the Chicago Health Atlas REST API to call indicator data,</li>
+      <li>Writing Python scripts for exporting GeoJSON files.</li>
     </ul>
     <p class="body-text">
       All AI-generated code and content was reviewed and accepted by the author.
