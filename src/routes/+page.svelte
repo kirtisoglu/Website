@@ -439,8 +439,7 @@
     Fifth-year Ph.D. candidate at the
     <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
     working in the
-    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">
-      Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul.</a>
+    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer"> Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul.</a>
       Previously, I was a master student at <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>, 
       working on graph colorings under the supervision of <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Lale Ozkahya</a>.
     </a>.
@@ -456,7 +455,7 @@
 <section class="tools-section" in:fade={{ duration: 400, delay: 150 }}>
   <h2 class="news-title">Interactive Tools</h2>
   <p class="tools-intro">
-    I have been developing these tools as part of the research projects described in the
+    I have been developing the following tools as part of the two research projects described in the
     <a href="/research/">Research</a> section. A first version of the
     Chicago Healthcare Accessibility Dashboard is now live. The FalCom Visualizer is coming very soon.
   </p>
