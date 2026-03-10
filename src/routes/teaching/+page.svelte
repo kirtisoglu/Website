@@ -22,63 +22,7 @@
 
   <div class="divider"></div>
 
-  <!-- Teaching Assistant -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
-    <h2 class="section-title">Teaching Assistant</h2>
-    <div class="entries">
-
-      <div class="entry">
-        <div class="entry-head">
-          <span class="course-name">Add course name here</span>
-          <span class="term">Semester, Year</span>
-        </div>
-        <span class="institution">Illinois Institute of Technology</span>
-        <ul class="bullets">
-          <li>Add your responsibilities here — e.g., led weekly recitations, graded assignments, held office hours.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <span class="course-name">Add course name here</span>
-          <span class="term">Semester, Year</span>
-        </div>
-        <span class="institution">Illinois Institute of Technology</span>
-        <ul class="bullets">
-          <li>Add your responsibilities here.</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Mentoring -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
-    <h2 class="section-title">Mentoring</h2>
-    <div class="entries">
-
-      <div class="entry">
-        <div class="entry-head">
-          <span class="course-name">Student Name</span>
-          <span class="term">Year</span>
-        </div>
-        <span class="role-label">Undergraduate Research Mentee</span>
-        <p class="entry-desc">Brief description of the project or topic.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <span class="course-name">Student Name</span>
-          <span class="term">Year</span>
-        </div>
-        <span class="role-label">Graduate Research Mentee</span>
-        <p class="entry-desc">Brief description of the project or topic.</p>
-      </div>
-
-    </div>
-  </section>
+  <p class="coming-soon">More coming soon.</p>
 
 </div>
 
@@ -231,6 +175,14 @@
   }
 
   :global(.dark) .entry-desc { color: rgba(255,255,255,0.7); }
+
+  .coming-soon {
+    font-size: 0.88rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  :global(.dark) .coming-soon { color: rgba(255,255,255,0.3); }
 
   /* ── Mobile ── */
   @media (max-width: 640px) {
