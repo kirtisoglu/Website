@@ -250,6 +250,19 @@
     z-index: 1;
   }
 
+  .tools-intro {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin: 0 0 1rem;
+  }
+
+  .tools-intro a { color: #4f46e5; text-decoration: none; border-bottom: 1px solid #c7d2fe; }
+  .tools-intro a:hover { border-color: #4f46e5; }
+
+  :global(.dark) .tools-intro { color: rgba(255,255,255,0.55); }
+  :global(.dark) .tools-intro a { color: #a5b4fc; border-color: rgba(165,180,252,0.3); }
+
   .tools-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -442,6 +455,11 @@
 
 <section class="tools-section" in:fade={{ duration: 400, delay: 150 }}>
   <h2 class="news-title">Interactive Tools</h2>
+  <p class="tools-intro">
+    I have been developing these tools as part of the research projects described in the
+    <a href="/research/">Research</a> section. A first version of the
+    Chicago Healthcare Accessibility Dashboard is now live. The FalCom Visualizer is coming very soon.
+  </p>
   <div class="tools-grid">
     <a class="tool-card" href="/research/falcom/">
       <p class="tool-name">FalCom Visualizer</p>
