@@ -133,6 +133,25 @@
   </section>
   <div class="divider"></div>
 
+  <!-- Fellowships & Awards -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 600 }}>
+    <h2 class="section-title">Fellowships &amp; Awards</h2>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree">SoReMo Research Fellowship</span>
+          <span class="badge">2023</span>
+        </div>
+        <span class="institution">
+          <a href="https://www.soremo.org/" target="_blank" rel="noopener">Society for Research on Mathematics Optimization (SoReMo)</a>
+        </span>
+        <span class="detail">Awarded for research on FalCom — a sampling method for districting and hierarchical facility location.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Publications -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>
