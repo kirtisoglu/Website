@@ -109,7 +109,7 @@
       an AI assistant. AI was used for:
     </p>
     <ul class="body-list">
-      <li>Deck.gl layer configuration, SvelteKit component structure, reactive state management, CSS layout and styling</li>
+      <li>Deck.gl layer configuration, SvelteKit component structure, and reactive state management to embed the dashboard into this webpage,</li>
       <li>Querying and interpreting the Chicago Health Atlas REST API</li>
       <li>Writing Python scripts for exporting GeoJSON files</li>
     </ul>
