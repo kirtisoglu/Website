@@ -206,6 +206,12 @@
     return [...choroplethColor(Math.max(0, Math.min(1, t))), 180];
   }
 
+  // ── Toggle blocks PMTiles layer ──────────────────────────────────────────
+  $: if (map && map.getLayer("blocks-fill")) {
+    const showBlocks = (showLower && lowerLevel === "blocks") || (showUpper && upperLevel === "blocks");
+    map.setLayoutProperty("blocks-fill", "visibility", showBlocks ? "visible" : "none");
+  }
+
   // ── Reactive rebuild ──────────────────────────────────────────────────────
   $: if (buildLayers && overlay) {
     showCityBoundary; showLower; showUpper; lowerLevel; upperLevel;
@@ -245,11 +251,16 @@
       { Map },
       { MapboxOverlay },
       { GeoJsonLayer, ScatterplotLayer },
+      { Protocol },
     ] = await Promise.all([
       import("maplibre-gl"),
       import("@deck.gl/mapbox"),
       import("@deck.gl/layers"),
+      import("pmtiles"),
     ]);
+
+    const protocol = new Protocol();
+    Map.addProtocol("pmtiles", protocol.tile);
 
     map = new Map({
       container: mapContainer,
@@ -258,6 +269,20 @@
       zoom: 10,
     });
     await new Promise(r => map.on("load", r));
+
+    // Census blocks via PMTiles (vector tiles)
+    map.addSource("blocks-source", {
+      type: "vector",
+      url: "pmtiles:///data/chicago/blocks.pmtiles",
+    });
+    map.addLayer({
+      id: "blocks-fill",
+      type: "fill",
+      source: "blocks-source",
+      "source-layer": "blocks",
+      paint: { "fill-color": "rgba(200,210,220,0.06)", "fill-outline-color": "rgba(209,213,219,0.55)" },
+      layout: { visibility: "none" },
+    });
 
     overlay = new MapboxOverlay({
       interleaved: false,
@@ -422,7 +447,7 @@
   function levelHint(id) {
     return { blocks: "~39,500 units", tracts: "801 units", community_areas: "77 units · health data ✓", health_zones: "6 regions" }[id] ?? "";
   }
-  function dataExists(id) { return id !== "blocks"; }
+  function dataExists(id) { return true; }
   function swatchStyle(id) {
     const s = {
       blocks:          "background:rgba(200,210,220,0.4);border:1px solid #d1d5db",
