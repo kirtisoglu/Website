@@ -14,8 +14,8 @@
     <p class="eyebrow">Teaching</p>
     <h1>Teaching & Mentoring</h1>
     <p class="lead">
-      I have served as a Teaching Assistant at Illinois Institute of Technology
-      and have mentored undergraduate and graduate students on research projects.
+      I have served as a Teaching Assistant at Illinois Institute of Technology, and TED University
+      for 7 years and have mentored undergraduate and graduate students on research projects.
       I believe strong teaching and careful mentoring are inseparable from good research.
     </p>
   </section>
@@ -27,7 +27,7 @@
 </div>
 
 <Head/>
-
+ 
 <style>
   .page {
     max-width: 780px;
