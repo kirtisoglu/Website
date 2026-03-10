@@ -439,12 +439,11 @@
     Fifth-year Ph.D. candidate at the
     <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
     working in the
-    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer"> Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul.</a>
-      Previously, I was a master student at <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>, 
-      working on graph colorings under the supervision of <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Lale Ozkahya</a>.
-    </a>.
+    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a>.
+    Previously, I was a master's student at <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>,
+    working on graph colorings under the supervision of <a href="https://web.hacettepe.edu.tr/~ozkahya/" target="_blank" rel="noopener">Lale Özkahya</a>.
     My research spans graph theory, combinatorial optimization, and computational methods
-    for real-world structured problems. Previously, I 
+    for real-world structured problems.
   </p>
   <div class="collab-badge">
     <span class="collab-dot"></span>
