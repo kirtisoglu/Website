@@ -41,7 +41,7 @@
       rel="prefetch"
       aria-label="Home"
       aria-current={segment === undefined ? 'page' : undefined}
-      href="."
+      href="/"
       class="site-name">
       Alaittin's Homepage
     </a>
