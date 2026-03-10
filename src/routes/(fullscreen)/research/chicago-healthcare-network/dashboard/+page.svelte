@@ -439,6 +439,11 @@
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
 </svelte:head>
 
+<div class="mobile-notice" aria-hidden="false">
+  <p>This dashboard is designed for desktop. Please open it on a larger screen for the best experience.</p>
+  <a href="/research/chicago-healthcare-network/">← Back to project page</a>
+</div>
+
 <div class="dashboard">
 
   <header class="topbar">
@@ -1009,4 +1014,24 @@
 
   .map-wrap { flex: 1; position: relative; overflow: hidden; }
   .map-base { position: absolute; inset: 0; }
+
+  /* ── Mobile notice ── */
+  .mobile-notice {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: #f9fafb;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem; padding: 2rem; text-align: center;
+  }
+  .mobile-notice p {
+    font-size: 1rem; line-height: 1.7; color: #374151; max-width: 320px; margin: 0;
+  }
+  .mobile-notice a {
+    font-size: 0.9rem; color: #4f46e5; text-decoration: none; border-bottom: 1px solid #c7d2fe;
+  }
+  @media (max-width: 768px) {
+    .mobile-notice { display: flex; }
+    .dashboard { display: none; }
+  }
 </style>
