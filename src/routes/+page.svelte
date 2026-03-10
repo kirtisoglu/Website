@@ -309,6 +309,14 @@
 
   :global(.dark) .tool-badge { color: rgba(255,255,255,0.3); }
 
+  .tool-badge--live {
+    color: #059669;
+  }
+
+  :global(.dark) .tool-badge--live {
+    color: #34d399;
+  }
+
   /* ── News ── */
   .news {
     padding: 0 0 3rem;
@@ -436,10 +444,10 @@
       <p class="tool-desc">Animated Markov chain sampling for facility location &amp; districting.</p>
       <span class="tool-badge">Coming soon</span>
     </a>
-    <a class="tool-card" href="/research/chicago-healthcare-network/">
+    <a class="tool-card" href="/research/chicago-healthcare-network/dashboard">
       <p class="tool-name">Chicago Healthcare Access</p>
-      <p class="tool-desc">Optimization-based dashboard for equitable healthcare facility placement.</p>
-      <span class="tool-badge">Coming soon</span>
+      <p class="tool-desc">Interactive map of healthcare facilities and health indicators across Chicago's 77 community areas. Optimization module in progress.</p>
+      <span class="tool-badge tool-badge--live">v1 · Live</span>
     </a>
   </div>
 </section>

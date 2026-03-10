@@ -21,6 +21,9 @@ const buildDates = {
 
 export default defineConfig({
   plugins: [sveltekit()],
+  server: {
+    hmr: { overlay: false },
+  },
   optimizeDeps: {
     include: ['marked']
   },
