@@ -1,4 +1,5 @@
-import { b as base, a as assets, o as override, r as reset, p as public_env, s as safe_public_env, c as options, d as set_private_env, e as prerendering, f as set_public_env, g as get_hooks, h as set_safe_public_env } from "./chunks/internal.js";
+import { b as base, a as assets, o as override, r as reset, p as public_env, s as safe_public_env, c as read_implementation, d as options, e as set_private_env, f as prerendering, g as set_public_env, h as get_hooks, i as set_safe_public_env, j as set_read_implementation } from "./chunks/internal.js";
+import { m as make_trackable, d as disable_search, n as normalize_path, a as add_data_suffix, r as resolve, b as decode_pathname, h as has_data_suffix, s as strip_data_suffix, c as decode_params, v as validate_layout_server_exports, e as validate_layout_exports, f as validate_page_server_exports, g as validate_page_exports, i as validate_server_exports } from "./chunks/exports.js";
 import * as devalue from "devalue";
 import { n as noop, s as safe_not_equal } from "./chunks/ssr.js";
 import { parse, serialize } from "cookie";
@@ -299,122 +300,6 @@ function compact(arr) {
     (val) => val != null
   );
 }
-const internal = new URL("sveltekit-internal://");
-function resolve(base2, path) {
-  if (path[0] === "/" && path[1] === "/") return path;
-  let url = new URL(base2, internal);
-  url = new URL(path, url);
-  return url.protocol === internal.protocol ? url.pathname + url.search + url.hash : url.href;
-}
-function normalize_path(path, trailing_slash) {
-  if (path === "/" || trailing_slash === "ignore") return path;
-  if (trailing_slash === "never") {
-    return path.endsWith("/") ? path.slice(0, -1) : path;
-  } else if (trailing_slash === "always" && !path.endsWith("/")) {
-    return path + "/";
-  }
-  return path;
-}
-function decode_pathname(pathname) {
-  return pathname.split("%25").map(decodeURI).join("%25");
-}
-function decode_params(params) {
-  for (const key2 in params) {
-    params[key2] = decodeURIComponent(params[key2]);
-  }
-  return params;
-}
-const tracked_url_properties = (
-  /** @type {const} */
-  [
-    "href",
-    "pathname",
-    "search",
-    "toString",
-    "toJSON"
-  ]
-);
-function make_trackable(url, callback, search_params_callback) {
-  const tracked = new URL(url);
-  Object.defineProperty(tracked, "searchParams", {
-    value: new Proxy(tracked.searchParams, {
-      get(obj, key2) {
-        if (key2 === "get" || key2 === "getAll" || key2 === "has") {
-          return (param) => {
-            search_params_callback(param);
-            return obj[key2](param);
-          };
-        }
-        callback();
-        const value = Reflect.get(obj, key2);
-        return typeof value === "function" ? value.bind(obj) : value;
-      }
-    }),
-    enumerable: true,
-    configurable: true
-  });
-  for (const property of tracked_url_properties) {
-    Object.defineProperty(tracked, property, {
-      get() {
-        callback();
-        return url[property];
-      },
-      enumerable: true,
-      configurable: true
-    });
-  }
-  {
-    tracked[Symbol.for("nodejs.util.inspect.custom")] = (depth, opts, inspect) => {
-      return inspect(url, opts);
-    };
-  }
-  {
-    disable_hash(tracked);
-  }
-  return tracked;
-}
-function disable_hash(url) {
-  allow_nodejs_console_log(url);
-  Object.defineProperty(url, "hash", {
-    get() {
-      throw new Error(
-        "Cannot access event.url.hash. Consider using `$page.url.hash` inside a component instead"
-      );
-    }
-  });
-}
-function disable_search(url) {
-  allow_nodejs_console_log(url);
-  for (const property of ["search", "searchParams"]) {
-    Object.defineProperty(url, property, {
-      get() {
-        throw new Error(`Cannot access url.${property} on a page with prerendering enabled`);
-      }
-    });
-  }
-}
-function allow_nodejs_console_log(url) {
-  {
-    url[Symbol.for("nodejs.util.inspect.custom")] = (depth, opts, inspect) => {
-      return inspect(new URL(url), opts);
-    };
-  }
-}
-const DATA_SUFFIX = "/__data.json";
-const HTML_DATA_SUFFIX = ".html__data.json";
-function has_data_suffix(pathname) {
-  return pathname.endsWith(DATA_SUFFIX) || pathname.endsWith(HTML_DATA_SUFFIX);
-}
-function add_data_suffix(pathname) {
-  if (pathname.endsWith(".html")) return pathname.replace(/\.html$/, HTML_DATA_SUFFIX);
-  return pathname.replace(/\/$/, "") + DATA_SUFFIX;
-}
-function strip_data_suffix(pathname) {
-  if (pathname.endsWith(HTML_DATA_SUFFIX)) {
-    return pathname.slice(0, -HTML_DATA_SUFFIX.length) + ".html";
-  }
-  return pathname.slice(0, -DATA_SUFFIX.length);
-}
 function is_action_json_request(event) {
   const accept = negotiate(event.request.headers.get("accept") ?? "*/*", [
     "application/json",
@@ -559,7 +444,7 @@ async function handle_action_request(event, server) {
 function check_named_default_separate(actions) {
   if (actions.default && Object.keys(actions).length > 1) {
     throw new Error(
-      "When using named actions, the default action cannot be used. See the docs for more info: https://kit.svelte.dev/docs/form-actions#named-actions"
+      "When using named actions, the default action cannot be used. See the docs for more info: https://svelte.dev/docs/kit/form-actions#named-actions"
     );
   }
 }
@@ -612,6 +497,11 @@ function try_deserialize(data, fn, route_id) {
       /** @type {any} */
       e
     );
+    if (data instanceof Response) {
+      throw new Error(
+        `Data returned from action inside ${route_id} is not serializable. Form actions need to return plain objects or fail(). E.g. return { success: true } or return fail(400, { message: "invalid" });`
+      );
+    }
     if ("path" in error) {
       let message = `Data returned from action inside ${route_id} is not serializable: ${error.message}`;
       if (error.path !== "") message += ` (data.${error.path})`;
@@ -840,7 +730,7 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
           const included = resolve_opts.filterSerializedResponseHeaders(lower, value);
           if (!included) {
             throw new Error(
-              `Failed to get response header "${lower}" — it must be included by the \`filterSerializedResponseHeaders\` option: https://kit.svelte.dev/docs/hooks#server-hooks-handle (at ${event.route.id})`
+              `Failed to get response header "${lower}" — it must be included by the \`filterSerializedResponseHeaders\` option: https://svelte.dev/docs/kit/hooks#Server-hooks-handle (at ${event.route.id})`
             );
           }
         }
@@ -1543,6 +1433,7 @@ async function render_response({
     event,
     options2,
     branch.map((b) => b.server_data),
+    csp,
     global
   );
   if (page_config.ssr && page_config.csr) {
@@ -1725,13 +1616,11 @@ ${indent}}`);
       type: "bytes"
     }),
     {
-      headers: {
-        "content-type": "text/html"
-      }
+      headers: headers2
     }
   );
 }
-function get_data(event, options2, nodes, global) {
+function get_data(event, options2, nodes, csp, global) {
   let promise_id = 1;
   let count = 0;
   const { iterator, push, done } = create_async_iterator();
@@ -1765,7 +1654,8 @@ function get_data(event, options2, nodes, global) {
             data = void 0;
             str = devalue.uneval({ id, data, error }, replacer);
           }
-          push(`<script>${global}.resolve(${str})<\/script>
+          const nonce = csp.script_needs_nonce ? ` nonce="${csp.nonce}"` : "";
+          push(`<script${nonce}>${global}.resolve(${str})<\/script>
 `);
           if (count === 0) done();
         }
@@ -2148,6 +2038,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
     state.prerender_default = should_prerender;
     const fetched = [];
     if (get_option(nodes, "ssr") === false && !(state.prerendering && should_prerender_data)) {
+      if (DEV && action_result && !event.request.headers.has("x-sveltekit-action")) ;
       return await render_response({
         branch: [],
         fetched,
@@ -2366,6 +2257,7 @@ function exec(match, params, matchers) {
   if (buffered) return;
   return result;
 }
+const INVALID_COOKIE_CHARACTER_REGEX = /[\x00-\x1F\x7F()<>@,;:"/[\]?={} \t]/;
 function validate_options(options2) {
   if (options2?.path === void 0) {
     throw new Error("You must specify a `path` when setting, deleting or serializing cookies");
@@ -2419,6 +2311,14 @@ function get_cookies(request, url, trailing_slash) {
      * @param {import('./page/types.js').Cookie['options']} options
      */
     set(name, value, options2) {
+      const illegal_characters = name.match(INVALID_COOKIE_CHARACTER_REGEX);
+      if (illegal_characters) {
+        console.warn(
+          `The cookie name "${name}" will be invalid in SvelteKit 3.0 as it contains ${illegal_characters.join(
+            " and "
+          )}. See RFC 2616 for more details https://datatracker.ietf.org/doc/html/rfc2616#section-2.2`
+        );
+      }
       validate_options(options2);
       set_internal(name, value, { ...defaults, ...options2 });
     },
@@ -2527,14 +2427,23 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
         const decoded = decodeURIComponent(url.pathname);
         const filename = (decoded.startsWith(prefix) ? decoded.slice(prefix.length) : decoded).slice(1);
         const filename_html = `${filename}/index.html`;
-        const is_asset = manifest.assets.has(filename);
-        const is_asset_html = manifest.assets.has(filename_html);
+        const is_asset = manifest.assets.has(filename) || filename in manifest._.server_assets;
+        const is_asset_html = manifest.assets.has(filename_html) || filename_html in manifest._.server_assets;
         if (is_asset || is_asset_html) {
           const file = is_asset ? filename : filename_html;
           if (state.read) {
             const type = is_asset ? manifest.mimeTypes[filename.slice(filename.lastIndexOf("."))] : "text/html";
             return new Response(state.read(file), {
               headers: type ? { "content-type": type } : {}
+            });
+          } else if (read_implementation && file in manifest._.server_assets) {
+            const length = manifest._.server_assets[file];
+            const type = manifest.mimeTypes[file.slice(file.lastIndexOf("."))];
+            return new Response(read_implementation(file), {
+              headers: {
+                "Content-Length": "" + length,
+                "Content-Type": type
+              }
             });
           }
           return await fetch(request);
@@ -2595,69 +2504,6 @@ function normalize_fetch_input(info, init2, url) {
   }
   return new Request(typeof info === "string" ? new URL(info, url) : info, init2);
 }
-function validator(expected) {
-  function validate(module, file) {
-    if (!module) return;
-    for (const key2 in module) {
-      if (key2[0] === "_" || expected.has(key2)) continue;
-      const values = [...expected.values()];
-      const hint = hint_for_supported_files(key2, file?.slice(file.lastIndexOf("."))) ?? `valid exports are ${values.join(", ")}, or anything with a '_' prefix`;
-      throw new Error(`Invalid export '${key2}'${file ? ` in ${file}` : ""} (${hint})`);
-    }
-  }
-  return validate;
-}
-function hint_for_supported_files(key2, ext = ".js") {
-  const supported_files = [];
-  if (valid_layout_exports.has(key2)) {
-    supported_files.push(`+layout${ext}`);
-  }
-  if (valid_page_exports.has(key2)) {
-    supported_files.push(`+page${ext}`);
-  }
-  if (valid_layout_server_exports.has(key2)) {
-    supported_files.push(`+layout.server${ext}`);
-  }
-  if (valid_page_server_exports.has(key2)) {
-    supported_files.push(`+page.server${ext}`);
-  }
-  if (valid_server_exports.has(key2)) {
-    supported_files.push(`+server${ext}`);
-  }
-  if (supported_files.length > 0) {
-    return `'${key2}' is a valid export in ${supported_files.slice(0, -1).join(", ")}${supported_files.length > 1 ? " or " : ""}${supported_files.at(-1)}`;
-  }
-}
-const valid_layout_exports = /* @__PURE__ */ new Set([
-  "load",
-  "prerender",
-  "csr",
-  "ssr",
-  "trailingSlash",
-  "config"
-]);
-const valid_page_exports = /* @__PURE__ */ new Set([...valid_layout_exports, "entries"]);
-const valid_layout_server_exports = /* @__PURE__ */ new Set([...valid_layout_exports]);
-const valid_page_server_exports = /* @__PURE__ */ new Set([...valid_layout_server_exports, "actions", "entries"]);
-const valid_server_exports = /* @__PURE__ */ new Set([
-  "GET",
-  "POST",
-  "PATCH",
-  "PUT",
-  "DELETE",
-  "OPTIONS",
-  "HEAD",
-  "fallback",
-  "prerender",
-  "trailingSlash",
-  "config",
-  "entries"
-]);
-const validate_layout_exports = validator(valid_layout_exports);
-const validate_page_exports = validator(valid_page_exports);
-const validate_layout_server_exports = validator(valid_layout_server_exports);
-const validate_page_server_exports = validator(valid_page_server_exports);
-const validate_server_exports = validator(valid_server_exports);
 let body;
 let etag;
 let headers;
@@ -3112,6 +2958,9 @@ class Server {
       prerendering ? new Proxy({ type: "public" }, prerender_env_handler) : public_env2
     );
     set_safe_public_env(public_env2);
+    if (read) {
+      set_read_implementation(read);
+    }
     if (!this.#options.hooks) {
       try {
         const module = await get_hooks();

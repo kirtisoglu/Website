@@ -1,11 +1,14 @@
 <script>
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import '../app.css';
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   import { injectAnalytics } from '@vercel/analytics/sveltekit';
-  export let segment;
-  export let data;
+  export let segment = undefined;
+  export let data = {};
+
+  $: fullscreen = $page.route.id?.startsWith('/(fullscreen)') ?? false;
   let h = 1000;
   let y = 0;
   let emailCopied = false;
@@ -202,8 +205,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
     integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
-  <link rel="manifest" href="%sveltekit.assets%/manifest.json" crossorigin="use-credentials" />
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
     integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
     crossorigin="anonymous"></script>
 
@@ -212,6 +214,10 @@
 </svelte:head>
 
 <svelte:window bind:scrollY={y} />
+
+{#if fullscreen}
+  <slot />
+{:else}
 
 <Nav {segment} />
 
@@ -302,4 +308,4 @@
 </div>
 <Footer {h} {y} lastUpdated={data.lastUpdated} />
 
-
+{/if}

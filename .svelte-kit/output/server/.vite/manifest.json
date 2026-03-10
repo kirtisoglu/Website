@@ -8,15 +8,16 @@
       "_internal.js"
     ]
   },
-  "_Emoji.js": {
-    "file": "chunks/Emoji.js",
-    "name": "Emoji",
+  "_Head.js": {
+    "file": "chunks/Head.js",
+    "name": "Head",
     "imports": [
       "_ssr.js"
-    ],
-    "css": [
-      "_app/immutable/assets/Emoji.C6PPviNE.css"
     ]
+  },
+  "_exports.js": {
+    "file": "chunks/exports.js",
+    "name": "exports"
   },
   "_internal.js": {
     "file": "chunks/internal.js",
@@ -36,6 +37,7 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
+      "_exports.js",
       "_ssr.js"
     ]
   },
@@ -48,6 +50,12 @@
       "_ssr.js"
     ]
   },
+  "src/routes/+layout.js": {
+    "file": "entries/pages/_layout.js",
+    "name": "entries/pages/_layout",
+    "src": "src/routes/+layout.js",
+    "isEntry": true
+  },
   "src/routes/+layout.svelte": {
     "file": "entries/pages/_layout.svelte.js",
     "name": "entries/pages/_layout.svelte",
@@ -55,11 +63,17 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Emoji.js"
+      "_exports.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CXTKdBXk.css"
+      "_app/immutable/assets/_layout.DP52vbkQ.css"
     ]
+  },
+  "src/routes/+page.server.js": {
+    "file": "entries/pages/_page.server.js",
+    "name": "entries/pages/_page.server",
+    "src": "src/routes/+page.server.js",
+    "isEntry": true
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
@@ -67,12 +81,17 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js",
-      "_Emoji.js"
+      "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DItMWoJI.css"
+      "_app/immutable/assets/_page.CxfyGlwi.css"
     ]
+  },
+  "src/routes/about/+page.server.js": {
+    "file": "entries/pages/about/_page.server.js",
+    "name": "entries/pages/about/_page.server",
+    "src": "src/routes/about/+page.server.js",
+    "isEntry": true
   },
   "src/routes/about/+page.svelte": {
     "file": "entries/pages/about/_page.svelte.js",
@@ -80,10 +99,11 @@
     "src": "src/routes/about/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BJhDIryW.css"
+      "_app/immutable/assets/_page.nHY6tLS0.css"
     ]
   },
   "src/routes/blog/+page.svelte": {
@@ -92,10 +112,89 @@
     "src": "src/routes/blog/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BJhDIryW.css"
+      "_app/immutable/assets/_page.BCtWv5tB.css"
+    ]
+  },
+  "src/routes/research/+page.svelte": {
+    "file": "entries/pages/research/_page.svelte.js",
+    "name": "entries/pages/research/_page.svelte",
+    "src": "src/routes/research/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DOb4yfrh.css"
+    ]
+  },
+  "src/routes/research/chicago-healthcare-network/+page.svelte": {
+    "file": "entries/pages/research/chicago-healthcare-network/_page.svelte.js",
+    "name": "entries/pages/research/chicago-healthcare-network/_page.svelte",
+    "src": "src/routes/research/chicago-healthcare-network/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.Bc-8Trok.css"
+    ]
+  },
+  "src/routes/research/chicago-healthcare-network/dashboard/+page.svelte": {
+    "file": "entries/pages/research/chicago-healthcare-network/dashboard/_page.svelte.js",
+    "name": "entries/pages/research/chicago-healthcare-network/dashboard/_page.svelte",
+    "src": "src/routes/research/chicago-healthcare-network/dashboard/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CohobaOK.css"
+    ]
+  },
+  "src/routes/research/falcom/+page.svelte": {
+    "file": "entries/pages/research/falcom/_page.svelte.js",
+    "name": "entries/pages/research/falcom/_page.svelte",
+    "src": "src/routes/research/falcom/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BqrGyL3h.css"
+    ]
+  },
+  "src/routes/research/falcom/dashboard/+page.svelte": {
+    "file": "entries/pages/research/falcom/dashboard/_page.svelte.js",
+    "name": "entries/pages/research/falcom/dashboard/_page.svelte",
+    "src": "src/routes/research/falcom/dashboard/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.Bviyzxm-.css"
+    ]
+  },
+  "src/routes/teaching/+page.svelte": {
+    "file": "entries/pages/teaching/_page.svelte.js",
+    "name": "entries/pages/teaching/_page.svelte",
+    "src": "src/routes/teaching/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Head.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.8T1Txxot.css"
     ]
   }
 }
