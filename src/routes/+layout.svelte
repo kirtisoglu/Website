@@ -1,10 +1,13 @@
 <script>
   import { onMount } from 'svelte';
+  import { afterNavigate } from '$app/navigation';
   import { page } from '$app/stores';
   import '../app.css';
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+  afterNavigate(() => { window.scrollTo(0, 0); });
   export let segment = undefined;
   export let data = {};
 
