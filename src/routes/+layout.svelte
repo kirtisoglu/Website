@@ -7,7 +7,11 @@
   import Footer from "../components/Footer.svelte";
   import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
-  afterNavigate(() => { window.scrollTo(0, 0); });
+  afterNavigate(({ type }) => {
+    if (type !== 'popstate') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  });
   export let segment = undefined;
   export let data = {};
 
