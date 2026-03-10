@@ -41,6 +41,33 @@
       "_ssr.js"
     ]
   },
+  "src/routes/(fullscreen)/+layout.svelte": {
+    "file": "entries/pages/(fullscreen)/_layout.svelte.js",
+    "name": "entries/pages/(fullscreen)/_layout.svelte",
+    "src": "src/routes/(fullscreen)/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/(fullscreen)/research/chicago-healthcare-network/dashboard/+page.svelte": {
+    "file": "entries/pages/(fullscreen)/research/chicago-healthcare-network/dashboard/_page.svelte.js",
+    "name": "entries/pages/(fullscreen)/research/chicago-healthcare-network/dashboard/_page.svelte",
+    "src": "src/routes/(fullscreen)/research/chicago-healthcare-network/dashboard/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.--anybog.css"
+    ]
+  },
+  "src/routes/(fullscreen)/research/chicago-healthcare-network/dashboard/+page.ts": {
+    "file": "entries/pages/(fullscreen)/research/chicago-healthcare-network/dashboard/_page.ts.js",
+    "name": "entries/pages/(fullscreen)/research/chicago-healthcare-network/dashboard/_page.ts",
+    "src": "src/routes/(fullscreen)/research/chicago-healthcare-network/dashboard/+page.ts",
+    "isEntry": true
+  },
   "src/routes/+error.svelte": {
     "file": "entries/pages/_error.svelte.js",
     "name": "entries/pages/_error.svelte",
@@ -84,7 +111,7 @@
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CxfyGlwi.css"
+      "_app/immutable/assets/_page.CaYcIa0k.css"
     ]
   },
   "src/routes/about/+page.server.js": {
@@ -103,8 +130,14 @@
       "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.nHY6tLS0.css"
+      "_app/immutable/assets/_page.BZw70Q3k.css"
     ]
+  },
+  "src/routes/api/health-atlas/[...path]/+server.ts": {
+    "file": "entries/endpoints/api/health-atlas/_...path_/_server.ts.js",
+    "name": "entries/endpoints/api/health-atlas/_...path_/_server.ts",
+    "src": "src/routes/api/health-atlas/[...path]/+server.ts",
+    "isEntry": true
   },
   "src/routes/blog/+page.svelte": {
     "file": "entries/pages/blog/_page.svelte.js",
@@ -129,7 +162,7 @@
       "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DOb4yfrh.css"
+      "_app/immutable/assets/_page.jPCnuAdC.css"
     ]
   },
   "src/routes/research/chicago-healthcare-network/+page.svelte": {
@@ -142,20 +175,7 @@
       "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Bc-8Trok.css"
-    ]
-  },
-  "src/routes/research/chicago-healthcare-network/dashboard/+page.svelte": {
-    "file": "entries/pages/research/chicago-healthcare-network/dashboard/_page.svelte.js",
-    "name": "entries/pages/research/chicago-healthcare-network/dashboard/_page.svelte",
-    "src": "src/routes/research/chicago-healthcare-network/dashboard/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js",
-      "_Head.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.CohobaOK.css"
+      "_app/immutable/assets/_page.C9mVffV0.css"
     ]
   },
   "src/routes/research/falcom/+page.svelte": {
@@ -168,7 +188,7 @@
       "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BqrGyL3h.css"
+      "_app/immutable/assets/_page.Dr45Si1j.css"
     ]
   },
   "src/routes/research/falcom/dashboard/+page.svelte": {
@@ -194,7 +214,7 @@
       "_Head.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.8T1Txxot.css"
+      "_app/immutable/assets/_page.DwahH8c3.css"
     ]
   }
 }
