@@ -152,43 +152,6 @@
 
   <div class="divider"></div>
 
-  <!-- Software -->
-  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 620 }}>
-    <h2 class="section-title">Software</h2>
-    <div class="entries">
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="degree sw-mono">falcomchain</span>
-          <span class="badge badge-pre">Pre-publication</span>
-        </div>
-        <span class="institution"><a href="/research/falcom/">FalCom project</a></span>
-        <span class="detail">Python · Hierarchical and capacitated ReCom algorithm for simultaneous districting, facility location, and team allocation under capacity and budget constraints.</span>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="degree sw-mono">falcomplot</span>
-          <span class="badge badge-pre">Pre-publication</span>
-        </div>
-        <span class="institution"><a href="/research/falcom/">FalCom project</a></span>
-        <span class="detail">Python · Plotting library for analyzing falcomchain inputs and outputs.</span>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="degree sw-mono">Chicago Healthcare Dashboard</span>
-          <span class="badge badge-live">v1 · Live</span>
-        </div>
-        <span class="institution"><a href="/research/chicago-healthcare-network/dashboard" target="_blank" rel="noopener">Open Dashboard →</a></span>
-        <span class="detail">JavaScript · Decision-support tool for health sector investors and public officials — maps 839 facilities and 33 community health indicators across Chicago to identify underserved areas and inform resource allocation.</span>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- Publications -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>
@@ -204,7 +167,6 @@
       <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
       <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">In Progress</span></li>
       <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">In Progress</span></li>
-      <li>Goel, S., &amp; Kaul, H., Kirtisoglu, A., &amp; Mellacheruvu, T. Bike-Share Stations: An Equity Analysis and Location Optimization. <span class="pub-tag progress">In Progress</span></li>
     </ol>
   </section>
 

@@ -190,22 +190,6 @@
       <p class="paper-venue">Alaittin Kirtisoglu</p>
     </div>
 
-    <div class="paper-divider"></div>
-
-
-    <!-- Paper 5: Bike-share -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">6.</span>
-        <span class="paper-status design">In Design</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        Bike-Share Stations: An Equity Analysis and Location Optimization
-      </h3>
-      <p class="paper-venue">with Ishaan Goel, Hemanshu Kaul &amp; Taran Mellacheruvu</p>
-    </div>
-
   </section>
 
 </div>
