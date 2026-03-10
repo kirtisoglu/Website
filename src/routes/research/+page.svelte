@@ -139,7 +139,7 @@
       <p class="paper-venue">with Hemanshu Kaul</p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="/research/falcom/dashboard">FalCom Visualizer →</a>
+        <a class="tool-link" href="/research/falcom/">FalCom Visualizer →</a>
       </div>
     </div>
 
@@ -157,7 +157,7 @@
       <p class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</p>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="/research/chicago-healthcare-network/dashboard">Healthcare Accessibility Dashboard →</a>
+        <a class="tool-link" href="/research/chicago-healthcare-network/">Healthcare Accessibility Dashboard →</a>
       </div>
     </div>
 

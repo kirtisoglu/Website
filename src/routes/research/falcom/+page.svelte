@@ -47,9 +47,7 @@
       algorithm traverses the solution space, the evolution of district boundaries, and
       convergence behavior in real time.
     </p>
-    <a class="dashboard-btn" href="/research/falcom/dashboard">
-      Open Visualizer →
-    </a>
+    <span class="dashboard-btn coming">Visualizer — Coming Soon</span>
   </section>
 
 </div>
@@ -196,6 +194,8 @@
   }
 
   .dashboard-btn:hover { background: #4338ca; }
+  .dashboard-btn.coming { background: #e5e7eb; color: #9ca3af; cursor: default; }
+  :global(.dark) .dashboard-btn.coming { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.3); }
   :global(.dark) .dashboard-btn { background: #6366f1; }
   :global(.dark) .dashboard-btn:hover { background: #818cf8; }
 
