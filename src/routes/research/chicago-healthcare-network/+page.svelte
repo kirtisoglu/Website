@@ -46,7 +46,7 @@
       The dashboard visualizes healthcare facility coverage across Chicago neighborhoods,
       allowing exploration of access gaps, optimization outputs, and equity metrics.
     </p>
-    <a class="dashboard-btn" href="/research/chicago-healthcare-network/dashboard">
+    <a class="dashboard-btn" href="/research/chicago-healthcare-network/dashboard" target="_blank" rel="noopener">
       Open Dashboard →
     </a>
   </section>
