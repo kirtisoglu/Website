@@ -152,6 +152,43 @@
 
   <div class="divider"></div>
 
+  <!-- Software -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 620 }}>
+    <h2 class="section-title">Software</h2>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree sw-mono">falcomchain</span>
+          <span class="badge badge-pre">Pre-publication</span>
+        </div>
+        <span class="institution"><a href="/research/falcom/">FalCom project</a></span>
+        <span class="detail">Python · Hierarchical and capacitated ReCom algorithm for simultaneous districting, facility location, and team allocation under capacity and budget constraints.</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree sw-mono">falcomplot</span>
+          <span class="badge badge-pre">Pre-publication</span>
+        </div>
+        <span class="institution"><a href="/research/falcom/">FalCom project</a></span>
+        <span class="detail">Python · Plotting library for analyzing falcomchain inputs and outputs.</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree sw-mono">Chicago Healthcare Dashboard</span>
+          <span class="badge badge-live">v1 · Live</span>
+        </div>
+        <span class="institution"><a href="/research/chicago-healthcare-network/dashboard" target="_blank" rel="noopener">Open Dashboard →</a></span>
+        <span class="detail">JavaScript · Interactive map of 839 healthcare facilities, 33 community health indicators, and multi-level geographic boundaries across Chicago.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Publications -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>
@@ -347,6 +384,35 @@
     border-radius: 4px;
     padding: 1px 7px;
     text-transform: uppercase;
+  }
+
+  .badge-pre {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 99px;
+    background: #fef9c3;
+    color: #854d0e;
+  }
+
+  .badge-live {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 99px;
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  :global(.dark) .badge-pre { background: rgba(133,77,14,0.15); color: #fde68a; }
+  :global(.dark) .badge-live { background: rgba(21,128,61,0.15); color: #86efac; }
+
+  .sw-mono {
+    font-family: monospace;
   }
 
   .institution {
