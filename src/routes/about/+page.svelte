@@ -181,7 +181,7 @@
           <span class="badge badge-live">v1 · Live</span>
         </div>
         <span class="institution"><a href="/research/chicago-healthcare-network/dashboard" target="_blank" rel="noopener">Open Dashboard →</a></span>
-        <span class="detail">JavaScript · Interactive map of 839 healthcare facilities, 33 community health indicators, and multi-level geographic boundaries across Chicago.</span>
+        <span class="detail">JavaScript · Decision-support tool for health sector investors and public officials — maps 839 facilities and 33 community health indicators across Chicago to identify underserved areas and inform resource allocation.</span>
       </div>
 
     </div>
