@@ -444,7 +444,7 @@
       <p class="tool-desc">Animated Markov chain sampling for facility location &amp; districting.</p>
       <span class="tool-badge">Coming soon</span>
     </a>
-    <a class="tool-card" href="/research/chicago-healthcare-network/dashboard">
+    <a class="tool-card" href="/research/chicago-healthcare-network/">
       <p class="tool-name">Chicago Healthcare Access</p>
       <p class="tool-desc">Interactive map of healthcare facilities and health indicators across Chicago's 77 community areas. Optimization module in progress.</p>
       <span class="tool-badge tool-badge--live">v1 · Live</span>
