@@ -40,6 +40,35 @@
 
   <div class="divider"></div>
 
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 320 }}>
+    <h2 class="section-title">Software</h2>
+    <div class="software-list">
+
+      <div class="software-item">
+        <div class="software-header">
+          <span class="software-name">falcomchain</span>
+          <span class="sw-badge pre">Pre-publication</span>
+        </div>
+        <p class="software-desc">
+          A Python library implementing a hierarchical and capacitated ReCom algorithm that simultaneously partitions a dual graph into hierarchical service districts, locates facilities within districts, and allocates expert teams to facilities — while satisfying capacity-demand balance and user-choice constraints such as budget.
+        </p>
+      </div>
+
+      <div class="software-item">
+        <div class="software-header">
+          <span class="software-name">falcomplot</span>
+          <span class="sw-badge pre">Pre-publication</span>
+        </div>
+        <p class="software-desc">
+          A Python library providing a wide range of plotting functions to analyze <em>falcomchain</em> inputs and outputs.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 350 }}>
     <h2 class="section-title">Interactive Visualizer</h2>
     <p class="body-text">
@@ -198,6 +227,55 @@
   :global(.dark) .dashboard-btn.coming { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.3); }
   :global(.dark) .dashboard-btn { background: #6366f1; }
   :global(.dark) .dashboard-btn:hover { background: #818cf8; }
+
+  .software-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .software-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .software-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .software-name {
+    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  :global(.dark) .software-name { color: #f9fafb; }
+
+  .sw-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 99px;
+  }
+
+  .sw-badge.pre { background: #fef9c3; color: #854d0e; }
+  :global(.dark) .sw-badge.pre { background: rgba(133,77,14,0.15); color: #fde68a; }
+
+  .software-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #374151;
+    margin: 0;
+  }
+
+  :global(.dark) .software-desc { color: rgba(255,255,255,0.7); }
 
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }

@@ -42,14 +42,15 @@
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 350 }}>
     <h2 class="section-title">Interactive Dashboard</h2>
     <p class="body-text">
-      This dashboard is part of ongoing research on healthcare accessibility and facility
-      location optimization in Chicago. The facility data and health indicator layers are
-      designed to support future work on:
+      The dashboard is designed as a decision-support tool for health sector investors,
+      policymakers, and public officials. It brings together facility coverage, community
+      health indicators, and geographic boundaries to help stakeholders:
     </p>
     <ul class="body-list">
-      <li>Identifying medically underserved areas</li>
-      <li>Optimizing the placement of new primary care facilities</li>
-      <li>Analyzing spatial disparities in health outcomes across neighborhoods</li>
+      <li>Identify medically underserved areas and coverage gaps</li>
+      <li>Evaluate candidate sites for new primary care facilities</li>
+      <li>Analyze spatial disparities in health outcomes across neighborhoods</li>
+      <li>Support data-driven resource allocation and investment decisions</li>
     </ul>
     <a class="dashboard-btn" href="/research/chicago-healthcare-network/dashboard" target="_blank" rel="noopener">
       Open Dashboard →
