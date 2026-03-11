@@ -1,12 +1,46 @@
 <script>
+  /**
+   * Chicago Healthcare Accessibility Dashboard
+   * ─────────────────────────────────────────────────────────────────────────
+   * An interactive map-based decision-support tool for health sector
+   * stakeholders. Visualizes 839+ healthcare facilities and 33 community
+   * health indicators across Chicago's geographic hierarchy.
+   *
+   * Architecture:
+   *   - Base map:   MapLibre GL JS (WebGL vector tile renderer)
+   *   - Data layers: deck.gl (GeoJsonLayer, ScatterplotLayer) via MapboxOverlay
+   *   - Census blocks: PMTiles (vector tiles) loaded directly by MapLibre
+   *   - Health data: Chicago Health Atlas API (proxied through /api/health-atlas/)
+   *
+   * Data sources:
+   *   - HRSA (Health Resources & Services Administration): Federally qualified
+   *     health centers — loaded from /data/chicago/health_centers.geojson
+   *   - Google Places API: Hospitals, primary care, urgent care facilities
+   *     — loaded from /data/chicago/google_places.geojson
+   *   - Chicago Health Atlas: 33 community-level health indicators
+   *     — loaded from /data/chicago/community_areas_health.geojson
+   *   - U.S. Census Bureau / City of Chicago: Geographic boundaries at four
+   *     levels (blocks, tracts, community areas, health zones)
+   *
+   * Layer rendering strategy:
+   *   - Census blocks (~39,500 polygons) use PMTiles vector tiles rendered
+   *     natively by MapLibre for efficient viewport-based loading.
+   *   - All other boundaries (tracts, community areas, health zones) use
+   *     deck.gl GeoJsonLayer for interactive features and choropleth coloring.
+   *   - Facility points use deck.gl ScatterplotLayer with tooltips.
+   */
   import { onMount, onDestroy } from "svelte";
 
+  // Clean up map resources when the component is destroyed
   onDestroy(() => {
     if (map && overlay) { map.removeControl(overlay); map.remove(); }
   });
 
   // ── Geographic hierarchy ──────────────────────────────────────────────────
-  // Order: blocks(0) < tracts(1) < community_areas(2) < health_zones(3)
+  // Chicago's geography is organized in a nested hierarchy from finest to
+  // coarsest. The dashboard lets users pick any two levels to display
+  // simultaneously as "lower" (finer) and "upper" (coarser) boundary layers.
+  // Constraint: lower.rank must always be < upper.rank.
   const LEVELS = [
     { id: "blocks",          label: "Census Blocks",    rank: 0 },
     { id: "tracts",          label: "Census Tracts",    rank: 1 },
@@ -18,7 +52,9 @@
   let lowerLevel = "tracts";
   let upperLevel = "community_areas";
 
-  // ── Layer visibility ──────────────────────────────────────────────────────
+  // ── Layer visibility ─────────────────────────────────────────────────────
+  // Each boolean controls whether a layer is rendered on the map.
+  // Bound to checkboxes in the sidebar; toggling triggers a reactive rebuild.
   let showCityBoundary  = true;
   let showLower         = true;
   let showUpper         = true;
@@ -26,34 +62,44 @@
   let showGooglePlaces   = true;
   let showChoropleth    = false;
 
-  // ── Sidebar open state ────────────────────────────────────────────────────
+  // ── Sidebar open state ───────────────────────────────────────────────────
+  // Controls which sidebar accordion sections are expanded.
   let layersOpen      = true;
   let facilitiesOpen  = true;
   let healthOpen      = false;
 
-  // ── Refs ──────────────────────────────────────────────────────────────────
-  let mapContainer;
-  let map;
-  let overlay;
-  let buildLayers;
+  // ── Refs ─────────────────────────────────────────────────────────────────
+  let mapContainer;   // DOM element bound to the map div
+  let map;            // MapLibre GL Map instance
+  let overlay;        // deck.gl MapboxOverlay — renders data layers on top of the base map
+  let buildLayers;    // Function (set in onMount) that returns an array of deck.gl layers
 
-  // ── Counts ────────────────────────────────────────────────────────────────
-  let hcTotal      = 0;
-  let gpTotal      = 0;
+  // ── Counts ───────────────────────────────────────────────────────────────
+  // Total number of facilities, displayed as count badges in the sidebar.
+  let hcTotal      = 0;   // HRSA health centers
+  let gpTotal      = 0;   // Google Places facilities
 
   // ── Health indicator state ────────────────────────────────────────────────
-  let communityGdf      = null;
-  let hasHealthData     = false;
-  let selectedIndicator = "";
-  let choroplethMin     = 0;
-  let choroplethMax     = 1;
+  // Community-level health data is loaded as a GeoJSON with 33 numeric
+  // properties per feature (one per indicator). When the user selects an
+  // indicator and enables the choropleth, community area polygons are
+  // colored on a YlOrRd ramp scaled between min and max values.
+  let communityGdf      = null;   // GeoJSON FeatureCollection with health data
+  let hasHealthData     = false;  // true once health data is loaded successfully
+  let selectedIndicator = "";     // column key (e.g. "life_expectancy")
+  let choroplethMin     = 0;     // min value across all communities for selected indicator
+  let choroplethMax     = 1;     // max value across all communities for selected indicator
 
-  // ── Indicator info panel ──────────────────────────────────────────────────
-  let infoPanel       = null;   // fetched topic metadata from Chicago Health Atlas API
+  // ── Indicator info panel ─────────────────────────────────────────────────
+  // When the user clicks "ⓘ See details" on an indicator, we fetch metadata
+  // from the Chicago Health Atlas API (via our server-side proxy at
+  // /api/health-atlas/) and display it in an overlay panel on the map.
+  let infoPanel       = null;   // fetched topic metadata (name, description, units, etc.)
   let infoPanelOpen   = false;
   let infoPanelLoading = false;
 
-  // Map our column names → Chicago Health Atlas API topic keys
+  // Map our GeoJSON column names → Chicago Health Atlas API topic keys
+  // e.g. "life_expectancy" → "VRLE" → fetches /api/health-atlas/topics/VRLE/
   const INDICATOR_API_KEY = {
     life_expectancy:               "VRLE",
     infant_mortality_rate:         "VRIMR",
@@ -89,6 +135,7 @@
     received_needed_care_rate:     "HCSNCP",
   };
 
+  // Fetch indicator metadata from Chicago Health Atlas API and show info panel
   async function fetchIndicatorInfo(colKey) {
     const apiKey = INDICATOR_API_KEY[colKey];
     if (!apiKey) return;
@@ -102,6 +149,8 @@
     infoPanelLoading = false;
   }
 
+  // All 33 health indicators available in community_areas_health.geojson.
+  // Each entry maps a GeoJSON property key to a human-readable label for the UI.
   const INDICATORS = [
     { key: "life_expectancy",               label: "Life Expectancy" },
     { key: "infant_mortality_rate",         label: "Infant Mortality Rate" },
@@ -137,7 +186,9 @@
     { key: "received_needed_care_rate",     label: "Received Needed Care Rate" },
   ];
 
-  // ── Level select helpers ──────────────────────────────────────────────────
+  // ── Level select helpers ─────────────────────────────────────────────────
+  // Enforce the constraint that lower.rank < upper.rank. When the user
+  // changes one dropdown, the other auto-adjusts if it would violate this.
   function rankOf(id) { return LEVELS.find(l => l.id === id)?.rank ?? 0; }
 
   $: lowerOptions = LEVELS.filter(l => l.rank < rankOf(upperLevel));
@@ -157,7 +208,9 @@
     }
   }
 
-  // ── Colors ────────────────────────────────────────────────────────────────
+  // ── Colors ───────────────────────────────────────────────────────────────
+  // RGBA color constants for each layer type. Alpha channel (4th value)
+  // controls opacity: 220 = nearly opaque, 20 = very transparent.
   const CITY_LINE      = [31,  53,  87, 220];
   const ZONE_FILL      = [16, 185, 129,  20];
   const ZONE_LINE      = [16, 185, 129, 220];
@@ -188,7 +241,9 @@
   function lowerLineWidth() { return LOWER_WIDTH[rankOf(lowerLevel)] ?? 1; }
   function upperLineWidth() { return UPPER_WIDTH[rankOf(upperLevel)] ?? 2; }
 
-  // YlOrRd ramp
+  // Choropleth color ramp: Yellow → Orange → Red (YlOrRd)
+  // Input t ∈ [0, 1] maps linearly across 5 color stops.
+  // Used to color community areas by health indicator values.
   function choroplethColor(t) {
     const stops = [
       [255, 255, 178], [254, 204, 92], [253, 141, 60], [240, 59, 32], [189, 0, 38],
@@ -198,6 +253,9 @@
     return stops[lo].map((c, i) => Math.round(c + f * (stops[hi][i] - c)));
   }
 
+  // Returns RGBA color for a single community area feature based on its
+  // indicator value, normalized to [0,1] using min/max across all areas.
+  // Missing or NaN values get a neutral gray.
   function getChoroplethColor(feature) {
     const val = feature.properties?.[selectedIndicator];
     if (val == null || isNaN(val)) return [180, 180, 180, 80];
@@ -206,7 +264,20 @@
     return [...choroplethColor(Math.max(0, Math.min(1, t))), 180];
   }
 
-  // ── Reactive rebuild ──────────────────────────────────────────────────────
+  // ── Toggle blocks PMTiles layer ──────────────────────────────────────────
+  // Census blocks are rendered by MapLibre (not deck.gl) because they use
+  // PMTiles vector tiles for efficient viewport-based loading of ~39,500
+  // polygons. This reactive block toggles the MapLibre layer visibility
+  // whenever the user selects/deselects blocks in either boundary dropdown.
+  $: if (map && map.getLayer("blocks-fill")) {
+    const showBlocks = (showLower && lowerLevel === "blocks") || (showUpper && upperLevel === "blocks");
+    map.setLayoutProperty("blocks-fill", "visibility", showBlocks ? "visible" : "none");
+  }
+
+  // ── Reactive rebuild ─────────────────────────────────────────────────────
+  // Svelte reactive statement: whenever any visibility toggle, level
+  // selection, or choropleth setting changes, rebuild all deck.gl layers
+  // and push them to the overlay. This is the core rendering loop.
   $: if (buildLayers && overlay) {
     showCityBoundary; showLower; showUpper; lowerLevel; upperLevel;
     showHealthCenters; showGooglePlaces;
@@ -214,6 +285,8 @@
     overlay.setProps({ layers: buildLayers() });
   }
 
+  // Recompute min/max for the selected indicator across all community areas.
+  // Called whenever the user switches indicators.
   function updateChoroplethRange() {
     if (!communityGdf || !selectedIndicator) return;
     const vals = communityGdf.features
@@ -224,6 +297,8 @@
   }
   $: if (selectedIndicator) updateChoroplethRange();
 
+  // Load community-level health data (33 indicators per community area).
+  // On success, enables the Health Indicators sidebar section.
   async function loadHealthData() {
     try {
       const r = await fetch("/data/chicago/community_areas_health.geojson");
@@ -240,17 +315,35 @@
     } catch { hasHealthData = false; }
   }
 
+  // ── Initialization ───────────────────────────────────────────────────────
+  // All browser-only code runs inside onMount (this page uses ssr = false).
+  // 1. Dynamically import MapLibre, deck.gl, and PMTiles (tree-shaking)
+  // 2. Register the PMTiles protocol so MapLibre can load pmtiles:// URLs
+  // 3. Create the map and add the blocks vector tile source
+  // 4. Create the deck.gl overlay for interactive data layers
+  // 5. Load all GeoJSON data files in parallel
+  // 6. Define buildLayers() and render the initial layer stack
+  // 7. Load health indicator data asynchronously
   onMount(async () => {
+    // Dynamic imports — only loaded in the browser, keeps bundle small
     const [
-      { Map },
+      maplibregl,
       { MapboxOverlay },
       { GeoJsonLayer, ScatterplotLayer },
+      { Protocol },
     ] = await Promise.all([
       import("maplibre-gl"),
       import("@deck.gl/mapbox"),
       import("@deck.gl/layers"),
+      import("pmtiles"),
     ]);
 
+    // Register PMTiles protocol handler so MapLibre can read pmtiles:// URLs
+    const { Map } = maplibregl;
+    const protocol = new Protocol();
+    maplibregl.addProtocol("pmtiles", protocol.tile);
+
+    // Initialize the base map (CARTO Positron light theme, centered on Chicago)
     map = new Map({
       container: mapContainer,
       style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
@@ -259,6 +352,26 @@
     });
     await new Promise(r => map.on("load", r));
 
+    // Add census blocks as a MapLibre vector tile layer (PMTiles format).
+    // Hidden by default; toggled visible when "Census Blocks" is selected
+    // in either boundary dropdown. Uses HTTP range requests to load only
+    // the tiles visible in the current viewport.
+    map.addSource("blocks-source", {
+      type: "vector",
+      url: "pmtiles:///data/chicago/blocks.pmtiles",
+    });
+    map.addLayer({
+      id: "blocks-fill",
+      type: "fill",
+      source: "blocks-source",
+      "source-layer": "blocks",
+      paint: { "fill-color": "rgba(200,210,220,0.06)", "fill-outline-color": "rgba(209,213,219,0.55)" },
+      layout: { visibility: "none" },
+    });
+
+    // Create the deck.gl overlay. MapboxOverlay renders deck.gl layers on
+    // top of the MapLibre base map. getTooltip defines hover behavior for
+    // interactive layers (community areas, health centers, Google Places).
     overlay = new MapboxOverlay({
       interleaved: false,
       layers: [],
@@ -291,6 +404,8 @@
     });
     map.addControl(overlay);
 
+    // Load all GeoJSON data files in parallel. These are static files
+    // served from /static/data/chicago/ (except blocks, which use PMTiles).
     const [cityData, zonesData, communityData, tractData, hcData, gpData] = await Promise.all([
       fetch("/data/chicago/city_boundary.geojson").then(r => r.json()),
       fetch("/data/chicago/health_zones.geojson").then(r => r.json()),
@@ -303,9 +418,12 @@
     hcTotal = hcData.features.length;
     gpTotal = gpData.features.length;
 
+    // Pre-extract point data for ScatterplotLayer (faster than GeoJSON parsing)
     const hcPoints = hcData.features.map(f => ({ position: f.geometry.coordinates, properties: f.properties }));
     const gpPoints = gpData.features.map(f => ({ position: f.geometry.coordinates, properties: f.properties }));
 
+    // GeoJSON data for each boundary level. Blocks are null here because
+    // they're rendered by MapLibre via PMTiles, not by deck.gl.
     const dataForLevel = {
       blocks:          null,
       tracts:          tractData,
@@ -313,9 +431,19 @@
       health_zones:    zonesData,
     };
 
+    // buildLayers() constructs the full deck.gl layer stack based on
+    // current UI state. Called reactively whenever any toggle changes.
+    // Layer order matters: earlier layers render below later ones.
+    //   1. Choropleth fill (community areas colored by health indicator)
+    //   2. Lower boundary outlines (e.g. tracts)
+    //   3. Upper boundary outlines (e.g. community areas)
+    //   4. City boundary outline
+    //   5. HRSA health center points (red dots)
+    //   6. Google Places facility points (color-coded by category)
     buildLayers = () => {
       const layers = [];
 
+      // Choropleth: fill community areas by selected health indicator value
       if (showChoropleth && communityGdf && selectedIndicator) {
         layers.push(new GeoJsonLayer({
           id: "choropleth",
@@ -332,6 +460,7 @@
         }));
       }
 
+      // Lower boundary layer (finer granularity, e.g. tracts or blocks)
       if (showLower && dataForLevel[lowerLevel]) {
         const s = LAYER_STYLE[lowerLevel];
         const isChoroplethLevel = lowerLevel === "community_areas" && showChoropleth;
@@ -350,6 +479,7 @@
         }));
       }
 
+      // Upper boundary layer (coarser granularity, e.g. community areas)
       if (showUpper && dataForLevel[upperLevel]) {
         const s = LAYER_STYLE[upperLevel];
         const isChoroplethLevel = upperLevel === "community_areas" && showChoropleth;
@@ -368,6 +498,7 @@
         }));
       }
 
+      // City boundary outline (dark blue, always on top of other boundaries)
       if (showCityBoundary) {
         layers.push(new GeoJsonLayer({
           id: "city",
@@ -379,6 +510,7 @@
         }));
       }
 
+      // HRSA health center points (red dots, 213 facilities)
       if (showHealthCenters) {
         layers.push(new ScatterplotLayer({
           id: "hc",
@@ -395,6 +527,8 @@
         }));
       }
 
+      // Google Places facility points (color-coded by category: hospitals,
+      // primary care, urgent care — 626 facilities)
       if (showGooglePlaces) {
         layers.push(new ScatterplotLayer({
           id: "gp",
@@ -419,10 +553,11 @@
     await loadHealthData();
   });
 
+  // UI helper: shows unit count next to each boundary level dropdown option
   function levelHint(id) {
     return { blocks: "~39,500 units", tracts: "801 units", community_areas: "77 units · health data ✓", health_zones: "6 regions" }[id] ?? "";
   }
-  function dataExists(id) { return id !== "blocks"; }
+  function dataExists(id) { return true; }
   function swatchStyle(id) {
     const s = {
       blocks:          "background:rgba(200,210,220,0.4);border:1px solid #d1d5db",

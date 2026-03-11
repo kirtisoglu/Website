@@ -26,6 +26,7 @@
     "gray-matter": "^4.0.3",
     "maplibre-gl": "^5.19.0",
     "marked": "^15.0.1",
+    "pmtiles": "^4.4.0",
     "rough-notation": "^0.5.1",
     "svelte-icons": "^2.1.0"
   },

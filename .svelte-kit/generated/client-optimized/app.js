@@ -11,21 +11,22 @@ export const nodes = [
 	() => import('./nodes/7'),
 	() => import('./nodes/8'),
 	() => import('./nodes/9'),
-	() => import('./nodes/10')
+	() => import('./nodes/10'),
+	() => import('./nodes/11')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
-		"/": [~2],
-		"/about": [~3],
-		"/blog": [4],
-		"/research": [5],
-		"/research/chicago-healthcare-network": [6],
-		"/research/chicago-healthcare-network/dashboard": [7],
-		"/research/falcom": [8],
-		"/research/falcom/dashboard": [9],
-		"/teaching": [10]
+		"/": [~3],
+		"/about": [~5],
+		"/blog": [6],
+		"/research": [7],
+		"/research/chicago-healthcare-network": [8],
+		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [4,[2]],
+		"/research/falcom": [9],
+		"/research/falcom/dashboard": [10],
+		"/teaching": [11]
 	};
 
 export const hooks = {
