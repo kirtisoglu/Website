@@ -60,6 +60,7 @@
   let showUpper         = true;
   let showHealthCenters  = true;
   let showGooglePlaces   = true;
+  let showMUA            = false;
   let showChoropleth    = false;
 
   // ── Sidebar open state ───────────────────────────────────────────────────
@@ -78,6 +79,7 @@
   // Total number of facilities, displayed as count badges in the sidebar.
   let hcTotal      = 0;   // HRSA health centers
   let gpTotal      = 0;   // Google Places facilities
+  let muaTotal     = 0;   // MUA/MUP areas
 
   // ── Health indicator state ────────────────────────────────────────────────
   // Community-level health data is loaded as a GeoJSON with 33 numeric
@@ -227,6 +229,9 @@
     "Urgent Care / Walk-in Clinic":    [ 20, 184, 166, 220],
   };
   const GP_DEFAULT = [107, 114, 128, 200];
+  // MUA layer colors
+  const MUA_FILL   = [239,  68,  68,  40];
+  const MUA_LINE   = [220,  38,  38, 200];
 
   const LAYER_STYLE = {
     blocks:          { fill: [200, 210, 220, 15], line: BLOCK_LINE },
@@ -280,7 +285,7 @@
   // and push them to the overlay. This is the core rendering loop.
   $: if (buildLayers && overlay) {
     showCityBoundary; showLower; showUpper; lowerLevel; upperLevel;
-    showHealthCenters; showGooglePlaces;
+    showHealthCenters; showGooglePlaces; showMUA;
     showChoropleth; selectedIndicator; choroplethMin; choroplethMax; communityGdf;
     overlay.setProps({ layers: buildLayers() });
   }
@@ -386,6 +391,15 @@
             style: { background: "#1D3557", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px" }
           };
         }
+        if (p?.mua_id) {
+          const score = p.imu_score != null ? `<br>IMU Score: <b>${p.imu_score}</b>` : "";
+          const pop = p.civilian_population ? `<br>Population: ${Number(p.civilian_population).toLocaleString()}` : "";
+          const provRate = p.providers_per_1000 != null ? `<br>Providers/1,000: ${p.providers_per_1000}` : "";
+          return {
+            html: `<b>${p.service_area}</b><br><span style="opacity:0.85">${p.designation_type}</span>${score}${pop}${provRate}`,
+            style: { background: "#7f1d1d", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "240px" }
+          };
+        }
         if (p?.["Site Name"]) {
           return {
             html: `<b>${p["Site Name"]}</b><br>${p["Site Address"] || ""}`,
@@ -406,17 +420,19 @@
 
     // Load all GeoJSON data files in parallel. These are static files
     // served from /static/data/chicago/ (except blocks, which use PMTiles).
-    const [cityData, zonesData, communityData, tractData, hcData, gpData] = await Promise.all([
+    const [cityData, zonesData, communityData, tractData, hcData, gpData, muaData] = await Promise.all([
       fetch("/data/chicago/city_boundary.geojson").then(r => r.json()),
       fetch("/data/chicago/health_zones.geojson").then(r => r.json()),
       fetch("/data/chicago/community_areas.geojson").then(r => r.json()),
       fetch("/data/chicago/tracts.geojson").then(r => r.json()),
       fetch("/data/chicago/health_centers.geojson").then(r => r.json()),
       fetch("/data/chicago/google_places.geojson").then(r => r.json()),
+      fetch("/data/chicago/mua.geojson").then(r => r.json()),
     ]);
 
     hcTotal = hcData.features.length;
     gpTotal = gpData.features.length;
+    muaTotal = muaData.features.length;
 
     // Pre-extract point data for ScatterplotLayer (faster than GeoJSON parsing)
     const hcPoints = hcData.features.map(f => ({ position: f.geometry.coordinates, properties: f.properties }));
@@ -495,6 +511,22 @@
           autoHighlight: upperLevel === "community_areas" || upperLevel === "health_zones",
           highlightColor: upperLevel === "health_zones" ? [16, 185, 129, 60] : [74, 144, 217, 80],
           updateTriggers: { lineWidthMinPixels: [lowerLevel, upperLevel] },
+        }));
+      }
+
+      // MUA/MUP areas (red-tinted polygons showing medically underserved areas)
+      if (showMUA) {
+        layers.push(new GeoJsonLayer({
+          id: "mua",
+          data: muaData,
+          stroked: true,
+          filled: true,
+          lineWidthMinPixels: 1.5,
+          getFillColor: MUA_FILL,
+          getLineColor: MUA_LINE,
+          pickable: true,
+          autoHighlight: true,
+          highlightColor: [239, 68, 68, 80],
         }));
       }
 
@@ -686,6 +718,17 @@
               </div>
             {/if}
 
+            <div class="divider-thin"></div>
+
+            <div class="facility-row">
+              <span class="swatch" style="background:rgba(239,68,68,0.16);border:1px solid #dc2626;flex-shrink:0"></span>
+              <label class="toggle-row" style="flex:1;margin:0">
+                <input type="checkbox" bind:checked={showMUA} />
+                <span>Medically Underserved Areas</span>
+              </label>
+              <span class="count-badge">{muaTotal || 43}</span>
+            </div>
+
           </div>
         {/if}
       </div>
@@ -759,6 +802,9 @@
         {/if}
         <div class="legend-row"><span class="dot" style="background:#e63946"></span><span>HRSA Health Centers</span></div>
         <div class="legend-row"><span class="dot" style="background:#4f46e5"></span><span>Google Places</span></div>
+        {#if showMUA}
+          <div class="legend-row"><span class="swatch" style="background:rgba(239,68,68,0.16);border:1px solid #dc2626"></span><span>Medically Underserved Areas</span></div>
+        {/if}
         {#if showChoropleth && hasHealthData}
           <div class="legend-row">
             <span class="swatch choropleth-swatch"></span>
