@@ -401,16 +401,18 @@
           };
         }
         if (p?.["Site Name"]) {
+          const prov = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
           return {
-            html: `<b>${p["Site Name"]}</b><br>${p["Site Address"] || ""}`,
-            style: { background: "#7f1d1d", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px" }
+            html: `<b>${p["Site Name"]}</b><br><span style="opacity:0.85">${p.type || ""}</span><br>${p["Site Address"] || ""}${prov}`,
+            style: { background: "#7f1d1d", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "240px" }
           };
         }
         if (p?.place_id) {
           const stars = p.rating ? ` · ${"★".repeat(Math.round(p.rating))} ${p.rating}` : "";
+          const prov = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
           return {
-            html: `<b>${p.name}</b><br><span style="opacity:0.8">${p.category || ""}</span>${stars}<br><span style="opacity:0.7">${p.vicinity || ""}</span>`,
-            style: { background: "#1e3a5f", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "220px" }
+            html: `<b>${p.name}</b><br><span style="opacity:0.8">${p.category || ""}</span>${stars}<br><span style="opacity:0.7">${p.vicinity || ""}</span>${prov}`,
+            style: { background: "#1e3a5f", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "240px" }
           };
         }
         return null;
