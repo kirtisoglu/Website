@@ -377,6 +377,38 @@
     // Create the deck.gl overlay. MapboxOverlay renders deck.gl layers on
     // top of the MapLibre base map. getTooltip defines hover behavior for
     // interactive layers (community areas, health centers, Google Places).
+    // Format provider_types object into readable HTML lines
+    function fmtProviders(types) {
+      if (!types || typeof types !== "object") return "";
+      const labels = {
+        family_medicine_physician: "Family Medicine",
+        internal_medicine_physician: "Internal Medicine",
+        pediatric_physician: "Pediatrics",
+        ob_gyn_physician: "OB/GYN",
+        nurse_practitioner: "Nurse Practitioner",
+        physician_assistant: "Physician Assistant",
+        registered_nurse: "Registered Nurse",
+        certified_nurse_midwife: "Nurse Midwife",
+        dentist: "Dentist",
+        psychiatrist: "Psychiatrist",
+        psychologist: "Psychologist",
+        counselor: "Counselor",
+        social_worker: "Social Worker",
+        pharmacist: "Pharmacist",
+        physical_therapist: "Physical Therapist",
+        emergency_medicine_physician: "Emergency Medicine",
+        general_practice_physician: "General Practice",
+        other_physician: "Other Physician",
+        other: "Other",
+      };
+      const entries = Object.entries(types)
+        .filter(([, v]) => v > 0)
+        .sort((a, b) => b[1] - a[1]);
+      if (!entries.length) return "";
+      const lines = entries.map(([k, v]) => `${labels[k] || k.replace(/_/g, " ")}: ${v}`);
+      return `<div style="margin-top:4px;padding-top:4px;border-top:1px solid rgba(255,255,255,0.2);font-size:11px;line-height:1.5">${lines.join("<br>")}</div>`;
+    }
+
     overlay = new MapboxOverlay({
       interleaved: false,
       layers: [],
@@ -401,18 +433,20 @@
           };
         }
         if (p?.["Site Name"]) {
-          const prov = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
+          const total = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
+          const breakdown = fmtProviders(p.provider_types);
           return {
-            html: `<b>${p["Site Name"]}</b><br><span style="opacity:0.85">${p.type || ""}</span><br>${p["Site Address"] || ""}${prov}`,
-            style: { background: "#7f1d1d", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "240px" }
+            html: `<b>${p["Site Name"]}</b><br><span style="opacity:0.85">${p.type || ""}</span><br>${p["Site Address"] || ""}${total}${breakdown}`,
+            style: { background: "#7f1d1d", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "260px" }
           };
         }
         if (p?.place_id) {
           const stars = p.rating ? ` · ${"★".repeat(Math.round(p.rating))} ${p.rating}` : "";
-          const prov = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
+          const total = p.providers ? `<br>Providers: <b>${p.providers}</b>` : "";
+          const breakdown = fmtProviders(p.provider_types);
           return {
-            html: `<b>${p.name}</b><br><span style="opacity:0.8">${p.category || ""}</span>${stars}<br><span style="opacity:0.7">${p.vicinity || ""}</span>${prov}`,
-            style: { background: "#1e3a5f", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "240px" }
+            html: `<b>${p.name}</b><br><span style="opacity:0.8">${p.category || ""}</span>${stars}<br><span style="opacity:0.7">${p.vicinity || ""}</span>${total}${breakdown}`,
+            style: { background: "#1e3a5f", color: "#fff", fontSize: "12px", borderRadius: "4px", padding: "6px 10px", maxWidth: "260px" }
           };
         }
         return null;
