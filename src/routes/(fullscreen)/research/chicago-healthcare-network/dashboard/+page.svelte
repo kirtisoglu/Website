@@ -726,7 +726,7 @@
                 <input type="checkbox" bind:checked={showMUA} />
                 <span>Medically Underserved Areas</span>
               </label>
-              <span class="count-badge">{muaTotal || 43}</span>
+              <span class="count-badge">{muaTotal || 35}</span>
             </div>
 
           </div>
