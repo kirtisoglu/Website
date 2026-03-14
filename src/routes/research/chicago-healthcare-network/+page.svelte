@@ -82,13 +82,25 @@
             <td>HRSA Health Centers</td>
             <td><a href="https://data.hrsa.gov" target="_blank" rel="noopener">HRSA / data.gov</a></td>
             <td>Chicago, IL</td>
-            <td>Federally funded clinic locations (213)</td>
+            <td>Federally qualified health centers (170 sites, 43 non-primary-care excluded)</td>
           </tr>
           <tr>
             <td>Healthcare Facilities</td>
             <td>Google Places API</td>
             <td>Chicago, IL</td>
-            <td>Hospitals, primary care, urgent care (626)</td>
+            <td>Hospitals, primary care, urgent care (416)</td>
+          </tr>
+          <tr>
+            <td>NPPES Providers</td>
+            <td><a href="https://npiregistry.cms.hhs.gov" target="_blank" rel="noopener">CMS NPPES</a></td>
+            <td>Chicago, IL</td>
+            <td>Individual provider counts by specialty per facility (61,460 providers)</td>
+          </tr>
+          <tr>
+            <td>Medically Underserved Areas</td>
+            <td><a href="https://data.hrsa.gov/tools/shortage-area/mua-find" target="_blank" rel="noopener">HRSA MUA/P</a></td>
+            <td>Chicago, IL</td>
+            <td>HRSA-designated underserved areas with IMU scores (35 areas)</td>
           </tr>
           <tr>
             <td>Geographic Boundaries</td>
@@ -115,7 +127,7 @@
     </ul>
     <p class="body-text">
       All AI-generated code and content was reviewed and accepted by the author.
-      The underlying data sources (Chicago Health Atlas, HRSA, Google Places, U.S. Census Bureau)
+      The underlying data sources (Chicago Health Atlas, HRSA, CMS NPPES, Google Places, U.S. Census Bureau)
       are independent of AI and are cited with full provenance in <a href="https://github.com/kirtisoglu/Chicago-Healthcare-Network/blob/main/DATA_SOURCES.md" target="_blank" rel="noopener">DATA_SOURCES.md</a>.
     </p>
     <p class="body-text">
