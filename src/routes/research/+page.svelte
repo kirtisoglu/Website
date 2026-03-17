@@ -206,6 +206,54 @@
 
   </section>
 
+  <div class="divider"></div>
+
+  <!-- Talks -->
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
+    <h2 class="section-title">Talks</h2>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">May 2026</span>
+        <span class="talk-venue">Middle East Technical University, Industrial Engineering Seminars, Ankara</span>
+      </div>
+      <h3 class="talk-title">Districting Problems, Sampling Hierarchical Facility Location Solutions and Real-World Applications</h3>
+    </div>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">Apr 2026</span>
+        <span class="talk-venue">Illinois Institute of Technology, Discrete Math Seminars, Chicago</span>
+      </div>
+      <h3 class="talk-title">UAV Routing for Maximum Information Collection under Time Windows</h3>
+    </div>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">Jul 2021</span>
+        <span class="talk-venue">British Combinatorial Conference, Online</span>
+      </div>
+      <h3 class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
+    </div>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">Jul 2021</span>
+        <span class="talk-venue">SIAM Conference on Discrete Mathematics, Online</span>
+      </div>
+      <h3 class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
+    </div>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">2021</span>
+        <span class="talk-venue">European Combinatorial Conference, Online</span>
+      </div>
+      <h3 class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
+    </div>
+
+  </section>
+
 </div>
 
 <Head/>
@@ -507,6 +555,49 @@
   }
 
   :global(.dark) .paper-divider { background: rgba(255,255,255,0.05); }
+
+  /* ── Talks ── */
+  .talk {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .talk-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .talk-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7280;
+    min-width: 4.5rem;
+  }
+
+  :global(.dark) .talk-date { color: rgba(255,255,255,0.4); }
+
+  .talk-venue {
+    font-size: 0.82rem;
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  :global(.dark) .talk-venue { color: rgba(255,255,255,0.38); }
+
+  .talk-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  :global(.dark) .talk-title { color: #f9fafb; }
 
   /* ── Mobile ── */
   @media (max-width: 640px) {
