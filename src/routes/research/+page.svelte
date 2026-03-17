@@ -582,22 +582,22 @@
   :global(.dark) .talk-date { color: rgba(255,255,255,0.4); }
 
   .talk-venue {
-    font-size: 0.82rem;
-    color: #9ca3af;
-    font-style: italic;
-  }
-
-  :global(.dark) .talk-venue { color: rgba(255,255,255,0.38); }
-
-  .talk-title {
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: #111827;
-    margin: 0;
-    line-height: 1.35;
   }
 
-  :global(.dark) .talk-title { color: #f9fafb; }
+  :global(.dark) .talk-venue { color: #f9fafb; }
+
+  .talk-title {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  :global(.dark) .talk-title { color: rgba(255,255,255,0.6); }
 
   /* ── Mobile ── */
   @media (max-width: 640px) {
