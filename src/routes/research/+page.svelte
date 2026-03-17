@@ -125,11 +125,29 @@
     </div>
 
      <div class="paper-divider"></div>
-     
-    <!-- Paper 1: FalCom -->
+
+    <!-- Paper 2: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">2.</span>
+        <span class="paper-status submitting">In Editing</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        UAV Routing for Maximum Information Collection under Time Windows
+      </h3>
+      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 3: FalCom -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">3.</span>
         <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
@@ -137,17 +155,21 @@
         <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
+      </div>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <a class="tool-link" href="/research/falcom/">FalCom Visualizer →</a>
       </div>
     </div>
 
+    <div class="paper-divider"></div>
 
-    <!-- Paper 2: Chicago Healthcare -->
+    <!-- Paper 4: Chicago Healthcare -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-num">3.</span>
+        <span class="paper-num">4.</span>
         <span class="paper-status submitting">In Editing</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
@@ -155,29 +177,18 @@
         <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/Chicago-Healthcare-Network" target="_blank" rel="noopener">GitHub →</a>
+      </div>
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <a class="tool-link" href="/research/chicago-healthcare-network/">Healthcare Accessibility Dashboard →</a>
       </div>
     </div>
 
-    <!-- Paper 3: UAV routing -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">4.</span>
-        <span class="paper-status submitting">In Writing</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows
-      </h3>
-      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
-    </div>
-
     <div class="paper-divider"></div>
 
-
-    <!-- Paper 4: Diffusion model redistricting -->
+    <!-- Paper 5: Diffusion model redistricting -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">5.</span>
@@ -188,6 +199,9 @@
         A Diffusion Model for Political Redistricting
       </h3>
       <p class="paper-venue">Alaittin Kirtisoglu</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
+      </div>
     </div>
 
   </section>
@@ -373,6 +387,7 @@
   .paper-title a {
     color: inherit;
     text-decoration: none;
+    font-weight: inherit;
   }
 
   .paper-title a:hover {
