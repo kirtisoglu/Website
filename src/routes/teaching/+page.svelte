@@ -5,6 +5,7 @@
 
 <svelte:head>
   <title>Teaching — Alaittin Kirtisoglu</title>
+  <meta name="description" content="Teaching experience of Alaittin Kirtisoglu — courses assisted at Illinois Institute of Technology in mathematics, statistics, and data science." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>

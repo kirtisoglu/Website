@@ -24,6 +24,7 @@
 
 <svelte:head>
   <title>Research — Alaittin Kirtisoglu</title>
+  <meta name="description" content="Research papers and projects by Alaittin Kirtisoglu — combinatorial optimization, computational districting, UAV routing, healthcare network design, and graph coloring." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>
@@ -215,7 +216,7 @@
     <div class="talk">
       <div class="talk-meta">
         <span class="talk-date">May 2026</span>
-        <span class="talk-venue">Middle East Technical University, Industrial Engineering Seminars, Ankara</span>
+        <span class="talk-venue">Middle East Technical University, Industrial Engineering Departmental Seminars, Ankara</span>
       </div>
       <h3 class="talk-title">Districting Problems, Sampling Hierarchical Facility Location Solutions and Real-World Applications</h3>
     </div>
@@ -230,7 +231,7 @@
 
     <div class="talk">
       <div class="talk-meta">
-        <span class="talk-date">Jul 2021</span>
+        <span class="talk-date">Aug 2021</span>
         <span class="talk-venue">British Combinatorial Conference, Online</span>
       </div>
       <h3 class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
@@ -246,7 +247,7 @@
 
     <div class="talk">
       <div class="talk-meta">
-        <span class="talk-date">2021</span>
+        <span class="talk-date">Jun 2021</span>
         <span class="talk-venue">European Combinatorial Conference, Online</span>
       </div>
       <h3 class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>

@@ -5,6 +5,7 @@
 
 <svelte:head>
   <title>Chicago Healthcare Network — Alaittin Kirtisoglu</title>
+  <meta name="description" content="Optimization-based decision support for equitable healthcare access in Chicago, with an interactive accessibility dashboard." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>

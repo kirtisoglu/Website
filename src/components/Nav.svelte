@@ -48,14 +48,14 @@
 
     <!-- Desktop links -->
     <div class="links desktop-links">
-      <a aria-label="About" rel="prefetch" aria-current={segment === 'about' ? 'page' : undefined} href="about/">About</a>
-      <a aria-label="Research" rel="prefetch" aria-current={segment === 'research' ? 'page' : undefined} href="research/">Research</a>
-      <a aria-label="Teaching" rel="prefetch" aria-current={segment === 'teaching' ? 'page' : undefined} href="teaching/">Teaching</a>
+      <a aria-label="About" rel="prefetch" aria-current={segment === 'about' ? 'page' : undefined} href="/about/">About</a>
+      <a aria-label="Research" rel="prefetch" aria-current={segment === 'research' ? 'page' : undefined} href="/research/">Research</a>
+      <a aria-label="Teaching" rel="prefetch" aria-current={segment === 'teaching' ? 'page' : undefined} href="/teaching/">Teaching</a>
       <div class="divider" />
       <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
         <FaLinkedin aria-label="linked in" />
       </a>
-      <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=PLACEHOLDER">
+      <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
       </a>
       <a aria-label="ResearchGate" target="_blank" class="icon rg-icon rgate-nav" href="https://www.researchgate.net/profile/Alaittin-Kirtisoglu">
@@ -94,16 +94,16 @@
   <!-- Mobile dropdown -->
   {#if menuOpen}
     <div class="mobile-menu" class:dark={dark}>
-      <a href="." on:click={closeMenu} aria-current={segment === undefined ? 'page' : undefined}>Home</a>
-      <a href="about/" on:click={closeMenu} aria-current={segment === 'about' ? 'page' : undefined}>About</a>
-      <a href="research/" on:click={closeMenu} aria-current={segment === 'research' ? 'page' : undefined}>Research</a>
-      <a href="teaching/" on:click={closeMenu} aria-current={segment === 'teaching' ? 'page' : undefined}>Teaching</a>
+      <a href="/" on:click={closeMenu} aria-current={segment === undefined ? 'page' : undefined}>Home</a>
+      <a href="/about/" on:click={closeMenu} aria-current={segment === 'about' ? 'page' : undefined}>About</a>
+      <a href="/research/" on:click={closeMenu} aria-current={segment === 'research' ? 'page' : undefined}>Research</a>
+      <a href="/teaching/" on:click={closeMenu} aria-current={segment === 'teaching' ? 'page' : undefined}>Teaching</a>
       <div class="mobile-menu-divider"></div>
       <div class="mobile-menu-icons">
         <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
           <FaLinkedin aria-label="linked in" />
         </a>
-        <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=PLACEHOLDER">
+        <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
         </a>
         <a aria-label="ResearchGate" target="_blank" class="icon rg-icon rgate-nav" href="https://www.researchgate.net/profile/Alaittin-Kirtisoglu">
