@@ -1,3 +1,5 @@
+export const prerender = true;
+
 // __BUILD_DATES__ is injected at build time by vite.config.js (git log).
 // Falls back to null safely if git is unavailable (e.g. in dev without commits).
 

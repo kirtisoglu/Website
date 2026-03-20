@@ -5,6 +5,7 @@
 
 <svelte:head>
   <title>FalCom — Alaittin Kirtisoglu</title>
+  <meta name="description" content="FalCom — a sampling method for districting and hierarchical facility location, with an interactive visualizer." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>

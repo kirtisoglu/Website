@@ -12,6 +12,11 @@
   }
 </script>
 
+<svelte:head>
+  <title>About — Alaittin Kirtisoglu</title>
+  <meta name="description" content="About Alaittin Kirtisoglu — PhD candidate in applied mathematics at Illinois Institute of Technology, working on combinatorial optimization and equitable network design." />
+</svelte:head>
+
 <div class="page" in:fade={{ duration: 500, delay: 200 }}>
 
   <!-- Hero / Intro -->

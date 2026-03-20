@@ -24,6 +24,7 @@
 
 <svelte:head>
   <title>Research — Alaittin Kirtisoglu</title>
+  <meta name="description" content="Research papers and projects by Alaittin Kirtisoglu — combinatorial optimization, computational districting, UAV routing, healthcare network design, and graph coloring." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>

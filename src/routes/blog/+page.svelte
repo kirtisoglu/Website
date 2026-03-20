@@ -23,7 +23,8 @@
 </script>
 
 <svelte:head>
-  <title>Research — Alaittin Kirtisoglu</title>
+  <title>Blog — Alaittin Kirtisoglu</title>
+  <meta name="description" content="Blog posts and updates by Alaittin Kirtisoglu on mathematics, optimization, and applied research." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>

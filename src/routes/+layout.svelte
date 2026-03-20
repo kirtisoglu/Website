@@ -218,6 +218,39 @@
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
     integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Structured Data -->
+  {@html `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alaittin Kirtisoglu",
+    "url": "https://akirtisoglu.me",
+    "image": "https://akirtisoglu.me/about/portrait.webp",
+    "jobTitle": "PhD Candidate in Applied Mathematics",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Illinois Institute of Technology",
+      "url": "https://www.iit.edu"
+    },
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "Middle East Technical University"
+    },
+    "knowsAbout": [
+      "Combinatorial Optimization",
+      "Algorithm Design",
+      "Graph Theory",
+      "Computational Districting",
+      "Facility Location",
+      "Healthcare Network Design"
+    ],
+    "sameAs": [
+      "https://github.com/kirtisoglu",
+      "https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en",
+      "https://www.linkedin.com/in/alaittin-kirtisoglu",
+      "https://www.researchgate.net/profile/Alaittin-Kirtisoglu"
+    ]
+  })}</script>`}
 </svelte:head>
 
 <svelte:window bind:scrollY={y} />
@@ -231,7 +264,7 @@
 <div class="layout-body">
   <div class="sidebar-wrapper">
     <aside class="sidebar">
-      <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="sidebar-photo" />
+      <img src="/about/portrait.webp" alt="Alaittin Kirtisoglu" class="sidebar-photo" width="150" height="180" />
       <p class="sidebar-name">Alaittin Kirtisoglu</p>
       <div class="mobile-info">
         {#if segment === 'research'}

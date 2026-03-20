@@ -35,7 +35,6 @@ declare module '$env/static/private' {
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
-	export const CLAUDE_AGENT_SDK_VERSION: string;
 	export const MallocNanoZone: string;
 	export const COLOR: string;
 	export const npm_config_noproxy: string;
@@ -50,9 +49,7 @@ declare module '$env/static/private' {
 	export const npm_execpath: string;
 	export const VIRTUAL_ENV: string;
 	export const ELECTRON_RUN_AS_NODE: string;
-	export const LATEXWORKSHOP_DOCKER_LATEX: string;
 	export const PATH: string;
-	export const MCP_CONNECTION_NONBLOCKING: string;
 	export const npm_package_json: string;
 	export const _: string;
 	export const npm_config_userconfig: string;
@@ -87,12 +84,10 @@ declare module '$env/static/private' {
 	export const VSCODE_CODE_CACHE_PATH: string;
 	export const COREPACK_ENABLE_AUTO_PIN: string;
 	export const npm_config_user_agent: string;
-	export const LATEXWORKSHOP_DOCKER_PATH: string;
 	export const VSCODE_PID: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const CLAUDECODE: string;
-	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
@@ -137,7 +132,6 @@ declare module '$env/dynamic/private' {
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
-		CLAUDE_AGENT_SDK_VERSION: string;
 		MallocNanoZone: string;
 		COLOR: string;
 		npm_config_noproxy: string;
@@ -152,9 +146,7 @@ declare module '$env/dynamic/private' {
 		npm_execpath: string;
 		VIRTUAL_ENV: string;
 		ELECTRON_RUN_AS_NODE: string;
-		LATEXWORKSHOP_DOCKER_LATEX: string;
 		PATH: string;
-		MCP_CONNECTION_NONBLOCKING: string;
 		npm_package_json: string;
 		_: string;
 		npm_config_userconfig: string;
@@ -189,12 +181,10 @@ declare module '$env/dynamic/private' {
 		VSCODE_CODE_CACHE_PATH: string;
 		COREPACK_ENABLE_AUTO_PIN: string;
 		npm_config_user_agent: string;
-		LATEXWORKSHOP_DOCKER_PATH: string;
 		VSCODE_PID: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		CLAUDECODE: string;
-		VSCODE_L10N_BUNDLE_LOCATION: string;
 		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
