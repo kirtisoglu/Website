@@ -218,7 +218,15 @@
         <span class="talk-date">May 2026</span>
         <span class="talk-venue">Middle East Technical University, Industrial Engineering Departmental Seminars, Ankara</span>
       </div>
-      <h3 class="talk-title">Districting Problems, Sampling Hierarchical Facility Location Solutions and Real-World Applications</h3>
+      <h3 class="talk-title">Sampling Solutions for Districting Problems and Hierarchical Facility Location Solutions with Real-World Applications</h3>
+    </div>
+
+    <div class="talk">
+      <div class="talk-meta">
+        <span class="talk-date">May 2026</span>
+        <span class="talk-venue"><a href="https://isco2026.com.tr/" target="_blank" rel="noopener">ISCO 2026</a>, Kusadasi, Turkey</span>
+      </div>
+      <h3 class="talk-title">Sampling Solutions for Districting Problems and Hierarchical Facility Location Solutions with Real-World Applications</h3>
     </div>
 
     <div class="talk">

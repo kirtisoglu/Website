@@ -1,5 +1,13 @@
 [
   {
+    "date": "May 2026",
+    "text": "Invited talk at <a href=\"https://isco2026.com.tr/\" target=\"_blank\" rel=\"noopener\">ISCO 2026</a> in Kusadasi, Turkey."
+  },
+  {
+    "date": "May 2026",
+    "text": "Invited talk at Middle East Technical University, Industrial Engineering Departmental Seminars."
+  },
+  {
     "date": "March 2026",
     "text": "Launched the <a href=\"/research/chicago-healthcare-network/dashboard\">Chicago Healthcare Accessibility Dashboard</a> (v1) — an interactive map of 839 healthcare facilities, 33 community health indicators, and multi-level geographic boundaries across Chicago. Optimization module coming next."
   },
