@@ -118,7 +118,7 @@
           </span>
         </div>
         <p class="entry-desc">
-          Worked with the <strong>Exa.TrkX</strong> project applying hierarchical graph neural networks
+          Worked with the <a href="https://exatrkx.github.io/" target="_blank" rel="noopener"><strong>Exa.TrkX</strong></a> project applying hierarchical graph neural networks
           for particle trajectory reconstruction in 3D detector data.
         </p>
       </div>
