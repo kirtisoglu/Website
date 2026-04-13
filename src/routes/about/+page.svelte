@@ -168,10 +168,10 @@
         <em>Graphs and Combinatorics</em>, 40(1), 11.
         <span class="pub-tag peer">Peer-Reviewed</span>
       </li>
-      <li>Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag progress">In Progress</span></li>
-      <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag progress">Manuscript Available upon Request</span></li>
+      <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">Manuscript Available upon Request</span></li>
       <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">In Progress</span></li>
-      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">Manuscript Available upon Request</span></li>
     </ol>
   </section>
 

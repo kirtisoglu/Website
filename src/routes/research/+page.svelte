@@ -131,7 +131,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">2.</span>
-        <span class="paper-status submitting">In Editing</span>
+        <span class="paper-status submitting">Manuscript Available upon Request</span>
         <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
@@ -149,7 +149,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">3.</span>
-        <span class="paper-status submitting">In Editing</span>
+        <span class="paper-status submitting">Manuscript Available upon Request</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
@@ -171,7 +171,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">4.</span>
-        <span class="paper-status submitting">In Editing</span>
+        <span class="paper-status submitting">Manuscript Available upon Request</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
       <h3 class="paper-title">
