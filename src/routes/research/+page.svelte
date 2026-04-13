@@ -193,7 +193,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">5.</span>
-        <span class="paper-status testing">In Testing</span>
+        <span class="paper-status testing">In Progress</span>
         <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
