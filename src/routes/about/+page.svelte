@@ -163,10 +163,10 @@
     <div class="entries">
       <div class="entry">
         <div class="entry-meta">
-          <span class="degree">Sub-reviewer</span>
+          <span class="degree">European Symposium on Algorithms (ESA)</span>
           <span class="badge">2026</span>
         </div>
-        <span class="institution">European Symposium on Algorithms (ESA)</span>
+        <span class="institution">Sub-reviewer</span>
       </div>
     </div>
   </section>
