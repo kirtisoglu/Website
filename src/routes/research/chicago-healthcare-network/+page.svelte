@@ -22,7 +22,7 @@
     <p class="subtitle">Optimization-Based Decision Support for Equitable Access</p>
     <div class="meta-row">
       <span class="status-badge preparing">In Preparation</span>
-      <span class="coauthors">with Hemanshu Kaul &amp; Kim Erwin</span>
+      <span class="coauthors">with Hemanshu Kaul</span>
     </div>
   </section>
 
