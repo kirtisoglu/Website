@@ -425,6 +425,10 @@
     <span class="collab-dot"></span>
     Open to collaboration &amp; consulting
   </div>
+  <div class="collab-badge">
+    <span class="collab-dot"></span>
+    Open to post-doctoral positions
+  </div>
 </section>
 
 <section class="tools-teaser" in:fade={{ duration: 400, delay: 150 }}>
