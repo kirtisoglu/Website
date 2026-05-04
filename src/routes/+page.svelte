@@ -243,91 +243,67 @@
     50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
   }
 
-  /* ── Tools ── */
-  .tools-section {
+  /* ── Tools teaser ── */
+  .tools-teaser {
     padding: 0.5rem 0 1.5rem;
     position: relative;
     z-index: 1;
   }
 
-  .tools-intro {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: #4b5563;
-    margin: 0 0 1rem;
-  }
-
-  .tools-intro a { color: #4f46e5; text-decoration: none; border-bottom: 1px solid #c7d2fe; }
-  .tools-intro a:hover { border-color: #4f46e5; }
-
-  :global(.dark) .tools-intro { color: rgba(255,255,255,0.55); }
-  :global(.dark) .tools-intro a { color: #a5b4fc; border-color: rgba(165,180,252,0.3); }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  @media (max-width: 640px) {
-    .tools-grid { grid-template-columns: 1fr; }
-  }
-
-  .tool-card {
+  .tools-teaser-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
-    padding: 1.1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    padding: 0.85rem 1.1rem;
     text-decoration: none;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
 
-  .tool-card:hover {
+  .tools-teaser-link:hover {
     border-color: #c7d2fe;
     box-shadow: 0 2px 8px rgba(79,70,229,0.08);
   }
 
-  :global(.dark) .tool-card {
-    border-color: rgba(255,255,255,0.08);
-  }
+  :global(.dark) .tools-teaser-link { border-color: rgba(255,255,255,0.08); }
+  :global(.dark) .tools-teaser-link:hover { border-color: rgba(165,180,252,0.3); }
 
-  .tool-name {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #111827;
-    margin: 0;
-  }
-
-  :global(.dark) .tool-name { color: #f9fafb; }
-
-  .tool-desc {
-    font-size: 0.82rem;
-    line-height: 1.55;
-    color: #6b7280;
-    margin: 0;
-  }
-
-  :global(.dark) .tool-desc { color: rgba(255,255,255,0.45); }
-
-  .tool-badge {
+  .tools-teaser-label {
     font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #9ca3af;
-    margin-top: 0.4rem;
+    color: #4f46e5;
+    flex-shrink: 0;
   }
 
-  :global(.dark) .tool-badge { color: rgba(255,255,255,0.3); }
+  :global(.dark) .tools-teaser-label { color: #818cf8; }
 
-  .tool-badge--live {
-    color: #059669;
+  .tools-teaser-text {
+    font-size: 0.88rem;
+    color: #4b5563;
+    flex: 1;
+    line-height: 1.5;
   }
 
-  :global(.dark) .tool-badge--live {
-    color: #34d399;
+  :global(.dark) .tools-teaser-text { color: rgba(255,255,255,0.65); }
+
+  .tools-teaser-arrow {
+    font-size: 1rem;
+    color: #4f46e5;
+    flex-shrink: 0;
+  }
+
+  :global(.dark) .tools-teaser-arrow { color: #818cf8; }
+
+  @media (max-width: 640px) {
+    .tools-teaser-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .tools-teaser-arrow { align-self: flex-end; margin-top: -1.5rem; }
   }
 
   /* ── News ── */
@@ -451,25 +427,14 @@
   </div>
 </section>
 
-<section class="tools-section" in:fade={{ duration: 400, delay: 150 }}>
-  <h2 class="news-title">Interactive Tools</h2>
-  <p class="tools-intro">
-    I have been developing the following tools as part of the two research projects described in the
-    <a href="/research/">Research</a> section. A first version of the
-    Chicago Healthcare Accessibility Dashboard is now live. The FalCom Visualizer is coming very soon.
-  </p>
-  <div class="tools-grid">
-    <a class="tool-card" href="/research/falcom/">
-      <p class="tool-name">FalCom Visualizer</p>
-      <p class="tool-desc">Animated Markov chain sampling for facility location &amp; districting.</p>
-      <span class="tool-badge">Coming soon</span>
-    </a>
-    <a class="tool-card" href="/research/chicago-healthcare-network/">
-      <p class="tool-name">Chicago Healthcare Access</p>
-      <p class="tool-desc">Interactive map of healthcare facilities and health indicators across Chicago's 77 community areas. Optimization module in progress.</p>
-      <span class="tool-badge tool-badge--live">v1 · Live</span>
-    </a>
-  </div>
+<section class="tools-teaser" in:fade={{ duration: 400, delay: 150 }}>
+  <a href="/tools/" class="tools-teaser-link">
+    <span class="tools-teaser-label">Interactive Tools</span>
+    <span class="tools-teaser-text">
+      Explore the FalCom Visualizer and the Chicago Healthcare Accessibility Dashboard
+    </span>
+    <span class="tools-teaser-arrow">→</span>
+  </a>
 </section>
 
 {#if data.news && data.news.length > 0}

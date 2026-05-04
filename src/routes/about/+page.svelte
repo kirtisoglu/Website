@@ -157,6 +157,22 @@
 
   <div class="divider"></div>
 
+  <!-- Professional Service -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 625 }}>
+    <h2 class="section-title">Professional Service</h2>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="degree">Sub-reviewer</span>
+          <span class="badge">2026</span>
+        </div>
+        <span class="institution">European Symposium on Algorithms (ESA)</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Publications -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>

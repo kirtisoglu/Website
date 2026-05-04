@@ -88,13 +88,20 @@
     </svg>
   </section>
 
+  <!-- Section anchors -->
+  <nav class="section-nav" in:fade={{ duration: 400, delay: 250 }} aria-label="Page sections">
+    <a href="#papers">Papers</a>
+    <span class="section-nav-sep">·</span>
+    <a href="#talks">Talks</a>
+  </nav>
+
   <div class="divider"></div>
 
   <!-- Papers -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
+  <section id="papers" class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
     <h2 class="section-title">Papers</h2>
 
-    <!-- Paper 6: Bicolored paths (published) -->
+    <!-- Paper 1: Bicolored paths (published) -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">1.</span>
@@ -127,29 +134,11 @@
 
      <div class="paper-divider"></div>
 
-    <!-- Paper 2: UAV routing -->
+    <!-- Paper 2: FalCom -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">2.</span>
-        <span class="paper-status submitting">Preparing for Submission</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows
-      </h3>
-      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
-      <div class="paper-links">
-        <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 3: FalCom -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">3.</span>
-        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-status submitted">Submitted</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
@@ -167,10 +156,46 @@
 
     <div class="paper-divider"></div>
 
-    <!-- Paper 4: Chicago Healthcare -->
+    <!-- Paper 3: Diffusion model redistricting -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">3.</span>
+        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        A Diffusion Model for Political Redistricting
+      </h3>
+      <p class="paper-venue">Alaittin Kirtisoglu</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 4: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">4.</span>
+        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        UAV Routing for Maximum Information Collection under Time Windows
+      </h3>
+      <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 5: Chicago Healthcare -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">5.</span>
         <span class="paper-status testing">In Progress</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
@@ -187,30 +212,12 @@
       </div>
     </div>
 
-    <div class="paper-divider"></div>
-
-    <!-- Paper 5: Diffusion model redistricting -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">5.</span>
-        <span class="paper-status testing">In Progress</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        A Diffusion Model for Political Redistricting
-      </h3>
-      <p class="paper-venue">Alaittin Kirtisoglu</p>
-      <div class="paper-links">
-        <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-    </div>
-
   </section>
 
   <div class="divider"></div>
 
   <!-- Talks -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
+  <section id="talks" class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
     <h2 class="section-title">Talks</h2>
 
     <div class="talk">
@@ -274,6 +281,41 @@
     flex-direction: column;
     gap: 0;
   }
+
+  :global(html) { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+  /* ── Section nav (anchor links) ── */
+  .section-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1rem 0 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .section-nav a {
+    color: #6b7280;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .section-nav a:hover {
+    color: #4f46e5;
+    border-bottom-color: #c7d2fe;
+  }
+
+  .section-nav-sep {
+    color: #d1d5db;
+  }
+
+  :global(.dark) .section-nav a { color: rgba(255,255,255,0.5); }
+  :global(.dark) .section-nav a:hover { color: #a5b4fc; border-bottom-color: rgba(165,180,252,0.4); }
+  :global(.dark) .section-nav-sep { color: rgba(255,255,255,0.2); }
 
   /* ── Intro ── */
   .intro {
@@ -405,11 +447,13 @@
   }
 
   .paper-status.published  { background: #dcfce7; color: #15803d; }
+  .paper-status.submitted  { background: #dbeafe; color: #1e40af; }
   .paper-status.submitting { background: #e0e7ff; color: #4338ca; }
   .paper-status.testing    { background: #fef9c3; color: #a16207; }
   .paper-status.design     { background: #fce7f3; color: #9d174d; }
 
   :global(.dark) .paper-status.published  { background: rgba(21,128,61,0.15);  color: #86efac; }
+  :global(.dark) .paper-status.submitted  { background: rgba(30,64,175,0.18);  color: #93c5fd; }
   :global(.dark) .paper-status.submitting { background: rgba(67,56,202,0.15);  color: #a5b4fc; }
   :global(.dark) .paper-status.testing    { background: rgba(161,98,7,0.15);   color: #fde047; }
   :global(.dark) .paper-status.design     { background: rgba(157,23,77,0.15);  color: #f9a8d4; }

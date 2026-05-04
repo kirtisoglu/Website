@@ -50,6 +50,7 @@
     <div class="links desktop-links">
       <a aria-label="About" rel="prefetch" aria-current={segment === 'about' ? 'page' : undefined} href="/about/">About</a>
       <a aria-label="Research" rel="prefetch" aria-current={segment === 'research' ? 'page' : undefined} href="/research/">Research</a>
+      <a aria-label="Tools" rel="prefetch" aria-current={segment === 'tools' ? 'page' : undefined} href="/tools/">Tools</a>
       <a aria-label="Teaching" rel="prefetch" aria-current={segment === 'teaching' ? 'page' : undefined} href="/teaching/">Teaching</a>
       <div class="divider" />
       <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
@@ -97,6 +98,7 @@
       <a href="/" on:click={closeMenu} aria-current={segment === undefined ? 'page' : undefined}>Home</a>
       <a href="/about/" on:click={closeMenu} aria-current={segment === 'about' ? 'page' : undefined}>About</a>
       <a href="/research/" on:click={closeMenu} aria-current={segment === 'research' ? 'page' : undefined}>Research</a>
+      <a href="/tools/" on:click={closeMenu} aria-current={segment === 'tools' ? 'page' : undefined}>Tools</a>
       <a href="/teaching/" on:click={closeMenu} aria-current={segment === 'teaching' ? 'page' : undefined}>Teaching</a>
       <div class="mobile-menu-divider"></div>
       <div class="mobile-menu-icons">
