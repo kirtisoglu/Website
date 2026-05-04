@@ -183,14 +183,14 @@
         Coloring of graphs avoiding bicolored paths of a fixed length.
         <em>Graphs and Combinatorics</em>, 40(1), 11.
         <span class="pub-tag peer">Peer-Reviewed</span>
+      </li>
       <li>
-        Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag progress">Preparing for Submission</span>
+        Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag submitted">Submitted</span>
         <div class="pub-note">Extended abstract accepted for talk at <a href="https://isco2026.com.tr" target="_blank" rel="noopener">ISCO 2026</a>.</div>
       </li>
-      <li> E
-      <li>Kaul, H., &amp; Kirtisoglu, A., &amp; Erwin, K. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
-      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">In Progress</span></li>
+      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">Preparing for Submission</span></li>
       <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">Preparing for Submission</span></li>
+      <li>Kaul, H., &amp; Kirtisoglu, A. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
     </ol>
   </section>
 
@@ -473,8 +473,9 @@
     margin-left: 0.35rem;
   }
 
-  .pub-tag.peer     { background: #dcfce7; color: #15803d; }
-  .pub-tag.progress { background: #e0e7ff; color: #4338ca; }
+  .pub-tag.peer      { background: #dcfce7; color: #15803d; }
+  .pub-tag.submitted { background: #dbeafe; color: #1e40af; }
+  .pub-tag.progress  { background: #e0e7ff; color: #4338ca; }
 
   .pub-note {
     font-size: 0.85rem;
@@ -487,8 +488,9 @@
     color: rgba(255,255,255,0.6);
   }
 
-  :global(.dark) .pub-tag.peer     { background: rgba(21,128,61,0.15); color: #86efac; }
-  :global(.dark) .pub-tag.progress { background: rgba(67,56,202,0.15); color: #a5b4fc; }
+  :global(.dark) .pub-tag.peer      { background: rgba(21,128,61,0.15); color: #86efac; }
+  :global(.dark) .pub-tag.submitted { background: rgba(30,64,175,0.18); color: #93c5fd; }
+  :global(.dark) .pub-tag.progress  { background: rgba(67,56,202,0.15); color: #a5b4fc; }
 
   /* ── Research Interests ── */
   .interest-list {
