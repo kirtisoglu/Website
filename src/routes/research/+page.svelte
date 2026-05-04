@@ -202,7 +202,7 @@
       <h3 class="paper-title">
         <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
       </h3>
-      <p class="paper-venue">with Hemanshu Kaul &amp; Kim Erwin</p>
+      <p class="paper-venue">with Hemanshu Kaul</p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/Chicago-Healthcare-Network" target="_blank" rel="noopener">GitHub →</a>
       </div>
