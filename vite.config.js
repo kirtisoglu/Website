@@ -33,6 +33,20 @@ export default defineConfig({
     // --legacy-peer-deps`.)
     exclude: ['@deck.gl/core', '@deck.gl/layers', '@deck.gl/mapbox'],
   },
+  build: {
+    rollupOptions: {
+      // Same reason as optimizeDeps.exclude above — keep these
+      // un-bundled so the Vercel build doesn't fail on missing
+      // @luma.gl peers.
+      external: [
+        '@luma.gl/engine',
+        '@luma.gl/shadertools',
+        '@luma.gl/webgl',
+        '@luma.gl/core',
+        '@luma.gl/constants',
+      ],
+    },
+  },
   define: {
     __BUILD_DATES__: JSON.stringify(buildDates),
   }
