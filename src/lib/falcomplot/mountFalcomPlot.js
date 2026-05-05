@@ -364,6 +364,15 @@ export async function mountFalcomPlot(opts) {
         state.animationSpeed = parseFloat(e.target.value);
         if (speedLabel) speedLabel.textContent = `${state.animationSpeed}x`;
     });
+    // Sync state.animationSpeed with the slider's initial value so the
+    // first Play uses the slider's default (e.g. 1.5x) instead of 1x.
+    if (speedSlider) {
+        const initial = parseFloat(speedSlider.value);
+        if (Number.isFinite(initial) && initial > 0) {
+            state.animationSpeed = initial;
+            if (speedLabel) speedLabel.textContent = `${initial}x`;
+        }
+    }
     on(goBtn, 'click', async () => {
         const targetIter = parseInt(iterInput?.value ?? '0', 10);
         if (isNaN(targetIter) || targetIter < 0) return;

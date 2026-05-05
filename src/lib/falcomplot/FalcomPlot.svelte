@@ -8,13 +8,21 @@
   export let showEnsembleSelect = true;
   // showStatusLog — render the rolling status log inside the sidebar. Default false (less visual noise).
   export let showStatusLog = false;
+  // externalControlsEl — when provided, FalcomPlot does NOT render its
+  // own bottom-right control panel. Instead it wires the buttons inside
+  // this externally-supplied element (which must contain elements with
+  // the standard `fp-*` ids — typically <FalcomPlotControls /> rendered
+  // by the host). Lets the host position the controls anywhere
+  // (e.g., inside a sidebar).
+  export let externalControlsEl = null;
 
   let canvas;
-  let controlsEl;
+  let internalControlsEl;
   let sidebarEl;
   let statusEl;
   let treeMetaEl;
   let tooltipEl;
+  $: controlsEl = externalControlsEl || internalControlsEl;
 
   let cleanup = () => {};
   let mounted = false;
@@ -47,9 +55,13 @@
   onMount(remount);
   onDestroy(() => cleanup());
 
-  // Re-mount whenever dataPath changes
+  // Re-mount whenever dataPath OR the externally-provided controls
+  // element changes. tick() makes sure DOM is ready; remount tears down
+  // + re-inits.
   $: if (mounted && dataPath) {
-    // tick() makes sure DOM is ready; remount tears down + re-inits
+    remount();
+  }
+  $: if (mounted && externalControlsEl) {
     remount();
   }
 </script>
@@ -57,46 +69,48 @@
 <div class="fp-root">
   <canvas bind:this={canvas} class="fp-canvas"></canvas>
 
-  <!-- Control panel: bottom-right -->
-  <div class="fp-controls" bind:this={controlsEl}>
-    <div class="fp-row fp-buttons">
-      <button id="fp-prevBtn" title="Previous frame">◀</button>
-      <button id="fp-playBtn" title="Play">▶</button>
-      <button id="fp-pauseBtn" title="Pause">⏸</button>
-      <button id="fp-stopBtn" title="Stop / reset">⏹</button>
-      <button id="fp-finalBtn" title="Jump to last step">⏭</button>
-      <button id="fp-nextBtn" title="Next frame">▶|</button>
-    </div>
-    <div class="fp-row">
-      <button id="fp-toggleDetailBtn" class="fp-wide-btn">Overview</button>
-    </div>
-    <div class="fp-row fp-row-inline">
-      <label for="fp-speedSlider">Speed</label>
-      <input type="range" id="fp-speedSlider" min="0.5" max="3" step="0.5" value="1" />
-      <span id="fp-speedLabel">1x</span>
-    </div>
-    <div class="fp-row fp-row-inline">
-      <label for="fp-iterationInput">Step</label>
-      <input type="number" id="fp-iterationInput" min="0" value="0" />
-      <button id="fp-goBtn">Go</button>
-    </div>
-    {#if showEnsembleSelect}
-      <div class="fp-row fp-row-inline">
-        <label for="fp-ensembleSelect">Overlay</label>
-        <select id="fp-ensembleSelect">
-          <option value="none">None</option>
-          <option value="boundary">Boundary frequency</option>
-          <option value="facility">Facility frequency</option>
-          <option value="capacity">Capacity utilisation</option>
-        </select>
+  {#if !externalControlsEl}
+    <!-- Control panel: bottom-right (only when host hasn't supplied its own) -->
+    <div class="fp-controls" bind:this={internalControlsEl}>
+      <div class="fp-row fp-buttons">
+        <button id="fp-prevBtn" title="Previous frame">◀</button>
+        <button id="fp-playBtn" title="Play">▶</button>
+        <button id="fp-pauseBtn" title="Pause">⏸</button>
+        <button id="fp-stopBtn" title="Stop / reset">⏹</button>
+        <button id="fp-finalBtn" title="Jump to last step">⏭</button>
+        <button id="fp-nextBtn" title="Next frame">▶|</button>
       </div>
-    {/if}
-    <div class="fp-mode">
-      <div class="fp-mode-label">Mode</div>
-      <div class="fp-mode-value"><span id="fp-currentViewMode">DETAILED</span></div>
-      <div class="fp-mode-aux"><span id="fp-currentColoringMode"></span></div>
+      <div class="fp-row">
+        <button id="fp-toggleDetailBtn" class="fp-wide-btn">Overview</button>
+      </div>
+      <div class="fp-row fp-row-inline">
+        <label for="fp-speedSlider">Speed</label>
+        <input type="range" id="fp-speedSlider" min="0.5" max="3" step="0.5" value="1" />
+        <span id="fp-speedLabel">1x</span>
+      </div>
+      <div class="fp-row fp-row-inline">
+        <label for="fp-iterationInput">Step</label>
+        <input type="number" id="fp-iterationInput" min="0" value="0" />
+        <button id="fp-goBtn">Go</button>
+      </div>
+      {#if showEnsembleSelect}
+        <div class="fp-row fp-row-inline">
+          <label for="fp-ensembleSelect">Overlay</label>
+          <select id="fp-ensembleSelect">
+            <option value="none">None</option>
+            <option value="boundary">Boundary frequency</option>
+            <option value="facility">Facility frequency</option>
+            <option value="capacity">Capacity utilisation</option>
+          </select>
+        </div>
+      {/if}
+      <div class="fp-mode">
+        <div class="fp-mode-label">Mode</div>
+        <div class="fp-mode-value"><span id="fp-currentViewMode">DETAILED</span></div>
+        <div class="fp-mode-aux"><span id="fp-currentColoringMode"></span></div>
+      </div>
     </div>
-  </div>
+  {/if}
 
   <!-- Sidebar: top-right -->
   <aside class="fp-sidebar" bind:this={sidebarEl}>

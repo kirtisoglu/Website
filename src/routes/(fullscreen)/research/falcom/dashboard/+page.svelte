@@ -9,10 +9,15 @@
    */
   import { onMount } from 'svelte';
   import FalcomPlot from '$lib/falcomplot/FalcomPlot.svelte';
+  import FalcomPlotControls from '$lib/falcomplot/FalcomPlotControls.svelte';
 
   let datasets = [];
   let selectedId = null;
   let loadErr = null;
+  // Host element for the playback controls — bound to the sidebar
+  // wrapper so FalcomPlot wires its buttons there instead of floating
+  // them over the canvas.
+  let controlsEl;
 
   $: dataPath = selectedId ? `/falcomplot/${selectedId}` : null;
   $: selected = datasets.find((d) => d.id === selectedId) || null;
@@ -66,7 +71,12 @@
   <main class="stage">
     {#if dataPath}
       {#key dataPath}
-        <FalcomPlot {dataPath} showEnsembleSelect={true} showStatusLog={false} />
+        <FalcomPlot
+          {dataPath}
+          showEnsembleSelect={false}
+          showStatusLog={false}
+          externalControlsEl={controlsEl}
+        />
       {/key}
     {:else if loadErr}
       <div class="empty err">
@@ -78,19 +88,29 @@
     {/if}
   </main>
 
-  {#if selected}
-    <aside class="meta">
-      <div class="meta-row">
-        <span class="k">Steps</span>
-        <span class="v">{selected.total_steps}</span>
+  <aside class="meta">
+    <section class="meta-section">
+      <h3 class="meta-title">Playback</h3>
+      <div class="controls-host" bind:this={controlsEl}>
+        <FalcomPlotControls showEnsembleSelect={true} />
       </div>
-      <div class="meta-row">
-        <span class="k">Nodes</span>
-        <span class="v">{selected.graph_nodes}</span>
-      </div>
-      <p class="desc">{selected.description}</p>
-    </aside>
-  {/if}
+    </section>
+
+    {#if selected}
+      <section class="meta-section">
+        <h3 class="meta-title">Dataset</h3>
+        <div class="meta-row">
+          <span class="k">Steps</span>
+          <span class="v">{selected.total_steps}</span>
+        </div>
+        <div class="meta-row">
+          <span class="k">Nodes</span>
+          <span class="v">{selected.graph_nodes}</span>
+        </div>
+        <p class="desc">{selected.description}</p>
+      </section>
+    {/if}
+  </aside>
 </div>
 
 <style>
@@ -99,7 +119,7 @@
     inset: 0;
     display: grid;
     grid-template-rows: 44px 1fr;
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 1fr 300px;
     background: #07090e;
     color: #e7eaf0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
@@ -178,7 +198,22 @@
     overflow-y: auto;
     font-size: 12px;
     color: #cbd2dc;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
   }
+
+  .meta-section { display: flex; flex-direction: column; gap: 6px; }
+  .meta-title {
+    margin: 0 0 6px 0;
+    font-size: 10px;
+    font-weight: 700;
+    color: #90caf9;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .controls-host { width: 100%; }
 
   .meta-row {
     display: flex;
