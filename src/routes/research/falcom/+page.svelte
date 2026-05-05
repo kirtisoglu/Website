@@ -77,7 +77,7 @@
       algorithm traverses the solution space, the evolution of district boundaries, and
       convergence behavior in real time.
     </p>
-    <span class="dashboard-btn coming">Visualizer — Coming Soon</span>
+    <a class="dashboard-btn" href="/research/falcom/dashboard/">Open Visualizer</a>
   </section>
 
 </div>

@@ -1,0 +1,20 @@
+{
+  "datasets": [
+    {
+      "id": "grid_10x10",
+      "label": "10 x 10 demo grid",
+      "description": "100-node synthetic grid. Quick demo at low scale; useful for verifying the visual pipeline end-to-end.",
+      "path": "/falcomplot/grid_10x10",
+      "total_steps": 80,
+      "graph_nodes": 100
+    },
+    {
+      "id": "grid_20x20",
+      "label": "20 x 20 grid",
+      "description": "400-node synthetic grid. Demonstrates the algorithm on a moderately sized planar graph; longer chain shows ensemble convergence of boundary and facility frequencies.",
+      "path": "/falcomplot/grid_20x20",
+      "total_steps": 120,
+      "graph_nodes": 400
+    }
+  ]
+}

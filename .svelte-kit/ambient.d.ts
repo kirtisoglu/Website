@@ -41,6 +41,7 @@ declare module '$env/static/private' {
 	export const npm_config_local_prefix: string;
 	export const CPLEX_STUDIO_DIR2211: string;
 	export const GIT_EDITOR: string;
+	export const AI_AGENT: string;
 	export const USER: string;
 	export const COMMAND_MODE: string;
 	export const npm_config_globalconfig: string;
@@ -50,6 +51,7 @@ declare module '$env/static/private' {
 	export const VIRTUAL_ENV: string;
 	export const ELECTRON_RUN_AS_NODE: string;
 	export const PATH: string;
+	export const MCP_CONNECTION_NONBLOCKING: string;
 	export const npm_package_json: string;
 	export const _: string;
 	export const npm_config_userconfig: string;
@@ -73,8 +75,8 @@ declare module '$env/static/private' {
 	export const CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 	export const SHLVL: string;
 	export const HOME: string;
+	export const CLAUDE_CODE_EXECPATH: string;
 	export const VSCODE_NLS_CONFIG: string;
-	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 	export const HOMEBREW_PREFIX: string;
 	export const npm_config_cache: string;
 	export const PYTHONPATH: string;
@@ -138,6 +140,7 @@ declare module '$env/dynamic/private' {
 		npm_config_local_prefix: string;
 		CPLEX_STUDIO_DIR2211: string;
 		GIT_EDITOR: string;
+		AI_AGENT: string;
 		USER: string;
 		COMMAND_MODE: string;
 		npm_config_globalconfig: string;
@@ -147,6 +150,7 @@ declare module '$env/dynamic/private' {
 		VIRTUAL_ENV: string;
 		ELECTRON_RUN_AS_NODE: string;
 		PATH: string;
+		MCP_CONNECTION_NONBLOCKING: string;
 		npm_package_json: string;
 		_: string;
 		npm_config_userconfig: string;
@@ -170,8 +174,8 @@ declare module '$env/dynamic/private' {
 		CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 		SHLVL: string;
 		HOME: string;
+		CLAUDE_CODE_EXECPATH: string;
 		VSCODE_NLS_CONFIG: string;
-		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 		HOMEBREW_PREFIX: string;
 		npm_config_cache: string;
 		PYTHONPATH: string;
