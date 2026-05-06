@@ -80,6 +80,21 @@
     <a class="dashboard-btn" href="/research/falcom/dashboard/">Open Visualizer</a>
   </section>
 
+  <div class="divider"></div>
+
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 380 }}>
+    <h2 class="section-title">Case Study — London Ambulance Service</h2>
+    <p class="body-text">
+      An interactive map of the LAS three-level operational hierarchy on which we run
+      FalCom: 5 sectors (per-sector colour palettes), 19 groups (light-to-dark tones
+      within each sector), 63 ambulance-station candidates, and 7 super-facility
+      candidates (sector HQs and emergency operations centres). The base graph is
+      Greater London at the LSOA scale (5,042 polygons). Both sector and group
+      boundaries are derived by Voronoi-by-station and repaired to contiguity.
+    </p>
+    <a class="dashboard-btn" href="/falcomplot/las_hierarchy.html">View LAS Map</a>
+  </section>
+
 </div>
 
 <Head/>
