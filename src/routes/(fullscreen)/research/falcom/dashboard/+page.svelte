@@ -187,6 +187,10 @@
     background: #000;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    /* Prevent the canvas column from being pushed by long sidebar
+       content — grid items default to min-width:auto. */
+    min-width: 0;
+    min-height: 0;
   }
 
   .meta {
@@ -195,12 +199,16 @@
     background: #0c1018;
     border-left: 1px solid rgba(255,255,255,0.08);
     padding: 14px 16px;
-    overflow-y: auto;
+    overflow: hidden auto;        /* clip overlong words horizontally */
     font-size: 12px;
     color: #cbd2dc;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    /* Lock the column to its 300 px slot regardless of content. */
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .meta-section { display: flex; flex-direction: column; gap: 6px; }

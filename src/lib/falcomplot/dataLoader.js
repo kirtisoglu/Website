@@ -61,12 +61,17 @@ export class DataLoader {
     constructor(logger, dataPath = "data") {
         this.logger = logger;
         // dataPath is the URL prefix where blocks.json, manifest.json,
-        // step_NNNN.json, ensemble.json, etc. live. No trailing slash.
+        // step_NNNN.json, ensemble.json, adjacency.json, etc. live.
+        // No trailing slash.
         this.dataPath = dataPath.replace(/\/$/, "");
         // Cache of already-loaded steps + phases so scrubbing is fast.
         this._stepCache = new Map();
         this._phaseCache = new Map();
         this._ensembleCache = null;
+        // Real graph adjacency (loaded once from adjacency.json when
+        // present, used for per-step district-adjacency in O(|E|)).
+        // Map<node_id_str, Set<node_id_str>>
+        this._nodeAdjacency = null;
     }
 
     _url(rel) {
@@ -252,7 +257,14 @@ export class DataLoader {
 
     /**
      * Build a district adjacency map: district -> Set of neighboring district IDs.
-     * Two districts are adjacent if any of their nodes are graph-neighbors.
+     * Two districts are adjacent iff any of their nodes are graph-neighbors.
+     *
+     * Priority order:
+     *   1. Real graph adjacency from `adjacency.json` (cached) — O(|E|).
+     *   2. Integer-grid heuristic from `manifest.node_coordinates`. Only
+     *      kicks in when coords look like an integer lattice; bails out
+     *      on float coords (e.g. lat/lon).
+     *   3. Bounding-box-touch heuristic from `blockIdToBounds`.
      */
     _buildDistrictAdjacency(nodeToDist, state) {
         const neighbors = new Map();
@@ -260,59 +272,81 @@ export class DataLoader {
             neighbors.set(did, new Set());
         }
 
-        // Try to use manifest node_coordinates to infer grid adjacency
+        const adj = this._nodeAdjacency;
+        if (adj && adj.size > 0) {
+            // Iterate adjacency edges once. Each edge crossing a
+            // district boundary marks both districts as neighbours.
+            for (const [u, vs] of adj) {
+                const dU = nodeToDist.get(u);
+                if (dU === undefined) continue;
+                for (const v of vs) {
+                    if (u >= v) continue;     // each undirected edge once
+                    const dV = nodeToDist.get(v);
+                    if (dV === undefined || dV === dU) continue;
+                    neighbors.get(dU).add(dV);
+                    neighbors.get(dV).add(dU);
+                }
+            }
+            return neighbors;
+        }
+
         const coords = state.manifest?.node_coordinates;
-        if (coords) {
-            // Build a lookup from coordinate string to node ID
+        const looksLikeGrid = coords && (() => {
+            // Sample a few coords; if all look like integers we treat
+            // it as a unit-grid lattice.
+            let n = 0;
+            for (const c of Object.values(coords)) {
+                if (n++ >= 8) break;
+                if (!Number.isInteger(c[0]) || !Number.isInteger(c[1])) return false;
+            }
+            return true;
+        })();
+
+        if (looksLikeGrid) {
             const coordToNode = new Map();
             for (const [nid, c] of Object.entries(coords)) {
                 coordToNode.set(`${c[0]},${c[1]}`, nid);
             }
-
-            // For each node, check 4-connected grid neighbors
             for (const [nid, did] of nodeToDist) {
                 const c = coords[nid];
                 if (!c) continue;
                 const [x, y] = c;
-                const deltas = [[1, 0], [-1, 0], [0, 1], [0, -1]];
-                for (const [dx, dy] of deltas) {
-                    const neighborKey = `${x + dx},${y + dy}`;
-                    const neighborNode = coordToNode.get(neighborKey);
-                    if (neighborNode) {
-                        const neighborDist = nodeToDist.get(neighborNode);
-                        if (neighborDist && neighborDist !== did) {
-                            neighbors.get(did).add(neighborDist);
-                            neighbors.get(neighborDist).add(did);
-                        }
+                for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+                    const nb = coordToNode.get(`${x + dx},${y + dy}`);
+                    if (!nb) continue;
+                    const dN = nodeToDist.get(nb);
+                    if (dN && dN !== did) {
+                        neighbors.get(did).add(dN);
+                        neighbors.get(dN).add(did);
                     }
                 }
             }
-        } else {
-            // Fallback: use block geometry bounding boxes to estimate adjacency
-            for (const [nid1, did1] of nodeToDist) {
-                const b1 = state.blockIdToBounds?.get(nid1);
-                if (!b1) continue;
-                for (const [nid2, did2] of nodeToDist) {
-                    if (did1 === did2 || nid1 >= nid2) continue;
-                    const b2 = state.blockIdToBounds?.get(nid2);
-                    if (!b2) continue;
-                    // Check if bounding boxes touch (share an edge)
-                    const touches = !(b1[2] < b2[0] || b2[2] < b1[0] || b1[3] < b2[1] || b2[3] < b1[1]);
-                    if (touches) {
-                        neighbors.get(did1).add(did2);
-                        neighbors.get(did2).add(did1);
-                    }
+            return neighbors;
+        }
+
+        // Last resort: bounding-box overlap. O(|V|²) — slow on real data.
+        for (const [nid1, did1] of nodeToDist) {
+            const b1 = state.blockIdToBounds?.get(nid1);
+            if (!b1) continue;
+            for (const [nid2, did2] of nodeToDist) {
+                if (did1 === did2 || nid1 >= nid2) continue;
+                const b2 = state.blockIdToBounds?.get(nid2);
+                if (!b2) continue;
+                const touches = !(b1[2] < b2[0] || b2[2] < b1[0] || b1[3] < b2[1] || b2[3] < b1[1]);
+                if (touches) {
+                    neighbors.get(did1).add(did2);
+                    neighbors.get(did2).add(did1);
                 }
             }
         }
-
         return neighbors;
     }
 
     /**
-     * Assign unique, maximally-spaced colors to districts.
-     * Adjacent districts are guaranteed to get different colors,
-     * and every district gets its own unique color.
+     * Assign distinct colors to districts so adjacent districts always
+     * differ, and every district gets a stable colour. Uses a 20-colour
+     * palette first; when exhausted, falls back to a golden-angle HSL
+     * cycle that still respects the neighbour constraint.
      */
     _graphColorDistricts(districtNeighbors) {
         const palette = [
@@ -349,25 +383,44 @@ export class DataLoader {
                     break;
                 }
             }
-            // Fallback: if palette exhausted, at least avoid neighbors
-            if (chosen === -1) {
-                for (let i = 0; i < palette.length; i++) {
-                    if (!neighborColors.has(i)) {
-                        chosen = i;
-                        break;
-                    }
-                }
-            }
-            if (chosen === -1) chosen = 0;
-
             colorAssignment.set(did, chosen);
-            usedIndices.add(chosen);
+            if (chosen >= 0) usedIndices.add(chosen);
         }
 
-        // Convert to color strings
+        // Materialise palette colours; for districts that didn't get a
+        // palette slot (>=20 districts share neighbours that locked the
+        // whole palette), generate a unique HSL via golden-angle that
+        // still avoids neighbour collisions.
         const result = new Map();
+        const overflowHues = new Set();        // collect hues already in use
         for (const [did, idx] of colorAssignment) {
-            result.set(did, palette[idx % palette.length]);
+            if (idx >= 0) {
+                result.set(did, palette[idx]);
+            }
+        }
+        let hueStep = 0;
+        for (const [did, idx] of colorAssignment) {
+            if (idx >= 0) continue;
+            // Hues used by neighbours (palette colours have no hue
+            // overlap with golden-angle picks, so just avoid sibling
+            // overflows).
+            const neighbourOverflows = new Set();
+            for (const nb of districtNeighbors.get(did)) {
+                if (result.has(nb) && !palette.includes(result.get(nb))) {
+                    neighbourOverflows.add(result.get(nb));
+                }
+            }
+            // Walk the golden-angle hue sequence until we land on a
+            // hue that no overflow neighbour is using.
+            let attempts = 0, colour = null;
+            while (attempts < 360) {
+                const hue = (hueStep++ * 137.508) % 360;
+                colour = `hsl(${hue.toFixed(1)}, 70%, 50%)`;
+                if (!neighbourOverflows.has(colour)) break;
+                attempts++;
+            }
+            result.set(did, colour);
+            overflowHues.add(colour);
         }
         return result;
     }
@@ -393,6 +446,35 @@ export class DataLoader {
         } catch (err) {
             this.logger.warn(`Failed to load phases for step ${stepNum}: ${err.message}`);
             return null;
+        }
+    }
+
+    // Real graph adjacency (e.g. LSOA-to-LSOA edges). Optional; if
+    // absent the dashboard falls back to grid-coordinate heuristics.
+    async loadAdjacency() {
+        if (this._nodeAdjacency !== null) return this._nodeAdjacency;
+        try {
+            const r = await fetch(this._url("adjacency.json"));
+            if (!r.ok) {
+                this._nodeAdjacency = new Map();
+                return this._nodeAdjacency;
+            }
+            const edges = await r.json();
+            const adj = new Map();
+            for (const [u, v] of edges) {
+                const a = String(u), b = String(v);
+                if (!adj.has(a)) adj.set(a, new Set());
+                if (!adj.has(b)) adj.set(b, new Set());
+                adj.get(a).add(b);
+                adj.get(b).add(a);
+            }
+            this._nodeAdjacency = adj;
+            this.logger.log(`Adjacency loaded: ${edges.length} edges, ${adj.size} nodes`, "success");
+            return adj;
+        } catch (err) {
+            this.logger.warn(`Failed to load adjacency.json: ${err.message}`);
+            this._nodeAdjacency = new Map();
+            return this._nodeAdjacency;
         }
     }
 

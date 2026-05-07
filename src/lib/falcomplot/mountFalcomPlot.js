@@ -446,7 +446,13 @@ export async function mountFalcomPlot(opts) {
         viewManager.autoCenterAndScale(state);
         redraw();
 
-        const manifest = await dataLoader.loadManifest();
+        // Load manifest + adjacency in parallel — adjacency is used by
+        // the per-step district-coloring routine, so we want it ready
+        // before the first step's assignment is applied.
+        const [manifest] = await Promise.all([
+            dataLoader.loadManifest(),
+            dataLoader.loadAdjacency(),
+        ]);
         if (manifest && manifest.total_steps) {
             state.manifest = manifest;
             state.maxIteration = manifest.total_steps;
