@@ -1,6 +1,14 @@
 {
   "datasets": [
     {
+      "id": "las",
+      "label": "London Ambulance Service",
+      "description": "5,042 LSOAs across Greater London. 1.06 M annual incidents (borough-level disaggregated to LSOA), 63 station candidates, 7 super-facility candidates (5 sector HQs + 2 EOCs). Sampling chain (always_accept) for 1,000 steps; w=8,450, ε=0.30, c_min=1.",
+      "path": "/falcomplot/las",
+      "total_steps": 999,
+      "graph_nodes": 5042
+    },
+    {
       "id": "grid_10x10",
       "label": "10 x 10 demo grid",
       "description": "100-node synthetic grid. Quick demo at low scale; useful for verifying the visual pipeline end-to-end.",
