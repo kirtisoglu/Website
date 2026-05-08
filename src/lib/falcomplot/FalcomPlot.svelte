@@ -26,21 +26,25 @@
   let tooltipEl;
 
   let cleanup = () => {};
-  let firstMountDone = false;
+  let mountToken = 0;
+  let lastMountedPath = null;
   let mountErr = null;
 
   async function remount() {
+    const token = ++mountToken;
     cleanup();
     cleanup = () => {};
-    if (!dataPath) return;
-    // Wait one tick so bind:this attributes for canvas + (when present)
-    // externalControlsEl have fired. Double-rAF is safer than tick()
-    // alone after a key swap.
+    if (!dataPath) {
+      lastMountedPath = null;
+      return;
+    }
+    // Let bind:this attributes for canvas + externalControlsEl land.
     await tick();
-    if (!canvas) return;
+    if (token !== mountToken || !canvas) return;
     try {
       const { mountFalcomPlot } = await import('./mountFalcomPlot.js');
-      cleanup = await mountFalcomPlot({
+      if (token !== mountToken) return;
+      const stop = await mountFalcomPlot({
         canvas,
         controlsEl: inlineControls ? internalControlsEl : externalControlsEl,
         sidebarEl,
@@ -49,7 +53,13 @@
         tooltipEl,
         dataPath,
       });
-      firstMountDone = true;
+      // A newer remount started while we were awaiting — discard.
+      if (token !== mountToken) {
+        try { stop(); } catch (_) {}
+        return;
+      }
+      cleanup = stop;
+      lastMountedPath = dataPath;
       mountErr = null;
     } catch (err) {
       mountErr = err.message || String(err);
@@ -57,12 +67,12 @@
     }
   }
 
-  onMount(remount);
   onDestroy(() => cleanup());
 
-  // Single reactive trigger keyed on dataPath. Re-mounts only when the
-  // dataset actually changes after the first mount has succeeded.
-  $: if (firstMountDone && dataPath) {
+  // Single reactive — fires on initial render too. The lastMountedPath
+  // guard prevents re-running when other reactive updates re-evaluate
+  // this block but dataPath itself hasn't changed.
+  $: if (dataPath !== undefined && dataPath !== lastMountedPath) {
     remount();
   }
 </script>

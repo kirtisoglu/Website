@@ -35,6 +35,7 @@ declare module '$env/static/private' {
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
+	export const CLAUDE_AGENT_SDK_VERSION: string;
 	export const MallocNanoZone: string;
 	export const COLOR: string;
 	export const npm_config_noproxy: string;
@@ -62,7 +63,6 @@ declare module '$env/static/private' {
 	export const VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
 	export const npm_lifecycle_event: string;
 	export const EDITOR: string;
-	export const OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: string;
 	export const VSCODE_ESM_ENTRYPOINT: string;
 	export const npm_package_name: string;
 	export const npm_config_npm_version: string;
@@ -77,6 +77,7 @@ declare module '$env/static/private' {
 	export const HOME: string;
 	export const CLAUDE_CODE_EXECPATH: string;
 	export const VSCODE_NLS_CONFIG: string;
+	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 	export const HOMEBREW_PREFIX: string;
 	export const npm_config_cache: string;
 	export const PYTHONPATH: string;
@@ -134,6 +135,7 @@ declare module '$env/dynamic/private' {
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
+		CLAUDE_AGENT_SDK_VERSION: string;
 		MallocNanoZone: string;
 		COLOR: string;
 		npm_config_noproxy: string;
@@ -161,7 +163,6 @@ declare module '$env/dynamic/private' {
 		VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
 		npm_lifecycle_event: string;
 		EDITOR: string;
-		OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: string;
 		VSCODE_ESM_ENTRYPOINT: string;
 		npm_package_name: string;
 		npm_config_npm_version: string;
@@ -176,6 +177,7 @@ declare module '$env/dynamic/private' {
 		HOME: string;
 		CLAUDE_CODE_EXECPATH: string;
 		VSCODE_NLS_CONFIG: string;
+		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 		HOMEBREW_PREFIX: string;
 		npm_config_cache: string;
 		PYTHONPATH: string;
