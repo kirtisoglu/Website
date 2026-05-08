@@ -70,7 +70,9 @@ export class Renderer {
                     }
                 }
             } else {
-                // Detailed mode: outline only
+                // Detailed mode: fill each LSOA with its district colour
+                // (so the partition is legible at a glance) and overlay
+                // a phase-specific stroke when relevant.
                 const cutSideNodes = state.cutSideNodes || new Set();
                 const mergedBaseNodes = state.mergedBaseNodes || new Set();
                 const extractedNodes = state.extractedNodes || new Set();
@@ -79,30 +81,30 @@ export class Renderer {
                     const geom = state.blockIdToGeometry.get(blockId);
                     if (!geom) continue;
 
-                    let outlineColor = color;
-                    let lw = 0.5 / state.transform.k;
+                    let strokeColor = "rgba(0,0,0,0.35)";
+                    let lw = 0.3 / state.transform.k;
 
                     // Phase 1: highlight merged superdistrict blocks
                     if (frameType === "select" && mergedBaseNodes.has(blockId)) {
-                        outlineColor = "#ffff00";
+                        strokeColor = "#ffff00";
                         lw = 1.5 / state.transform.k;
                     }
                     // Phase 2+3: highlight cut side and extracted district
                     if (isTreePhase) {
                         if (extractedNodes.has(blockId)) {
-                            outlineColor = "#00ff88";
+                            strokeColor = "#00ff88";
                             lw = 1.5 / state.transform.k;
                         } else if (cutSideNodes.has(blockId)) {
-                            outlineColor = "rgba(255, 255, 100, 0.8)";
+                            strokeColor = "rgba(255, 255, 100, 0.8)";
                             lw = 1.0 / state.transform.k;
                         }
                     }
 
                     if (geom.type === "Polygon") {
-                        this.drawOutlineOnly(ctx, geom.coordinates, outlineColor, lw, state.detectedSwap);
+                        this.drawGeometry(ctx, geom.coordinates, color, strokeColor, lw, state.detectedSwap);
                     } else if (geom.type === "MultiPolygon") {
                         for (const poly of geom.coordinates) {
-                            this.drawOutlineOnly(ctx, poly, outlineColor, lw, state.detectedSwap);
+                            this.drawGeometry(ctx, poly, color, strokeColor, lw, state.detectedSwap);
                         }
                     }
                 }
