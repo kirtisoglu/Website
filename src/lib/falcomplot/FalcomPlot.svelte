@@ -8,12 +8,14 @@
   export let showEnsembleSelect = true;
   // showStatusLog — render the rolling status log inside the sidebar. Default false (less visual noise).
   export let showStatusLog = false;
-  // externalControlsEl — when provided, FalcomPlot does NOT render its
-  // own bottom-right control panel. Instead it wires the buttons inside
-  // this externally-supplied element (which must contain elements with
-  // the standard `fp-*` ids — typically <FalcomPlotControls /> rendered
-  // by the host). Lets the host position the controls anywhere
-  // (e.g., inside a sidebar).
+  // inlineControls — render the bottom-right control panel inside this
+  // component (true, default) or expect the host to render
+  // FalcomPlotControls and pass its container as `externalControlsEl`
+  // (false). This is a stable boolean so Svelte does not have to swap
+  // the controls subtree after the host's bind:this fires.
+  export let inlineControls = true;
+  // externalControlsEl — host-rendered DOM container holding the
+  // standard `fp-*` ids. Honoured only when ``inlineControls = false``.
   export let externalControlsEl = null;
 
   let canvas;
@@ -22,29 +24,32 @@
   let statusEl;
   let treeMetaEl;
   let tooltipEl;
-  $: controlsEl = externalControlsEl || internalControlsEl;
 
   let cleanup = () => {};
-  let mounted = false;
+  let firstMountDone = false;
   let mountErr = null;
 
   async function remount() {
     cleanup();
     cleanup = () => {};
     if (!dataPath) return;
-    if (!canvas) await tick();
+    // Wait one tick so bind:this attributes for canvas + (when present)
+    // externalControlsEl have fired. Double-rAF is safer than tick()
+    // alone after a key swap.
+    await tick();
+    if (!canvas) return;
     try {
       const { mountFalcomPlot } = await import('./mountFalcomPlot.js');
       cleanup = await mountFalcomPlot({
         canvas,
-        controlsEl,
+        controlsEl: inlineControls ? internalControlsEl : externalControlsEl,
         sidebarEl,
         statusEl,
         treeMetaEl,
         tooltipEl,
         dataPath,
       });
-      mounted = true;
+      firstMountDone = true;
       mountErr = null;
     } catch (err) {
       mountErr = err.message || String(err);
@@ -55,13 +60,9 @@
   onMount(remount);
   onDestroy(() => cleanup());
 
-  // Re-mount whenever dataPath OR the externally-provided controls
-  // element changes. tick() makes sure DOM is ready; remount tears down
-  // + re-inits.
-  $: if (mounted && dataPath) {
-    remount();
-  }
-  $: if (mounted && externalControlsEl) {
+  // Single reactive trigger keyed on dataPath. Re-mounts only when the
+  // dataset actually changes after the first mount has succeeded.
+  $: if (firstMountDone && dataPath) {
     remount();
   }
 </script>
@@ -69,7 +70,7 @@
 <div class="fp-root">
   <canvas bind:this={canvas} class="fp-canvas"></canvas>
 
-  {#if !externalControlsEl}
+  {#if inlineControls}
     <!-- Control panel: bottom-right (only when host hasn't supplied its own) -->
     <div class="fp-controls" bind:this={internalControlsEl}>
       <div class="fp-row fp-buttons">

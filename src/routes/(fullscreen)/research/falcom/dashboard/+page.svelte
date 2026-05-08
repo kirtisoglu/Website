@@ -69,22 +69,21 @@
   </header>
 
   <main class="stage">
-    {#if dataPath}
-      {#key dataPath}
-        <FalcomPlot
-          {dataPath}
-          showEnsembleSelect={false}
-          showStatusLog={false}
-          externalControlsEl={controlsEl}
-        />
-      {/key}
-    {:else if loadErr}
-      <div class="empty err">
-        Could not load datasets index.<br/>
-        <code>/falcomplot/datasets.json</code> is missing or unreadable.
+    <FalcomPlot
+      {dataPath}
+      showEnsembleSelect={false}
+      showStatusLog={false}
+      inlineControls={false}
+      externalControlsEl={controlsEl}
+    />
+    {#if !dataPath}
+      <div class="empty muted">
+        {#if loadErr}
+          <span class="err">Could not load <code>/falcomplot/datasets.json</code>: {loadErr}</span>
+        {:else}
+          Initialising…
+        {/if}
       </div>
-    {:else}
-      <div class="empty muted">Initialising…</div>
     {/if}
   </main>
 
