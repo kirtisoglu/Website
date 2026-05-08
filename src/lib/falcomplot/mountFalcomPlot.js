@@ -105,6 +105,18 @@ function makeInitialState() {
         // toggled via state.ensembleView ∈ {null, 'boundary', 'facility', 'capacity'}.
         ensemble: null,
         ensembleView: null,
+
+        // --- delta-playback state (mirrors the falcomchain Flow design) ---
+        // Live node→district map maintained incrementally as `changed_nodes`
+        // deltas are applied. Reset only when the chain rewinds or jumps
+        // backward; otherwise patched in O(|changed_nodes|) per step.
+        currentAssignment: new Map(),
+        currentAssignmentStep: -1,
+        // Stable district→colour map. Districts that survive across
+        // steps keep their colour, so the animation only repaints the
+        // bits that actually changed. New districts get new colours
+        // that don't collide with current neighbours.
+        stableDistrictColors: new Map(),
     };
 }
 

@@ -220,39 +220,105 @@ export class DataLoader {
     }
 
     // ----------------------------------------------------------------
-    // Apply a step's assignment to the state
+    // Apply a step's assignment to the state.
+    //
+    // The chain emits two paths:
+    //   - `assignment`     — the full {node: district} mapping (large)
+    //   - `changed_nodes`  — the delta vs the previous step (small)
+    //
+    // We always carry a live `state.currentAssignment` Map. When the
+    // dashboard scrubs forward by exactly one step we patch the map
+    // in O(|changed_nodes|) and recolour ONLY the affected districts;
+    // when it jumps to an arbitrary step we rebuild from `assignment`.
+    // District→colour mapping (`state.stableDistrictColors`) survives
+    // across steps so unaffected districts keep their colour.
     // ----------------------------------------------------------------
     applyStepToState(stepData, state) {
-        // Clear previous coloring
+        // Decide between delta and full rebuild based on whether the
+        // step is one ahead of what's already in state.
+        const stepNum = typeof stepData.step === "number" ? stepData.step : null;
+        const isDelta = (
+            stepNum !== null
+            && state.currentAssignmentStep >= 0
+            && stepNum === state.currentAssignmentStep + 1
+            && stepData.changed_nodes
+            && state.currentAssignment.size > 0
+        );
+
+        if (isDelta) {
+            this._applyDelta(stepData, state);
+        } else {
+            this._applyFull(stepData, state);
+        }
+        state.currentAssignmentStep = stepNum !== null
+            ? stepNum
+            : state.currentAssignmentStep;
+        state.stepData = stepData;
+        return state.stableDistrictColors.size;
+    }
+
+    /** Rebuild from a full assignment dict (used for jumps + step 1). */
+    _applyFull(stepData, state) {
+        state.currentAssignment = new Map();
         state.districtBlockColors.clear();
         state.blockIdToDistrictId.clear();
         state.nodeColorOverrides.clear();
 
-        // Build node -> district mapping
-        const nodeToDist = new Map();
-        for (const [nodeId, districtId] of Object.entries(stepData.assignment)) {
-            nodeToDist.set(nodeId, String(districtId));
-        }
-
-        // Build district adjacency graph
-        const districtNeighbors = this._buildDistrictAdjacency(nodeToDist, state);
-
-        // Graph-color districts so adjacent ones get maximally different colors
-        const districtColors = this._graphColorDistricts(districtNeighbors);
-
-        // Apply colors
         for (const [nodeId, districtId] of Object.entries(stepData.assignment)) {
             const did = String(districtId);
-            const color = districtColors.get(did);
-            state.districtBlockColors.set(nodeId, color);
+            state.currentAssignment.set(nodeId, did);
             state.blockIdToDistrictId.set(nodeId, did);
-            state.nodeColorOverrides.set(nodeId, color);
         }
 
-        // Store step metadata
-        state.stepData = stepData;
+        const neighbours = this._buildDistrictAdjacency(state.currentAssignment, state);
+        const colours = this._graphColorDistricts(
+            neighbours, state.stableDistrictColors,
+        );
+        state.stableDistrictColors = colours;
 
-        return districtColors.size;
+        for (const [nodeId, did] of state.currentAssignment) {
+            const c = colours.get(did);
+            state.districtBlockColors.set(nodeId, c);
+            state.nodeColorOverrides.set(nodeId, c);
+        }
+    }
+
+    /** Patch the live assignment with `changed_nodes` and recolour only
+     *  the districts whose membership actually moved. */
+    _applyDelta(stepData, state) {
+        const changed = stepData.changed_nodes || {};
+        const dirty = new Set();           // districts whose colour may need refresh
+        for (const [nodeId, districtId] of Object.entries(changed)) {
+            const newDid = String(districtId);
+            const oldDid = state.currentAssignment.get(nodeId);
+            if (oldDid !== undefined && oldDid !== newDid) dirty.add(oldDid);
+            dirty.add(newDid);
+            state.currentAssignment.set(nodeId, newDid);
+            state.blockIdToDistrictId.set(nodeId, newDid);
+        }
+
+        // Drop districts that no longer have any nodes.
+        const liveDistricts = new Set(state.currentAssignment.values());
+        for (const did of [...state.stableDistrictColors.keys()]) {
+            if (!liveDistricts.has(did)) state.stableDistrictColors.delete(did);
+        }
+
+        // Allocate colours for any new district id, then refresh blocks
+        // belonging to dirty districts only.
+        const neighbours = this._buildDistrictAdjacency(state.currentAssignment, state);
+        const colours = this._graphColorDistricts(
+            neighbours, state.stableDistrictColors,
+        );
+        state.stableDistrictColors = colours;
+
+        // Recolour every node whose district is dirty. Cheap because
+        // each dirty district owns ~50 LSOAs at LAS scale.
+        for (const [nodeId, did] of state.currentAssignment) {
+            if (!dirty.has(did)) continue;
+            const c = colours.get(did);
+            state.districtBlockColors.set(nodeId, c);
+            state.nodeColorOverrides.set(nodeId, c);
+        }
     }
 
     /**
@@ -347,8 +413,14 @@ export class DataLoader {
      * differ, and every district gets a stable colour. Uses a 20-colour
      * palette first; when exhausted, falls back to a golden-angle HSL
      * cycle that still respects the neighbour constraint.
+     *
+     * If ``previous`` is supplied (a Map<districtId, colourString> from
+     * the prior step), every district that already has a colour AND
+     * whose neighbours don't conflict keeps its colour. Only districts
+     * that are new this step or whose previous colour now collides with
+     * a neighbour get a fresh palette/HSL pick.
      */
-    _graphColorDistricts(districtNeighbors) {
+    _graphColorDistricts(districtNeighbors, previous = null) {
         const palette = [
             "#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4",
             "#42d4f4", "#f032e6", "#bfef45", "#469990", "#ffe119",
@@ -356,18 +428,58 @@ export class DataLoader {
             "#808000", "#ffd8b1", "#fabed4", "#a9a9a9", "#e6beff",
         ];
 
-        // Sort districts by number of neighbors (most constrained first)
-        const districts = [...districtNeighbors.keys()].sort(
+        // Stage 1: every district that already has a colour and whose
+        // neighbours don't collide with it — keep that colour.
+        const final = new Map();              // district -> colour string
+        const usedColours = new Set();        // colours globally used
+        const stillAvailable = new Set();     // districts needing a fresh pick
+
+        if (previous && previous.size > 0) {
+            for (const did of districtNeighbors.keys()) {
+                const prevColour = previous.get(did);
+                if (!prevColour) {
+                    stillAvailable.add(did);
+                    continue;
+                }
+                let collides = false;
+                for (const nb of districtNeighbors.get(did)) {
+                    const nbColour = previous.get(nb);
+                    if (nbColour === prevColour) { collides = true; break; }
+                }
+                if (!collides) {
+                    final.set(did, prevColour);
+                    usedColours.add(prevColour);
+                } else {
+                    stillAvailable.add(did);
+                }
+            }
+        } else {
+            for (const did of districtNeighbors.keys()) stillAvailable.add(did);
+        }
+
+        // Stage 2: greedy first-fit on the remaining districts.
+        // Sort by number of neighbors (most constrained first).
+        const districts = [...stillAvailable].sort(
             (a, b) => districtNeighbors.get(b).size - districtNeighbors.get(a).size
         );
 
         const colorAssignment = new Map(); // district -> palette index
-        const usedIndices = new Set();      // globally used palette indices
+        const usedIndices = new Set();
+        // Pre-mark palette colours that survivors are already holding,
+        // so the remaining picks know what's globally taken.
+        for (const c of usedColours) {
+            const idx = palette.indexOf(c);
+            if (idx >= 0) usedIndices.add(idx);
+        }
 
         for (const did of districts) {
-            // Find colors used by neighbors
+            // Find colors used by neighbors (in survivors + assignments).
             const neighborColors = new Set();
             for (const neighbor of districtNeighbors.get(did)) {
+                if (final.has(neighbor)) {
+                    const idx = palette.indexOf(final.get(neighbor));
+                    if (idx >= 0) neighborColors.add(idx);
+                }
                 if (colorAssignment.has(neighbor)) {
                     neighborColors.add(colorAssignment.get(neighbor));
                 }
@@ -387,42 +499,31 @@ export class DataLoader {
             if (chosen >= 0) usedIndices.add(chosen);
         }
 
-        // Materialise palette colours; for districts that didn't get a
-        // palette slot (>=20 districts share neighbours that locked the
-        // whole palette), generate a unique HSL via golden-angle that
-        // still avoids neighbour collisions.
-        const result = new Map();
-        const overflowHues = new Set();        // collect hues already in use
+        // Materialise palette colours into the running `final` map;
+        // for any district that didn't get a palette slot (palette of
+        // 20 exhausted under neighbour pressure), generate a unique
+        // HSL via golden-angle that still avoids neighbour collisions.
         for (const [did, idx] of colorAssignment) {
-            if (idx >= 0) {
-                result.set(did, palette[idx]);
-            }
+            if (idx >= 0) final.set(did, palette[idx]);
         }
         let hueStep = 0;
         for (const [did, idx] of colorAssignment) {
             if (idx >= 0) continue;
-            // Hues used by neighbours (palette colours have no hue
-            // overlap with golden-angle picks, so just avoid sibling
-            // overflows).
-            const neighbourOverflows = new Set();
+            // Hues already used by neighbours.
+            const neighbourColours = new Set();
             for (const nb of districtNeighbors.get(did)) {
-                if (result.has(nb) && !palette.includes(result.get(nb))) {
-                    neighbourOverflows.add(result.get(nb));
-                }
+                if (final.has(nb)) neighbourColours.add(final.get(nb));
             }
-            // Walk the golden-angle hue sequence until we land on a
-            // hue that no overflow neighbour is using.
             let attempts = 0, colour = null;
             while (attempts < 360) {
                 const hue = (hueStep++ * 137.508) % 360;
                 colour = `hsl(${hue.toFixed(1)}, 70%, 50%)`;
-                if (!neighbourOverflows.has(colour)) break;
+                if (!neighbourColours.has(colour)) break;
                 attempts++;
             }
-            result.set(did, colour);
-            overflowHues.add(colour);
+            final.set(did, colour);
         }
-        return result;
+        return final;
     }
 
     // ----------------------------------------------------------------
