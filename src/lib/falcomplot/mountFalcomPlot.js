@@ -419,10 +419,18 @@ export async function mountFalcomPlot(opts) {
         redraw();
     });
 
-    // Mouse listeners on the canvas
-    inputHandler.attachMouseListeners(
+    // Mouse listeners on the canvas. attachMouseListeners now returns
+    // a detach function — push it into cleanups so listeners are
+    // properly removed when the FalcomPlot remounts (e.g. on dataset
+    // switch). Without this, old listeners keep firing on the same
+    // canvas with stale state and paint the previous dataset back
+    // over the new one ("ghost plot" artefact).
+    const detachMouseListeners = inputHandler.attachMouseListeners(
         canvas, state, viewManager, redraw, state.nodes, toleranceChecker, state.metadata, tooltipEl,
     );
+    if (typeof detachMouseListeners === 'function') {
+        cleanups.push(detachMouseListeners);
+    }
 
     // Window resize via ResizeObserver on the canvas (more reliable for
     // embedded Svelte component than window-resize alone).
@@ -475,10 +483,11 @@ export async function mountFalcomPlot(opts) {
         }
 
         if (state.maxIteration > 0) {
-            // Jump to the final state on load — the user sees the
-            // converged partition first, then can scrub backward.
+            // Start at step 1 (the first recorded chain state) so the
+            // animation reads as a forward trajectory and the user can
+            // press Play / Next from the very beginning.
             await animationController.jumpToIteration(
-                state.maxIteration,
+                1,
                 state,
                 redraw,
                 viewManager,
