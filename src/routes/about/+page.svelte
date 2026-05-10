@@ -178,20 +178,28 @@
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 650 }}>
     <h2 class="section-title">Publications</h2>
 
+    <p class="pub-category">Peer-reviewed</p>
     <ol class="pub-list">
       <li>
         Kirtisoglu, A., &amp; Özkahya, L. (2024).
         Coloring of graphs avoiding bicolored paths of a fixed length.
         <em>Graphs and Combinatorics</em>, 40(1), 11.
-        <span class="pub-tag peer">Peer-Reviewed</span>
       </li>
+    </ol>
+
+    <p class="pub-category">Preprint</p>
+    <ol class="pub-list" start="2">
       <li>
-        Kaul, H., &amp; Kirtisoglu, A. FalCom: A Sampling Method for Districting and Hierarchical Facility Location. <span class="pub-tag submitted">Submitted</span>
-        <div class="pub-note">Extended abstract accepted for talk at <a href="https://isco2026.com.tr" target="_blank" rel="noopener">ISCO 2026</a>.</div>
+        Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.
+        <div class="pub-note">Extended abstract accepted for talk at the <a href="https://isco2026.com.tr" target="_blank" rel="noopener">International Symposium on Combinatorial Optimization (ISCO)</a>, 2026.</div>
       </li>
-      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting. <span class="pub-tag progress">Preparing for Submission</span></li>
-      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows. <span class="pub-tag progress">Preparing for Submission</span></li>
-      <li>Kaul, H., &amp; Kirtisoglu, A. Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access. <span class="pub-tag progress">In Progress</span></li>
+    </ol>
+
+    <p class="pub-category">In progress</p>
+    <ol class="pub-list" start="3">
+      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting.</li>
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
+      <li>Kirtisoglu, A., &amp; Kaul, H. Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago.</li>
     </ol>
   </section>
 
@@ -207,9 +215,9 @@
         <div class="skill-tags">
           <span class="tag">Python</span>
           <span class="tag">R</span>
-          <span class="tag">SQL</span>
+          <span class="tag">JavaScript</span>
           <span class="tag">MATLAB</span>
-          <span class="tag">LaTeX</span>
+          <span class="tag">HTML</span>
         </div>
       </div>
       <div class="skill-group">
@@ -217,13 +225,14 @@
         <div class="skill-tags">
           <span class="tag">Gurobi</span>
           <span class="tag">CPLEX</span>
-          <span class="tag">MCMC</span>
-          <span class="tag">simulated annealing</span>
-          <span class="tag">tabu search</span>
+          <span class="tag">metaheuristics</span>
+          <span class="tag">flow and stochastic models</span>
+          <span class="tag">integer programming</span>
+          <span class="tag">Markov Chain Monte Carlo</span>
         </div>
       </div>
       <div class="skill-group">
-        <span class="skill-label">Scientific computing &amp; geospatial</span>
+        <span class="skill-label">Libraries for geospatial &amp; scientific computing</span>
         <div class="skill-tags">
           <span class="tag">NetworkX</span>
           <span class="tag">NumPy/SciPy</span>
@@ -243,6 +252,8 @@
           <span class="tag">TensorFlow</span>
           <span class="tag">scikit-learn</span>
           <span class="tag">graph neural networks</span>
+          <span class="tag">reinforcement learning</span>
+          <span class="tag">regression analysis</span>
         </div>
       </div>
       <div class="skill-group">
