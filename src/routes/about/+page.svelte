@@ -205,69 +205,6 @@
 
   <div class="divider"></div>
 
-
-  <!-- Technical Skills -->
-  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <span class="skill-label">Programming</span>
-        <div class="skill-tags">
-          <span class="tag">Python</span>
-          <span class="tag">R</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">MATLAB</span>
-          <span class="tag">HTML</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="skill-label">Optimization &amp; modeling</span>
-        <div class="skill-tags">
-          <span class="tag">Gurobi</span>
-          <span class="tag">CPLEX</span>
-          <span class="tag">metaheuristics</span>
-          <span class="tag">flow and stochastic models</span>
-          <span class="tag">integer programming</span>
-          <span class="tag">Markov Chain Monte Carlo</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="skill-label">Libraries for geospatial &amp; scientific computing</span>
-        <div class="skill-tags">
-          <span class="tag">NetworkX</span>
-          <span class="tag">NumPy/SciPy</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">GeoPandas</span>
-          <span class="tag">OSMnx</span>
-          <span class="tag">Folium</span>
-          <span class="tag">ArcGIS</span>
-          <span class="tag">GerryChain</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="skill-label">Machine learning</span>
-        <div class="skill-tags">
-          <span class="tag">PyTorch</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">graph neural networks</span>
-          <span class="tag">reinforcement learning</span>
-          <span class="tag">regression analysis</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="skill-label">Spoken languages</span>
-        <div class="skill-tags">
-          <span class="tag">English</span>
-          <span class="tag">Turkish (native)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- Contact -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 1050 }}>
     <h2 class="section-title">Contact</h2>
