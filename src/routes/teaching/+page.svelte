@@ -15,16 +15,58 @@
     <p class="eyebrow">Teaching</p>
     <h1>Teaching & Mentoring</h1>
     <p class="lead">
-      I have served as a Teaching Assistant at Illinois Institute of Technology, and TED University
-      for 7 years and have mentored undergraduate and graduate students on research projects.
-      I believe strong teaching and careful mentoring are inseparable from good research.
+      As a Teaching Assistant at the Illinois Institute of Technology (since 2021) and TED University,
+      Ankara (2019–2021), I have led recitations and graded for undergraduate mathematics courses
+      ranging from calculus through complex analysis and computational mathematics.
+      Since 2022, I have also mentored undergraduate mathematics students through the
+      Directed Reading Program — Türkiye on nine-week summer reading projects in optimization,
+      machine learning, and applied mathematics. I believe strong teaching and careful mentoring
+      are inseparable from good research.
     </p>
   </section>
 
   <div class="divider"></div>
 
-  <!-- DRP Türkiye -->
+  <!-- IIT TA -->
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
+    <h2 class="section-title">Teaching Assistant — Illinois Institute of Technology</h2>
+    <p class="section-intro">
+      Recitation and grading for undergraduate mathematics courses in the
+      Department of Applied Mathematics, Fall 2021 – Spring 2026.
+    </p>
+    <ul class="course-list">
+      <li>Calculus I</li>
+      <li>Calculus II</li>
+      <li>Multivariate and Vector Calculus</li>
+      <li>Linear Algebra</li>
+      <li>Differential Equations</li>
+      <li>Complex Analysis</li>
+      <li>Discrete Mathematics</li>
+      <li>Computational Mathematics</li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TED TA -->
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
+    <h2 class="section-title">Teaching Assistant — TED University, Ankara</h2>
+    <p class="section-intro">
+      Recitation and grading for undergraduate mathematics courses in the
+      Department of Mathematics, Fall 2019 – Spring 2021.
+    </p>
+    <ul class="course-list">
+      <li>Calculus of One Variable</li>
+      <li>Multivariable Calculus</li>
+      <li>Linear Algebra</li>
+      <li>Differential Equations</li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DRP Türkiye -->
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 500 }}>
     <h2 class="section-title">Directed Reading Program — Türkiye</h2>
 
     <p class="section-intro">
@@ -76,7 +118,7 @@
           <span class="course-name">Ahmet Eray Kocaman</span>
           <span class="term">Summer 2024</span>
         </div>
-        <span class="institution">Sophomore, Physics — Bilkent University</span>
+        <span class="institution">Sophomore, double major in Physics and Mathematics — Bilkent University</span>
         <p class="entry-desc"><em>Exceeding Human-Level Expertise: Deep Reinforcement Learning.</em></p>
         <p class="entry-links">
           <a href="https://sites.google.com/view/drpturkiye/previous-programs/summer-2024/symposium" target="_blank" rel="noopener">Report (in 2024 symposium proceedings, p.&nbsp;192)</a>
@@ -125,44 +167,6 @@
       </div>
 
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- IIT TA -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 400 }}>
-    <h2 class="section-title">Teaching Assistant — Illinois Institute of Technology</h2>
-    <p class="section-intro">
-      Recitation and grading for undergraduate mathematics courses in the
-      Department of Applied Mathematics, Fall 2021 – Spring 2026.
-    </p>
-    <ul class="course-list">
-      <li>Calculus I</li>
-      <li>Calculus II</li>
-      <li>Multivariate and Vector Calculus</li>
-      <li>Linear Algebra</li>
-      <li>Differential Equations</li>
-      <li>Complex Analysis</li>
-      <li>Discrete Mathematics</li>
-      <li>Computational Mathematics</li>
-    </ul>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- TED TA -->
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 500 }}>
-    <h2 class="section-title">Teaching Assistant — TED University, Ankara</h2>
-    <p class="section-intro">
-      Recitation and grading for undergraduate mathematics courses in the
-      Department of Mathematics, Fall 2019 – Spring 2021.
-    </p>
-    <ul class="course-list">
-      <li>Calculus of One Variable</li>
-      <li>Multivariable Calculus</li>
-      <li>Linear Algebra</li>
-      <li>Differential Equations</li>
-    </ul>
   </section>
 
 </div>

@@ -31,6 +31,7 @@
       and a Teaching Assistant. My research lies at the intersection of graph theory,
       algorithmic optimization, and computational methods for complex, data-driven problems
       in mathematics and applied sciences.
+      Outside research, I play <a href="https://en.wikipedia.org/wiki/Go_(game)" target="_blank" rel="noopener">Go</a> (1&nbsp;dan amateur).
     </p>
     <span class="cv-download cv-disabled">
       Download CV (PDF) — coming soon
@@ -196,6 +197,65 @@
 
   <div class="divider"></div>
 
+
+  <!-- Technical Skills -->
+  <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 950 }}>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <span class="skill-label">Programming</span>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">R</span>
+          <span class="tag">SQL</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">LaTeX</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Optimization &amp; modeling</span>
+        <div class="skill-tags">
+          <span class="tag">Gurobi</span>
+          <span class="tag">CPLEX</span>
+          <span class="tag">MCMC</span>
+          <span class="tag">simulated annealing</span>
+          <span class="tag">tabu search</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Scientific computing &amp; geospatial</span>
+        <div class="skill-tags">
+          <span class="tag">NetworkX</span>
+          <span class="tag">NumPy/SciPy</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">GeoPandas</span>
+          <span class="tag">OSMnx</span>
+          <span class="tag">Folium</span>
+          <span class="tag">ArcGIS</span>
+          <span class="tag">GerryChain</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Machine learning</span>
+        <div class="skill-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">graph neural networks</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Spoken languages</span>
+        <div class="skill-tags">
+          <span class="tag">English</span>
+          <span class="tag">Turkish (native)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- Contact -->
   <section class="cv-section" in:fly={{ y: 30, duration: 500, delay: 1050 }}>
