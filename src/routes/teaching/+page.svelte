@@ -31,9 +31,11 @@
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 300 }}>
     <h2 class="section-title">Teaching Assistant — Illinois Institute of Technology</h2>
     <p class="section-intro">
-      Recitation and grading for undergraduate mathematics courses in the
+      Recitation and grading for undergraduate and graduate mathematics courses in the
       Department of Applied Mathematics, Fall 2021 – Spring 2026.
     </p>
+
+    <p class="course-group-label">Undergraduate</p>
     <ul class="course-list">
       <li>Calculus I</li>
       <li>Calculus II</li>
@@ -43,6 +45,16 @@
       <li>Complex Analysis</li>
       <li>Discrete Mathematics</li>
       <li>Computational Mathematics</li>
+    </ul>
+
+    <p class="course-group-label">Graduate</p>
+    <ul class="course-list">
+      <li>Linear Optimization</li>
+      <li>Regression</li>
+      <li>Statistical Learning</li>
+      <li>Time Series</li>
+      <li>Mathematical Modeling</li>
+      <li>Computational Algebraic Geometry</li>
     </ul>
   </section>
 
@@ -359,6 +371,17 @@
   .entry-links a:hover { text-decoration: underline; }
   :global(.dark) .entry-links { color: rgba(255,255,255,0.4); }
   :global(.dark) .entry-links a { color: #818cf8; }
+
+  .course-group-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 0.8rem 0 0;
+  }
+
+  :global(.dark) .course-group-label { color: rgba(255,255,255,0.5); }
 
   .course-list {
     list-style: none;
