@@ -145,6 +145,13 @@
         <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
+      <p class="paper-abstract">
+        A Markov chain Monte Carlo sampler with convergence guarantees for hierarchical capacitated
+        facility location and districting on graphs. The framework supports pluggable energy and
+        proposal functions, scales to graphs of tens of thousands of nodes, and is deployed on two
+        real applications: emergency-service zone design for the London Ambulance Service and
+        federally qualified health center expansion in Chicago.
+      </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
       </div>
@@ -167,6 +174,12 @@
         A Diffusion Model for Political Redistricting
       </h3>
       <p class="paper-venue">Alaittin Kirtisoglu</p>
+      <p class="paper-abstract">
+        A diffusion-based approach to graph partitioning for political redistricting. Replaces
+        discrete flip-style moves with continuous-time dynamics on the underlying graph,
+        producing smoother transitions between district plans and offering a new lens on the
+        geometry of admissible partitions.
+      </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
       </div>
@@ -185,6 +198,12 @@
         UAV Routing for Maximum Information Collection under Time Windows
       </h3>
       <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
+      <p class="paper-abstract">
+        A combinatorial optimization model for unmanned aerial vehicles collecting information
+        from a discrete set of targets under time-window constraints. The work develops a
+        mixed-integer programming formulation paired with heuristics for the large-instance
+        regime where exact methods become intractable.
+      </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
       </div>
@@ -203,6 +222,12 @@
         <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
+      <p class="paper-abstract">
+        A flow-based location–allocation framework for equitable expansion of Federally
+        Qualified Health Centers in Chicago. The model uses CTA transit travel times,
+        probabilistic medically-underserved scoring, and a hierarchical referral structure
+        (FQHC → hospital). Powers the public Healthcare Accessibility Dashboard.
+      </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/Chicago-Healthcare-Network" target="_blank" rel="noopener">GitHub →</a>
       </div>
