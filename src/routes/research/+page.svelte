@@ -146,11 +146,17 @@
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
       <p class="paper-abstract">
-        A Markov chain Monte Carlo sampler with convergence guarantees for hierarchical capacitated
-        facility location and districting on graphs. The framework supports pluggable energy and
-        proposal functions, scales to graphs of tens of thousands of nodes, and is deployed on two
-        real applications: emergency-service zone design for the London Ambulance Service and
-        federally qualified health center expansion in Chicago.
+        We introduce FalCom, the first Markov chain Monte Carlo sampling framework for
+        hierarchical capacitated facility location and districting problems. FalCom extends
+        the spanning-tree proposal of ReCom from single-level political redistricting to
+        multi-level service systems with capacity bounds, demand balance, and facility-aware
+        cut selection. We demonstrate that it scales to graphs of 50,000 basic units — an
+        order of magnitude beyond published hierarchical facility-location methods. Rather
+        than returning a single optimum, FalCom samples ensembles of feasible plans,
+        enabling boundary-robustness maps, essential-vs-substitutable facility analysis,
+        and capacity-utilization distributions that no single-solution method can produce.
+        The framework is validated on synthetic grids and a London Ambulance Service case
+        study and released as an open-source Python library with an interactive visualizer.
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
@@ -175,10 +181,14 @@
       </h3>
       <p class="paper-venue">Alaittin Kirtisoglu</p>
       <p class="paper-abstract">
-        A diffusion-based approach to graph partitioning for political redistricting. Replaces
-        discrete flip-style moves with continuous-time dynamics on the underlying graph,
-        producing smoother transitions between district plans and offering a new lens on the
-        geometry of admissible partitions.
+        ReCom variants, the dominant MCMC methods for political redistricting, are
+        computationally efficient but geometrically blind. We propose a hybrid sampler that
+        complements ReCom with a kernel-aware local-refinement step, based on a
+        graph-diffusion energy formulated as an integer quadratic program. Our results show
+        that the hybrid model admits configurable Laplacian kernels (perimeter, density,
+        demographic) plus a fidelity term that anchors refinement near the current
+        partition. On Iowa precincts, the integer variant reduces mean cut edges by 23.9%
+        vs. ReCom.
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
@@ -195,14 +205,20 @@
         <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows
+        UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption
       </h3>
       <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
       <p class="paper-abstract">
-        A combinatorial optimization model for unmanned aerial vehicles collecting information
-        from a discrete set of targets under time-window constraints. The work develops a
-        mixed-integer programming formulation paired with heuristics for the large-instance
-        regime where exact methods become intractable.
+        We develop an exact convex-optimization framework for UAV reconnaissance routing
+        under time windows, time-dependent rewards, and a nonlinear energy budget. The
+        model jointly selects which targets to visit, the order of visits, the travel speed
+        on each arc, and a separate loitering time at the fixed minimum-power speed,
+        capturing fixed-wing aerodynamics correctly. The resulting mixed-integer nonlinear
+        program is reformulated exactly as a mixed-integer second-order cone program
+        (MISOCP) via a chain of three rotated cones, and is solved at scale by an
+        iterated-local-search matheuristic whose evaluation oracle is a small SOCP.
+        Calibrated on a real-world UAV platform, the approach scales to 200-node
+        Solomon-derived instances.
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
@@ -219,14 +235,22 @@
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
       <h3 class="paper-title">
-        <a href="/research/chicago-healthcare-network/">Chicago Healthcare Network — Optimization-Based Decision Support for Equitable Access</a>
+        <a href="/research/chicago-healthcare-network/">Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago</a>
       </h3>
       <p class="paper-venue">with Hemanshu Kaul</p>
       <p class="paper-abstract">
-        A flow-based location–allocation framework for equitable expansion of Federally
-        Qualified Health Centers in Chicago. The model uses CTA transit travel times,
-        probabilistic medically-underserved scoring, and a hierarchical referral structure
-        (FQHC → hospital). Powers the public Healthcare Accessibility Dashboard.
+        We identify four critical gaps in the current HRSA's granting system for Federally
+        Qualified Health Centers (FQHCs): the absence of location-evaluation tools; an
+        outdated Index of Medical Underservice (IMU) formula; a limited Medically
+        Underserved Area (MUA) designation process; and unmapped referral networks between
+        FQHCs and hospitals. We show how optimization can address each. Integrating a
+        flow-based model into the FalCom sampler, we design catchment areas and
+        hospital-anchored health zones that satisfy HRSA's compliance requirements while
+        balancing demand and capacity, and improving real-time transportation accessibility.
+        We also propose an updated IMU formula, and outline a follow-up effort to map
+        Chicago's physician referral network. To the best of our knowledge, this is the
+        first paper bringing solutions from operations research to the location decisions
+        of FQHCs.
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/Chicago-Healthcare-Network" target="_blank" rel="noopener">GitHub →</a>

@@ -33,9 +33,14 @@
       in mathematics and applied sciences.
       Outside research, I play <a href="https://en.wikipedia.org/wiki/Go_(game)" target="_blank" rel="noopener">Go</a> (1&nbsp;dan amateur).
     </p>
-    <span class="cv-download cv-disabled">
-      Download CV (PDF) — coming soon
-    </span>
+    <a
+      class="cv-download"
+      href="https://github.com/kirtisoglu/CV/raw/main/main.pdf"
+      target="_blank"
+      rel="noopener"
+    >
+      Download CV (PDF) →
+    </a>
   </section>
 
   <div class="divider"></div>
