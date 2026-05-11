@@ -35,11 +35,11 @@
     </p>
     <a
       class="cv-download"
-      href="https://github.com/kirtisoglu/CV/raw/main/main.pdf"
+      href="https://github.com/kirtisoglu/CV/blob/main/main.pdf"
       target="_blank"
       rel="noopener"
     >
-      Download CV (PDF) →
+      View CV (PDF) →
     </a>
   </section>
 
