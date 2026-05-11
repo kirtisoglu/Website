@@ -35,7 +35,7 @@
     </p>
     <a
       class="cv-download"
-      href="https://github.com/kirtisoglu/CV/blob/main/main.pdf"
+      href="/cv.pdf"
       target="_blank"
       rel="noopener"
     >
