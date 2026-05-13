@@ -5,7 +5,7 @@
 
 <svelte:head>
   <title>Tools — Alaittin Kirtisoglu</title>
-  <meta name="description" content="Interactive tools and visualizers built from research projects — FalCom Visualizer for districting and facility location sampling, and the Chicago Healthcare Accessibility Dashboard." />
+  <meta name="description" content="Interactive tools and visualizers built from research projects — FalCom Visualizer for districting and facility location sampling, the London Ambulance Service hierarchy map, and the Chicago Healthcare Accessibility Dashboard." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>
@@ -42,6 +42,25 @@
         the FalCom paper (with H. Kaul).
       </p>
       <span class="tool-cta">Open visualizer →</span>
+    </a>
+
+    <!-- LAS Hierarchy Map -->
+    <a class="tool-card" href="/falcomplot/las_hierarchy.html">
+      <div class="tool-meta">
+        <span class="tool-status live">v1 · Live</span>
+        <span class="tool-tag">EMS · Hierarchy · LAS Case Study</span>
+      </div>
+      <h2 class="tool-name">London Ambulance Service Hierarchy</h2>
+      <p class="tool-desc">
+        Operational layout of the London Ambulance Service — 5,042 LSOAs, 63
+        ambulance stations, 19 groups, and 5 sectors with their HQ / EOC
+        facilities, laid out as a Voronoi tessellation by station travel time.
+        Per-station and per-sector tooltips report FalCom-style metrics
+        (L¹ / L² radii, T_mean, T_p90, ≤ 8 min and ≤ 15 min coverage) computed
+        on the OSMnx driving network. These numbers are the benchmark the
+        FalCom chain ensemble is compared against.
+      </p>
+      <span class="tool-cta">Open hierarchy map →</span>
     </a>
 
     <!-- Chicago Healthcare -->
