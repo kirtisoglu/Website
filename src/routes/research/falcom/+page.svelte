@@ -95,11 +95,125 @@
     <a class="dashboard-btn" href="/falcomplot/las_hierarchy.html">View LAS Map</a>
   </section>
 
+  <section class="section" in:fly={{ y: 30, duration: 500, delay: 410 }}>
+    <h2 class="section-title">Ensemble Comparison — Chains vs Voronoi Benchmark</h2>
+    <p class="body-text">
+      Three 10,000-step chains on the LAS instance (ε = 0.30, c_max = 4, w = 8,450,
+      OSMnx driving network with a 1.6× ambulance-response multiplier):
+    </p>
+    <ul class="body-text" style="margin: 0.5rem 0 1rem 1.4rem;">
+      <li><b>Sampling</b> — always_accept, a random walk over feasible plans.</li>
+      <li><b>Boltzmann</b> — fixed β ≈ 5/E₀, a heuristic optimizer.</li>
+      <li><b>Simulated Annealing</b> — β ramps 0 → 25/E₀ over the chain.</li>
+    </ul>
+    <p class="body-text">
+      Energy is the squared-eccentricity form
+      <code>E_ecc(s) = Σ (r¹ᵢ)² + Σ (r²ₛ)²</code> which penalises both the mean
+      and variance of district radii (efficiency + equity in one number).
+      Across all three chains, the operational Voronoi layout sits in the favourable
+      tail — i.e. LAS's current sector design is already a good plan among the
+      sampler's feasible alternatives.
+    </p>
+
+    <figure class="plot-fig">
+      <img src="/falcomplot/ensemble_compare/trace_energies.png"
+           alt="Energy trajectories over 10k steps for all three chains, with Voronoi reference lines." />
+      <figcaption>
+        Energy trajectories. Left: E_minisum (demand-weighted travel time).
+        Right: E_eccentricity. Voronoi is the dashed black baseline.
+      </figcaption>
+    </figure>
+
+    <figure class="plot-fig">
+      <img src="/falcomplot/ensemble_compare/trace_districts.png"
+           alt="L1 and L2 district counts across the three chains." />
+      <figcaption>
+        Active facility counts. |P¹| varies in [55, 91], |P²| in [21, 31] across
+        the chains — FalCom opens and closes facilities as the chain explores.
+      </figcaption>
+    </figure>
+
+    <figure class="plot-fig">
+      <img src="/falcomplot/ensemble_compare/real_vs_artificial.png"
+           alt="Real vs artificial centers active in each chain." />
+      <figcaption>
+        Real LAS stations vs artificial scaffolding centers active per state.
+        Real stations dominate the active facility set across chains.
+      </figcaption>
+    </figure>
+
+    <figure class="plot-fig">
+      <img src="/falcomplot/ensemble_compare/dist_metrics.png"
+           alt="Empirical distributions of summary statistics across the three chains." />
+      <figcaption>
+        Empirical distributions of summary statistics. Voronoi's value
+        (dashed line) sits at the favourable tail in every panel.
+      </figcaption>
+    </figure>
+
+    <figure class="plot-fig">
+      <img src="/falcomplot/ensemble_compare/summary_vs_voronoi.png"
+           alt="Final-state metrics by chain compared to Voronoi." />
+      <figcaption>
+        Final-state metrics (last sampled snapshot of each chain) vs the
+        Voronoi benchmark. Boltzmann and SA improve over pure sampling on E_ecc
+        but neither catches the calibrated operational layout.
+      </figcaption>
+    </figure>
+
+    <p class="body-text" style="margin-top: 1.4rem;">
+      <b>Caveat on ensemble analysis.</b>
+      <code>hierarchical_recom</code>'s proposal-density ratio is #P-hard
+      (Cannon, Duchin, Randall &amp; Rule, 2022). Boltzmann acceptance is therefore
+      a heuristic optimizer, not a true Metropolis-Hastings sampler. We report
+      <i>empirical sample statistics</i> — properties of the observed feasible
+      plans — rather than expectations under a known stationary distribution.
+      Convergence diagnostics (multi-seed agreement, Gelman-Rubin) and a
+      reversible-ReCom variant (Cannon et al. 2022) are paper-level future work.
+    </p>
+  </section>
+
 </div>
 
 <Head/>
 
 <style>
+  .plot-fig {
+    margin: 1.2rem 0;
+    padding: 0;
+  }
+  .plot-fig img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #fff;
+  }
+  :global(.dark) .plot-fig img {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: #fafafa;
+  }
+  .plot-fig figcaption {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    line-height: 1.45;
+    text-align: center;
+  }
+  :global(.dark) .plot-fig figcaption {
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .body-text code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.86em;
+  }
+  :global(.dark) .body-text code {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
   .page {
     max-width: 780px;
     margin: 0 auto;
