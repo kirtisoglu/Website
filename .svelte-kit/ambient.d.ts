@@ -27,11 +27,13 @@
  */
 declare module '$env/static/private' {
 	export const NoDefaultCurrentDirectoryInExePath: string;
+	export const CLAUDE_EFFORT: string;
 	export const CLAUDE_CODE_ENTRYPOINT: string;
 	export const VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const SHELL: string;
+	export const COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
@@ -71,10 +73,12 @@ declare module '$env/static/private' {
 	export const MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
+	export const CLAUDE_CODE_ENABLE_TASKS: string;
 	export const XPC_SERVICE_NAME: string;
 	export const CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 	export const SHLVL: string;
 	export const HOME: string;
+	export const COPILOT_OTEL_EXPORTER_TYPE: string;
 	export const CLAUDE_CODE_EXECPATH: string;
 	export const VSCODE_NLS_CONFIG: string;
 	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
@@ -88,9 +92,12 @@ declare module '$env/static/private' {
 	export const COREPACK_ENABLE_AUTO_PIN: string;
 	export const npm_config_user_agent: string;
 	export const VSCODE_PID: string;
+	export const CLAUDE_CODE_SESSION_ID: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
+	export const COPILOT_OTEL_ENABLED: string;
 	export const CLAUDECODE: string;
+	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
@@ -127,11 +134,13 @@ declare module '$env/static/public' {
 declare module '$env/dynamic/private' {
 	export const env: {
 		NoDefaultCurrentDirectoryInExePath: string;
+		CLAUDE_EFFORT: string;
 		CLAUDE_CODE_ENTRYPOINT: string;
 		VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
 		NODE: string;
 		INIT_CWD: string;
 		SHELL: string;
+		COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
@@ -171,10 +180,12 @@ declare module '$env/dynamic/private' {
 		MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 		npm_config_node_gyp: string;
 		npm_package_version: string;
+		CLAUDE_CODE_ENABLE_TASKS: string;
 		XPC_SERVICE_NAME: string;
 		CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 		SHLVL: string;
 		HOME: string;
+		COPILOT_OTEL_EXPORTER_TYPE: string;
 		CLAUDE_CODE_EXECPATH: string;
 		VSCODE_NLS_CONFIG: string;
 		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
@@ -188,9 +199,12 @@ declare module '$env/dynamic/private' {
 		COREPACK_ENABLE_AUTO_PIN: string;
 		npm_config_user_agent: string;
 		VSCODE_PID: string;
+		CLAUDE_CODE_SESSION_ID: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
+		COPILOT_OTEL_ENABLED: string;
 		CLAUDECODE: string;
+		VSCODE_L10N_BUNDLE_LOCATION: string;
 		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;

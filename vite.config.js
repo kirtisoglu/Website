@@ -25,27 +25,7 @@ export default defineConfig({
     hmr: { overlay: false },
   },
   optimizeDeps: {
-    include: ['marked'],
-    // deck.gl pulls in @luma.gl peers that are not installed in this
-    // tree. They're only needed by the Chicago healthcare dashboard;
-    // skip pre-bundling so other routes can boot. (If you need that
-    // dashboard, run `npm install @luma.gl/shadertools @luma.gl/webgl
-    // --legacy-peer-deps`.)
-    exclude: ['@deck.gl/core', '@deck.gl/layers', '@deck.gl/mapbox'],
-  },
-  build: {
-    rollupOptions: {
-      // Same reason as optimizeDeps.exclude above — keep these
-      // un-bundled so the Vercel build doesn't fail on missing
-      // @luma.gl peers.
-      external: [
-        '@luma.gl/engine',
-        '@luma.gl/shadertools',
-        '@luma.gl/webgl',
-        '@luma.gl/core',
-        '@luma.gl/constants',
-      ],
-    },
+    include: ['marked', '@deck.gl/core', '@deck.gl/layers', '@deck.gl/mapbox'],
   },
   define: {
     __BUILD_DATES__: JSON.stringify(buildDates),

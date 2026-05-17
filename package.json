@@ -22,6 +22,8 @@
     "@deck.gl/core": "^9.2.11",
     "@deck.gl/layers": "^9.2.11",
     "@deck.gl/mapbox": "^9.2.11",
+    "@luma.gl/shadertools": "^9.2.6",
+    "@luma.gl/webgl": "^9.2.6",
     "@vercel/analytics": "^1.6.1",
     "gray-matter": "^4.0.3",
     "maplibre-gl": "^5.19.0",
