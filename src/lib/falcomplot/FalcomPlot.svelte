@@ -96,8 +96,8 @@
       </div>
       <div class="fp-row fp-row-inline">
         <label for="fp-speedSlider">Speed</label>
-        <input type="range" id="fp-speedSlider" min="0.5" max="3" step="0.5" value="1" />
-        <span id="fp-speedLabel">1x</span>
+        <input type="range" id="fp-speedSlider" min="1" max="10" step="1" value="2" />
+        <span id="fp-speedLabel">2x</span>
       </div>
       <div class="fp-row fp-row-inline">
         <label for="fp-iterationInput">Step</label>

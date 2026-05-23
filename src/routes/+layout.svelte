@@ -210,6 +210,10 @@
   :global(.dark) .mobile-title { color: rgba(255,255,255,0.5); }
 </style>
 
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</svelte:head>
+
 <svelte:window bind:scrollY={y} />
 
 {#if fullscreen}
@@ -299,7 +303,7 @@
     </aside>
   </div>
 
-  <main bind:clientHeight={h}>
+  <main>
     <slot/>
   </main>
 </div>

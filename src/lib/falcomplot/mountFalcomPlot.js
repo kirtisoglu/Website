@@ -37,7 +37,7 @@ function makeInitialState() {
         maxIteration: 0,
         isPlaying: false,
         isPaused: false,
-        animationSpeed: 1.0,
+        animationSpeed: 2.0,
 
         blocksPaths: [],
         blocksBounds: null,

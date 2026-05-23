@@ -52,7 +52,17 @@
 		</script>
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
+	<!--
+		data-sveltekit-reload forces a full HTML reload on every internal
+		link click instead of SPA navigation. Workaround for a Svelte 4
+		hydration race triggered by the route-group layout: the deeper
+		generated root.svelte + the layout's {#if segment} branch flip
+		intermittently detached the slot's anchor text-node during nav,
+		causing "Cannot read properties of null (reading 'insertBefore')"
+		and blank pages after clicking the nav. Full reload sidesteps the
+		nav-time patch entirely.
+	-->
+	<body data-sveltekit-preload-data="hover" data-sveltekit-reload>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
