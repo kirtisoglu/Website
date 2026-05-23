@@ -138,7 +138,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">2.</span>
-        <span class="paper-status submitted">Submitted</span>
+        <span class="paper-status preprint">Preprint</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
@@ -201,7 +201,7 @@
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">4.</span>
-        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-status preprint">Preprint</span>
         <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
@@ -496,12 +496,14 @@
   }
 
   .paper-status.published  { background: #dcfce7; color: #15803d; }
+  .paper-status.preprint   { background: #ccfbf1; color: #0f766e; }
   .paper-status.submitted  { background: #dbeafe; color: #1e40af; }
   .paper-status.submitting { background: #e0e7ff; color: #4338ca; }
   .paper-status.testing    { background: #fef9c3; color: #a16207; }
   .paper-status.design     { background: #fce7f3; color: #9d174d; }
 
   :global(.dark) .paper-status.published  { background: rgba(21,128,61,0.15);  color: #86efac; }
+  :global(.dark) .paper-status.preprint   { background: rgba(15,118,110,0.18); color: #5eead4; }
   :global(.dark) .paper-status.submitted  { background: rgba(30,64,175,0.18);  color: #93c5fd; }
   :global(.dark) .paper-status.submitting { background: rgba(67,56,202,0.15);  color: #a5b4fc; }
   :global(.dark) .paper-status.testing    { background: rgba(161,98,7,0.15);   color: #fde047; }
