@@ -24,7 +24,13 @@
 
   onMount(() => {
     if (typeof renderMathInElement === 'function') {
-      renderMathInElement(document.body);
+      // Scope KaTeX scan to the main content area, not document.body.
+      // Scanning the whole body detaches text nodes Svelte uses as
+      // hydration anchors (notably root.svelte's #svelte-announcer
+      // marker), causing intermittent "insertBefore on null" errors
+      // during the first patch after hydration.
+      const main = document.querySelector('main') || document.body;
+      renderMathInElement(main);
     }
   });
 
@@ -203,55 +209,6 @@
   :global(.dark) .mobile-name { color: #f9fafb; }
   :global(.dark) .mobile-title { color: rgba(255,255,255,0.5); }
 </style>
-
-<svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
-    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
-    crossorigin="anonymous"></script>
-
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
-    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD Structured Data -->
-  {@html `<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alaittin Kirtisoglu",
-    "url": "https://akirtisoglu.me",
-    "image": "https://akirtisoglu.me/about/portrait.webp",
-    "jobTitle": "PhD Candidate in Applied Mathematics",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Illinois Institute of Technology",
-      "url": "https://www.iit.edu"
-    },
-    "alumniOf": {
-      "@type": "Organization",
-      "name": "Middle East Technical University"
-    },
-    "knowsAbout": [
-      "Combinatorial Optimization",
-      "Algorithm Design",
-      "Graph Theory",
-      "Computational Districting",
-      "Facility Location",
-      "Healthcare Network Design"
-    ],
-    "sameAs": [
-      "https://github.com/kirtisoglu",
-      "https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en",
-      "https://www.linkedin.com/in/alaittin-kirtisoglu",
-      "https://www.researchgate.net/profile/Alaittin-Kirtisoglu"
-    ]
-  })}</script>`}
-</svelte:head>
 
 <svelte:window bind:scrollY={y} />
 
