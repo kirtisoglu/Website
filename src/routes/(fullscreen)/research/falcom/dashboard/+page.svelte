@@ -19,6 +19,10 @@
   // them over the canvas.
   let controlsEl;
 
+  // Per-dataset capacity table (currently only LAS ships one).
+  let fleetCapacity = null;
+  let fleetExpanded = false;
+
   $: dataPath = selectedId ? `/falcomplot/${selectedId}` : null;
   $: selected = datasets.find((d) => d.id === selectedId) || null;
 
@@ -33,6 +37,19 @@
       loadErr = err.message || String(err);
     }
   });
+
+  // Reload the per-dataset capacity table whenever the selection changes.
+  // Silent failure: only LAS currently ships a fleet_capacity.json.
+  $: if (dataPath) loadFleet(dataPath);
+  async function loadFleet(p) {
+    try {
+      const r = await fetch(`${p}/fleet_capacity.json`, { cache: 'no-cache' });
+      if (!r.ok) { fleetCapacity = null; return; }
+      fleetCapacity = await r.json();
+    } catch {
+      fleetCapacity = null;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -107,6 +124,51 @@
           <span class="v">{selected.graph_nodes}</span>
         </div>
         <p class="desc">{selected.description}</p>
+      </section>
+    {/if}
+
+    {#if fleetCapacity}
+      <section class="meta-section fleet">
+        <h3 class="meta-title">Fleet capacity</h3>
+        <p class="fleet-source">
+          Inventory: <strong>{Math.round(fleetCapacity.totals.n_dca_mean_inventory)}</strong>
+          DCAs · on-shift: <strong>{fleetCapacity.totals.n_dca_operational}</strong>
+          (×{fleetCapacity.source.on_shift_ratio})
+        </p>
+
+        <details class="fleet-block">
+          <summary>L2 — by sector ({fleetCapacity.sectors.length})</summary>
+          <table class="fleet-tbl">
+            <thead><tr><th>Sector</th><th class="num">Groups</th><th class="num">On-shift DCAs</th><th class="num">Inventory</th></tr></thead>
+            <tbody>
+              {#each fleetCapacity.sectors as s}
+                <tr>
+                  <td>{s.sector}</td>
+                  <td class="num">{s.n_groups}</td>
+                  <td class="num">{s.n_dca_op}</td>
+                  <td class="num">{s.n_dca_mean.toFixed(0)}</td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </details>
+
+        <details class="fleet-block" bind:open={fleetExpanded}>
+          <summary>L1 — by Group HQ ({fleetCapacity.groups.length})</summary>
+          <table class="fleet-tbl">
+            <thead><tr><th>Group HQ</th><th>Sector</th><th class="num">On-shift</th><th class="num">Mean</th></tr></thead>
+            <tbody>
+              {#each fleetCapacity.groups as g}
+                <tr>
+                  <td>{g.station_name}</td>
+                  <td class="sector-cell">{g.sector}</td>
+                  <td class="num">{g.n_dca_op}</td>
+                  <td class="num">{g.n_dca_mean.toFixed(0)}</td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </details>
       </section>
     {/if}
   </aside>
@@ -237,6 +299,53 @@
     line-height: 1.55;
     font-size: 12px;
     color: rgba(255,255,255,0.65);
+  }
+
+  .fleet { font-size: 11.5px; }
+  .fleet-source {
+    margin: 0 0 10px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+  .fleet-source strong { color: #fff; }
+  .fleet-block { margin-top: 8px; }
+  .fleet-block > summary {
+    cursor: pointer;
+    padding: 4px 0;
+    color: #90caf9;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    list-style: none;
+  }
+  .fleet-block > summary::-webkit-details-marker { display: none; }
+  .fleet-block > summary::before { content: '▸ '; font-size: 10px; }
+  .fleet-block[open] > summary::before { content: '▾ '; }
+  .fleet-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    font-size: 11px;
+  }
+  .fleet-tbl th {
+    text-align: left;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    padding: 4px 6px 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .fleet-tbl td {
+    padding: 3px 6px 3px 0;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px dashed rgba(255,255,255,0.04);
+  }
+  .fleet-tbl td.sector-cell {
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+  }
+  .fleet-tbl th.num, .fleet-tbl td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
   }
 
   .empty {

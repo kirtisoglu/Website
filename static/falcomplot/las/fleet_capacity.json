@@ -1,0 +1,263 @@
+{
+  "source": {
+    "inventory_apr2025": "new_data/LAS-Fleet-April-2025.pdf",
+    "inventory_foi7376": "new_data/Appendix 1 FOI 7376 Fleet List.pdf",
+    "on_shift_ratio": 0.706,
+    "on_shift_ratio_basis": "Coates & McCormack (2015) and FOI 7198: ~446 emergency ambulances on shift vs ~632 inventory mean."
+  },
+  "totals": {
+    "n_groups": 21,
+    "n_dca_mean_inventory": 588.0,
+    "n_dca_operational": 413,
+    "n_fru_mean": 113.0
+  },
+  "groups": [
+    {
+      "station_name": "Camden",
+      "group_label": "Camden Group",
+      "sector": "North Central",
+      "n_dca_apr": 27,
+      "n_dca_foi7376": 28,
+      "n_dca_mean": 27.5,
+      "n_dca_op": 19,
+      "n_fru_mean": 2.5
+    },
+    {
+      "station_name": "Edmonton",
+      "group_label": "Edmonton Group",
+      "sector": "North Central",
+      "n_dca_apr": 32,
+      "n_dca_foi7376": 34,
+      "n_dca_mean": 33.0,
+      "n_dca_op": 23,
+      "n_fru_mean": 5.5
+    },
+    {
+      "station_name": "Friern Barnet",
+      "group_label": "Friern Barnet Group",
+      "sector": "North Central",
+      "n_dca_apr": 30,
+      "n_dca_foi7376": 30,
+      "n_dca_mean": 30.0,
+      "n_dca_op": 21,
+      "n_fru_mean": 4.5
+    },
+    {
+      "station_name": "Homerton",
+      "group_label": "Homerton Group",
+      "sector": "North East",
+      "n_dca_apr": 29,
+      "n_dca_foi7376": 33,
+      "n_dca_mean": 31.0,
+      "n_dca_op": 22,
+      "n_fru_mean": 7.0
+    },
+    {
+      "station_name": "Ilford",
+      "group_label": "Ilford Group",
+      "sector": "North East",
+      "n_dca_apr": 22,
+      "n_dca_foi7376": 41,
+      "n_dca_mean": 31.5,
+      "n_dca_op": 22,
+      "n_fru_mean": 8.5
+    },
+    {
+      "station_name": "Newham",
+      "group_label": "Newham Group",
+      "sector": "North East",
+      "n_dca_apr": 28,
+      "n_dca_foi7376": 28,
+      "n_dca_mean": 28.0,
+      "n_dca_op": 20,
+      "n_fru_mean": 4.0
+    },
+    {
+      "station_name": "Romford",
+      "group_label": "Romford Group",
+      "sector": "North East",
+      "n_dca_apr": 28,
+      "n_dca_foi7376": 28,
+      "n_dca_mean": 28.0,
+      "n_dca_op": 20,
+      "n_fru_mean": 6.5
+    },
+    {
+      "station_name": "Whipps Cross",
+      "group_label": "Whipps Cross Group",
+      "sector": "North East",
+      "n_dca_apr": 20,
+      "n_dca_foi7376": 1,
+      "n_dca_mean": 10.5,
+      "n_dca_op": 7,
+      "n_fru_mean": 1.5
+    },
+    {
+      "station_name": "Brent",
+      "group_label": "Brent Group",
+      "sector": "North West",
+      "n_dca_apr": 37,
+      "n_dca_foi7376": 37,
+      "n_dca_mean": 37.0,
+      "n_dca_op": 26,
+      "n_fru_mean": 10.0
+    },
+    {
+      "station_name": "Fulham",
+      "group_label": "Fulham Group",
+      "sector": "North West",
+      "n_dca_apr": 34,
+      "n_dca_foi7376": 33,
+      "n_dca_mean": 33.5,
+      "n_dca_op": 24,
+      "n_fru_mean": 6.0
+    },
+    {
+      "station_name": "Hanwell",
+      "group_label": "Hanwell Group",
+      "sector": "North West",
+      "n_dca_apr": 38,
+      "n_dca_foi7376": 37,
+      "n_dca_mean": 37.5,
+      "n_dca_op": 26,
+      "n_fru_mean": 6.5
+    },
+    {
+      "station_name": "Hayes",
+      "group_label": "Hillingdon Group",
+      "sector": "North West",
+      "n_dca_apr": 23,
+      "n_dca_foi7376": 23,
+      "n_dca_mean": 23.0,
+      "n_dca_op": 16,
+      "n_fru_mean": 6.0
+    },
+    {
+      "station_name": "Westminster",
+      "group_label": "Westminster Group",
+      "sector": "North West",
+      "n_dca_apr": 16,
+      "n_dca_foi7376": 16,
+      "n_dca_mean": 16.0,
+      "n_dca_op": 11,
+      "n_fru_mean": 4.0
+    },
+    {
+      "station_name": "Bromley",
+      "group_label": "Bromley Group",
+      "sector": "South East",
+      "n_dca_apr": 34,
+      "n_dca_foi7376": 35,
+      "n_dca_mean": 34.5,
+      "n_dca_op": 24,
+      "n_fru_mean": 5.5
+    },
+    {
+      "station_name": "Deptford",
+      "group_label": "Deptford Group",
+      "sector": "South East",
+      "n_dca_apr": 42,
+      "n_dca_foi7376": 42,
+      "n_dca_mean": 42.0,
+      "n_dca_op": 30,
+      "n_fru_mean": 4.0
+    },
+    {
+      "station_name": "Greenwich",
+      "group_label": "Greenwich Group",
+      "sector": "South East",
+      "n_dca_apr": 31,
+      "n_dca_foi7376": 31,
+      "n_dca_mean": 31.0,
+      "n_dca_op": 22,
+      "n_fru_mean": 7.0
+    },
+    {
+      "station_name": "Oval",
+      "group_label": "Oval Group",
+      "sector": "South East",
+      "n_dca_apr": 23,
+      "n_dca_foi7376": 25,
+      "n_dca_mean": 24.0,
+      "n_dca_op": 17,
+      "n_fru_mean": 4.0
+    },
+    {
+      "station_name": "Croydon",
+      "group_label": "Croydon Group",
+      "sector": "South West",
+      "n_dca_apr": 26,
+      "n_dca_foi7376": 26,
+      "n_dca_mean": 26.0,
+      "n_dca_op": 18,
+      "n_fru_mean": 6.0
+    },
+    {
+      "station_name": "New Malden",
+      "group_label": "New Malden Group",
+      "sector": "South West",
+      "n_dca_apr": 22,
+      "n_dca_foi7376": 21,
+      "n_dca_mean": 21.5,
+      "n_dca_op": 15,
+      "n_fru_mean": 6.0
+    },
+    {
+      "station_name": "St Helier",
+      "group_label": "St Helier Group",
+      "sector": "South West",
+      "n_dca_apr": 18,
+      "n_dca_foi7376": 21,
+      "n_dca_mean": 19.5,
+      "n_dca_op": 14,
+      "n_fru_mean": 3.0
+    },
+    {
+      "station_name": "Wimbledon",
+      "group_label": "Wimbledon Group",
+      "sector": "South West",
+      "n_dca_apr": 23,
+      "n_dca_foi7376": 23,
+      "n_dca_mean": 23.0,
+      "n_dca_op": 16,
+      "n_fru_mean": 5.0
+    }
+  ],
+  "sectors": [
+    {
+      "sector": "North Central",
+      "n_groups": 3,
+      "n_dca_mean": 90.5,
+      "n_dca_op": 63,
+      "n_fru_mean": 12.5
+    },
+    {
+      "sector": "North East",
+      "n_groups": 5,
+      "n_dca_mean": 129.0,
+      "n_dca_op": 91,
+      "n_fru_mean": 27.5
+    },
+    {
+      "sector": "North West",
+      "n_groups": 5,
+      "n_dca_mean": 147.0,
+      "n_dca_op": 103,
+      "n_fru_mean": 32.5
+    },
+    {
+      "sector": "South East",
+      "n_groups": 4,
+      "n_dca_mean": 131.5,
+      "n_dca_op": 93,
+      "n_fru_mean": 20.5
+    },
+    {
+      "sector": "South West",
+      "n_groups": 4,
+      "n_dca_mean": 90.0,
+      "n_dca_op": 63,
+      "n_fru_mean": 20.0
+    }
+  ]
+}
