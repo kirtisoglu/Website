@@ -169,38 +169,10 @@
 
     <div class="paper-divider"></div>
 
-    <!-- Paper 3: Diffusion model redistricting -->
+    <!-- Paper 3: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">3.</span>
-        <span class="paper-status submitting">Preparing for Submission</span>
-        <span class="paper-type">Research Paper</span>
-      </div>
-      <h3 class="paper-title">
-        A Diffusion Model for Political Redistricting
-      </h3>
-      <p class="paper-venue">Alaittin Kirtisoglu</p>
-      <p class="paper-abstract">
-        ReCom variants, the dominant MCMC methods for political redistricting, are
-        computationally efficient but geometrically blind. We propose a hybrid sampler that
-        complements ReCom with a kernel-aware local-refinement step, based on a
-        graph-diffusion energy formulated as an integer quadratic program. Our results show
-        that the hybrid model admits configurable Laplacian kernels (perimeter, density,
-        demographic) plus a fidelity term that anchors refinement near the current
-        partition. On Iowa precincts, the integer variant reduces mean cut edges by 23.9%
-        vs. ReCom.
-      </p>
-      <div class="paper-links">
-        <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 4: UAV routing -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">4.</span>
         <span class="paper-status preprint">Preprint</span>
         <span class="paper-type">Research Paper</span>
       </div>
@@ -222,6 +194,34 @@
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 4: Diffusion model redistricting -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">4.</span>
+        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        A Diffusion Model for Political Redistricting
+      </h3>
+      <p class="paper-venue">Alaittin Kirtisoglu</p>
+      <p class="paper-abstract">
+        ReCom variants, the dominant MCMC methods for political redistricting, are
+        computationally efficient but geometrically blind. We propose a hybrid sampler that
+        complements ReCom with a kernel-aware local-refinement step, based on a
+        graph-diffusion energy formulated as an integer quadratic program. Our results show
+        that the hybrid model admits configurable Laplacian kernels (perimeter, density,
+        demographic) plus a fidelity term that anchors refinement near the current
+        partition. On Iowa precincts, the integer variant reduces mean cut edges by 23.9%
+        vs. ReCom.
+      </p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub →</a>
       </div>
     </div>
 

@@ -198,12 +198,12 @@
         Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.
         <div class="pub-note">Extended abstract accepted for talk at the <a href="https://isco2026.com.tr" target="_blank" rel="noopener">International Symposium on Combinatorial Optimization (ISCO)</a>, 2026.</div>
       </li>
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
     </ol>
 
     <p class="pub-category">In progress</p>
-    <ol class="pub-list" start="3">
+    <ol class="pub-list" start="4">
       <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting.</li>
-      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
       <li>Kirtisoglu, A., &amp; Kaul, H. Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago.</li>
     </ol>
   </section>
