@@ -101,46 +101,6 @@ export class InputHandler {
         return null;
     }
 
-    /**
-     * Compact LSOA tooltip shown on every block hover.
-     * Pulls LSOA21CD / LSOA21NM from the block's feature properties
-     * (always present in the LAS blocks.json) and the administrative
-     * Group / Sector from `state.lsoaToGroup` if available.
-     */
-    renderLsoaTooltip(blockId, state) {
-        const feature = state.blockIdToFeature?.get(blockId);
-        const props = feature?.properties || {};
-        const lsoaCode = props.LSOA21CD;
-        const lsoaName = props.LSOA21NM;
-        // Non-LAS datasets won't have these properties — fall back to
-        // generic block info so the tooltip still works for grids.
-        if (!lsoaCode && !lsoaName) {
-            return `
-                <div style="font-size:11px;line-height:1.45;">
-                    <div><b>Block</b> #${blockId}</div>
-                </div>
-            `;
-        }
-        const lookup = state.lsoaToGroup?.[lsoaCode];
-        const group = lookup?.group;
-        const sector = lookup?.sector;
-        const source = lookup?.source;
-        let html = `
-            <div style="font-size:11px;line-height:1.45;min-width:170px;">
-                <div style="font-weight:600;color:#fff;margin-bottom:3px;">${lsoaName ?? "—"}</div>
-                <div style="opacity:0.8;font-family:ui-monospace,monospace;">${lsoaCode ?? "—"}</div>
-        `;
-        if (group || sector) {
-            html += `<div style="margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,0.15);">`;
-            if (group)  html += `<div><span style="opacity:0.6;">Group:</span> <b>${group}</b></div>`;
-            if (sector) html += `<div><span style="opacity:0.6;">Sector:</span> ${sector}</div>`;
-            if (source) html += `<div style="opacity:0.55;font-size:10px;margin-top:2px;">source: ${source}</div>`;
-            html += `</div>`;
-        }
-        html += `</div>`;
-        return html;
-    }
-
     renderBlockMetadata(blockId, state) {
         const feature = state.blockIdToFeature.get(blockId);
         const props = feature?.properties || {};
@@ -289,35 +249,24 @@ export class InputHandler {
                         // Only highlight if this block belongs to a colored/active district
                         const isDistrictActive = districtId && state.districtBlockColors.has(hitBlockId);
 
-                        // ALWAYS show LSOA tooltip on block hover, even when no
-                        // active district is colouring it. Position next to cursor.
-                        tooltip.style.left = (e.pageX + 12) + "px";
-                        tooltip.style.top = (e.pageY + 12) + "px";
-                        tooltip.innerHTML = this.renderLsoaTooltip(hitBlockId, state);
-                        tooltip.style.display = "block";
-
                         if (isDistrictActive) {
+                            // Hide floating tooltip
+                            tooltip.style.display = "none";
+
                             // Update sidebar with DISTRICT metadata
                             if (districtMetadataPanel) {
                                 districtMetadataPanel.innerHTML = this.renderDistrictMetadata(districtId, state);
                             }
+
                             // Highlight the entire district
                             if (state.highlightDistrictId !== districtId) {
                                 state.highlightDistrictId = districtId;
-                                state.highlightBlockId = null;
-                                state.highlightNodeId = null;
+                                state.highlightBlockId = null; // Clear block highlight
+                                state.highlightNodeId = null; // Clear node highlight
                                 redraw();
                             }
-                        } else {
-                            // No active district: still highlight just this block.
-                            if (state.highlightBlockId !== hitBlockId) {
-                                state.highlightBlockId = hitBlockId;
-                                state.highlightDistrictId = null;
-                                state.highlightNodeId = null;
-                                redraw();
-                            }
+                            return;
                         }
-                        return;
                     }
                 }
 

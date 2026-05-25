@@ -468,12 +468,10 @@ export async function mountFalcomPlot(opts) {
 
         // Load manifest + adjacency in parallel — adjacency is used by
         // the per-step district-coloring routine, so we want it ready
-        // before the first step's assignment is applied. The LSOA→Group
-        // lookup is LAS-specific and loaded silently (returns null elsewhere).
+        // before the first step's assignment is applied.
         const [manifest] = await Promise.all([
             dataLoader.loadManifest(),
             dataLoader.loadAdjacency(),
-            dataLoader.loadLsoaToGroup().then(m => { state.lsoaToGroup = m; }),
         ]);
         if (manifest && manifest.total_steps) {
             state.manifest = manifest;

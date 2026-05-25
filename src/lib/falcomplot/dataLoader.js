@@ -173,23 +173,6 @@ export class DataLoader {
     }
 
     // ----------------------------------------------------------------
-    // LSOA → Group/Sector lookup (LAS-specific; silent if missing).
-    // Used by the LSOA hover tooltip to enrich block info with the
-    // administrative Group / Sector that LSOA belongs to.
-    // ----------------------------------------------------------------
-    async loadLsoaToGroup() {
-        try {
-            const r = await fetch(this._url("lsoa_to_group.json"), { cache: "no-cache" });
-            if (!r.ok) return null;
-            const m = await r.json();
-            this.logger.log(`LSOA→Group lookup loaded: ${Object.keys(m).length} entries`);
-            return m;
-        } catch {
-            return null;
-        }
-    }
-
-    // ----------------------------------------------------------------
     // Manifest (new — reads chain metadata)
     // ----------------------------------------------------------------
     async loadManifest() {

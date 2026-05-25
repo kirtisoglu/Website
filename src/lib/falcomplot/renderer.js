@@ -52,26 +52,6 @@ export class Renderer {
         }
 
         // ==========================================
-        // LAYER 0.5: Hovered-block highlight (LSOA hover affordance)
-        // ==========================================
-        if (state.highlightBlockId != null) {
-            const geom = state.blockIdToGeometry?.get(state.highlightBlockId);
-            if (geom) {
-                const stroke = "#ffeb3b";
-                const lw = 2.5 / state.transform.k;
-                if (geom.type === "Polygon") {
-                    this.drawGeometry(ctx, geom.coordinates,
-                        "rgba(255, 235, 59, 0.18)", stroke, lw, state.detectedSwap);
-                } else if (geom.type === "MultiPolygon") {
-                    for (const poly of geom.coordinates) {
-                        this.drawGeometry(ctx, poly,
-                            "rgba(255, 235, 59, 0.18)", stroke, lw, state.detectedSwap);
-                    }
-                }
-            }
-        }
-
-        // ==========================================
         // LAYER 1: District coloring
         // ==========================================
         if (state.blockIdToDistrictId.size > 0) {
