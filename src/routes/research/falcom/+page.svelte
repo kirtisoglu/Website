@@ -315,9 +315,9 @@
   .figure-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
+    gap: 0.7rem;
     align-items: start;
-    max-width: 480px;
+    max-width: 600px;
     margin: 0.25rem auto 0;
   }
 
