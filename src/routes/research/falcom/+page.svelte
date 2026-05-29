@@ -42,26 +42,17 @@
       <figure class="gif-fig">
         <img src="/falcom-gif/falcom_grid400.gif" loading="lazy"
              alt="FalCom Markov chain animating district boundaries on the grid_400 benchmark — coloured cell-map view with facility 1-medians shown as stars." />
-        <figcaption>
-          Cell-map view of the FalCom chain on grid_400. Colours are level-1
-          districts; stars mark each district's demand-weighted 1-median.
-        </figcaption>
+        <figcaption>Cell-map view</figcaption>
       </figure>
       <figure class="gif-fig">
         <img src="/falcom-gif/falcom_grid400_graph.gif" loading="lazy"
              alt="The same FalCom chain shown as the dual graph — nodes coloured by district with bold district boundaries." />
-        <figcaption>
-          The same chain on the dual graph G¹ — nodes coloured by district, with
-          the single recut region ringed at each step.
-        </figcaption>
+        <figcaption>Dual-graph view</figcaption>
       </figure>
       <figure class="gif-fig">
         <img src="/falcom-gif/falcom_tree_cut.gif" loading="lazy"
              alt="Capacitated recursive tree-cut — a spanning tree peeled into balanced districts one subtree at a time." />
-        <figcaption>
-          Capacitated recursive tree-cut — the seeding step. A spanning tree is
-          peeled into districts within the capacity band (red dashed = removed edge).
-        </figcaption>
+        <figcaption>Recursive tree-cut (seeding)</figcaption>
       </figure>
     </div>
   </section>
@@ -324,15 +315,17 @@
   .figure-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.6rem;
     align-items: start;
+    max-width: 480px;
+    margin: 0.25rem auto 0;
   }
 
   .gif-fig {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .gif-fig img {
@@ -341,15 +334,15 @@
     object-fit: contain;
     display: block;
     border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
+    border-radius: 6px;
     background: #fff;
   }
 
   :global(.dark) .gif-fig img { border-color: rgba(255,255,255,0.1); }
 
   .gif-fig figcaption {
-    font-size: 0.82rem;
-    line-height: 1.55;
+    font-size: 0.68rem;
+    line-height: 1.4;
     color: #6b7280;
     text-align: center;
   }
