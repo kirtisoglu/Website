@@ -38,34 +38,32 @@
       plans, enabling rigorous statistical analysis of solution quality and fairness properties.
     </p>
 
-    <div class="figure-pair">
+    <div class="figure-row">
       <figure class="gif-fig">
         <img src="/falcom-gif/falcom_grid400.gif" loading="lazy"
              alt="FalCom Markov chain animating district boundaries on the grid_400 benchmark — coloured cell-map view with facility 1-medians shown as stars." />
         <figcaption>
-          The FalCom chain on the grid_400 benchmark — cell-map view. Colours are
-          level-1 districts; stars mark each district's demand-weighted 1-median.
+          Cell-map view of the FalCom chain on grid_400. Colours are level-1
+          districts; stars mark each district's demand-weighted 1-median.
         </figcaption>
       </figure>
       <figure class="gif-fig">
         <img src="/falcom-gif/falcom_grid400_graph.gif" loading="lazy"
              alt="The same FalCom chain shown as the dual graph — nodes coloured by district with bold district boundaries." />
         <figcaption>
-          The same chain on the dual graph G¹ — nodes coloured by district, with the
-          single recut region ringed at each step.
+          The same chain on the dual graph G¹ — nodes coloured by district, with
+          the single recut region ringed at each step.
+        </figcaption>
+      </figure>
+      <figure class="gif-fig">
+        <img src="/falcom-gif/falcom_tree_cut.gif" loading="lazy"
+             alt="Capacitated recursive tree-cut — a spanning tree peeled into balanced districts one subtree at a time." />
+        <figcaption>
+          Capacitated recursive tree-cut — the seeding step. A spanning tree is
+          peeled into districts within the capacity band (red dashed = removed edge).
         </figcaption>
       </figure>
     </div>
-
-    <figure class="gif-fig">
-      <img src="/falcom-gif/falcom_tree_cut.gif" loading="lazy"
-           alt="Capacitated recursive tree-cut — a spanning tree peeled into balanced districts one subtree at a time." />
-      <figcaption>
-        Capacitated recursive tree-cut — the seeding step. A spanning tree is peeled
-        into districts whose demand lands within the capacity band (red dashed = the
-        removed edge).
-      </figcaption>
-    </figure>
   </section>
 
   <div class="divider"></div>
@@ -323,10 +321,10 @@
   :global(.dark) .software-desc { color: rgba(255,255,255,0.7); }
 
   /* ── Figures ── */
-  .figure-pair {
+  .figure-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     align-items: start;
   }
 
@@ -339,7 +337,8 @@
 
   .gif-fig img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
     display: block;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
@@ -359,6 +358,6 @@
 
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }
-    .figure-pair { grid-template-columns: 1fr; }
+    .figure-row { grid-template-columns: 1fr; }
   }
 </style>
