@@ -40,19 +40,19 @@
 
     <div class="figure-row">
       <figure class="gif-fig">
-        <img src="/falcom-gif/falcom_grid400.gif" loading="lazy"
-             alt="FalCom Markov chain animating district boundaries on the grid_400 benchmark — coloured cell-map view with facility 1-medians shown as stars." />
-        <figcaption>Cell-map view</figcaption>
+        <video src="/falcom-gif/falcom_grid400.mp4" autoplay loop muted playsinline
+               aria-label="Cell-map view of the FalCom chain on grid_400."
+               title="Cell-map view of the FalCom chain on grid_400."></video>
       </figure>
       <figure class="gif-fig">
-        <img src="/falcom-gif/falcom_grid400_graph.gif" loading="lazy"
-             alt="The same FalCom chain shown as the dual graph — nodes coloured by district with bold district boundaries." />
-        <figcaption>Dual-graph view</figcaption>
+        <video src="/falcom-gif/falcom_grid400_graph.mp4" autoplay loop muted playsinline
+               aria-label="The same FalCom chain on the dual graph G¹."
+               title="The same FalCom chain on the dual graph G¹."></video>
       </figure>
       <figure class="gif-fig">
-        <img src="/falcom-gif/falcom_tree_cut.gif" loading="lazy"
-             alt="Capacitated recursive tree-cut — a spanning tree peeled into balanced districts one subtree at a time." />
-        <figcaption>Recursive tree-cut (seeding)</figcaption>
+        <video src="/falcom-gif/falcom_tree_cut.mp4" autoplay loop muted playsinline
+               aria-label="Capacitated recursive tree-cut — the seeding step."
+               title="Capacitated recursive tree-cut — the seeding step."></video>
       </figure>
     </div>
   </section>
@@ -323,12 +323,9 @@
 
   .gif-fig {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
   }
 
-  .gif-fig img {
+  .gif-fig video {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
@@ -338,16 +335,7 @@
     background: #fff;
   }
 
-  :global(.dark) .gif-fig img { border-color: rgba(255,255,255,0.1); }
-
-  .gif-fig figcaption {
-    font-size: 0.68rem;
-    line-height: 1.4;
-    color: #6b7280;
-    text-align: center;
-  }
-
-  :global(.dark) .gif-fig figcaption { color: rgba(255,255,255,0.5); }
+  :global(.dark) .gif-fig video { border-color: rgba(255,255,255,0.1); }
 
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }
