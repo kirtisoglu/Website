@@ -33,6 +33,7 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const SHELL: string;
+	export const COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
@@ -77,6 +78,7 @@ declare module '$env/static/private' {
 	export const CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 	export const SHLVL: string;
 	export const HOME: string;
+	export const COPILOT_OTEL_EXPORTER_TYPE: string;
 	export const TMPPREFIX: string;
 	export const CLAUDE_CODE_EXECPATH: string;
 	export const VSCODE_NLS_CONFIG: string;
@@ -95,6 +97,7 @@ declare module '$env/static/private' {
 	export const CLAUDE_CODE_SESSION_ID: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
+	export const COPILOT_OTEL_ENABLED: string;
 	export const CLAUDECODE: string;
 	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const VSCODE_CWD: string;
@@ -139,6 +142,7 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		INIT_CWD: string;
 		SHELL: string;
+		COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
@@ -183,6 +187,7 @@ declare module '$env/dynamic/private' {
 		CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING: string;
 		SHLVL: string;
 		HOME: string;
+		COPILOT_OTEL_EXPORTER_TYPE: string;
 		TMPPREFIX: string;
 		CLAUDE_CODE_EXECPATH: string;
 		VSCODE_NLS_CONFIG: string;
@@ -201,6 +206,7 @@ declare module '$env/dynamic/private' {
 		CLAUDE_CODE_SESSION_ID: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
+		COPILOT_OTEL_ENABLED: string;
 		CLAUDECODE: string;
 		VSCODE_L10N_BUNDLE_LOCATION: string;
 		VSCODE_CWD: string;
