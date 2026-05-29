@@ -154,7 +154,6 @@
     font-size: 0.92rem;
     line-height: 1.7;
     color: #4b5563;
-    max-width: 560px;
     margin: 0 0 1rem;
   }
 
