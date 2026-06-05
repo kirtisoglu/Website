@@ -79,7 +79,6 @@ declare module '$env/static/private' {
 	export const SHLVL: string;
 	export const HOME: string;
 	export const COPILOT_OTEL_EXPORTER_TYPE: string;
-	export const TMPPREFIX: string;
 	export const CLAUDE_CODE_EXECPATH: string;
 	export const VSCODE_NLS_CONFIG: string;
 	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
@@ -88,7 +87,6 @@ declare module '$env/static/private' {
 	export const PYTHONPATH: string;
 	export const LOGNAME: string;
 	export const npm_lifecycle_script: string;
-	export const CLAUDE_CODE_TMPDIR: string;
 	export const VSCODE_IPC_HOOK: string;
 	export const VSCODE_CODE_CACHE_PATH: string;
 	export const COREPACK_ENABLE_AUTO_PIN: string;
@@ -99,7 +97,6 @@ declare module '$env/static/private' {
 	export const HOMEBREW_CELLAR: string;
 	export const COPILOT_OTEL_ENABLED: string;
 	export const CLAUDECODE: string;
-	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
@@ -188,7 +185,6 @@ declare module '$env/dynamic/private' {
 		SHLVL: string;
 		HOME: string;
 		COPILOT_OTEL_EXPORTER_TYPE: string;
-		TMPPREFIX: string;
 		CLAUDE_CODE_EXECPATH: string;
 		VSCODE_NLS_CONFIG: string;
 		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
@@ -197,7 +193,6 @@ declare module '$env/dynamic/private' {
 		PYTHONPATH: string;
 		LOGNAME: string;
 		npm_lifecycle_script: string;
-		CLAUDE_CODE_TMPDIR: string;
 		VSCODE_IPC_HOOK: string;
 		VSCODE_CODE_CACHE_PATH: string;
 		COREPACK_ENABLE_AUTO_PIN: string;
@@ -208,7 +203,6 @@ declare module '$env/dynamic/private' {
 		HOMEBREW_CELLAR: string;
 		COPILOT_OTEL_ENABLED: string;
 		CLAUDECODE: string;
-		VSCODE_L10N_BUNDLE_LOCATION: string;
 		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;

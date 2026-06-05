@@ -1,7 +1,7 @@
 <script>
   import { fly, fade } from "svelte/transition";
-  import Head from "../../components/Head.svelte";
-  import HiddenLinks from "../../components/HiddenLinks.svelte";
+  import Head from "../../../components/Head.svelte";
+  import HiddenLinks from "../../../components/HiddenLinks.svelte";
 
   let emailCopied = false;
   function copyEmail() {

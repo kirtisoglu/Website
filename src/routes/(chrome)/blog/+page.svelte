@@ -1,6 +1,6 @@
 <script>
   import { fly, fade } from "svelte/transition";
-  import Head from "../../components/Head.svelte";
+  import Head from "../../../components/Head.svelte";
 
   let bibtexCopied = false;
   const bibtex = `@article{Kirtisoglu2024,

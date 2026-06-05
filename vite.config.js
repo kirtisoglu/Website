@@ -4,8 +4,9 @@ import { execSync } from 'child_process';
 
 function gitDate(...files) {
   try {
+    const quoted = files.map(f => `'${f.replace(/'/g, "'\\''")}'`).join(' ');
     return execSync(
-      `git log -1 --format=%cd --date=format:"%B %d, '%y" -- ${files.join(' ')}`,
+      `git log -1 --format=%cd --date=format:"%B %d, '%y" -- ${quoted}`,
       { encoding: 'utf8' }
     ).trim() || null;
   } catch {
@@ -14,9 +15,9 @@ function gitDate(...files) {
 }
 
 const buildDates = {
-  '/':      gitDate('src/routes/+page.svelte', 'src/routes/+page.server.js'),
-  '/about': gitDate('src/routes/about/+page.svelte', 'src/routes/about/+page.server.js'),
-  '/blog':  gitDate('src/routes/blog/+page.svelte'),
+  '/':      gitDate('src/routes/(chrome)/+page.svelte', 'src/routes/(chrome)/+page.server.js'),
+  '/about': gitDate('src/routes/(chrome)/about/+page.svelte', 'src/routes/(chrome)/about/+page.server.js'),
+  '/blog':  gitDate('src/routes/(chrome)/blog/+page.svelte'),
 };
 
 export default defineConfig({

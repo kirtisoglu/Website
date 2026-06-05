@@ -1,6 +1,6 @@
 <script>
-  import Head from "../components/Head.svelte";
-  import Emoji from "../components/Emoji.svelte";
+  import Head from "../../components/Head.svelte";
+  import Emoji from "../../components/Emoji.svelte";
   import { fade, fly } from "svelte/transition";
   import { onMount } from "svelte";
 
