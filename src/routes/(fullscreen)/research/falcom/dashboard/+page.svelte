@@ -125,6 +125,21 @@
         </div>
         <p class="desc">{selected.description}</p>
       </section>
+
+      <!--
+        Tooltip drop-zone for FalcomPlot's inputHandler.  When the cursor
+        hovers an active district on the canvas, inputHandler.attachMouseListeners
+        looks up `document.getElementById("districtMetadata")` and writes a
+        formatted block into it (district id, colour, blocks count, iteration,
+        root, population, hired teams, debt).  Without this element the
+        tooltip silently drops; with it the sidebar updates on hover.
+      -->
+      <section class="meta-section">
+        <h3 class="meta-title">Hover info</h3>
+        <div id="districtMetadata" class="district-metadata">
+          <span class="dm-placeholder">Hover over a district…</span>
+        </div>
+      </section>
     {/if}
 
     {#if fleetCapacity}
@@ -299,6 +314,21 @@
     line-height: 1.55;
     font-size: 12px;
     color: rgba(255,255,255,0.65);
+  }
+
+  .district-metadata {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+    /* inputHandler.renderDistrictMetadata generates inline-styled HTML.
+       We just need a readable container with a sane default state. */
+  }
+  .district-metadata :global(b) { color: #fff; font-weight: 600; }
+  .district-metadata :global(div) { padding: 1px 0; }
+  .dm-placeholder {
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    font-size: 11px;
   }
 
   .fleet { font-size: 11.5px; }
