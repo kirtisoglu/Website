@@ -40,6 +40,7 @@
     <a href="#software">Software</a><span class="sep">·</span>
     <a href="#directions">Future directions</a><span class="sep">·</span>
     <a href="#talks">Talks</a><span class="sep">·</span>
+    <a href="#references">References</a><span class="sep">·</span>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -325,8 +326,35 @@
 
   <div class="divider"></div>
 
+  <!-- References -->
+  <section id="references" class="section" in:fly={{ y: 25, duration: 500, delay: 600 }}>
+    <h2 class="section-title">References</h2>
+    <div class="references">
+      <div class="reference">
+        <div class="ref-name">Hemanshu Kaul</div>
+        <div class="ref-role">PhD advisor</div>
+        <div class="ref-affil">Department of Applied Mathematics, Illinois Institute of Technology</div>
+        <div class="ref-email"><a href="mailto:kaul@iit.edu">kaul@iit.edu</a></div>
+      </div>
+      <div class="reference">
+        <div class="ref-name">Mustafa Kemal Tural</div>
+        <div class="ref-role">Collaborator (UAV Routing)</div>
+        <div class="ref-affil">Department of Industrial Engineering, Middle East Technical University</div>
+        <div class="ref-email"><a href="mailto:tural@metu.edu.tr">tural@metu.edu.tr</a></div>
+      </div>
+      <div class="reference">
+        <div class="ref-name">Lale Özkahya</div>
+        <div class="ref-role">Master's advisor</div>
+        <div class="ref-affil">Department of Computer Engineering, Hacettepe University</div>
+        <div class="ref-email"><a href="mailto:ozkahya@cs.hacettepe.edu.tr">ozkahya@cs.hacettepe.edu.tr</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Contact -->
-  <section id="contact" class="section" in:fly={{ y: 25, duration: 500, delay: 600 }}>
+  <section id="contact" class="section" in:fly={{ y: 25, duration: 500, delay: 650 }}>
     <h2 class="section-title">Contact</h2>
     <p class="contact-line">
       <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
@@ -337,7 +365,6 @@
       &middot;
       <a href="https://www.linkedin.com/in/alaittin-kirtisoglu" target="_blank" rel="noopener">LinkedIn</a>
     </p>
-    <p class="references-note">References available on request.</p>
   </section>
 
 </div>
@@ -637,6 +664,57 @@
   }
   :global(.dark) .talk-title { color: rgba(255,255,255,0.6); }
 
+  /* ── References ── */
+  .references {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .reference {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.1rem;
+    border-left: 3px solid #c7d2fe;
+    background: rgba(238,242,255,0.25);
+    border-radius: 0 6px 6px 0;
+  }
+  :global(.dark) .reference {
+    border-left-color: rgba(165,180,252,0.4);
+    background: rgba(99,102,241,0.04);
+  }
+  .ref-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  :global(.dark) .ref-name { color: #f9fafb; }
+  .ref-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  :global(.dark) .ref-role { color: #a5b4fc; }
+  .ref-affil {
+    font-size: 0.88rem;
+    color: #4b5563;
+    line-height: 1.45;
+    margin-top: 0.15rem;
+  }
+  :global(.dark) .ref-affil { color: rgba(255,255,255,0.65); }
+  .ref-email {
+    font-size: 0.88rem;
+    margin-top: 0.25rem;
+  }
+  .ref-email a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  .ref-email a:hover { text-decoration: underline; }
+  :global(.dark) .ref-email a { color: #818cf8; }
+
   /* ── Contact ── */
   .contact-line {
     font-size: 0.95rem;
@@ -647,14 +725,6 @@
   .contact-line a { color: #4f46e5; text-decoration: none; }
   .contact-line a:hover { text-decoration: underline; }
   :global(.dark) .contact-line a { color: #818cf8; }
-  .references-note {
-    font-size: 0.85rem;
-    color: #9ca3af;
-    margin: 0.5rem 0 0;
-    font-style: italic;
-  }
-  :global(.dark) .references-note { color: rgba(255,255,255,0.4); }
-
   /* ── Mobile ── */
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }
