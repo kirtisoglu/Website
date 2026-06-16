@@ -1,6 +1,14 @@
 <script>
   import { fly, fade } from "svelte/transition";
   import Head from "../../../components/Head.svelte";
+
+  let copiedEmail = '';
+  function copyEmail(email) {
+    navigator.clipboard.writeText(email).then(() => {
+      copiedEmail = email;
+      setTimeout(() => { copiedEmail = ''; }, 1500);
+    });
+  }
 </script>
 
 <svelte:head>
@@ -40,8 +48,7 @@
     <a href="#software">Software</a><span class="sep">·</span>
     <a href="#directions">Future directions</a><span class="sep">·</span>
     <a href="#talks">Talks</a><span class="sep">·</span>
-    <a href="#references">References</a><span class="sep">·</span>
-    <a href="#contact">Contact</a>
+    <a href="#references">References</a>
   </nav>
 
   <div class="divider"></div>
@@ -334,37 +341,48 @@
         <div class="ref-name">Hemanshu Kaul</div>
         <div class="ref-role">PhD advisor</div>
         <div class="ref-affil">Department of Applied Mathematics, Illinois Institute of Technology</div>
-        <div class="ref-email"><a href="mailto:kaul@iit.edu">kaul@iit.edu</a></div>
+        <div class="ref-email">
+          <a href="mailto:kaul@iit.edu">kaul@iit.edu</a>
+          <button class="copy-btn" title="Copy email" on:click={() => copyEmail('kaul@iit.edu')}>
+            {#if copiedEmail === 'kaul@iit.edu'}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {:else}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            {/if}
+          </button>
+        </div>
       </div>
       <div class="reference">
         <div class="ref-name">Mustafa Kemal Tural</div>
         <div class="ref-role">Collaborator (UAV Routing)</div>
         <div class="ref-affil">Department of Industrial Engineering, Middle East Technical University</div>
-        <div class="ref-email"><a href="mailto:tural@metu.edu.tr">tural@metu.edu.tr</a></div>
+        <div class="ref-email">
+          <a href="mailto:tural@metu.edu.tr">tural@metu.edu.tr</a>
+          <button class="copy-btn" title="Copy email" on:click={() => copyEmail('tural@metu.edu.tr')}>
+            {#if copiedEmail === 'tural@metu.edu.tr'}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {:else}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            {/if}
+          </button>
+        </div>
       </div>
       <div class="reference">
         <div class="ref-name">Lale Özkahya</div>
         <div class="ref-role">Master's advisor</div>
         <div class="ref-affil">Department of Computer Engineering, Hacettepe University</div>
-        <div class="ref-email"><a href="mailto:ozkahya@cs.hacettepe.edu.tr">ozkahya@cs.hacettepe.edu.tr</a></div>
+        <div class="ref-email">
+          <a href="mailto:ozkahya@cs.hacettepe.edu.tr">ozkahya@cs.hacettepe.edu.tr</a>
+          <button class="copy-btn" title="Copy email" on:click={() => copyEmail('ozkahya@cs.hacettepe.edu.tr')}>
+            {#if copiedEmail === 'ozkahya@cs.hacettepe.edu.tr'}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {:else}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            {/if}
+          </button>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Contact -->
-  <section id="contact" class="section" in:fly={{ y: 25, duration: 500, delay: 650 }}>
-    <h2 class="section-title">Contact</h2>
-    <p class="contact-line">
-      <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
-      &middot;
-      <a href="https://akirtisoglu.me">akirtisoglu.me</a>
-      &middot;
-      <a href="https://github.com/kirtisoglu" target="_blank" rel="noopener">GitHub</a>
-      &middot;
-      <a href="https://www.linkedin.com/in/alaittin-kirtisoglu" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
   </section>
 
 </div>
@@ -707,6 +725,9 @@
   .ref-email {
     font-size: 0.88rem;
     margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   .ref-email a {
     color: #4f46e5;
@@ -714,17 +735,32 @@
   }
   .ref-email a:hover { text-decoration: underline; }
   :global(.dark) .ref-email a { color: #818cf8; }
-
-  /* ── Contact ── */
-  .contact-line {
-    font-size: 0.95rem;
-    color: #374151;
-    margin: 0;
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
   }
-  :global(.dark) .contact-line { color: rgba(255,255,255,0.7); }
-  .contact-line a { color: #4f46e5; text-decoration: none; }
-  .contact-line a:hover { text-decoration: underline; }
-  :global(.dark) .contact-line a { color: #818cf8; }
+  .copy-btn:hover {
+    color: #4f46e5;
+    background: rgba(79,70,229,0.08);
+  }
+  .copy-btn svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+  :global(.dark) .copy-btn { color: rgba(255,255,255,0.4); }
+  :global(.dark) .copy-btn:hover { color: #a5b4fc; background: rgba(165,180,252,0.1); }
+
   /* ── Mobile ── */
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }
