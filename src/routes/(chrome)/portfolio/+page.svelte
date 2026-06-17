@@ -42,9 +42,6 @@
     </p>
     <div class="actions">
       <a class="btn primary" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-      <a class="btn" href="mailto:akirtisoglu@hawk.iit.edu">Email</a>
-      <a class="btn" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-      <a class="btn" href="https://github.com/kirtisoglu" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
 
