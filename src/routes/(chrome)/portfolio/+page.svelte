@@ -19,6 +19,15 @@
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>
 
+  <div class="privacy-note" in:fade={{ duration: 400, delay: 150 }}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <p>
+      This page is shared by direct link only and is not publicly listed.
+      It includes unpublished manuscripts and research plans. Please keep
+      the link and materials private.
+    </p>
+  </div>
+
   <!-- Hero -->
   <section class="hero" in:fly={{ y: 30, duration: 500, delay: 200 }}>
     <p class="eyebrow">Research Portfolio</p>
@@ -38,15 +47,6 @@
       <a class="btn" href="https://github.com/kirtisoglu" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
-
-  <div class="privacy-note" in:fade={{ duration: 400, delay: 250 }}>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <p>
-      This page is shared by direct link only and is not publicly listed.
-      It includes unpublished manuscripts and research plans. Please keep
-      the link and materials private.
-    </p>
-  </div>
 
   <nav class="section-nav" in:fade={{ duration: 400, delay: 300 }}>
     <a href="#themes">Themes</a><span class="sep">·</span>
@@ -412,7 +412,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.7rem;
-    margin: 1.25rem 0 0;
+    margin: 0 0 1.5rem;
     padding: 0.7rem 0.9rem;
     background: rgba(238,242,255,0.5);
     border: 1px solid rgba(199,210,254,0.7);
