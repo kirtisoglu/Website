@@ -39,6 +39,15 @@
     </div>
   </section>
 
+  <div class="privacy-note" in:fade={{ duration: 400, delay: 250 }}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <p>
+      This page is shared by direct link only and is not publicly listed.
+      It includes unpublished manuscripts and research plans. Please keep
+      the link and materials private.
+    </p>
+  </div>
+
   <nav class="section-nav" in:fade={{ duration: 400, delay: 300 }}>
     <a href="#themes">Themes</a><span class="sep">·</span>
     <a href="#work">Work</a><span class="sep">·</span>
@@ -391,6 +400,37 @@
   :global(.dark) .btn { color: #a5b4fc; border-color: rgba(165,180,252,0.4); }
   :global(.dark) .btn:hover { background: rgba(99,102,241,0.1); }
   :global(.dark) .btn.primary { background: #6366f1; border-color: #6366f1; color: #fff; }
+
+  /* ── Privacy note ── */
+  .privacy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin: 1.25rem 0 0;
+    padding: 0.7rem 0.9rem;
+    background: rgba(238,242,255,0.5);
+    border: 1px solid rgba(199,210,254,0.7);
+    border-radius: 6px;
+  }
+  .privacy-note svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #6366f1;
+    margin-top: 0.15rem;
+  }
+  .privacy-note p {
+    font-size: 0.83rem;
+    line-height: 1.5;
+    color: #4338ca;
+    margin: 0;
+  }
+  :global(.dark) .privacy-note {
+    background: rgba(99,102,241,0.08);
+    border-color: rgba(165,180,252,0.25);
+  }
+  :global(.dark) .privacy-note svg { color: #a5b4fc; }
+  :global(.dark) .privacy-note p { color: #c7d2fe; }
 
   /* ── Section nav ── */
   .section-nav {
