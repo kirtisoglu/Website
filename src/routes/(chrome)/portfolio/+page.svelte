@@ -97,22 +97,28 @@
     <h2 class="section-title">Selected work</h2>
 
     <div class="work-list">
-      <div class="work">
-        <div class="work-head">
-          <span class="status preprint">Preprint</span>
-          <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
+      <div class="work work-with-media">
+        <div class="work-text">
+          <div class="work-head">
+            <span class="status preprint">Preprint</span>
+            <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
+          </div>
+          <p class="authors">with H. Kaul · Manuscript, 2026</p>
+          <p class="abstract">
+            First MCMC framework for hierarchical capacitated facility location.
+            Extends the ReCom spanning-tree proposal to multi-level systems
+            with capacity bounds, demand balance, and candidate-aware cut
+            selection. Validated up to 50,000 basic units.
+          </p>
+          <div class="links">
+            <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
+            <a href="https://github.com/kirtisoglu/FalCom-Paper" target="_blank" rel="noopener">GitHub</a>
+            <a href="/research/falcom/">Project page</a>
+          </div>
         </div>
-        <p class="authors">with H. Kaul · Manuscript, 2026</p>
-        <p class="abstract">
-          First MCMC framework for hierarchical capacitated facility location.
-          Extends the ReCom spanning-tree proposal to multi-level systems
-          with capacity bounds, demand balance, and candidate-aware cut
-          selection. Validated up to 50,000 basic units.
-        </p>
-        <div class="links">
-          <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
-          <a href="https://github.com/kirtisoglu/FalCom-Paper" target="_blank" rel="noopener">GitHub</a>
-          <a href="/research/falcom/">Project page</a>
+        <div class="work-media">
+          <video src="/falcom-gif/falcom_grid400.mp4" autoplay muted loop playsinline></video>
+          <div class="media-caption">FalCom sampler on a 400-node grid</div>
         </div>
       </div>
 
@@ -490,6 +496,34 @@
   /* ── Selected work (compact) ── */
   .work-list { display: flex; flex-direction: column; gap: 1.25rem; }
   .work { display: flex; flex-direction: column; gap: 0.3rem; }
+  .work-with-media {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .work-with-media .work-text { display: flex; flex-direction: column; gap: 0.3rem; }
+  .work-media { display: flex; flex-direction: column; gap: 0.4rem; }
+  .work-media video {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    background: #f3f4f6;
+    display: block;
+  }
+  :global(.dark) .work-media video { background: rgba(255,255,255,0.05); }
+  .media-caption {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    text-align: center;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  :global(.dark) .media-caption { color: rgba(255,255,255,0.4); }
+  @media (max-width: 720px) {
+    .work-with-media { grid-template-columns: 1fr; }
+    .work-media { max-width: 320px; }
+  }
   .work-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
   .status {
     flex-shrink: 0;
