@@ -49,46 +49,12 @@
   </section>
 
   <nav class="section-nav" in:fade={{ duration: 400, delay: 300 }}>
-    <a href="#themes">Themes</a><span class="sep">·</span>
     <a href="#work">Work</a><span class="sep">·</span>
     <a href="#documents">Documents</a><span class="sep">·</span>
     <a href="#software">Software</a><span class="sep">·</span>
     <a href="#talks">Talks</a><span class="sep">·</span>
     <a href="#references">References</a>
   </nav>
-
-  <div class="divider"></div>
-
-  <!-- Themes -->
-  <section id="themes" class="section" in:fly={{ y: 25, duration: 500, delay: 350 }}>
-    <h2 class="section-title">Research themes</h2>
-    <div class="themes">
-      <div class="theme">
-        <h3>MCMC for combinatorial optimization</h3>
-        <p>
-          Markov chains over feasible configurations, spanning-tree
-          proposals for hierarchical districting under capacity constraints,
-          convergence diagnostics, and ensemble-based robustness analysis.
-        </p>
-      </div>
-      <div class="theme">
-        <h3>Equitable healthcare access</h3>
-        <p>
-          Optimization frameworks for FQHC network design and MUA reform,
-          integration of federal data sources, transit-aware accessibility,
-          patient-flow modeling.
-        </p>
-      </div>
-      <div class="theme">
-        <h3>Combinatorial optimization &amp; graph theory</h3>
-        <p>
-          MISOCP and matheuristic methods for UAV routing under nonlinear
-          energy constraints. Graph coloring under bicolored-path
-          avoidance. Diffusion-based hybrid samplers for redistricting.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <div class="divider"></div>
 
@@ -480,18 +446,6 @@
     border-bottom: 2px solid #e0e7ff;
   }
   :global(.dark) .section-title { color: #818cf8; border-bottom-color: rgba(129,140,248,0.2); }
-
-  /* ── Themes ── */
-  .themes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.1rem;
-  }
-  .theme { display: flex; flex-direction: column; gap: 0.3rem; }
-  .theme h3 { font-size: 0.95rem; font-weight: 700; color: #111827; margin: 0; line-height: 1.3; }
-  :global(.dark) .theme h3 { color: #f9fafb; }
-  .theme p { font-size: 0.85rem; line-height: 1.55; color: #4b5563; margin: 0; }
-  :global(.dark) .theme p { color: rgba(255,255,255,0.65); }
 
   /* ── Selected work (compact) ── */
   .work-list { display: flex; flex-direction: column; gap: 1.25rem; }
