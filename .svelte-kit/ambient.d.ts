@@ -33,6 +33,7 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const SHELL: string;
+	export const CLAUDE_CODE_CHILD_SESSION: string;
 	export const COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
@@ -51,7 +52,6 @@ declare module '$env/static/private' {
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_execpath: string;
-	export const VIRTUAL_ENV: string;
 	export const ELECTRON_RUN_AS_NODE: string;
 	export const PATH: string;
 	export const MCP_CONNECTION_NONBLOCKING: string;
@@ -139,6 +139,7 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		INIT_CWD: string;
 		SHELL: string;
+		CLAUDE_CODE_CHILD_SESSION: string;
 		COPILOT_OTEL_FILE_EXPORTER_PATH: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
@@ -157,7 +158,6 @@ declare module '$env/dynamic/private' {
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_execpath: string;
-		VIRTUAL_ENV: string;
 		ELECTRON_RUN_AS_NODE: string;
 		PATH: string;
 		MCP_CONNECTION_NONBLOCKING: string;

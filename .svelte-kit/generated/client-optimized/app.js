@@ -14,7 +14,8 @@ export const nodes = [
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
-	() => import('./nodes/13')
+	() => import('./nodes/13'),
+	() => import('./nodes/14')
 ];
 
 export const server_loads = [];
@@ -23,13 +24,14 @@ export const dictionary = {
 		"/(chrome)": [~4,[2]],
 		"/(chrome)/about": [~5,[2]],
 		"/(chrome)/blog": [6,[2]],
-		"/(chrome)/research": [7,[2]],
-		"/(chrome)/research/chicago-healthcare-network": [8,[2]],
-		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [12,[3]],
-		"/(chrome)/research/falcom": [9,[2]],
-		"/(fullscreen)/research/falcom/dashboard": [13,[3]],
-		"/(chrome)/teaching": [10,[2]],
-		"/(chrome)/tools": [11,[2]]
+		"/(chrome)/portfolio": [7,[2]],
+		"/(chrome)/research": [8,[2]],
+		"/(chrome)/research/chicago-healthcare-network": [9,[2]],
+		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [13,[3]],
+		"/(chrome)/research/falcom": [10,[2]],
+		"/(fullscreen)/research/falcom/dashboard": [14,[3]],
+		"/(chrome)/teaching": [11,[2]],
+		"/(chrome)/tools": [12,[2]]
 	};
 
 export const hooks = {
