@@ -30,18 +30,25 @@
 
   <!-- Hero -->
   <section class="hero" in:fly={{ y: 30, duration: 500, delay: 200 }}>
-    <p class="eyebrow">Research Portfolio</p>
-    <h1>Alaittin Kirtisoglu</h1>
-    <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
-    <p class="lead">
-      My research develops Markov chain Monte Carlo methods for hierarchical
-      combinatorial optimization problems, with applications to equitable
-      resource allocation in healthcare. <em>FalCom</em>, the methodological
-      core of my dissertation, samples over feasible hierarchical capacitated
-      partitions rather than returning a single optimum.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <div class="hero-text">
+      <p class="eyebrow">Research Portfolio</p>
+      <h1>Alaittin Kirtisoglu</h1>
+      <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
+      <p class="lead">
+        My research develops Markov chain Monte Carlo methods for hierarchical
+        combinatorial optimization problems, with applications to equitable
+        resource allocation in healthcare. <em>FalCom</em>, the methodological
+        core of my dissertation, samples over feasible hierarchical capacitated
+        partitions rather than returning a single optimum.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <video src="/falcom-gif/falcom_linkedin.mp4" autoplay muted loop playsinline
+             aria-label="FalCom — sampling for districting and hierarchical facility location."
+             title="FalCom — sampling for districting and hierarchical facility location."></video>
     </div>
   </section>
 
@@ -323,7 +330,26 @@
   :global(html) { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
   /* ── Hero ── */
-  .hero { display: flex; flex-direction: column; gap: 0.55rem; }
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .hero-text { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+  .hero-media { min-width: 0; }
+  .hero-media video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    background: #f3f4f6;
+  }
+  :global(.dark) .hero-media video { background: rgba(255,255,255,0.05); }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 1rem; }
+    .hero-media { max-width: 480px; }
+  }
   .eyebrow {
     font-size: 0.72rem;
     font-weight: 700;
