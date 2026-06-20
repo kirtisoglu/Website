@@ -35,15 +35,16 @@
       <h1>Alaittin Kirtisoglu</h1>
       <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
       <p class="lead">
-        My research develops Markov chain Monte Carlo methods for hierarchical
-        combinatorial optimization problems, with applications to equitable
-        resource allocation in healthcare. <em>FalCom</em>, the methodological
-        core of my dissertation, samples over feasible hierarchical capacitated
-        partitions rather than returning a single optimum.
+        My main doctoral research, <em>FalCom</em>, is the first Markov chain
+        Monte Carlo method that samples ensembles of feasible service-region
+        designs at city or national scale — partitioning a geographic region
+        into contiguous, demand-balanced districts at multiple administrative
+        levels, with a capacitated facility or service team in each district.
+        Its generality and scalability extend to a range of operational
+        problems in healthcare, logistics, and public service delivery.
+        Sampling ensembles enables robustness analysis, rather than returning
+        a single optimal solution.
       </p>
-      <div class="actions">
-        <a class="btn primary" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-      </div>
     </div>
     <div class="hero-media">
       <video src="/falcom-gif/falcom_linkedin.mp4" autoplay muted loop playsinline
@@ -66,6 +67,39 @@
   <section id="documents" class="section" in:fly={{ y: 25, duration: 500, delay: 400 }}>
     <h2 class="section-title">Documents</h2>
     <div class="doc-list">
+      <a class="doc" href="/docs/cover-letter.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Cover letter</div>
+          <div class="doc-desc">Introduction to my candidacy and fit for the position.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+
+      <a class="doc" href="/cv.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Curriculum vitae</div>
+          <div class="doc-desc">Full academic CV — education, publications, talks, teaching, and service.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+
+      <a class="doc" href="/docs/research-statement.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Research statement</div>
+          <div class="doc-desc">Past and ongoing research, methodology, and forward directions.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+
       <a class="doc" href="/plans/research-plan.pdf" target="_blank" rel="noopener">
         <div class="doc-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -73,17 +107,6 @@
         <div class="doc-body">
           <div class="doc-title">Future research plan</div>
           <div class="doc-desc">Methodological extensions of FalCom, applied healthcare research directions, and a five-year research arc.</div>
-        </div>
-        <span class="doc-action">PDF →</span>
-      </a>
-
-      <a class="doc" href="/plans/grant-ideas.pdf" target="_blank" rel="noopener">
-        <div class="doc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="doc-body">
-          <div class="doc-title">Grant application ideas</div>
-          <div class="doc-desc">Concept notes for NIH NIMHD, NSF CMMI, MSCA-PF, and CIHR mechanisms across the proposed research directions.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -372,23 +395,6 @@
     margin: 0.4rem 0 0;
   }
   :global(.dark) .lead { color: rgba(255,255,255,0.7); }
-  .actions { display: flex; gap: 0.5rem; margin-top: 0.85rem; flex-wrap: wrap; }
-  .btn {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #4f46e5;
-    text-decoration: none;
-    border: 1px solid #c7d2fe;
-    padding: 0.35rem 0.8rem;
-    border-radius: 6px;
-    transition: background 0.15s;
-  }
-  .btn:hover { background: #eef2ff; }
-  .btn.primary { background: #4f46e5; color: #fff; border-color: #4f46e5; }
-  .btn.primary:hover { background: #4338ca; }
-  :global(.dark) .btn { color: #a5b4fc; border-color: rgba(165,180,252,0.4); }
-  :global(.dark) .btn:hover { background: rgba(99,102,241,0.1); }
-  :global(.dark) .btn.primary { background: #6366f1; border-color: #6366f1; color: #fff; }
 
   /* ── Privacy note ── */
   .privacy-note {
@@ -502,8 +508,8 @@
   .links a:hover { text-decoration: underline; }
   :global(.dark) .links a { color: #818cf8; }
 
-  /* ── Documents (research plan + grant ideas) ── */
-  .doc-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  /* ── Documents ── */
+  .doc-list { display: flex; flex-direction: column; gap: 0.5rem; counter-reset: doc; }
   .doc {
     display: flex;
     align-items: center;
@@ -513,7 +519,18 @@
     border-radius: 8px;
     text-decoration: none;
     transition: border-color 0.15s, background 0.15s;
+    counter-increment: doc;
   }
+  .doc::before {
+    content: counter(doc) ".";
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4f46e5;
+    min-width: 1.3em;
+    text-align: right;
+  }
+  :global(.dark) .doc::before { color: #818cf8; }
   .doc:hover {
     border-color: #c7d2fe;
     background: rgba(238,242,255,0.4);
