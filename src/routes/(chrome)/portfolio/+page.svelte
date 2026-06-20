@@ -62,33 +62,57 @@
 
   <div class="divider"></div>
 
+  <!-- Documents -->
+  <section id="documents" class="section" in:fly={{ y: 25, duration: 500, delay: 400 }}>
+    <h2 class="section-title">Documents</h2>
+    <div class="doc-list">
+      <a class="doc" href="/plans/research-plan.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Future research plan</div>
+          <div class="doc-desc">Methodological extensions of FalCom, applied healthcare research directions, and a five-year research arc.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+
+      <a class="doc" href="/plans/grant-ideas.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Grant application ideas</div>
+          <div class="doc-desc">Concept notes for NIH NIMHD, NSF CMMI, MSCA-PF, and CIHR mechanisms across the proposed research directions.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Selected work -->
-  <section id="work" class="section" in:fly={{ y: 25, duration: 500, delay: 400 }}>
+  <section id="work" class="section" in:fly={{ y: 25, duration: 500, delay: 450 }}>
     <h2 class="section-title">Selected work</h2>
 
     <div class="work-list">
-      <div class="work work-with-media">
-        <div class="work-text">
-          <div class="work-head">
-            <span class="status preprint">Preprint</span>
-            <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
-          </div>
-          <p class="authors">with H. Kaul · Manuscript, 2026</p>
-          <p class="abstract">
-            First MCMC framework for hierarchical capacitated facility location.
-            Extends the ReCom spanning-tree proposal to multi-level systems
-            with capacity bounds, demand balance, and candidate-aware cut
-            selection. Validated up to 50,000 basic units.
-          </p>
-          <div class="links">
-            <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
-            <a href="https://github.com/kirtisoglu/FalCom-Paper" target="_blank" rel="noopener">GitHub</a>
-            <a href="/research/falcom/">Project page</a>
-          </div>
+      <div class="work">
+        <div class="work-head">
+          <span class="status preprint">Preprint</span>
+          <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
         </div>
-        <div class="work-media">
-          <video src="/falcom-gif/falcom_grid400.mp4" autoplay muted loop playsinline></video>
-          <div class="media-caption">FalCom sampler on a 400-node grid</div>
+        <p class="authors">with H. Kaul · Manuscript, 2026</p>
+        <p class="abstract">
+          First MCMC framework for hierarchical capacitated facility location.
+          Extends the ReCom spanning-tree proposal to multi-level systems
+          with capacity bounds, demand balance, and candidate-aware cut
+          selection. Validated up to 50,000 basic units.
+        </p>
+        <div class="links">
+          <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="https://github.com/kirtisoglu/FalCom-Paper" target="_blank" rel="noopener">GitHub</a>
+          <a href="/research/falcom/">Project page</a>
         </div>
       </div>
 
@@ -165,36 +189,6 @@
           <a href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Documents -->
-  <section id="documents" class="section" in:fly={{ y: 25, duration: 500, delay: 450 }}>
-    <h2 class="section-title">Future research plan &amp; grant ideas</h2>
-    <div class="doc-list">
-      <a class="doc" href="/plans/research-plan.pdf" target="_blank" rel="noopener">
-        <div class="doc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="doc-body">
-          <div class="doc-title">Future research plan</div>
-          <div class="doc-desc">Methodological extensions of FalCom, applied healthcare research directions, and a five-year research arc.</div>
-        </div>
-        <span class="doc-action">PDF →</span>
-      </a>
-
-      <a class="doc" href="/plans/grant-ideas.pdf" target="_blank" rel="noopener">
-        <div class="doc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="doc-body">
-          <div class="doc-title">Grant application ideas</div>
-          <div class="doc-desc">Concept notes for NIH NIMHD, NSF CMMI, MSCA-PF, and CIHR mechanisms across the proposed research directions.</div>
-        </div>
-        <span class="doc-action">PDF →</span>
-      </a>
     </div>
   </section>
 
@@ -473,34 +467,6 @@
   /* ── Selected work (compact) ── */
   .work-list { display: flex; flex-direction: column; gap: 1.25rem; }
   .work { display: flex; flex-direction: column; gap: 0.3rem; }
-  .work-with-media {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 1.5rem;
-    align-items: start;
-  }
-  .work-with-media .work-text { display: flex; flex-direction: column; gap: 0.3rem; }
-  .work-media { display: flex; flex-direction: column; gap: 0.4rem; }
-  .work-media video {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    background: #f3f4f6;
-    display: block;
-  }
-  :global(.dark) .work-media video { background: rgba(255,255,255,0.05); }
-  .media-caption {
-    font-size: 0.72rem;
-    color: #9ca3af;
-    text-align: center;
-    line-height: 1.4;
-    font-style: italic;
-  }
-  :global(.dark) .media-caption { color: rgba(255,255,255,0.4); }
-  @media (max-width: 720px) {
-    .work-with-media { grid-template-columns: 1fr; }
-    .work-media { max-width: 320px; }
-  }
   .work-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
   .status {
     flex-shrink: 0;
