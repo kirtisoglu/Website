@@ -20,9 +20,9 @@ const config = {
     }),
     prerender: {
       handleHttpError: ({ path, message }) => {
-        // PDFs under /papers/ and /plans/ are populated as drafts land.
-        // Skip prerender 404s on those paths so the build still succeeds.
-        if (path.startsWith('/papers/') || path.startsWith('/plans/')) {
+        // PDFs under /papers/, /plans/, and /docs/ are populated as drafts
+        // land. Skip prerender 404s on those paths so the build still succeeds.
+        if (path.startsWith('/papers/') || path.startsWith('/plans/') || path.startsWith('/docs/')) {
           return;
         }
         throw new Error(message);
