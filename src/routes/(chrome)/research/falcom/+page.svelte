@@ -49,6 +49,11 @@
                aria-label="The same FalCom chain on the dual graph G¹."
                title="The same FalCom chain on the dual graph G¹."></video>
       </figure>
+      <figure class="gif-fig">
+        <video src="/falcom-gif/falcom_tree_cut.mp4" autoplay loop muted playsinline
+               aria-label="Capacitated recursive tree-cut — the seeding step."
+               title="Capacitated recursive tree-cut — the seeding step."></video>
+      </figure>
     </div>
   </section>
 
@@ -309,10 +314,10 @@
   /* ── Figures ── */
   .figure-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
     align-items: start;
-    max-width: 640px;
+    max-width: 600px;
     margin: 0.25rem auto 0;
   }
 
