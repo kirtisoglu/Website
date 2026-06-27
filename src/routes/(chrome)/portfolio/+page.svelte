@@ -136,7 +136,7 @@
           <span class="status published">Published</span>
           <h3>Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
         </div>
-        <p class="authors">with L. Özkahya · Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
+        <p class="authors">Kirtisoglu, A. &amp; Özkahya, L. · Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
         <p class="abstract">
           Introduces the P<sub>k</sub>-chromatic number s<sub>k</sub>(G), the
           minimum number of colors in a proper vertex coloring that avoids
@@ -158,7 +158,7 @@
           <span class="status preprint">Preprint</span>
           <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
         </div>
-        <p class="authors">with H. Kaul · Manuscript, 2026</p>
+        <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript, 2026</p>
         <p class="abstract">
           First MCMC framework for hierarchical capacitated facility location
           and districting. Extends the ReCom spanning-tree proposal from
@@ -184,7 +184,7 @@
           <span class="status preprint">Preprint</span>
           <h3>UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</h3>
         </div>
-        <p class="authors">with M. Boran &amp; M. Tural · Manuscript, 2026</p>
+        <p class="authors">Kirtisoglu, A., Boran, M. &amp; Tural, M. · Manuscript, 2026</p>
         <p class="abstract">
           Exact convex-optimization framework for UAV reconnaissance routing
           under time windows, time-dependent rewards, and a nonlinear energy
@@ -208,7 +208,7 @@
           <span class="status preparing">Preparing for Submission</span>
           <h3>A Diffusion Model for Political Redistricting</h3>
         </div>
-        <p class="authors">solo · Manuscript, 2026</p>
+        <p class="authors">Kirtisoglu, A. · Manuscript, 2026</p>
         <p class="abstract">
           ReCom variants — the dominant MCMC methods for political
           redistricting — are computationally efficient but geometrically
@@ -230,7 +230,7 @@
           <span class="status in-progress">In Progress</span>
           <h3>Optimization-Based Decision Support for Equitable Expansion of FQHCs in Chicago</h3>
         </div>
-        <p class="authors">with H. Kaul · Manuscript + deployed dashboard, 2026</p>
+        <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript + deployed dashboard, 2026</p>
         <p class="abstract">
           Identifies four critical gaps in HRSA's granting system for
           Federally Qualified Health Centers — absence of location-evaluation
