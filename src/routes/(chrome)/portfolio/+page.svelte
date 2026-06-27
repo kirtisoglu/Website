@@ -35,13 +35,12 @@
       <h1>Alaittin Kirtisoglu</h1>
       <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
       <p class="lead">
-        I am writing to apply for the Postdoctoral Associate position in
-        Management Science at Ivey. I am completing my PhD in Applied
-        Mathematics at the Illinois Institute of Technology, where my
-        research sits at the intersection of combinatorial optimization,
-        network design, and data-driven decision making. I am especially
-        interested in problems where mathematical modeling can improve
-        service systems in healthcare and public service.
+        I am completing my PhD in Applied Mathematics at the Illinois
+        Institute of Technology, where my research sits at the intersection
+        of combinatorial optimization, network design, and data-driven
+        decision making. I am especially interested in problems where
+        mathematical modeling can improve service systems in healthcare and
+        public service.
       </p>
     </div>
     <div class="hero-media">
@@ -166,7 +165,6 @@
           as an open-source Python library with an interactive visualizer.
         </p>
         <div class="links">
-          <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub</a>
           <a href="/research/falcom/">Project page</a>
         </div>
@@ -191,7 +189,6 @@
           200-node Solomon-derived instances.
         </p>
         <div class="links">
-          <a href="/papers/uav-routing.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -213,7 +210,6 @@
           integer variant reduces mean cut edges by 23.9% vs. ReCom.
         </p>
         <div class="links">
-          <a href="/papers/diffusion-redistricting.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="https://github.com/kirtisoglu/Redistricting_Diffusion_Model" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -238,7 +234,6 @@
           applying operations research to FQHC location decisions.
         </p>
         <div class="links">
-          <a href="/papers/chicago-fqhc.pdf" target="_blank" rel="noopener">PDF</a>
           <a href="/research/chicago-healthcare-network/">Project page</a>
           <a href="/research/chicago-healthcare-network/dashboard">Live dashboard</a>
         </div>
@@ -506,16 +501,16 @@
     flex-wrap: wrap;
   }
   .section-nav a {
-    color: #6b7280;
+    color: #4f46e5;
     text-decoration: none;
     padding: 0.2rem 0;
     border-bottom: 1px solid transparent;
     transition: color 0.15s, border-color 0.15s;
   }
-  .section-nav a:hover { color: #4f46e5; border-bottom-color: #c7d2fe; }
+  .section-nav a:hover { color: #4338ca; border-bottom-color: #c7d2fe; }
   .sep { color: #d1d5db; }
-  :global(.dark) .section-nav a { color: rgba(255,255,255,0.5); }
-  :global(.dark) .section-nav a:hover { color: #a5b4fc; border-bottom-color: rgba(165,180,252,0.4); }
+  :global(.dark) .section-nav a { color: #a5b4fc; }
+  :global(.dark) .section-nav a:hover { color: #c7d2fe; border-bottom-color: rgba(165,180,252,0.4); }
   :global(.dark) .sep { color: rgba(255,255,255,0.2); }
 
   /* ── Divider ── */
