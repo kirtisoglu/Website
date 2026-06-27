@@ -100,13 +100,24 @@
         <span class="doc-action">PDF →</span>
       </a>
 
-      <a class="doc" href="/plans/research-plan.pdf" target="_blank" rel="noopener">
+      <a class="doc" href="/docs/falcom-writing-sample.pdf" target="_blank" rel="noopener">
         <div class="doc-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
         <div class="doc-body">
-          <div class="doc-title">Future research plan</div>
-          <div class="doc-desc">Methodological extensions of FalCom, applied healthcare research directions, and a five-year research arc.</div>
+          <div class="doc-title">Writing sample 1</div>
+          <div class="doc-desc">FalCom — sampling for hierarchical districting and capacitated facility location.</div>
+        </div>
+        <span class="doc-action">PDF →</span>
+      </a>
+
+      <a class="doc" href="/docs/chicago-healthcare-writing-sample.pdf" target="_blank" rel="noopener">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-title">Writing sample 2</div>
+          <div class="doc-desc">Optimization-based decision support for equitable expansion of FQHCs in Chicago.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
