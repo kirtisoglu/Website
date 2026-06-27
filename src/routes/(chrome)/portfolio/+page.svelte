@@ -133,40 +133,49 @@
     <div class="work-list">
       <div class="work">
         <div class="work-head">
-          <span class="status preprint">Preprint</span>
-          <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
+          <span class="status published">Published</span>
+          <h3>Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
         </div>
-        <p class="authors">with H. Kaul · Manuscript, 2026</p>
+        <p class="authors">with L. Özkahya · Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
         <p class="abstract">
-          First MCMC framework for hierarchical capacitated facility location.
-          Extends the ReCom spanning-tree proposal to multi-level systems
-          with capacity bounds, demand balance, and candidate-aware cut
-          selection. Validated up to 50,000 basic units.
+          Introduces the P<sub>k</sub>-chromatic number s<sub>k</sub>(G), the
+          minimum number of colors in a proper vertex coloring that avoids
+          bicolored paths of length k. For any graph with maximum degree
+          d &ge; 2 and k &ge; 4, establishes s<sub>k</sub>(G) =
+          O(d<sup>(k&minus;1)/(k&minus;2)</sup>), and computes exact values
+          for products of cycles and paths when k = 5, 6. Generalizes
+          classical star and acyclic coloring, and connects chromatic theory
+          with Ramsey-type structural questions.
         </p>
         <div class="links">
-          <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
-          <a href="https://github.com/kirtisoglu/FalCom-Paper" target="_blank" rel="noopener">GitHub</a>
-          <a href="/research/falcom/">Project page</a>
+          <a href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank" rel="noopener">Journal</a>
+          <a href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv</a>
         </div>
       </div>
 
       <div class="work">
         <div class="work-head">
-          <span class="status in-progress">In progress</span>
-          <h3>Optimization-Based Decision Support for Equitable Expansion of FQHCs in Chicago</h3>
+          <span class="status preprint">Preprint</span>
+          <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
         </div>
-        <p class="authors">with H. Kaul · Manuscript + deployed dashboard, 2026</p>
+        <p class="authors">with H. Kaul · Manuscript, 2026</p>
         <p class="abstract">
-          Four-gap analysis of HRSA's grant-allocation system. Continuous
-          percentile-rank replacement for the binary IMU threshold; FalCom
-          integrated with a doubly-constrained spatial-interaction
-          patient-flow model. Backed by an analytics dashboard integrating
-          six federal datasets.
+          First MCMC framework for hierarchical capacitated facility location
+          and districting. Extends the ReCom spanning-tree proposal from
+          single-level political redistricting to multi-level service systems
+          with capacity bounds, demand balance, and facility-aware cut
+          selection. Scales to graphs of 50,000 basic units — an order of
+          magnitude beyond published hierarchical methods. Rather than a
+          single optimum, FalCom samples ensembles of feasible plans, enabling
+          boundary-robustness maps, essential-vs-substitutable facility
+          analysis, and capacity-utilization distributions. Validated on
+          synthetic grids and a London Ambulance Service case study; released
+          as an open-source Python library with an interactive visualizer.
         </p>
         <div class="links">
-          <a href="/papers/chicago-fqhc.pdf" target="_blank" rel="noopener">PDF</a>
-          <a href="/research/chicago-healthcare-network/">Project page</a>
-          <a href="/research/chicago-healthcare-network/dashboard">Live dashboard</a>
+          <a href="/papers/falcom.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub</a>
+          <a href="/research/falcom/">Project page</a>
         </div>
       </div>
 
@@ -177,10 +186,16 @@
         </div>
         <p class="authors">with M. Boran &amp; M. Tural · Manuscript, 2026</p>
         <p class="abstract">
-          MINLP reformulated exactly as a mixed-integer second-order cone
-          program via a chain of three rotated cones. Iterated-local-search
-          matheuristic with a small-SOCP evaluation oracle. Calibrated on a
-          real fixed-wing UAV; scales to 200-node Solomon instances.
+          Exact convex-optimization framework for UAV reconnaissance routing
+          under time windows, time-dependent rewards, and a nonlinear energy
+          budget. Jointly selects targets, visit order, per-arc travel speed,
+          and a separate loitering time at the minimum-power speed, correctly
+          capturing fixed-wing aerodynamics. The resulting MINLP is
+          reformulated exactly as a mixed-integer second-order cone program
+          via a chain of three rotated cones, and solved by an
+          iterated-local-search matheuristic whose evaluation oracle is a
+          small SOCP. Calibrated on a real-world UAV platform; scales to
+          200-node Solomon-derived instances.
         </p>
         <div class="links">
           <a href="/papers/uav-routing.pdf" target="_blank" rel="noopener">PDF</a>
@@ -190,15 +205,19 @@
 
       <div class="work">
         <div class="work-head">
-          <span class="status preparing">Preparing</span>
+          <span class="status preparing">Preparing for Submission</span>
           <h3>A Diffusion Model for Political Redistricting</h3>
         </div>
         <p class="authors">solo · Manuscript, 2026</p>
         <p class="abstract">
-          Hybrid sampler complementing ReCom with kernel-aware local
-          refinement (integer quadratic program). Configurable Laplacian
-          kernels plus a fidelity term. On Iowa precincts, reduces mean cut
-          edges by 23.9% vs. ReCom.
+          ReCom variants — the dominant MCMC methods for political
+          redistricting — are computationally efficient but geometrically
+          blind. Proposes a hybrid sampler that complements ReCom with a
+          kernel-aware local-refinement step formulated as an integer
+          quadratic program. The hybrid admits configurable Laplacian kernels
+          (perimeter, density, demographic) plus a fidelity term that anchors
+          refinement near the current partition. On Iowa precincts, the
+          integer variant reduces mean cut edges by 23.9% vs. ReCom.
         </p>
         <div class="links">
           <a href="/papers/diffusion-redistricting.pdf" target="_blank" rel="noopener">PDF</a>
@@ -208,19 +227,27 @@
 
       <div class="work">
         <div class="work-head">
-          <span class="status published">Published</span>
-          <h3>Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</h3>
+          <span class="status in-progress">In Progress</span>
+          <h3>Optimization-Based Decision Support for Equitable Expansion of FQHCs in Chicago</h3>
         </div>
-        <p class="authors">with L. Özkahya · Graphs and Combinatorics, 40(1), 2024</p>
+        <p class="authors">with H. Kaul · Manuscript + deployed dashboard, 2026</p>
         <p class="abstract">
-          Introduces the P<sub>k</sub>-chromatic number s<sub>k</sub>(G).
-          For graphs with maximum degree d &ge; 2 and k &ge; 4, establishes
-          s<sub>k</sub>(G) = O(d<sup>(k&minus;1)/(k&minus;2)</sup>). Exact
-          values for products of cycles and paths when k = 5, 6.
+          Identifies four critical gaps in HRSA's granting system for
+          Federally Qualified Health Centers — absence of location-evaluation
+          tools, an outdated Index of Medical Underservice (IMU) formula, a
+          limited Medically Underserved Area (MUA) designation process, and
+          unmapped referral networks between FQHCs and hospitals — and shows
+          how optimization can address each. Integrates a flow-based model
+          into the FalCom sampler to design catchment areas and
+          hospital-anchored health zones that satisfy HRSA's compliance
+          requirements while balancing demand, capacity, and real-time
+          transportation accessibility. To our knowledge, the first paper
+          applying operations research to FQHC location decisions.
         </p>
         <div class="links">
-          <a href="https://link.springer.com/article/10.1007/s00373-023-02739-4" target="_blank" rel="noopener">Journal</a>
-          <a href="https://arxiv.org/abs/2012.04560" target="_blank" rel="noopener">arXiv</a>
+          <a href="/papers/chicago-fqhc.pdf" target="_blank" rel="noopener">PDF</a>
+          <a href="/research/chicago-healthcare-network/">Project page</a>
+          <a href="/research/chicago-healthcare-network/dashboard">Live dashboard</a>
         </div>
       </div>
     </div>
