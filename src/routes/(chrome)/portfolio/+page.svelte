@@ -164,7 +164,7 @@
           and districting. Extends the ReCom spanning-tree proposal from
           single-level political redistricting to multi-level service systems
           with capacity bounds, demand balance, and facility-aware cut
-          selection. Scales to graphs of 50,000 basic units — an order of
+          selection. Scales to graphs of 50,000 basic units, an order of
           magnitude beyond published hierarchical methods. Rather than a
           single optimum, FalCom samples ensembles of feasible plans, enabling
           boundary-robustness maps, essential-vs-substitutable facility
@@ -210,8 +210,8 @@
         </div>
         <p class="authors">Kirtisoglu, A. · Manuscript, 2026</p>
         <p class="abstract">
-          ReCom variants — the dominant MCMC methods for political
-          redistricting — are computationally efficient but geometrically
+          ReCom variants, the dominant MCMC methods for political
+          redistricting, are computationally efficient but geometrically
           blind. Proposes a hybrid sampler that complements ReCom with a
           kernel-aware local-refinement step formulated as an integer
           quadratic program. The hybrid admits configurable Laplacian kernels
@@ -233,11 +233,11 @@
         <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript + deployed dashboard, 2026</p>
         <p class="abstract">
           Identifies four critical gaps in HRSA's granting system for
-          Federally Qualified Health Centers — absence of location-evaluation
+          Federally Qualified Health Centers: absence of location-evaluation
           tools, an outdated Index of Medical Underservice (IMU) formula, a
           limited Medically Underserved Area (MUA) designation process, and
-          unmapped referral networks between FQHCs and hospitals — and shows
-          how optimization can address each. Integrates a flow-based model
+          unmapped referral networks between FQHCs and hospitals. Shows how
+          optimization can address each. Integrates a flow-based model
           into the FalCom sampler to design catchment areas and
           hospital-anchored health zones that satisfy HRSA's compliance
           requirements while balancing demand, capacity, and real-time

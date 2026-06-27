@@ -115,7 +115,7 @@
       <p class="paper-venue">Graphs and Combinatorics, 40(1), Art. 11, 2024</p>
       <p class="paper-abstract">
         We study proper vertex colorings of graphs that avoid bicolored paths of a fixed
-        length — that is, paths whose vertices alternate between exactly two colors. We
+        length, that is, paths whose vertices alternate between exactly two colors. We
         introduce the P<sub>k</sub>-chromatic number s<sub>k</sub>(G), the minimum number
         of colors needed for such a coloring. For any graph with maximum degree d ≥ 2 and
         k ≥ 4, we establish that s<sub>k</sub>(G) = O(d<sup>(k−1)/(k−2)</sup>). We also
@@ -150,7 +150,7 @@
         hierarchical capacitated facility location and districting problems. FalCom extends
         the spanning-tree proposal of ReCom from single-level political redistricting to
         multi-level service systems with capacity bounds, demand balance, and facility-aware
-        cut selection. We demonstrate that it scales to graphs of 50,000 basic units — an
+        cut selection. We demonstrate that it scales to graphs of 50,000 basic units, an
         order of magnitude beyond published hierarchical facility-location methods. Rather
         than returning a single optimum, FalCom samples ensembles of feasible plans,
         enabling boundary-robustness maps, essential-vs-substitutable facility analysis,
