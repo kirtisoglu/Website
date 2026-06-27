@@ -35,15 +35,13 @@
       <h1>Alaittin Kirtisoglu</h1>
       <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
       <p class="lead">
-        My main doctoral research, <em>FalCom</em>, is the first Markov chain
-        Monte Carlo method that samples ensembles of feasible service-region
-        designs at city or national scale — partitioning a geographic region
-        into contiguous, demand-balanced districts at multiple administrative
-        levels, with a capacitated facility or service team in each district.
-        Its generality and scalability extend to a range of operational
-        problems in healthcare, logistics, and public service delivery.
-        Sampling ensembles enables robustness analysis, rather than returning
-        a single optimal solution.
+        I am writing to apply for the Postdoctoral Associate position in
+        Management Science at Ivey. I am completing my PhD in Applied
+        Mathematics at the Illinois Institute of Technology, where my
+        research sits at the intersection of combinatorial optimization,
+        network design, and data-driven decision making. I am especially
+        interested in problems where mathematical modeling can improve
+        service systems in healthcare and public service.
       </p>
     </div>
     <div class="hero-media">
@@ -73,7 +71,6 @@
         </div>
         <div class="doc-body">
           <div class="doc-title">Cover letter</div>
-          <div class="doc-desc">Introduction to my candidacy and fit for the position.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -84,7 +81,6 @@
         </div>
         <div class="doc-body">
           <div class="doc-title">Curriculum vitae</div>
-          <div class="doc-desc">Full academic CV — education, publications, talks, teaching, and service.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -95,7 +91,6 @@
         </div>
         <div class="doc-body">
           <div class="doc-title">Research statement</div>
-          <div class="doc-desc">Past and ongoing research, methodology, and forward directions.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -106,7 +101,6 @@
         </div>
         <div class="doc-body">
           <div class="doc-title">Writing sample 1</div>
-          <div class="doc-desc">FalCom — sampling for hierarchical districting and capacitated facility location.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -117,7 +111,6 @@
         </div>
         <div class="doc-body">
           <div class="doc-title">Writing sample 2</div>
-          <div class="doc-desc">Optimization-based decision support for equitable expansion of FQHCs in Chicago.</div>
         </div>
         <span class="doc-action">PDF →</span>
       </a>
@@ -260,32 +253,57 @@
     <h2 class="section-title">Software &amp; infrastructure</h2>
     <div class="sw-list">
       <div class="sw">
-        <div class="sw-main">
+        <div class="sw-head">
           <span class="sw-name">FalcomChain</span>
           <span class="sw-tag">Python · MCMC sampler</span>
+          <a class="sw-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
         </div>
-        <a class="sw-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
+        <p class="sw-desc">Python library implementing the FalCom MCMC sampler for hierarchical capacitated districting and facility location.</p>
       </div>
+
       <div class="sw">
-        <div class="sw-main">
+        <div class="sw-head">
           <span class="sw-name">FalcomPlot</span>
           <span class="sw-tag">Python + JS · visualization</span>
+          <a class="sw-link" href="https://github.com/kirtisoglu/FalcomPlot" target="_blank" rel="noopener">GitHub →</a>
         </div>
-        <a class="sw-link" href="https://github.com/kirtisoglu/FalcomPlot" target="_blank" rel="noopener">GitHub →</a>
+        <p class="sw-desc">Python and JavaScript library for interactive visualization of FalCom inputs, outputs, and case studies.</p>
       </div>
+
       <div class="sw">
-        <div class="sw-main">
+        <div class="sw-head">
           <span class="sw-name">FalcomTravel</span>
           <span class="sw-tag">R · transit travel-time matrices</span>
+          <a class="sw-link" href="https://github.com/kirtisoglu/FalcomTravel" target="_blank" rel="noopener">GitHub →</a>
         </div>
-        <a class="sw-link" href="https://github.com/kirtisoglu/FalcomTravel" target="_blank" rel="noopener">GitHub →</a>
+        <p class="sw-desc">R package computing public-transit travel-time matrices used as input distances for FalCom.</p>
       </div>
+
       <div class="sw">
-        <div class="sw-main">
+        <div class="sw-head">
+          <span class="sw-name">FalCom Visualizer</span>
+          <span class="sw-tag">Web · interactive animation</span>
+          <a class="sw-link" href="/research/falcom/dashboard">Live →</a>
+        </div>
+        <p class="sw-desc">Interactive web app animating the FalCom chain on benchmark grids and real instances <em>(in progress)</em>.</p>
+      </div>
+
+      <div class="sw">
+        <div class="sw-head">
           <span class="sw-name">Chicago Healthcare Dashboard</span>
           <span class="sw-tag">SvelteKit · deployed analytics</span>
+          <a class="sw-link" href="/research/chicago-healthcare-network/dashboard">Live →</a>
         </div>
-        <a class="sw-link" href="/research/chicago-healthcare-network/dashboard">Live →</a>
+        <p class="sw-desc">Interactive analytics dashboard integrating federal datasets across Chicago FQHCs, hospitals, and providers <em>(in progress)</em>.</p>
+      </div>
+
+      <div class="sw">
+        <div class="sw-head">
+          <span class="sw-name">London Ambulance Service Map</span>
+          <span class="sw-tag">Web · interactive map</span>
+          <a class="sw-link" href="/falcomplot/las_hierarchy.html">View →</a>
+        </div>
+        <p class="sw-desc">Example case study showing the LAS three-level hierarchy used to validate FalCom, plotted interactively with the FalcomPlot library.</p>
       </div>
     </div>
   </section>
@@ -312,8 +330,18 @@
         <span class="talk-title">UAV Routing for Maximum Information Collection under Time Windows</span>
       </div>
       <div class="talk">
-        <span class="talk-date">2021</span>
-        <span class="talk-venue">BCC · SIAM DM · European Combinatorial Conference</span>
+        <span class="talk-date">Aug 2021</span>
+        <span class="talk-venue">European Combinatorial Conference (online)</span>
+        <span class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</span>
+      </div>
+      <div class="talk">
+        <span class="talk-date">Jul 2021</span>
+        <span class="talk-venue">SIAM Conference on Discrete Mathematics (online)</span>
+        <span class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</span>
+      </div>
+      <div class="talk">
+        <span class="talk-date">Jun 2021</span>
+        <span class="talk-venue">British Combinatorial Conference (online)</span>
         <span class="talk-title">Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length</span>
       </div>
     </div>
@@ -552,7 +580,7 @@
     display: flex;
     align-items: center;
     gap: 0.85rem;
-    padding: 0.7rem 0.9rem;
+    padding: 0.45rem 0.9rem;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
     text-decoration: none;
@@ -583,10 +611,8 @@
   :global(.dark) .doc-icon { color: #818cf8; }
   .doc-icon svg { width: 100%; height: 100%; }
   .doc-body { flex: 1; min-width: 0; }
-  .doc-title { font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 0.1rem; }
+  .doc-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
   :global(.dark) .doc-title { color: #f9fafb; }
-  .doc-desc { font-size: 0.82rem; line-height: 1.45; color: #6b7280; }
-  :global(.dark) .doc-desc { color: rgba(255,255,255,0.6); }
   .doc-action {
     flex-shrink: 0;
     font-size: 0.82rem;
@@ -595,20 +621,19 @@
   }
   :global(.dark) .doc-action { color: #818cf8; }
 
-  /* ── Software (very compact list) ── */
-  .sw-list { display: flex; flex-direction: column; gap: 0.35rem; }
+  /* ── Software ── */
+  .sw-list { display: flex; flex-direction: column; gap: 0.45rem; }
   .sw {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.45rem 0.7rem;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.55rem 0.75rem;
     border-radius: 6px;
     transition: background 0.15s;
   }
   .sw:hover { background: rgba(238,242,255,0.4); }
   :global(.dark) .sw:hover { background: rgba(99,102,241,0.06); }
-  .sw-main { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; min-width: 0; }
+  .sw-head { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; }
   .sw-name { font-size: 0.92rem; font-weight: 700; color: #111827; }
   :global(.dark) .sw-name { color: #f9fafb; }
   .sw-tag {
@@ -621,10 +646,15 @@
     font-weight: 500;
     color: #4f46e5;
     text-decoration: none;
+    margin-left: auto;
     flex-shrink: 0;
   }
   .sw-link:hover { text-decoration: underline; }
   :global(.dark) .sw-link { color: #818cf8; }
+  .sw-desc { font-size: 0.82rem; line-height: 1.5; color: #6b7280; margin: 0; }
+  :global(.dark) .sw-desc { color: rgba(255,255,255,0.6); }
+  .sw-desc em { font-style: italic; color: #a16207; }
+  :global(.dark) .sw-desc em { color: #fcd34d; }
 
   /* ── Talks ── */
   .talks { display: flex; flex-direction: column; gap: 0.5rem; }
