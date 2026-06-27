@@ -54,8 +54,8 @@
   </section>
 
   <nav class="section-nav" in:fade={{ duration: 400, delay: 300 }}>
-    <a href="#work">Work</a><span class="sep">·</span>
     <a href="#documents">Documents</a><span class="sep">·</span>
+    <a href="#papers">Papers</a><span class="sep">·</span>
     <a href="#software">Software</a><span class="sep">·</span>
     <a href="#talks">Talks</a><span class="sep">·</span>
     <a href="#references">References</a>
@@ -126,9 +126,9 @@
 
   <div class="divider"></div>
 
-  <!-- Selected work -->
-  <section id="work" class="section" in:fly={{ y: 25, duration: 500, delay: 450 }}>
-    <h2 class="section-title">Selected work</h2>
+  <!-- Papers -->
+  <section id="papers" class="section" in:fly={{ y: 25, duration: 500, delay: 450 }}>
+    <h2 class="section-title">Papers</h2>
 
     <div class="work-list">
       <div class="work">
