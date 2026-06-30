@@ -691,7 +691,7 @@
   /* ── References ── */
   .references {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
   .reference {
@@ -755,5 +755,6 @@
     .talk-date { grid-row: 1; }
     .talk-venue { grid-column: 1; }
     .talk-title { grid-column: 1; }
+    .references { grid-template-columns: 1fr; }
   }
 </style>
