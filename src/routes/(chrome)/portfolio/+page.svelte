@@ -371,7 +371,7 @@
       <div class="reference">
         <div class="ref-name">Michael Pelsmajer</div>
         <div class="ref-role">Teaching reference</div>
-        <div class="ref-affil">Director of Graduate Studies, Department of Applied Mathematics, Illinois Institute of Technology</div>
+        <div class="ref-affil">Director of Graduate Studies,<br/>Department of Applied Mathematics,<br/>Illinois Institute of Technology</div>
         <div class="ref-email">
           <a href="mailto:pelsmajer@illinoistech.edu">pelsmajer@illinoistech.edu</a>
           <button class="copy-btn" title="Copy email" on:click={() => copyEmail('pelsmajer@illinoistech.edu')}>
