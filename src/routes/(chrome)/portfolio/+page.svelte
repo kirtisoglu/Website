@@ -341,7 +341,7 @@
       <div class="reference">
         <div class="ref-name">Hemanshu Kaul</div>
         <div class="ref-role">PhD advisor</div>
-        <div class="ref-affil">Department of Applied Mathematics, Illinois Institute of Technology</div>
+        <div class="ref-affil">Department of Applied Mathematics,<br/>Illinois Institute of Technology</div>
         <div class="ref-email">
           <a href="mailto:kaul@iit.edu">kaul@iit.edu</a>
           <button class="copy-btn" title="Copy email" on:click={() => copyEmail('kaul@iit.edu')}>
@@ -356,7 +356,7 @@
       <div class="reference">
         <div class="ref-name">Mustafa Kemal Tural</div>
         <div class="ref-role">Collaborator (UAV Routing)</div>
-        <div class="ref-affil">Department of Industrial Engineering, Middle East Technical University</div>
+        <div class="ref-affil">Department of Industrial Engineering,<br/>Middle East Technical University</div>
         <div class="ref-email">
           <a href="mailto:tural@metu.edu.tr">tural@metu.edu.tr</a>
           <button class="copy-btn" title="Copy email" on:click={() => copyEmail('tural@metu.edu.tr')}>
@@ -386,7 +386,7 @@
       <div class="reference">
         <div class="ref-name">Lale Özkahya</div>
         <div class="ref-role">Master's advisor</div>
-        <div class="ref-affil">Department of Computer Engineering, Hacettepe University</div>
+        <div class="ref-affil">Department of Computer Engineering,<br/>Hacettepe University</div>
         <div class="ref-email">
           <a href="mailto:ozkahya@cs.hacettepe.edu.tr">ozkahya@cs.hacettepe.edu.tr</a>
           <button class="copy-btn" title="Copy email" on:click={() => copyEmail('ozkahya@cs.hacettepe.edu.tr')}>
