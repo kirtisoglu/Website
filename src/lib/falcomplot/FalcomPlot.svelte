@@ -17,6 +17,9 @@
   // externalControlsEl — host-rendered DOM container holding the
   // standard `fp-*` ids. Honoured only when ``inlineControls = false``.
   export let externalControlsEl = null;
+  // showSparkline — render the energy sparkline (bottom-left) when the
+  // dataset's manifest ships an energy_series. Default true.
+  export let showSparkline = true;
 
   let canvas;
   let internalControlsEl;
@@ -24,6 +27,7 @@
   let statusEl;
   let treeMetaEl;
   let tooltipEl;
+  let sparklineEl;
 
   let cleanup = () => {};
   let mountToken = 0;
@@ -51,6 +55,7 @@
         statusEl,
         treeMetaEl,
         tooltipEl,
+        sparklineEl: showSparkline ? sparklineEl : null,
         dataPath,
       });
       // A newer remount started while we were awaiting — discard.
@@ -137,6 +142,10 @@
       </div>
     {/if}
   </aside>
+
+  {#if showSparkline}
+    <div class="fp-sparkline" bind:this={sparklineEl}></div>
+  {/if}
 
   <div class="fp-tooltip" bind:this={tooltipEl}></div>
 
@@ -319,6 +328,41 @@
     z-index: 1100;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Energy sparkline (content injected by mountFalcomPlot, hence :global).
+     Bottom-center: the canvas legend owns bottom-left, controls own
+     bottom-right. */
+  .fp-sparkline {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 14px;
+    width: 300px;
+    height: 66px;
+    z-index: 900;
+    background: rgba(10, 12, 18, 0.78);
+    border: 1px solid rgba(90, 140, 200, 0.45);
+    border-radius: 6px;
+    padding: 5px 8px 7px;
+    box-sizing: border-box;
+  }
+
+  .fp-sparkline:empty {
+    display: none;
+  }
+
+  .fp-sparkline :global(.fp-spark-label) {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fp-sparkline :global(svg) {
+    height: calc(100% - 16px) !important;
   }
 
   .fp-error {

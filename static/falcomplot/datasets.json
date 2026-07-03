@@ -3,17 +3,17 @@
     {
       "id": "las",
       "label": "London Ambulance Service",
-      "description": "5,042 LSOAs across Greater London. 1.06 M annual incidents (borough-level disaggregated to LSOA), 63 station candidates, 7 super-facility candidates (5 sector HQs + 2 EOCs). Sampling chain (always_accept) for 1,000 steps; w=8,450, ε=0.30, c_min=1.",
+      "description": "The FalCom paper's case study at its locked capacity-block calibration: 4,994 LSOAs of the LAS catchment, annual attended incidents as demand, 66 real stations among 1,831 candidates (CDBA-repaired), w_unit=10,887, ε=0.15, c¹∈[1,3]. Sampling chain (always_accept), 1,000 steps, with per-step hierarchy (super-district boundaries), facility centers, and ensemble overlays.",
       "path": "/falcomplot/las",
-      "total_steps": 999,
-      "graph_nodes": 5042
+      "total_steps": 1000,
+      "graph_nodes": 4994
     },
     {
       "id": "grid_20x20",
-      "label": "20 x 20 grid",
-      "description": "400-node synthetic grid. Demonstrates the algorithm on a moderately sized planar graph; longer chain shows ensemble convergence of boundary and facility frequencies.",
+      "label": "20 × 20 grid (tree animation)",
+      "description": "400-node synthetic grid with full spanning-tree substep recording: switch to Detailed view to watch each proposal's four phases — supergraph partition, superdistrict selection, capacitated tree cuts with ψ scores, facility assignment, accept/reject. Ensemble overlays included.",
       "path": "/falcomplot/grid_20x20",
-      "total_steps": 120,
+      "total_steps": 300,
       "graph_nodes": 400
     }
   ]

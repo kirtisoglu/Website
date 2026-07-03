@@ -23,10 +23,23 @@
   let fleetCapacity = null;
   let fleetExpanded = false;
 
+  // First-visit explainer card. Dismissal is remembered per browser.
+  let showIntro = false;
+  const INTRO_KEY = 'falcom-dashboard-intro-dismissed';
+  function dismissIntro() {
+    showIntro = false;
+    try { localStorage.setItem(INTRO_KEY, '1'); } catch {}
+  }
+
   $: dataPath = selectedId ? `/falcomplot/${selectedId}` : null;
   $: selected = datasets.find((d) => d.id === selectedId) || null;
 
   onMount(async () => {
+    try {
+      showIntro = !localStorage.getItem(INTRO_KEY);
+    } catch {
+      showIntro = true;
+    }
     try {
       const r = await fetch('/falcomplot/datasets.json', { cache: 'no-cache' });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -100,6 +113,28 @@
         {:else}
           Initialising…
         {/if}
+      </div>
+    {/if}
+
+    {#if showIntro}
+      <div class="intro-card" role="note">
+        <button class="intro-close" on:click={dismissIntro} aria-label="Dismiss">×</button>
+        <h4>What you're watching</h4>
+        <p>
+          A Markov chain sampling <strong>service-district plans</strong>: each
+          colored region is a district served by one facility (gold stars are
+          candidate sites), and thick dark lines group districts into
+          super-districts — the two-level hierarchy. Every step proposes a new
+          feasible plan by merging districts and re-splitting them along a
+          random spanning tree.
+        </p>
+        <p>
+          Press <strong>▶</strong> to run the chain, scrub with the energy
+          trace below, and switch the <strong>Overlay</strong> to
+          <em>boundary frequency</em> to see which borders the ensemble
+          considers non-negotiable.
+        </p>
+        <button class="intro-ok" on:click={dismissIntro}>Got it</button>
       </div>
     {/if}
   </main>
@@ -338,6 +373,69 @@
 
   .desc a:hover {
     color: #a8ccf0;
+  }
+
+  /* First-visit explainer card */
+  .intro-card {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(460px, calc(100% - 32px));
+    background: rgba(13, 17, 26, 0.94);
+    border: 1px solid rgba(90, 140, 200, 0.5);
+    border-radius: 8px;
+    padding: 14px 18px 12px;
+    z-index: 1200;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .intro-card h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: #cfe1f5;
+  }
+
+  .intro-card p {
+    margin: 0 0 8px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .intro-card strong {
+    color: #fff;
+  }
+
+  .intro-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .intro-close:hover {
+    color: #fff;
+  }
+
+  .intro-ok {
+    background: rgba(90, 140, 200, 0.25);
+    border: 1px solid rgba(90, 140, 200, 0.6);
+    color: #dbe9f8;
+    border-radius: 5px;
+    padding: 4px 14px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .intro-ok:hover {
+    background: rgba(90, 140, 200, 0.45);
   }
 
   .district-metadata {
