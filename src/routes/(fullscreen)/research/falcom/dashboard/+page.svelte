@@ -148,19 +148,6 @@
     </section>
 
     {#if selected}
-      <section class="meta-section">
-        <h3 class="meta-title">Dataset</h3>
-        <div class="meta-row">
-          <span class="k">Steps</span>
-          <span class="v">{selected.total_steps}</span>
-        </div>
-        <div class="meta-row">
-          <span class="k">Nodes</span>
-          <span class="v">{selected.graph_nodes}</span>
-        </div>
-        <p class="desc">{selected.description}</p>
-      </section>
-
       <!--
         Tooltip drop-zone for FalcomPlot's inputHandler.  When the cursor
         hovers an active district on the canvas, inputHandler.attachMouseListeners

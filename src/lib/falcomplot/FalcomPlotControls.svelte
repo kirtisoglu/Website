@@ -17,6 +17,9 @@
   <div class="fpc-row">
     <button id="fp-toggleDetailBtn" class="fpc-wide-btn">Overview</button>
   </div>
+  <div class="fpc-row">
+    <button id="fp-toggleColorsBtn" class="fpc-wide-btn">District colors: on</button>
+  </div>
   <div class="fpc-row fpc-row-inline">
     <label for="fp-speedSlider">Speed</label>
     <input type="range" id="fp-speedSlider" min="1" max="10" step="1" value="2" />
