@@ -1,3 +1,5 @@
+// GENERATED — synced from FalcomPlot (js/js/). Do not edit here;
+// edit in the FalcomPlot repo and run: node scripts/sync-falcomplot.mjs
 // Canvas rendering
 export class Renderer {
     constructor(canvas, config, visual) {
@@ -227,6 +229,18 @@ export class Renderer {
             }
         }
 
+        // Marker sizes are in WORLD units, so they must scale with the
+        // dataset's extent: 0.15 is a good star radius on a 20-unit
+        // synthetic grid but covers a quarter of a lon/lat city map.
+        // Derive sizes from the world span (with the grid-era defaults
+        // as fallback when bounds are unknown).
+        const _wb = state.blocksBounds;
+        const _worldSpan = _wb
+            ? Math.max(_wb.maxx - _wb.minx, _wb.maxy - _wb.miny)
+            : 20;
+        const starRadius = _worldSpan / 130;
+        const centerRadius = _worldSpan / 65;
+
         // ==========================================
         // LAYER 4: Candidate stars (non-tree phases)
         // ==========================================
@@ -238,7 +252,7 @@ export class Renderer {
                     if (!isCandidate) continue;
                     const c = coords[nodeId];
                     if (!c) continue;
-                    this.drawStarPath(c[0], c[1], 0.15, 5, 0.5);
+                    this.drawStarPath(c[0], c[1], starRadius, 5, 0.5);
                     ctx.fillStyle = "#FFD700";
                     ctx.fill();
                     ctx.strokeStyle = "#333";
@@ -258,7 +272,7 @@ export class Renderer {
                 const c = coords[centerId];
                 if (!c) continue;
                 // Draw a cross/plus at facility center
-                const R = 0.3;
+                const R = centerRadius;
                 ctx.strokeStyle = "#00ffff";
                 ctx.lineWidth = 2 / state.transform.k;
                 ctx.beginPath();

@@ -1,3 +1,5 @@
+// GENERATED — synced from FalcomPlot (js/js/). Do not edit here;
+// edit in the FalcomPlot repo and run: node scripts/sync-falcomplot.mjs
 // Overview grid renderer — renders a filmstrip of thumbnails, one per chain step.
 // Each thumbnail shows the final state: district coloring on blocks,
 // supergraph edges/nodes, facility center markers, and candidate stars.

@@ -1,3 +1,5 @@
+// GENERATED — synced from FalcomPlot (js/js/). Do not edit here;
+// edit in the FalcomPlot repo and run: node scripts/sync-falcomplot.mjs
 // Animation control — nested four-phase stepping
 //
 // Each chain step has a nested structure:

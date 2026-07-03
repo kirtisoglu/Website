@@ -1,3 +1,5 @@
+// GENERATED — synced from FalcomPlot (js/js/). Do not edit here;
+// edit in the FalcomPlot repo and run: node scripts/sync-falcomplot.mjs
 // FalcomPlot mount API for SvelteKit / generic embedding.
 //
 // Replaces the old main.js global-DOM bootstrap with a per-instance

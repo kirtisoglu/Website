@@ -1,3 +1,5 @@
+// GENERATED — synced from FalcomPlot (js/js/). Do not edit here;
+// edit in the FalcomPlot repo and run: node scripts/sync-falcomplot.mjs
 // Geometry utilities
 export class GeometryUtils {
     static addPolygonPath(coords, swap, blocksPaths) {

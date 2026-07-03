@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:falcomplot": "node scripts/sync-falcomplot.mjs"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.2.5",

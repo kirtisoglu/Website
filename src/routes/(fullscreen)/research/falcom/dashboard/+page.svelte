@@ -186,6 +186,20 @@
         </details>
       </section>
     {/if}
+
+    <section class="meta-section">
+      <h3 class="meta-title">Run it on your data</h3>
+      <p class="desc">
+        These trajectories are pre-recorded with
+        <a href="https://falcomchain.readthedocs.io" target="_blank" rel="noopener">FalcomChain</a>.
+        To record and replay your own chains locally, see the
+        <a
+          href="https://falcomchain.readthedocs.io/en/latest/visualization.html"
+          target="_blank"
+          rel="noopener">visualization guide</a
+        >.
+      </p>
+    </section>
   </aside>
 </div>
 
@@ -314,6 +328,16 @@
     line-height: 1.55;
     font-size: 12px;
     color: rgba(255,255,255,0.65);
+  }
+
+  .desc a {
+    color: #7db3e8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .desc a:hover {
+    color: #a8ccf0;
   }
 
   .district-metadata {
