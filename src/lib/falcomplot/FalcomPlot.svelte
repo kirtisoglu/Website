@@ -20,6 +20,11 @@
   // showSparkline — render the energy sparkline (bottom-left) when the
   // dataset's manifest ships an energy_series. Default true.
   export let showSparkline = true;
+  // initialStep — chain state to open on. Step 1 is the identity-L2
+  // initial state (each district its own super-district), which does not
+  // show the hierarchy coloring; default to 2 so the super-district
+  // tones are visible immediately.
+  export let initialStep = 2;
 
   let canvas;
   let internalControlsEl;
@@ -56,6 +61,7 @@
         treeMetaEl,
         tooltipEl,
         sparklineEl: showSparkline ? sparklineEl : null,
+        initialStep,
         dataPath,
       });
       // A newer remount started while we were awaiting — discard.
