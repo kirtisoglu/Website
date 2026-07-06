@@ -137,7 +137,7 @@
 
       <div class="work">
         <div class="work-head">
-          <span class="status preprint">Preprint</span>
+          <span class="status submitted">Submitted</span>
           <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
         </div>
         <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript, 2026</p>
@@ -162,7 +162,7 @@
 
       <div class="work">
         <div class="work-head">
-          <span class="status preprint">Preprint</span>
+          <span class="status submitted">Submitted</span>
           <h3>UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</h3>
         </div>
         <p class="authors">Kirtisoglu, A., Boran, M. &amp; Tural, M. · Manuscript, 2026</p>
@@ -181,6 +181,32 @@
         <div class="links">
           <a href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub</a>
         </div>
+      </div>
+
+      <div class="work">
+        <div class="work-head">
+          <span class="status preparing">Preparing for Submission</span>
+          <h3>A Multi-Sink Sandpile Torsor and Fiber-Collapsed Markov Chains for Sampling Balanced Graph Partitions</h3>
+        </div>
+        <p class="authors">Kirtisoglu, A. · Manuscript, 2026</p>
+        <p class="abstract">
+          Two ingredients toward provable mixing for sampling balanced
+          connected k-partitions of a graph, the mathematical core of
+          redistricting, where existing Markov chains carry no mixing-time
+          guarantees. First, a multi-sink sandpile torsor: the lattice
+          quotient attached to a k-element root set is the sandpile group of
+          the graph obtained by merging the roots to a single sink, so rooted
+          k-forests carry a free, transitive rotor-routing action, giving
+          exact within-partition resampling on any graph. Second, a
+          fiber-collapse lemma: alternating exact resampling with any
+          reversible partition-changing move makes the partition process
+          itself Markov and mix exactly as fast, removing by construction the
+          within-fiber shuffling that dominates existing chains rather than
+          merely bounding it. This reduces balanced-forest mixing to a
+          spectral-gap estimate on partitions alone; for 2&times;n strips the
+          balanced partitions are classified exactly and the stationary law is
+          computed in closed form.
+        </p>
       </div>
 
       <div class="work">
@@ -552,10 +578,12 @@
   }
   .status.published   { background: #dcfce7; color: #15803d; }
   .status.preprint    { background: #e0e7ff; color: #4338ca; }
+  .status.submitted   { background: #cffafe; color: #0e7490; }
   .status.preparing   { background: #fef3c7; color: #92400e; }
   .status.in-progress { background: #fef9c3; color: #a16207; }
   :global(.dark) .status.published   { background: rgba(21,128,61,0.15);  color: #86efac; }
   :global(.dark) .status.preprint    { background: rgba(67,56,202,0.15);  color: #a5b4fc; }
+  :global(.dark) .status.submitted   { background: rgba(8,145,178,0.15);  color: #67e8f9; }
   :global(.dark) .status.preparing   { background: rgba(146,64,14,0.15);  color: #fcd34d; }
   :global(.dark) .status.in-progress { background: rgba(161,98,7,0.15);   color: #fde047; }
   .work h3 { font-size: 0.98rem; font-weight: 700; color: #111827; margin: 0; line-height: 1.3; }
