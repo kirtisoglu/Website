@@ -13,7 +13,7 @@
 
 <svelte:head>
   <title>Research Portfolio — Alaittin Kirtisoglu</title>
-  <meta name="description" content="Research portfolio — Alaittin Kirtisoglu. PhD candidate at Illinois Institute of Technology working on MCMC sampling for hierarchical capacitated districting and equitable healthcare access." />
+  <meta name="description" content="Research portfolio — Alaittin Kirtisoglu. Research Scientist at NYU Grossman School of Medicine (CSTAR); Ph.D. in Applied Mathematics from the Illinois Institute of Technology. MCMC sampling for hierarchical capacitated districting, equitable healthcare access, and organ allocation optimization." />
   <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
@@ -33,7 +33,7 @@
     <div class="hero-text">
       <p class="eyebrow">Research Portfolio</p>
       <h1>Alaittin Kirtisoglu</h1>
-      <p class="subtitle">PhD Candidate in Applied Mathematics · Illinois Institute of Technology</p>
+      <p class="subtitle">Research Scientist · NYU Grossman School of Medicine (CSTAR)</p>
       <p class="lead">
         I am completing my PhD in Applied Mathematics at the Illinois
         Institute of Technology, where my research sits at the intersection

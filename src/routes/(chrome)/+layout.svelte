@@ -224,7 +224,7 @@
           <p class="mobile-title">Combinatorial optimization, algorithm design, and equitable network design.</p>
         {:else if segment === 'about'}
           <p class="mobile-name">Alaittin Kirtisoglu</p>
-          <p class="mobile-title">Ph.D. Candidate · Applied Mathematics · IIT</p>
+          <p class="mobile-title">Research Scientist · NYU Grossman (CSTAR)</p>
         {:else}
           <p class="mobile-name">Alaittin Kirtisoglu</p>
           <p class="mobile-title">PhD in Applied Mathematics</p>
@@ -260,7 +260,7 @@
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
           <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
-        <span>Illinois Tech</span>
+        <span>NYU Grossman (CSTAR)</span>
       </div>
 
       <!-- Email (copy on click) -->

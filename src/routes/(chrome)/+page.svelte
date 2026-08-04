@@ -403,7 +403,7 @@
 </style>
 
 <section class="hero" in:fly={{ y: 30, duration: 600 }}>
-  <p class="eyebrow">Applied Mathematics · IIT Chicago</p>
+  <p class="eyebrow">Applied Mathematics · NYU Grossman (CSTAR)</p>
   <h1>
     Hi, I'm <span class="name">Alaittin</span>.<br>
     <span class="typed-line">
