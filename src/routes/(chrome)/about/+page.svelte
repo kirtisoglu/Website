@@ -14,7 +14,7 @@
 
 <svelte:head>
   <title>About — Alaittin Kirtisoglu</title>
-  <meta name="description" content="About Alaittin Kirtisoglu — PhD candidate in applied mathematics at Illinois Institute of Technology, working on combinatorial optimization and equitable network design." />
+  <meta name="description" content="About Alaittin Kirtisoglu — Ph.D. in Applied Mathematics from Illinois Institute of Technology, joining NYU Grossman School of Medicine (CSTAR) as a Research Scientist on organ allocation optimization." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 200 }}>
@@ -23,12 +23,13 @@
   <section class="hero" in:fly={{ y: 40, duration: 500, delay: 300 }}>
     <h1>Alaittin Kirtisoglu</h1>
     <p class="subtitle">
-      Ph.D. Candidate in Applied Mathematics · Illinois Institute of Technology
+      Ph.D. in Applied Mathematics · Illinois Institute of Technology
     </p>
     <p class="intro-body">
-      I'm a fifth-year Ph.D. student in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener">Applied Mathematics</a> at IIT,
-      a member of the <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener">Discrete Applied Mathematics Group</a>,
-      and a Teaching Assistant. My research lies at the intersection of graph theory,
+      I recently completed my Ph.D. in <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener">Applied Mathematics</a> at IIT
+      as a member of the <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener">Discrete Applied Mathematics Group</a>,
+      and will join <a href="https://med.nyu.edu/" target="_blank" rel="noopener">NYU Grossman School of Medicine (CSTAR)</a> as a Research Scientist working on organ allocation optimization.
+      My research lies at the intersection of graph theory,
       algorithmic optimization, and computational methods for complex, data-driven problems
       in mathematics and applied sciences.
       Outside research, I play <a href="https://en.wikipedia.org/wiki/Go_(game)" target="_blank" rel="noopener">Go</a> (1&nbsp;dan amateur).
@@ -107,9 +108,20 @@
 
       <div class="entry">
         <div class="entry-meta">
+          <span class="degree">Research Scientist</span>
+          <span class="institution">
+            <a href="https://med.nyu.edu/" target="_blank" rel="noopener">NYU Grossman School of Medicine (CSTAR)</a>
+          </span>
+          <span class="badge">2026 –</span>
+        </div>
+        <p class="entry-desc">Organ allocation optimization.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
           <span class="degree">Graduate Teaching Assistant</span>
           <span class="institution">
-          <a href="https://www.iit.edu/" target="_blank" rel="noopener">HIllinois Institute of Technology</a>
+          <a href="https://www.iit.edu/" target="_blank" rel="noopener">Illinois Institute of Technology</a>
         </span>
           <span class="badge">2021-2026</span>
         </div>

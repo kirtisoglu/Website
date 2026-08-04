@@ -411,10 +411,11 @@
     </span>
   </h1>
   <p class="hero-body">
-    Fifth-year Ph.D. candidate at the
+    I recently completed my Ph.D. in Applied Mathematics at the
     <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
-    working in the
-    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a>.
+    in the
+    <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a>,
+    and will join <a href="https://med.nyu.edu/" target="_blank" rel="noopener">NYU Grossman School of Medicine (CSTAR)</a> as a Research Scientist working on organ allocation optimization.
     Previously, I was a master's student at <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>,
     working on graph colorings under the supervision of <a href="https://web.hacettepe.edu.tr/~ozkahya/" target="_blank" rel="noopener">Lale Özkahya</a>.
     My research spans graph theory, combinatorial optimization, and computational methods
@@ -423,10 +424,6 @@
   <div class="collab-badge">
     <span class="collab-dot"></span>
     Open to collaboration &amp; consulting
-  </div>
-  <div class="collab-badge">
-    <span class="collab-dot"></span>
-    Research Scientist at NYU Grossman School of Medicine (CSTAR) — organ allocation optimization
   </div>
 </section>
 
