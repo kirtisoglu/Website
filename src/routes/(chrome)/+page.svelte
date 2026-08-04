@@ -426,7 +426,7 @@
   </div>
   <div class="collab-badge">
     <span class="collab-dot"></span>
-    Open to post-doctoral positions
+    Research Scientist at NYU Grossman School of Medicine (CSTAR) — organ allocation optimization
   </div>
 </section>
 

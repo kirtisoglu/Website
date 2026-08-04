@@ -140,7 +140,7 @@
           <span class="status submitted">Submitted</span>
           <h3>FalCom: A Sampling Method for Districting and Hierarchical Facility Location</h3>
         </div>
-        <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript, 2026</p>
+        <p class="authors">Kirtisoglu, A. &amp; Kaul, H. · Manuscript, 2026 · Presented at ISCO 2026</p>
         <p class="abstract">
           First MCMC framework for hierarchical capacitated facility location
           and districting. Extends the ReCom spanning-tree proposal from
@@ -181,32 +181,6 @@
         <div class="links">
           <a href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub</a>
         </div>
-      </div>
-
-      <div class="work">
-        <div class="work-head">
-          <span class="status preparing">Preparing for Submission</span>
-          <h3>A Multi-Sink Sandpile Torsor and Fiber-Collapsed Markov Chains for Sampling Balanced Graph Partitions</h3>
-        </div>
-        <p class="authors">Kirtisoglu, A. · Manuscript, 2026</p>
-        <p class="abstract">
-          Two ingredients toward provable mixing for sampling balanced
-          connected k-partitions of a graph, the mathematical core of
-          redistricting, where existing Markov chains carry no mixing-time
-          guarantees. First, a multi-sink sandpile torsor: the lattice
-          quotient attached to a k-element root set is the sandpile group of
-          the graph obtained by merging the roots to a single sink, so rooted
-          k-forests carry a free, transitive rotor-routing action, giving
-          exact within-partition resampling on any graph. Second, a
-          fiber-collapse lemma: alternating exact resampling with any
-          reversible partition-changing move makes the partition process
-          itself Markov and mix exactly as fast, removing by construction the
-          within-fiber shuffling that dominates existing chains rather than
-          merely bounding it. This reduces balanced-forest mixing to a
-          spectral-gap estimate on partitions alone; for 2&times;n strips the
-          balanced partitions are classified exactly and the stationary law is
-          computed in closed form.
-        </p>
       </div>
 
       <div class="work">
