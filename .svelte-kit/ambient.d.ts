@@ -53,6 +53,7 @@ declare module '$env/static/private' {
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_execpath: string;
 	export const ELECTRON_RUN_AS_NODE: string;
+	export const LATEXWORKSHOP_DOCKER_LATEX: string;
 	export const PATH: string;
 	export const MCP_CONNECTION_NONBLOCKING: string;
 	export const npm_package_json: string;
@@ -91,12 +92,14 @@ declare module '$env/static/private' {
 	export const VSCODE_CODE_CACHE_PATH: string;
 	export const COREPACK_ENABLE_AUTO_PIN: string;
 	export const npm_config_user_agent: string;
+	export const LATEXWORKSHOP_DOCKER_PATH: string;
 	export const VSCODE_PID: string;
 	export const CLAUDE_CODE_SESSION_ID: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const COPILOT_OTEL_ENABLED: string;
 	export const CLAUDECODE: string;
+	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
@@ -159,6 +162,7 @@ declare module '$env/dynamic/private' {
 		__CF_USER_TEXT_ENCODING: string;
 		npm_execpath: string;
 		ELECTRON_RUN_AS_NODE: string;
+		LATEXWORKSHOP_DOCKER_LATEX: string;
 		PATH: string;
 		MCP_CONNECTION_NONBLOCKING: string;
 		npm_package_json: string;
@@ -197,12 +201,14 @@ declare module '$env/dynamic/private' {
 		VSCODE_CODE_CACHE_PATH: string;
 		COREPACK_ENABLE_AUTO_PIN: string;
 		npm_config_user_agent: string;
+		LATEXWORKSHOP_DOCKER_PATH: string;
 		VSCODE_PID: string;
 		CLAUDE_CODE_SESSION_ID: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		COPILOT_OTEL_ENABLED: string;
 		CLAUDECODE: string;
+		VSCODE_L10N_BUNDLE_LOCATION: string;
 		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
