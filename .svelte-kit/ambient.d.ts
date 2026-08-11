@@ -94,6 +94,7 @@ declare module '$env/static/private' {
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const CLAUDECODE: string;
+	export const CLAUDE_CODE_MESSAGING_SOCKET: string;
 	export const VSCODE_CWD: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
@@ -197,6 +198,7 @@ declare module '$env/dynamic/private' {
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		CLAUDECODE: string;
+		CLAUDE_CODE_MESSAGING_SOCKET: string;
 		VSCODE_CWD: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
