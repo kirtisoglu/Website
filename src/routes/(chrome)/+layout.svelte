@@ -30,7 +30,7 @@
   });
 
   function copyEmail() {
-    navigator.clipboard.writeText('akirtisoglu@hawk.iit.edu').then(() => {
+    navigator.clipboard.writeText('Alaittin.Kirtisoglu@nyulangone.org').then(() => {
       emailCopied = true;
       setTimeout(() => { emailCopied = false; }, 2000);
     });
@@ -232,7 +232,7 @@
         <div class="mobile-email-row">
           <button class="mobile-email-btn" on:click={copyEmail} title="Copy email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>akirtisoglu@hawk.iit.edu</span>
+            <span>Alaittin.Kirtisoglu@nyulangone.org</span>
           </button>
           {#if emailCopied}
             <span class="mobile-copied-tip">Copied!</span>
@@ -251,7 +251,7 @@
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
           <circle cx="12" cy="9" r="2.5"/>
         </svg>
-        <span>Chicago, IL</span>
+        <span>New York, NY</span>
       </div>
 
       <!-- Institution -->
@@ -270,7 +270,7 @@
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
           </svg>
-          <span>akirtisoglu@hawk.iit.edu</span>
+          <span>Alaittin.Kirtisoglu@nyulangone.org</span>
         </button>
         {#if emailCopied}
           <span class="email-copied-tip">Copied!</span>

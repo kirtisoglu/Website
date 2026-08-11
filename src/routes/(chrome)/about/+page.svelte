@@ -5,7 +5,7 @@
 
   let emailCopied = false;
   function copyEmail() {
-    navigator.clipboard.writeText('akirtisoglu@hawk.iit.edu').then(() => {
+    navigator.clipboard.writeText('Alaittin.Kirtisoglu@nyulangone.org').then(() => {
       emailCopied = true;
       setTimeout(() => { emailCopied = false; }, 2000);
     });
@@ -229,7 +229,7 @@
       <div class="contact-row">
         <span class="contact-label">Email</span>
         <span class="email-inline">
-          <a href="mailto:akirtisoglu@hawk.iit.edu">akirtisoglu@hawk.iit.edu</a>
+          <a href="mailto:Alaittin.Kirtisoglu@nyulangone.org">Alaittin.Kirtisoglu@nyulangone.org</a>
           {#if emailCopied}
             <span class="copied-tip">Copied!</span>
           {:else}
@@ -249,7 +249,7 @@
       </div>
       <div class="contact-row">
         <span class="contact-label">Office</span>
-        <span class="contact-value">Department of Applied Mathematics, Illinois Institute of Technology, Chicago, IL</span>
+        <span class="contact-value">CSTAR, NYU Grossman School of Medicine, New York, NY</span>
       </div>
     </div>
   </section>
