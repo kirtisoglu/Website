@@ -305,78 +305,6 @@
     .tools-teaser-arrow { align-self: flex-end; margin-top: -1.5rem; }
   }
 
-  /* ── News ── */
-  .news {
-    padding: 0 0 3rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .news-title {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #4f46e5;
-    margin: 0 0 1.25rem;
-  }
-
-  :global(.dark) .news-title {
-    color: #818cf8;
-  }
-
-  .news-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-left: 2px solid #e0e7ff;
-  }
-
-  :global(.dark) .news-list {
-    border-color: rgba(129,140,248,0.2);
-  }
-
-  .news-item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 0.85rem 0 0.85rem 1.5rem;
-    position: relative;
-    align-items: baseline;
-  }
-
-  .news-item::before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 1.15rem;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4f46e5;
-  }
-
-  :global(.dark) .news-item::before {
-    background: #818cf8;
-  }
-
-  .news-date {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #9ca3af;
-    white-space: nowrap;
-    min-width: 7rem;
-  }
-
-  .news-text {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    color: #374151;
-  }
-
-  :global(.dark) .news-text {
-    color: rgba(255,255,255,0.78);
-  }
-
   /* ── Mobile ── */
   @media (max-width: 640px) {
     .hero {
@@ -385,19 +313,6 @@
 
     .tools-section {
       padding: 0 0 1rem;
-    }
-
-    .news {
-      padding: 0 0 2rem;
-    }
-
-    .news-item {
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .news-date {
-      min-width: unset;
     }
   }
 </style>
@@ -437,16 +352,3 @@
   </a>
 </section>
 
-{#if data.news && data.news.length > 0}
-  <section class="news" in:fade={{ duration: 400, delay: 200 }}>
-    <h2 class="news-title">News &amp; Updates</h2>
-    <ul class="news-list">
-      {#each data.news as item}
-        <li class="news-item">
-          <span class="news-date">{item.date}</span>
-          <span class="news-text">{@html item.text}</span>
-        </li>
-      {/each}
-    </ul>
-  </section>
-{/if}
