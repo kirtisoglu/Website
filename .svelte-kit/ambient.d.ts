@@ -26,6 +26,7 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const CLAUDE_CODE_MESSAGING_TOKEN: string;
 	export const NoDefaultCurrentDirectoryInExePath: string;
 	export const CLAUDE_EFFORT: string;
 	export const CLAUDE_CODE_ENTRYPOINT: string;
@@ -130,6 +131,7 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		CLAUDE_CODE_MESSAGING_TOKEN: string;
 		NoDefaultCurrentDirectoryInExePath: string;
 		CLAUDE_EFFORT: string;
 		CLAUDE_CODE_ENTRYPOINT: string;
