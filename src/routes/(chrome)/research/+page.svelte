@@ -177,7 +177,7 @@
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
-        <a href="/research/uav-routing/animation/">UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</a>
+        <a href="/research/uav-routing/">UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</a>
       </h3>
       <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
       <p class="paper-abstract">

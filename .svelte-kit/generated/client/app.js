@@ -16,7 +16,8 @@ export const nodes = [
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/15'),
+	() => import('./nodes/16')
 ];
 
 export const server_loads = [];
@@ -28,12 +29,13 @@ export const dictionary = {
 		"/(chrome)/portfolio": [7,[2]],
 		"/(chrome)/research": [8,[2]],
 		"/(chrome)/research/chicago-healthcare-network": [9,[2]],
-		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [13,[3]],
+		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [14,[3]],
 		"/(chrome)/research/falcom": [10,[2]],
-		"/(fullscreen)/research/falcom/dashboard": [14,[3]],
-		"/(fullscreen)/research/uav-routing/animation": [15,[3]],
-		"/(chrome)/teaching": [11,[2]],
-		"/(chrome)/tools": [12,[2]]
+		"/(fullscreen)/research/falcom/dashboard": [15,[3]],
+		"/(chrome)/research/uav-routing": [11,[2]],
+		"/(fullscreen)/research/uav-routing/animation": [16,[3]],
+		"/(chrome)/teaching": [12,[2]],
+		"/(chrome)/tools": [13,[2]]
 	};
 
 export const hooks = {
