@@ -161,6 +161,19 @@ export function createViewer(root) {
     tctx.textAlign="right";tctx.fillText(Math.round(D.budget)+" s",r.width-4,H-2);
   }
 
+  // Swap and 2-opt are accepted on the objective and, on a tie, on the capacity
+  // max(T/Tmax, E/Emax) of the solved route. Show that quantity, its change and
+  // which resource binds, so a lateral move can be read for what it trades.
+  function capRows(f,prev){
+    if(f.cap==null||(f.e!=="swap"&&f.e!=="two_opt"))return "";
+    const dc=prev&&prev.cap!=null?f.cap-prev.cap:null;
+    const binds=f.er>=f.tr?"energy":"time";
+    return row("Capacity",(100*f.cap).toFixed(2)+'% <span style="opacity:.6">('+binds+')</span>')+
+      row("Capacity change",dc==null?"&mdash;":
+        `<span class="delta ${dc<=0?"up":"down"}">${dc>0?"+":""}${(100*dc).toFixed(3)} pp</span>`)+
+      row("Time / energy",(100*f.tr).toFixed(1)+"% / "+(100*f.er).toFixed(1)+"%");
+  }
+
   function rail(){
     const f=D.frames[i];
     document.querySelector(".verdict .dot").style.background=css(OPC[f.e]||"--twoopt");
@@ -171,7 +184,8 @@ export function createViewer(root) {
       row("Wall clock",f.t.toFixed(1)+" s")+row("At iteration",fmt(f.it))+
       row("Targets",f.r.length-1)+row("Objective",fmt(f.f))+
       row("Change",d==null?"—":`<span class="delta ${d>=0?"up":"down"}">${d>=0?"+":""}${fmt(d)}</span>`)+
-      row("Best so far",fmt(f.b))+row("Rejected since",fmt(f.np));
+      row("Best so far",fmt(f.b))+row("Rejected since",fmt(f.np))+
+      capRows(f,prev);
     $("seq").innerHTML=
       "<b>depot</b> &rarr; " + f.r.slice(1).map(n=>String(n)).join(" &rarr; ") + " &rarr; <b>depot</b>";
     const box=$("cands"),note=$("candsNote");

@@ -4,97 +4,97 @@
   "name": "R101 (50)",
   "frames": 900,
   "best": null,
-  "mb": 0.58
+  "mb": 0.65
  },
  {
   "id": "r101_100",
   "name": "R101 (100)",
   "frames": 799,
   "best": null,
-  "mb": 0.76
+  "mb": 0.82
  },
  {
   "id": "r1_2_1_200",
   "name": "R1_2_1 (200)",
   "frames": 900,
   "best": null,
-  "mb": 1.23
+  "mb": 1.3
  },
  {
   "id": "c101_50",
   "name": "C101 (50)",
   "frames": 900,
   "best": null,
-  "mb": 1.57
+  "mb": 1.63
  },
  {
   "id": "c101_100",
   "name": "C101 (100)",
   "frames": 900,
   "best": null,
-  "mb": 1.8
+  "mb": 1.87
  },
  {
   "id": "c1_2_1_200",
   "name": "C1_2_1 (200)",
   "frames": 900,
   "best": null,
-  "mb": 2.09
+  "mb": 2.15
  },
  {
   "id": "rc1_2_1_200",
   "name": "RC1_2_1 (200)",
   "frames": 900,
   "best": null,
-  "mb": 1.49
+  "mb": 1.56
  },
  {
   "id": "r102_100",
   "name": "R102 (100)",
   "frames": 698,
   "best": null,
-  "mb": 0.94
+  "mb": 0.99
  },
  {
   "id": "r104_100",
   "name": "R104 (100)",
   "frames": 900,
   "best": null,
-  "mb": 1.37
+  "mb": 1.44
  },
  {
   "id": "c104_100",
   "name": "C104 (100)",
   "frames": 219,
   "best": null,
-  "mb": 0.73
+  "mb": 0.74
  },
  {
   "id": "rc104_100",
   "name": "RC104 (100)",
   "frames": 900,
   "best": null,
-  "mb": 1.23
+  "mb": 1.3
  },
  {
   "id": "pr11_48",
   "name": "PR11 (48)",
   "frames": 900,
   "best": null,
-  "mb": 1.1
+  "mb": 1.16
  },
  {
   "id": "pr15_240",
   "name": "PR15 (240)",
   "frames": 900,
   "best": null,
-  "mb": 3.07
+  "mb": 3.13
  },
  {
   "id": "pr10_288",
   "name": "PR10 (288)",
   "frames": 900,
   "best": null,
-  "mb": 2.48
+  "mb": 2.55
  }
 ]
