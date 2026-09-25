@@ -181,7 +181,7 @@ h1 .sub{font-weight:400;color:var(--muted);font-size:15px;margin-left:8px}
 
 main{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:14px;align-items:stretch;
      grid-template-rows:minmax(0,1fr);flex:1 1 auto;min-height:0}
-.rail{grid-column:2;grid-row:1;align-self:stretch;min-height:0;overflow:hidden}
+.rail{grid-column:2;grid-row:1;align-self:stretch;min-height:0;overflow-y:auto}
 .stage{position:relative;background:var(--panel);border:1px solid var(--line);
        border-radius:var(--radius);overflow:hidden;min-height:0;height:100%}
 #map{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -211,9 +211,10 @@ main{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:14px;align-items
 .rail{display:flex;flex-direction:column;gap:12px;min-width:0;min-height:0;
       height:100%}
 .rail .card{flex:0 0 auto}
-.rail .card.grow{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.rail .card.grow{flex:1 1 auto;min-height:190px;display:flex;flex-direction:column}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:13px 14px}
-.card h2{margin:0 0 9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+.card h2{margin:0 0 9px;display:flex;align-items:baseline;justify-content:space-between;
+         gap:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
          color:var(--muted);font-weight:600}
 .verdict{display:flex;align-items:center;gap:6px;font-weight:600;font-size:15px;
          white-space:nowrap;overflow:hidden}
@@ -228,10 +229,11 @@ main{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:14px;align-items
 
 .cands{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin:0 -4px;padding:0 4px;
        scrollbar-gutter:stable}
-.seq{font-family:var(--mono);font-size:11.5px;line-height:1.7;height:96px;overflow-y:auto;
+.seq{font-family:var(--mono);font-size:11.5px;line-height:1.7;height:clamp(54px,11vh,96px);overflow-y:auto;
      color:var(--muted);word-break:break-word}
 :global(.seq b){color:var(--ink);font-weight:600}
-h2 em{font-style:normal;font-weight:400;font-size:11px;color:var(--muted);float:right}
+h2 em{font-style:normal;font-weight:400;font-size:11px;color:var(--muted);
+      text-transform:none;letter-spacing:0;white-space:nowrap;flex:0 0 auto}
 :global(.cand){display:grid;grid-template-columns:52px 1fr 60px;align-items:center;gap:8px;
       height:19px;font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;
       white-space:nowrap;overflow:hidden}
