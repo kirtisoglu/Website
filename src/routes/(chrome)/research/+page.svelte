@@ -174,10 +174,10 @@
       <div class="paper-meta">
         <span class="paper-num">3.</span>
         <span class="paper-status preprint">Preprint</span>
-        <span class="paper-type">Research Paper</span>
+        <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
       <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption
+        <a href="/research/uav-routing/animation/">UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</a>
       </h3>
       <p class="paper-venue">with Melis Boran &amp; Mustafa Tural</p>
       <p class="paper-abstract">
@@ -194,6 +194,10 @@
       </p>
       <div class="paper-links">
         <a class="paper-link" href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <div class="paper-tools">
+        <span class="tools-label">Tools:</span>
+        <a class="tool-link" href="/research/uav-routing/animation/">Search Replay →</a>
       </div>
     </div>
 
