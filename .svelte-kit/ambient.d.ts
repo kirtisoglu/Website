@@ -71,6 +71,7 @@ declare module '$env/static/private' {
 	export const npm_config_npm_version: string;
 	export const XPC_FLAGS: string;
 	export const npm_package_engines_node: string;
+	export const CLAUDE_CODE_SESSION_ATTENDED: string;
 	export const MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
@@ -176,6 +177,7 @@ declare module '$env/dynamic/private' {
 		npm_config_npm_version: string;
 		XPC_FLAGS: string;
 		npm_package_engines_node: string;
+		CLAUDE_CODE_SESSION_ATTENDED: string;
 		MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 		npm_config_node_gyp: string;
 		npm_package_version: string;

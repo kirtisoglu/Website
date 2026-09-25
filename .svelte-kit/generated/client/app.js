@@ -15,7 +15,8 @@ export const nodes = [
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
-	() => import('./nodes/14')
+	() => import('./nodes/14'),
+	() => import('./nodes/15')
 ];
 
 export const server_loads = [];
@@ -30,6 +31,7 @@ export const dictionary = {
 		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [13,[3]],
 		"/(chrome)/research/falcom": [10,[2]],
 		"/(fullscreen)/research/falcom/dashboard": [14,[3]],
+		"/(fullscreen)/research/uav-routing/animation": [15,[3]],
 		"/(chrome)/teaching": [11,[2]],
 		"/(chrome)/tools": [12,[2]]
 	};
