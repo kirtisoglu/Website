@@ -180,8 +180,8 @@ h1 .sub{font-weight:400;color:var(--muted);font-size:15px;margin-left:8px}
          font-variant-numeric:tabular-nums;white-space:nowrap}
 
 main{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:14px;align-items:stretch;
-     grid-template-rows:minmax(0,1fr);flex:1 1 auto;min-height:0}
-.rail{grid-column:2;grid-row:1;align-self:stretch;min-height:0;overflow-y:auto}
+     grid-template-rows:minmax(0,1fr) auto;flex:1 1 auto;min-height:0}
+.rail{grid-column:2;grid-row:1 / span 2;align-self:stretch;min-height:0;overflow-y:auto}
 .stage{position:relative;background:var(--panel);border:1px solid var(--line);
        border-radius:var(--radius);overflow:hidden;min-height:0;height:100%}
 #map{position:absolute;inset:0;width:100%;height:100%;display:block}
