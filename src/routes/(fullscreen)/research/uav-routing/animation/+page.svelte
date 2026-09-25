@@ -16,6 +16,7 @@
   let selected = '';
   let error = '';
   let loading = true;
+  let tab = 'event';   // which rail card is shown on a narrow screen
 
   const BASE = '/data/uav-routing';
 
@@ -85,17 +86,25 @@
         </div>
       </section>
 
-      <aside class="rail">
-        <div class="card">
+      <aside class="rail" data-tab={tab}>
+        <div class="tabs" role="tablist">
+          <button role="tab" class:on={tab === 'event'} aria-selected={tab === 'event'}
+                  on:click={() => (tab = 'event')}>Event</button>
+          <button role="tab" class:on={tab === 'route'} aria-selected={tab === 'route'}
+                  on:click={() => (tab = 'route')}>Route</button>
+          <button role="tab" class:on={tab === 'cands'} aria-selected={tab === 'cands'}
+                  on:click={() => (tab = 'cands')}>Candidates</button>
+        </div>
+        <div class="card" data-pane="event">
           <h2>Event</h2>
           <div class="verdict" id="verdict"><span class="dot"></span><span id="vtext">—</span></div>
           <div class="kv" id="ev"></div>
         </div>
-        <div class="card">
+        <div class="card" data-pane="route">
           <h2>Route in visit order</h2>
           <div class="seq" id="seq"></div>
         </div>
-        <div class="card grow">
+        <div class="card grow" data-pane="cands">
           <h2>Candidate set at this step <em id="candsNote"></em></h2>
           <div class="cands" id="cands"></div>
         </div>
@@ -259,14 +268,45 @@ button.primary{background:var(--ink);color:var(--panel);border-color:var(--ink);
 .toggles label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .pos{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;
      min-width:188px;white-space:nowrap}
+.tabs{display:none}
+
 @media (max-width:900px){
-  main{grid-template-columns:minmax(0,1fr)}
+  /* One column, and the page scrolls: fitting a stacked stage, timeline and
+     rail into one viewport would clip them, so the desktop height lock is
+     released here and 100dvh becomes a floor rather than a cap. */
+  .uav-viewer{height:auto;min-height:100dvh;overflow:visible}
+  .wrap{min-height:0;flex:0 0 auto;padding-block:12px 20px}
+  main{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;
+       flex:0 0 auto;min-height:0}
   .timeline,.rail{grid-column:1}
-  .rail{grid-row:auto}
-  .rail{height:auto}
+  .rail{grid-row:auto;height:auto;min-height:0;overflow:visible}
+  .rail .card.grow{min-height:0}
   .cands{max-height:300px}
-  .stage{min-height:340px;aspect-ratio:1/1}
+  .stage{min-height:340px;height:auto;aspect-ratio:1/1}
   .stats{margin-left:0}
+  /* The three rail cards become one tabbed pane: stacking them makes the page
+     three screens long and buries the controls. */
+  .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:2px}
+  .tabs button{font:inherit;font-size:12px;padding:9px 6px;border-radius:8px;
+    border:1px solid var(--line);background:var(--panel);color:var(--muted);min-height:40px}
+  .tabs button.on{background:var(--panel-2);color:var(--ink);border-color:var(--ghost);font-weight:600}
+  .rail[data-tab="event"] .card[data-pane]:not([data-pane="event"]),
+  .rail[data-tab="route"] .card[data-pane]:not([data-pane="route"]),
+  .rail[data-tab="cands"] .card[data-pane]:not([data-pane="cands"]){display:none}
+  .seq{height:auto;max-height:42vh}
+  .cands{max-height:52vh}
+  /* the run summary is seven figures: let it scroll rather than stack */
+  .stats{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:14px;
+    scrollbar-width:none;padding-bottom:2px;width:100%}
+  .stats::-webkit-scrollbar{display:none}
+  :global(.stat){flex:0 0 auto}
+  /* touch targets: the transport row is the one thing a thumb must hit */
+  .transport{flex-wrap:wrap;row-gap:8px}
+  .transport button,.transport select{min-height:40px}
+  .toggles{width:100%;flex-wrap:wrap;row-gap:6px}
+  .bar{flex-wrap:wrap;row-gap:8px}
+  .pick{padding-left:0;margin-right:0;width:100%}
+  .pick select{flex:1 1 auto;min-width:0}
 }
 @media (prefers-reduced-motion:reduce){.uav-viewer :global(*){animation:none!important;transition:none!important}}
 
