@@ -82,7 +82,6 @@
           <span class="key"><i style="background:var(--twoopt)"></i>2-opt</span>
           <span class="key"><i style="background:var(--shake)"></i>Shake</span>
           <span class="key"><i style="background:var(--ghost)"></i>Rejected proposal</span>
-          <span class="scale" id="winScale" style="visibility:hidden"><i></i>window opens early &rarr; late</span>
         </div>
       </section>
 
@@ -138,7 +137,7 @@
   </section>
   
       <section class="timeline">
-      <canvas id="tl" tabindex="0" aria-label="Objective over wall-clock time; click or drag to scrub"></canvas>
+      <canvas id="tl" tabindex="0" aria-label="Objective over the run; click or drag to scrub"></canvas>
       <div class="transport">
         <button class="primary" id="play">Play</button>
         <button id="prev">Back</button>
@@ -149,10 +148,13 @@
           <option value="3">3&times;</option>
           <option value="8">8&times;</option>
         </select>
+        <select id="xaxis" aria-label="Timeline x axis">
+          <option value="it" selected>iterations</option>
+          <option value="t">seconds</option>
+        </select>
         <span class="pos" id="pos">—</span>
         <div class="toggles">
           <label><input type="checkbox" id="tProp" checked> rejected proposals</label>
-          <label><input type="checkbox" id="tWin"> time windows</label>
           <label>labels
             <select id="tIds">
               <option value="off" selected>none</option>
@@ -285,9 +287,6 @@ main{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:14px;align-items
         font-family:var(--mono);font-size:11.5px;font-variant-numeric:tabular-nums}
 :global(.tip dt){color:var(--muted)} :global(.tip dd){margin:0;text-align:right}
 :global(.tip .warn){color:var(--shake)}
-.scale{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
-.scale i{width:56px;height:8px;border-radius:4px;display:inline-block;
-  background:linear-gradient(90deg,hsl(210 62% 48%),hsl(135 62% 48%),hsl(60 62% 48%))}
 
 .rail{display:flex;flex-direction:column;gap:12px;min-width:0;min-height:0;
       height:100%}

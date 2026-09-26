@@ -54,17 +54,15 @@ export function createViewer(root) {
       mctx.globalAlpha=1;
     }
 
-    const win=$("tWin").checked;
     for(const n of D.nodes){
       if(n.id===D.depot)continue;
       const q=P(n),on=sched.has(n.id);
       mctx.beginPath();mctx.arc(q[0],q[1],on?4.2:3,0,7);
-      if(on){mctx.fillStyle=win?winColor(n):col;mctx.fill();}
+      if(on){mctx.fillStyle=col;mctx.fill();}
       else{
         // not on the route: filled in a light tone so it reads as a target the
         // search may still pick up, without competing with the route itself
-        mctx.fillStyle=win?winColor(n):css("--unsched");
-        mctx.globalAlpha=win?.3:1;mctx.fill();mctx.globalAlpha=1;
+        mctx.fillStyle=css("--unsched");mctx.fill();
       }
     }
 
@@ -102,7 +100,6 @@ export function createViewer(root) {
     if(f.s){D.spd={};D.loi={};f.r.slice(1).concat([D.depot]).forEach((n,k)=>{
               if(f.s[k]!=null)D.spd[n]=f.s[k]; if(f.lo&&f.lo[k]!=null)D.loi[n]=f.lo[k];});}
     else {D.spd=legSpeeds(f.r.concat([D.depot]));D.loi={};D.est=true;}
-    $("winScale").style.visibility=win?"visible":"hidden";
     $("hint").textContent="frame "+(i+1)+" / "+D.frames.length;
   }
 
@@ -133,32 +130,32 @@ export function createViewer(root) {
     return out;
   }
 
-  function winColor(n){
-    // hue runs blue to yellow as the window opens later in the mission
-    const t=n.e/(D.horizon||1),h=210-150*Math.min(1,Math.max(0,t));
-    return "hsl("+h+" 62% 48%)";
-  }
 
   function drawTL(){
     const r=fit(tl);tctx.clearRect(0,0,r.width,r.height);
     const F=D.frames,pad=4,H=r.height;
-    const lo=D.lo,hi=D.hi,span=(hi-lo)||1,bud=D.budget||1;
-    const X=t=>(t/bud)*r.width,Y=v=>H-pad-((v-lo)/span)*(H-2*pad-10);
+    const lo=D.lo,hi=D.hi,span=(hi-lo)||1;
+    // The frames are route changes, so on the wall clock a long construction
+    // or a long idle tail crushes the rest of the run into a corner of the
+    // axis. Iterations spread them evenly, and the axis switches between them.
+    const byIt=!$("xaxis")||$("xaxis").value==="it";
+    const key=f=>byIt?f.it:f.t, last=key(F[F.length-1])||1;
+    const X=k=>(k/last)*r.width,Y=v=>H-pad-((v-lo)/span)*(H-2*pad-10);
     tctx.strokeStyle=css("--grid");tctx.lineWidth=1;
     for(let k=0;k<=4;k++){const y=pad+ (H-2*pad-10)*k/4;tctx.beginPath();tctx.moveTo(0,y);tctx.lineTo(r.width,y);tctx.stroke();}
     tctx.strokeStyle=css("--shake");tctx.globalAlpha=.32;tctx.lineWidth=1;
-    F.forEach(f=>{if(f.v!=="shake")return;const x=X(f.t);tctx.beginPath();tctx.moveTo(x,H-10);tctx.lineTo(x,H-3);tctx.stroke();});
+    F.forEach(f=>{if(f.v!=="shake")return;const x=X(key(f));tctx.beginPath();tctx.moveTo(x,H-10);tctx.lineTo(x,H-3);tctx.stroke();});
     tctx.globalAlpha=1;
     tctx.strokeStyle=css("--ghost");tctx.lineWidth=1;tctx.beginPath();
-    F.forEach((f,k)=>{const x=X(f.t),y=Y(f.f??lo);k?tctx.lineTo(x,y):tctx.moveTo(x,y);});tctx.stroke();
+    F.forEach((f,k)=>{const x=X(key(f)),y=Y(f.f??lo);k?tctx.lineTo(x,y):tctx.moveTo(x,y);});tctx.stroke();
     tctx.strokeStyle=css("--best");tctx.lineWidth=1.9;tctx.beginPath();
-    F.forEach((f,k)=>{const x=X(f.t),y=Y(f.b);k?tctx.lineTo(x,y):tctx.moveTo(x,y);});tctx.stroke();
-    const f=F[i],px=X(f.t);
+    F.forEach((f,k)=>{const x=X(key(f)),y=Y(f.b);k?tctx.lineTo(x,y):tctx.moveTo(x,y);});tctx.stroke();
+    const f=F[i],px=X(key(f));
     tctx.strokeStyle=css(OPC[f.e]||"--twoopt");tctx.lineWidth=1.6;
     tctx.beginPath();tctx.moveTo(px,0);tctx.lineTo(px,H-2);tctx.stroke();
     tctx.fillStyle=css("--muted");tctx.font="10px "+css("--mono").split(",")[0].replace(/"/g,"");
     tctx.textAlign="left";tctx.fillText(fmt(hi),4,10);
-    tctx.textAlign="right";tctx.fillText(Math.round(D.budget)+" s",r.width-4,H-2);
+    tctx.textAlign="right";tctx.fillText(byIt?fmt(last)+" iterations":Math.round(last)+" s",r.width-4,H-2);
   }
 
   // Swap and 2-opt are accepted on the objective and, on a tie, on the capacity
@@ -311,10 +308,12 @@ export function createViewer(root) {
       const k=A.find(j=>j>i);go(k!=null?k:A[0]);};
     $("tobest").onclick=()=>{
       let bi=0,bv=-Infinity;D.frames.forEach((f,k)=>{if(f.b>bv){bv=f.b;bi=k;}});go(bi);};
-    ["tProp","tWin","tIds"].forEach(id=>$(id).onchange=render);
+    ["tProp","tIds","xaxis"].forEach(id=>$(id).onchange=render);
     const scrub=ev=>{const r=tl.getBoundingClientRect();
-      const t=Math.max(0,Math.min(1,(ev.clientX-r.left)/r.width))*D.budget;
-      let bi=0,bd=Infinity;D.frames.forEach((f,k)=>{const d=Math.abs(f.t-t);if(d<bd){bd=d;bi=k;}});go(bi);};
+      const byIt=!$("xaxis")||$("xaxis").value==="it", key=f=>byIt?f.it:f.t;
+      const fr=D.frames, end=key(fr[fr.length-1])||1;
+      const q=Math.max(0,Math.min(1,(ev.clientX-r.left)/r.width))*end;
+      let bi=0,bd=Infinity;fr.forEach((f,k)=>{const d=Math.abs(key(f)-q);if(d<bd){bd=d;bi=k;}});go(bi);};
     tl.onpointerdown=e=>{tl.setPointerCapture(e.pointerId);scrub(e);};
     tl.onpointermove=e=>{if(e.buttons)scrub(e);};
     tl.onkeydown=e=>{if(e.key==="ArrowRight")go(i+1);if(e.key==="ArrowLeft")go(i-1);};
