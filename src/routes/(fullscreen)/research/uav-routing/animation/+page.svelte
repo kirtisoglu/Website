@@ -115,19 +115,25 @@
     <button class="sotab" id="tabWins"  aria-expanded="false" on:click={() => viewer?.openPanel("windows")}>&#9664; Windows</button>
   </div>
   <section class="slideover" id="soStats" aria-hidden="true">
+    <div class="sogrip" title="Hold and drag to move the panel">⇔</div>
     <button class="soclose" data-close="soStats" on:click={() => viewer?.closePanel("soStats")}>&times;</button>
+    <div class="sobody">
     <h3>Run statistics</h3>
     <p class="sub" id="statsSub"></p>
     <div id="statsBody"></div>
+    </div>
   </section>
   <section class="slideover wide" id="soWins" aria-hidden="true">
+    <div class="sogrip" title="Hold and drag to move the panel">⇔</div>
     <button class="soclose" data-close="soWins" on:click={() => viewer?.closePanel("soWins")}>&times;</button>
+    <div class="sobody">
     <h3>Realized windows</h3>
     <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the red dot is the arrival. The number at the right is the least and the most information the target can give over its <strong>time window</strong>, not over its realized window. The left figure follows the route in the search display; the right is the best route of the run.</p>
     <div class="wins">
       <figure><figcaption id="capNow"></figcaption><canvas id="cvNow"></canvas>
         <div class="winnav"><button id="winNext">Next local optimum</button><span id="winPos"></span></div></figure>
       <figure><figcaption id="capBest"></figcaption><canvas id="cvBest"></canvas></figure>
+    </div>
     </div>
   </section>
   
@@ -175,15 +181,21 @@
        border-radius:10px 0 0 10px;box-shadow:-4px 0 14px rgba(0,0,0,.10)}
 .sotab:hover{color:var(--ink)}
 .sotab:global([aria-expanded="true"]){color:var(--ink);background:var(--panel-2)}
-.slideover{position:fixed;top:0;right:0;height:100%;z-index:31;overflow:auto;
+.slideover{position:fixed;top:0;right:0;height:100%;z-index:31;overflow:hidden;
            background:var(--panel);border-left:1px solid var(--line);
-           box-shadow:-18px 0 40px rgba(0,0,0,.18);padding:18px 20px;
+           box-shadow:-18px 0 40px rgba(0,0,0,.18);
            transform:translateX(100%);transition:transform .22s ease;
            width:min(560px,94vw)}
 .slideover.wide{width:min(1100px,96vw)}
 .slideover:global(.open){transform:translateX(0)}
 .slideover h3{margin:0 0 2px;font-size:14px}
 .slideover .sub{margin:0 0 14px;font-size:11.5px;color:var(--muted)}
+.sogrip{position:absolute;left:0;top:0;width:18px;height:100%;z-index:2;
+        display:flex;align-items:center;justify-content:center;cursor:ew-resize;
+        background:var(--panel-2);border-right:1px solid var(--line);
+        color:var(--muted);font-size:12px;touch-action:none;user-select:none}
+.sogrip:hover{color:var(--ink)}
+.sobody{height:100%;overflow:auto;padding:18px 20px 18px 32px}
 .soclose{position:absolute;top:12px;right:14px;border:0;background:none;
          font-size:18px;line-height:1;color:var(--muted);cursor:pointer}
 :global(.sgrid){display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:16px}
@@ -195,6 +207,8 @@
 :global(.stab th){font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 :global(.stab td){font-family:var(--mono)}
 .wins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.slideover:global(.narrow) .wins{grid-template-columns:1fr}
+.slideover:global(.narrow) .wins figure:last-child{display:none}
 .wins figure{margin:0}
 .winnav{display:flex;align-items:center;gap:10px;margin-top:8px}
 #winPos{font-family:var(--mono);font-size:11px;color:var(--muted)}

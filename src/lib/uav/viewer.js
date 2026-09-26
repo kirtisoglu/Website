@@ -341,6 +341,32 @@ function soOpen(id,btn){
   if(w && w.classList.contains("open"))
     requestAnimationFrame(()=>requestAnimationFrame(drawWindows));   // after layout
 }
+function soDrag(){
+  // The grip narrows the panel rather than sliding it away: pulled in far
+  // enough it keeps only the route in view and hands the rest of the screen
+  // back to the search play. The width is inline, so a choice made here sticks
+  // until the next drag.
+  document.querySelectorAll(".slideover").forEach(p=>{
+    const grip=p.querySelector(".sogrip"); if(!grip) return;
+    const full=()=>p.classList.contains("wide")?Math.min(1100,window.innerWidth*.96)
+                                               :Math.min(560,window.innerWidth*.94);
+    let x0=0,w0=0,dragging=false,raf=0;
+    const apply=w=>{
+      p.style.width=w+"px";
+      p.classList.toggle("narrow",w<full()*.62);   // drops the best-route figure
+      if(p.id==="soWins"&&!raf) raf=requestAnimationFrame(()=>{raf=0;drawWindows();});
+    };
+    const move=e=>{ if(dragging) apply(Math.max(360,Math.min(full(),w0-(e.clientX-x0)))); };
+    const up=()=>{ if(!dragging) return; dragging=false; p.style.transition="";
+      window.removeEventListener("pointermove",move);
+      window.removeEventListener("pointerup",up);
+      if(p.id==="soWins") drawWindows(); };
+    on(grip,"pointerdown",e=>{ dragging=true; x0=e.clientX; w0=p.offsetWidth;
+      p.style.transition="none"; e.preventDefault();
+      window.addEventListener("pointermove",move);
+      window.addEventListener("pointerup",up); });
+  });
+}
 function soWire(){
   // The tab and close buttons are wired by the component that renders them,
   // through openPanel/closePanel below. Nothing here may listen for those
@@ -348,6 +374,7 @@ function soWire(){
   // closes what the first one opened and the panel never appears to move.
   // Registered through on(), so destroy() takes them off again -- a second
   // createViewer would otherwise leave these closed over the first one's data.
+  soDrag();
   on(document,"keydown",e=>{ if(e.key==="Escape")
     document.querySelectorAll(".slideover.open").forEach(p=>{
       p.classList.remove("open"); p.setAttribute("aria-hidden","true");
@@ -404,9 +431,14 @@ function drawOne(cv,cap,fr,label){
   // index into r: the depot is row 0, drawn at the bottom, and the visiting
   // order runs upward from it.
   const r=fr.r, n=r.length;
-  // 11px is the floor at which the row number and its label still fit. A long
-  // route grows the figure instead of shrinking the rows; the panel scrolls.
-  const rowH=Math.max(11,Math.min(15,520/Math.max(1,n)));
+  // Fit the rows to the panel when it is tall enough to hold them all, so the
+  // whole route reads at once. 9px is the floor at which the row number and the
+  // min-max label stay legible; under that the rows stay at 9px and it scrolls.
+  const CHROME=48+67;                      // the button row, and the axis and legend inside
+  const pan=cv.closest&&cv.closest(".slideover");
+  const room=pan?pan.clientHeight-(cv.getBoundingClientRect().top
+                                   -pan.getBoundingClientRect().top)-CHROME:0;
+  const rowH=Math.max(9,Math.min(15,(room>0?room:520)/Math.max(1,n)));
   const W=cv.clientWidth||cv.parentElement.clientWidth||cv.getBoundingClientRect().width||460;
   const T=D.horizon||Math.max(...D.nodes.map(x=>x.l));
   const g=cv.getContext("2d"), FONT="9px "+getComputedStyle(root).fontFamily;
