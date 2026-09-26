@@ -396,16 +396,17 @@ function fillStats(){
   h+=cell("Wall clock",(s.wall!=null?s.wall+" s":"—"));
   h+=cell("Per iteration",(s.ms_per_iter!=null?s.ms_per_iter+" ms":"—"));
   if(s.socp){
-    h+=cell("Subproblem share",s.socp.pct+"% of wall");
-    h+=cell("Subproblem solves",fmt(s.socp.calls)+" · "+s.socp.ms_each+" ms each");
+    // the timer is newer than some datasets: show the count, not a fabricated 0
+    h+=cell("SOCP share",s.socp.pct?s.socp.pct+"% of wall":"not timed");
+    h+=cell("SOCP solves",fmt(s.socp.calls)+(s.socp.ms_each?" · "+s.socp.ms_each+" ms each":""));
   }else{
-    h+=cell("Subproblem solves",fmt(s.solved||0)+" evaluated");
-    h+=cell("Subproblem share","not recorded");
+    h+=cell("SOCP solves",fmt(s.solved||0)+" evaluated");
+    h+=cell("SOCP share","not recorded");
   }
   h+=cell("Infeasible at the solve",(s.infeas_pct!=null?s.infeas_pct+"%":"—"));
-  if(s.ts_reject!=null) h+=cell("Screened before it",fmt(s.ts_reject)+" routes");
+  if(s.ts_reject!=null) h+=cell("Screened",fmt(s.ts_reject)+" routes");
   h+=cell("Local optima",fmt((s.gap&&s.gap.n)||0)+" shakes");
-  h+=cell("Gap between them",(s.gap?fmt(s.gap.max)+" max · "+fmt(s.gap.avg)+" mean":"—"));
+  h+=cell("Distance between them",(s.gap?fmt(s.gap.max)+" max · "+fmt(s.gap.avg)+" mean":"—"));
   h+='</div>';
   h+='<table class="stab"><thead><tr><th>Operator</th><th>accepted</th><th>refused</th>'+
      '<th>infeasible</th><th>rate</th></tr></thead><tbody>';
