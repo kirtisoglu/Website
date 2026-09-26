@@ -322,7 +322,8 @@ function soOpen(id,btn){
   });
   root.querySelectorAll(".sotab").forEach(b=>
     b.setAttribute("aria-expanded",String(b===btn && document.getElementById(id).classList.contains("open"))));
-  if($("soWins").classList.contains("open")) drawWindows();
+  if($("soWins").classList.contains("open"))
+    requestAnimationFrame(()=>requestAnimationFrame(drawWindows));   // after layout
 }
 function soWire(){
   const s=$("tabStats"), w=$("tabWins");
@@ -383,7 +384,8 @@ function drawOne(cv,cap,fr,label){
   const dpr=window.devicePixelRatio||1;
   if(!fr||!fr.wlo){ cap.textContent=label+" — not recorded"; cv.height=0; return; }
   const r=fr.r.slice(1), n=r.length, rowH=Math.max(7,Math.min(15,520/Math.max(1,n)));
-  const H=Math.round(n*rowH+34), W=cv.clientWidth||460;
+  const H=Math.round(n*rowH+34);
+  const W=cv.clientWidth||cv.parentElement.clientWidth||cv.getBoundingClientRect().width||460;
   cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+"px";
   const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
   const T=D.horizon||Math.max(...D.nodes.map(x=>x.l));
