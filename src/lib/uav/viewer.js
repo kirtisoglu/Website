@@ -264,6 +264,7 @@ export function createViewer(root) {
       Math.round(D.budget)+" s from the "+(D.start||"greedy")+" start";
     document.title=D.instance.replace(/\s*\(\d+\)/,"")+" Search Replay";
     D.horizon=Math.max(...D.nodes.map(n=>n.l));
+    soWire();
     const fs=D.frames.map(f=>f.f).filter(v=>v!=null).concat(D.frames.map(f=>f.b));
     D.lo=Math.min(...fs)*0.997;D.hi=Math.max(...fs)*1.003;
     if(!(D.hi>D.lo)){D.lo-=1;D.hi+=1;}
@@ -312,6 +313,111 @@ export function createViewer(root) {
 
 
   wire();
+
+// ---- slide-over panels ----------------------------------------------------
+function soOpen(id,btn){
+  root.querySelectorAll(".slideover").forEach(p=>{
+    const on = p.id===id && !p.classList.contains("open");
+    p.classList.toggle("open",on); p.setAttribute("aria-hidden",String(!on));
+  });
+  root.querySelectorAll(".sotab").forEach(b=>
+    b.setAttribute("aria-expanded",String(b===btn && document.getElementById(id).classList.contains("open"))));
+  if($("soWins").classList.contains("open")) drawWindows();
+}
+function soWire(){
+  const s=$("tabStats"), w=$("tabWins");
+  if(s) s.onclick=()=>{ fillStats(); soOpen("soStats",s); };
+  if(w) w.onclick=()=>soOpen("soWins",w);
+  root.querySelectorAll(".soclose").forEach(b=>b.onclick=()=>{
+    const p=document.getElementById(b.dataset.close);
+    p.classList.remove("open"); p.setAttribute("aria-hidden","true");
+    root.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false"));
+  });
+  on(document,"keydown",e=>{ if(e.key==="Escape")
+    root.querySelectorAll(".slideover.open").forEach(p=>{
+      p.classList.remove("open"); p.setAttribute("aria-hidden","true");
+      root.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false")); }); });
+  on(window,"resize",()=>{ if($("soWins").classList.contains("open")) drawWindows(); });
+}
+const OPLBL={add:"Insert",replace:"Replace",swap:"Swap",two_opt:"2-opt"};
+function fillStats(){
+  const s=D.stats||{}, t=D.totals||{};
+  $("statsSub").textContent =
+    D.instance+" — "+fmt(t.iterations||0)+" iterations, "+fmt(t.accepted||0)+" route changes";
+  const cell=(k,v)=>`<div><div class="k">${k}</div><div class="v">${v}</div></div>`;
+  let h='<div class="sgrid">';
+  h+=cell("Wall clock",(s.wall!=null?s.wall+" s":"—"));
+  h+=cell("Per iteration",(s.ms_per_iter!=null?s.ms_per_iter+" ms":"—"));
+  if(s.socp){
+    h+=cell("Subproblem share",s.socp.pct+"% of wall");
+    h+=cell("Subproblem solves",fmt(s.socp.calls)+" · "+s.socp.ms_each+" ms each");
+  }else{
+    h+=cell("Subproblem solves",fmt(s.solved||0)+" evaluated");
+    h+=cell("Subproblem share","not recorded");
+  }
+  h+=cell("Infeasible at the solve",(s.infeas_pct!=null?s.infeas_pct+"%":"—"));
+  if(s.ts_reject!=null) h+=cell("Screened before it",fmt(s.ts_reject)+" routes");
+  h+=cell("Local optima",fmt((s.gap&&s.gap.n)||0)+" shakes");
+  h+=cell("Gap between them",(s.gap?fmt(s.gap.max)+" max · "+fmt(s.gap.avg)+" mean":"—"));
+  h+='</div>';
+  h+='<table class="stab"><thead><tr><th>Operator</th><th>accepted</th><th>refused</th>'+
+     '<th>infeasible</th><th>rate</th></tr></thead><tbody>';
+  for(const o of ["add","replace","swap","two_opt"]){
+    const v=(s.ops||{})[o]; if(!v) continue;
+    h+=`<tr><td>${OPLBL[o]}</td><td>${fmt(v.acc)}</td><td>${fmt(v.ref)}</td>`+
+       `<td>${fmt(v.inf)}</td><td>${v.rate}%</td></tr>`;
+  }
+  h+='</tbody></table>';
+  if(s.sets){
+    h+='<table class="stab"><thead><tr><th>Move set</th><th>min</th><th>mean</th><th>max</th>'+
+       '</tr></thead><tbody>';
+    for(const o of ["add","replace","swap","two_opt"]){
+      const v=s.sets[o]; if(!v) continue;
+      h+=`<tr><td>${OPLBL[o]}</td><td>${v.min}</td><td>${v.avg}</td><td>${fmt(v.max)}</td></tr>`;
+    }
+    h+='</tbody></table>';
+  }
+  $("statsBody").innerHTML=h;
+}
+function drawOne(cv,cap,fr,label){
+  const dpr=window.devicePixelRatio||1;
+  if(!fr||!fr.wlo){ cap.textContent=label+" — not recorded"; cv.height=0; return; }
+  const r=fr.r.slice(1), n=r.length, rowH=Math.max(7,Math.min(15,520/Math.max(1,n)));
+  const H=Math.round(n*rowH+34), W=cv.clientWidth||460;
+  cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+"px";
+  const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
+  const T=D.horizon||Math.max(...D.nodes.map(x=>x.l));
+  const L=34, R=W-8, X=v=>L+(R-L)*Math.max(0,Math.min(1,v/T));
+  cap.textContent=label+" — iteration "+fmt(fr.it)+", "+n+" targets, objective "+fmt(fr.f);
+  g.font="9px "+getComputedStyle(root).fontFamily;
+  for(let q=0;q<n;q++){
+    const nd=D.byId[r[q]], y=10+q*rowH, h=Math.max(3,rowH-3);
+    g.fillStyle=css("--line"); g.globalAlpha=.55;
+    g.fillRect(X(nd.e),y,Math.max(1,X(nd.l)-X(nd.e)),h);
+    g.globalAlpha=1;
+    const lo=fr.wlo[q], hi=fr.whi[q];
+    if(lo!=null&&hi!=null){
+      g.fillStyle=(nd.g>0)?css("--add"):css("--twoopt");
+      g.fillRect(X(lo),y,Math.max(1.5,X(hi)-X(lo)),h);
+    }
+    const a=fr.a&&fr.a[q];
+    if(a!=null){ g.fillStyle=css("--ink"); g.beginPath();
+      g.arc(X(a),y+h/2,1.8,0,6.284); g.fill(); }
+  }
+  g.strokeStyle=css("--line"); g.beginPath(); g.moveTo(L,H-20); g.lineTo(R,H-20); g.stroke();
+  g.fillStyle=css("--muted"); g.textAlign="left"; g.fillText("0",L,H-8);
+  g.textAlign="right"; g.fillText(Math.round(T)+" s",R,H-8);
+  g.textAlign="left"; g.save(); g.translate(9,H/2); g.rotate(-Math.PI/2);
+  g.textAlign="center"; g.fillText("visiting order",0,0); g.restore();
+}
+function drawWindows(){
+  const s=D.stats||{};
+  drawOne($("cvPre"),$("capPre"),
+          s.pre_i!=null?D.frames[s.pre_i]:null,"Before the first shake");
+  drawOne($("cvBest"),$("capBest"),
+          s.best_i!=null?D.frames[s.best_i]:null,"Best route");
+}
+
   return {
     load,
     destroy() {

@@ -109,6 +109,27 @@
           <div class="cands" id="cands"></div>
         </div>
       </aside>
+
+  <div class="sotabs">
+    <button class="sotab" id="tabStats" aria-expanded="false">&#9664; Statistics</button>
+    <button class="sotab" id="tabWins"  aria-expanded="false">&#9664; Windows</button>
+  </div>
+  <section class="slideover" id="soStats" aria-hidden="true">
+    <button class="soclose" data-close="soStats">&times;</button>
+    <h3>Run statistics</h3>
+    <p class="sub" id="statsSub"></p>
+    <div id="statsBody"></div>
+  </section>
+  <section class="slideover wide" id="soWins" aria-hidden="true">
+    <button class="soclose" data-close="soWins">&times;</button>
+    <h3>Realized windows</h3>
+    <p class="sub">Grey, the time window \u005Be\u1D62, \u2113\u1D62\u005D; colour, the realized window \u005Ba\u1D62<sup>min</sup>, a\u1D62<sup>max</sup>\u005D, blue where the slope is positive and orange where it is negative; the dot is the arrival.</p>
+    <div class="wins">
+      <figure><figcaption id="capPre"></figcaption><canvas id="cvPre"></canvas></figure>
+      <figure><figcaption id="capBest"></figcaption><canvas id="cvBest"></canvas></figure>
+    </div>
+  </section>
+  
       <section class="timeline">
       <canvas id="tl" tabindex="0" aria-label="Objective over wall-clock time; click or drag to scrub"></canvas>
       <div class="transport">
@@ -143,6 +164,41 @@
 </div>
 
 <style>
+
+/* ---- slide-over panels, opened by the arrows on the right edge ---- */
+.sotabs{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:30;
+        display:flex;flex-direction:column;gap:6px}
+.sotab{writing-mode:vertical-rl;padding:12px 6px;font-size:11px;letter-spacing:.1em;
+       text-transform:uppercase;font-weight:600;color:var(--muted);cursor:pointer;
+       background:var(--panel);border:1px solid var(--line);border-right:0;
+       border-radius:8px 0 0 8px}
+.sotab:hover{color:var(--ink)}
+.sotab[aria-expanded="true"]{color:var(--ink);background:var(--panel-2)}
+.slideover{position:fixed;top:0;right:0;height:100%;z-index:31;overflow:auto;
+           background:var(--panel);border-left:1px solid var(--line);
+           box-shadow:-18px 0 40px rgba(0,0,0,.18);padding:18px 20px;
+           transform:translateX(100%);transition:transform .22s ease;
+           width:min(560px,94vw)}
+.slideover.wide{width:min(1100px,96vw)}
+.slideover.open{transform:translateX(0)}
+.slideover h3{margin:0 0 2px;font-size:14px}
+.slideover .sub{margin:0 0 14px;font-size:11.5px;color:var(--muted)}
+.soclose{position:absolute;top:12px;right:14px;border:0;background:none;
+         font-size:18px;line-height:1;color:var(--muted);cursor:pointer}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:16px}
+.sgrid .k{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sgrid .v{font-family:var(--mono);font-size:14px}
+.stab{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+.stab th,.stab td{padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
+.stab th:first-child,.stab td:first-child{text-align:left}
+.stab th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stab td{font-family:var(--mono)}
+.wins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wins figure{margin:0}
+.wins figcaption{font-size:11.5px;color:var(--muted);margin-bottom:6px}
+.wins canvas{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel-2)}
+@media(max-width:900px){.wins{grid-template-columns:1fr}}
+
 
 .uav-viewer{
   --bg:#EEF1F5; --panel:#FFFFFF; --panel-2:#F7F9FB; --ink:#0F151C; --muted:#5E6A78;
