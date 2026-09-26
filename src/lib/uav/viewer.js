@@ -332,31 +332,17 @@ function soOpen(id,btn){
     requestAnimationFrame(()=>requestAnimationFrame(drawWindows));   // after layout
 }
 function soWire(){
-  // Delegated clicks, so the handlers do not depend on when this runs. The
-  // nodes are left where they are: in the embedded viewer they belong to the
-  // component that rendered them, and moving them breaks its bookkeeping.
-  if(soWire._done) return;
-  soWire._done = true;
-  document.addEventListener("click", e=>{
-    const tab = e.target.closest && e.target.closest(".sotab");
-    if(tab){
-      if(tab.id==="tabStats") fillStats();
-      soOpen(tab.id==="tabStats" ? "soStats" : "soWins", tab);
-      return;
-    }
-    const x = e.target.closest && e.target.closest(".soclose");
-    if(x){
-      const p=document.getElementById(x.dataset.close);
-      if(!p) return;
-      p.classList.remove("open"); p.setAttribute("aria-hidden","true");
-      document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false"));
-    }
-  });
-  document.addEventListener("keydown",e=>{ if(e.key==="Escape")
+  // The tab and close buttons are wired by the component that renders them,
+  // through openPanel/closePanel below. Nothing here may listen for those
+  // clicks as well: soOpen toggles, so a second handler on the same click
+  // closes what the first one opened and the panel never appears to move.
+  // Registered through on(), so destroy() takes them off again -- a second
+  // createViewer would otherwise leave these closed over the first one's data.
+  on(document,"keydown",e=>{ if(e.key==="Escape")
     document.querySelectorAll(".slideover.open").forEach(p=>{
       p.classList.remove("open"); p.setAttribute("aria-hidden","true");
       document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false")); }); });
-  window.addEventListener("resize",()=>{ const w=document.getElementById("soWins");
+  on(window,"resize",()=>{ const w=document.getElementById("soWins");
     if(w && w.classList.contains("open")) drawWindows(); });
 }
 const OPLBL={add:"Insert",replace:"Replace",swap:"Swap",two_opt:"2-opt"};

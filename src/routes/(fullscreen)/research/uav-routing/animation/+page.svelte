@@ -123,7 +123,7 @@
   <section class="slideover wide" id="soWins" aria-hidden="true">
     <button class="soclose" data-close="soWins" on:click={() => viewer?.closePanel("soWins")}>&times;</button>
     <h3>Realized windows</h3>
-    <p class="sub">Grey, the time window \u005Be\u1D62, \u2113\u1D62\u005D; colour, the realized window \u005Ba\u1D62<sup>min</sup>, a\u1D62<sup>max</sup>\u005D, blue where the slope is positive and orange where it is negative; the dot is the arrival.</p>
+    <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the dot is the arrival.</p>
     <div class="wins">
       <figure><figcaption id="capPre"></figcaption><canvas id="cvPre"></canvas></figure>
       <figure><figcaption id="capBest"></figcaption><canvas id="cvBest"></canvas></figure>
