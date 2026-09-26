@@ -168,10 +168,10 @@
 /* ---- slide-over panels, opened by the arrows on the right edge ---- */
 .sotabs{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:30;
         display:flex;flex-direction:column;gap:6px}
-.sotab{writing-mode:vertical-rl;padding:12px 6px;font-size:11px;letter-spacing:.1em;
+.sotab{writing-mode:vertical-rl;padding:20px 11px;font-size:12.5px;letter-spacing:.12em;
        text-transform:uppercase;font-weight:600;color:var(--muted);cursor:pointer;
        background:var(--panel);border:1px solid var(--line);border-right:0;
-       border-radius:8px 0 0 8px}
+       border-radius:10px 0 0 10px;box-shadow:-4px 0 14px rgba(0,0,0,.10)}
 .sotab:hover{color:var(--ink)}
 .sotab[aria-expanded="true"]{color:var(--ink);background:var(--panel-2)}
 .slideover{position:fixed;top:0;right:0;height:100%;z-index:31;overflow:auto;
