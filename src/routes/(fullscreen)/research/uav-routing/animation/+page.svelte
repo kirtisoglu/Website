@@ -173,26 +173,26 @@
        background:var(--panel);border:1px solid var(--line);border-right:0;
        border-radius:10px 0 0 10px;box-shadow:-4px 0 14px rgba(0,0,0,.10)}
 .sotab:hover{color:var(--ink)}
-.sotab[aria-expanded="true"]{color:var(--ink);background:var(--panel-2)}
+.sotab:global([aria-expanded="true"]){color:var(--ink);background:var(--panel-2)}
 .slideover{position:fixed;top:0;right:0;height:100%;z-index:31;overflow:auto;
            background:var(--panel);border-left:1px solid var(--line);
            box-shadow:-18px 0 40px rgba(0,0,0,.18);padding:18px 20px;
            transform:translateX(100%);transition:transform .22s ease;
            width:min(560px,94vw)}
 .slideover.wide{width:min(1100px,96vw)}
-.slideover.open{transform:translateX(0)}
+.slideover:global(.open){transform:translateX(0)}
 .slideover h3{margin:0 0 2px;font-size:14px}
 .slideover .sub{margin:0 0 14px;font-size:11.5px;color:var(--muted)}
 .soclose{position:absolute;top:12px;right:14px;border:0;background:none;
          font-size:18px;line-height:1;color:var(--muted);cursor:pointer}
-.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:16px}
-.sgrid .k{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.sgrid .v{font-family:var(--mono);font-size:14px}
-.stab{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
-.stab th,.stab td{padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
-.stab th:first-child,.stab td:first-child{text-align:left}
-.stab th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.stab td{font-family:var(--mono)}
+:global(.sgrid){display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:16px}
+:global(.sgrid .k){font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+:global(.sgrid .v){font-family:var(--mono);font-size:14px}
+:global(.stab){width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px}
+:global(.stab th),:global(.stab td){padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
+:global(.stab th:first-child),:global(.stab td:first-child){text-align:left}
+:global(.stab th){font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+:global(.stab td){font-family:var(--mono)}
 .wins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .wins figure{margin:0}
 .wins figcaption{font-size:11.5px;color:var(--muted);margin-bottom:6px}
