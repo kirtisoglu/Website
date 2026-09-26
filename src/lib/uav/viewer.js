@@ -399,8 +399,13 @@ function drawOne(cv,cap,fr,label){
     g.globalAlpha=1;
     const lo=fr.wlo[q], hi=fr.whi[q];
     if(lo!=null&&hi!=null){
-      g.fillStyle=(nd.g>0)?css("--add"):css("--twoopt");
-      g.fillRect(X(lo),y,Math.max(1.5,X(hi)-X(lo)),h);
+      // a realized window is often a few seconds against a horizon of hours, so
+      // it would be a fraction of a pixel; draw it at a visible minimum width
+      const x0=X(lo), w=Math.max(4,X(hi)-x0);
+      g.fillStyle=(nd.g>0)?css("--twoopt"):css("--replace");
+      g.fillRect(x0,y,w,h);
+      g.strokeStyle=css("--ink"); g.globalAlpha=.35; g.lineWidth=.6;
+      g.strokeRect(x0+.3,y+.3,w-.6,h-.6); g.globalAlpha=1;
     }
     const a=fr.a&&fr.a[q];
     if(a!=null){ g.fillStyle=css("--ink"); g.beginPath();
