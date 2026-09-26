@@ -123,7 +123,7 @@
   <section class="slideover wide" id="soWins" aria-hidden="true">
     <button class="soclose" data-close="soWins" on:click={() => viewer?.closePanel("soWins")}>&times;</button>
     <h3>Realized windows</h3>
-    <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the dot is the arrival.</p>
+    <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the red dot is the arrival. The number at the right is the least and the most information the target can give over its <strong>time window</strong>, not over its realized window. Both figures are fixed routes — the last one accepted before the first shake, and the best of the run — not the route in the search display.</p>
     <div class="wins">
       <figure><figcaption id="capPre"></figcaption><canvas id="cvPre"></canvas></figure>
       <figure><figcaption id="capBest"></figcaption><canvas id="cvBest"></canvas></figure>

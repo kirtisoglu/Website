@@ -390,39 +390,74 @@ function drawOne(cv,cap,fr,label){
   if(!cv||!cap) return;
   const dpr=window.devicePixelRatio||1;
   if(!fr||!fr.wlo){ cap.textContent=label+" — not recorded"; cv.height=0; return; }
-  const r=fr.r.slice(1), n=r.length, rowH=Math.max(7,Math.min(15,520/Math.max(1,n)));
-  const H=Math.round(n*rowH+34);
+  // r[0] is the depot and wlo/whi/a are aligned with r, so the row index is the
+  // index into r: the depot is row 0, drawn at the bottom, and the visiting
+  // order runs upward from it.
+  const r=fr.r, n=r.length;
+  // 11px is the floor at which the row number and its label still fit. A long
+  // route grows the figure instead of shrinking the rows; the panel scrolls.
+  const rowH=Math.max(11,Math.min(15,520/Math.max(1,n)));
   const W=cv.clientWidth||cv.parentElement.clientWidth||cv.getBoundingClientRect().width||460;
+  const top=8, axisY=top+n*rowH+7, H=Math.round(axisY+64);
   cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+"px";
   const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
   const T=D.horizon||Math.max(...D.nodes.map(x=>x.l));
-  const L=34, R=W-8, X=v=>L+(R-L)*Math.max(0,Math.min(1,v/T));
-  cap.textContent=label+" — iteration "+fmt(fr.it)+", "+n+" targets, objective "+fmt(fr.f);
-  g.font="9px "+getComputedStyle(root).fontFamily;
+  const yOf=q=>top+(n-1-q)*rowH;           // q=0, the depot, at the bottom
+  const C={line:css("--line"),ink:css("--ink"),muted:css("--muted"),
+           pos:css("--twoopt"),neg:css("--replace"),ghost:css("--ghost"),
+           arr:css("--shake")};
+  cap.textContent=label+" — iteration "+fmt(fr.it)+", "+(n-1)+" targets, objective "+fmt(fr.f);
+  g.font="9px "+getComputedStyle(root).fontFamily; g.textBaseline="middle";
+  // The information on offer over the whole time window: I is linear in the
+  // arrival, so its extremes are the two ends of [e,l]. These labels get a
+  // gutter of their own on the right, where they cannot cover a bar.
+  const lbl=r.map((id,q)=>{ if(!q) return "";
+    const nd=D.byId[id], i1=nd.i0, i2=nd.g*(nd.l-nd.e)+nd.i0;
+    return Math.round(Math.min(i1,i2))+"\u2013"+Math.round(Math.max(i1,i2)); });
+  const gut=Math.max(...lbl.map(s=>g.measureText(s).width))+10;
+  const L=44, R=W-8-gut, X=v=>L+(R-L)*Math.max(0,Math.min(1,v/T));
   for(let q=0;q<n;q++){
-    const nd=D.byId[r[q]], y=10+q*rowH, h=Math.max(3,rowH-3);
-    g.fillStyle=css("--line"); g.globalAlpha=.55;
+    const nd=D.byId[r[q]], y=yOf(q), h=Math.max(3,rowH-3), mid=y+h/2, depot=q===0;
+    g.fillStyle=C.line; g.globalAlpha=.55;
     g.fillRect(X(nd.e),y,Math.max(1,X(nd.l)-X(nd.e)),h);
     g.globalAlpha=1;
+    g.fillStyle=C.muted; g.textAlign="right";
+    g.fillText(depot?"depot":String(nd.id),L-5,mid);
     const lo=fr.wlo[q], hi=fr.whi[q];
     if(lo!=null&&hi!=null){
       // a realized window is often a few seconds against a horizon of hours, so
       // it would be a fraction of a pixel; draw it at a visible minimum width
       const x0=X(lo), w=Math.max(4,X(hi)-x0);
-      g.fillStyle=(nd.g>0)?css("--twoopt"):css("--replace");
+      g.fillStyle=depot?C.ghost:(nd.g>0?C.pos:C.neg);
       g.fillRect(x0,y,w,h);
-      g.strokeStyle=css("--ink"); g.globalAlpha=.35; g.lineWidth=.6;
+      g.strokeStyle=C.ink; g.globalAlpha=.35; g.lineWidth=.6;
       g.strokeRect(x0+.3,y+.3,w-.6,h-.6); g.globalAlpha=1;
     }
+    if(!depot){ g.fillStyle=nd.g>0?C.pos:C.neg; g.textAlign="right";
+                g.fillText(lbl[q],W-8,mid); }
     const a=fr.a&&fr.a[q];
-    if(a!=null){ g.fillStyle=css("--ink"); g.beginPath();
-      g.arc(X(a),y+h/2,1.8,0,6.284); g.fill(); }
+    if(a!=null){ g.fillStyle=C.arr; g.beginPath(); g.arc(X(a),mid,1.2,0,6.284); g.fill(); }
   }
-  g.strokeStyle=css("--line"); g.beginPath(); g.moveTo(L,H-20); g.lineTo(R,H-20); g.stroke();
-  g.fillStyle=css("--muted"); g.textAlign="left"; g.fillText("0",L,H-8);
-  g.textAlign="right"; g.fillText(Math.round(T)+" s",R,H-8);
-  g.textAlign="left"; g.save(); g.translate(9,H/2); g.rotate(-Math.PI/2);
-  g.textAlign="center"; g.fillText("visiting order",0,0); g.restore();
+  g.strokeStyle=C.line; g.beginPath(); g.moveTo(L,axisY); g.lineTo(R,axisY); g.stroke();
+  g.fillStyle=C.muted;
+  g.textAlign="left"; g.fillText("0",L,axisY+9);
+  g.textAlign="right"; g.fillText(Math.round(T)+" s",R,axisY+9);
+  g.save(); g.translate(9,(top+axisY)/2); g.rotate(-Math.PI/2);
+  g.textAlign="center"; g.fillText("visiting order (depot at the bottom)",0,0); g.restore();
+  {                                         // legend, two columns under the axis
+    const ly=axisY+24, cw=(W-8-L)/2;
+    const sw=(x,yy,c,al)=>{g.fillStyle=c;g.globalAlpha=al||1;g.fillRect(x,yy-3.5,11,7);g.globalAlpha=1;};
+    sw(L,ly,C.line,.55);      sw(L+cw,ly,C.pos);
+    sw(L+cw,ly+13,C.neg);
+    g.fillStyle=C.arr; g.beginPath(); g.arc(L+5,ly+13,1.2,0,6.284); g.fill();
+    g.fillStyle=C.muted; g.textAlign="left";
+    g.fillText("time window [eᵢ, ℓᵢ]",L+15,ly);
+    g.fillText("realized, γᵢ > 0 (later is better)",L+cw+15,ly);
+    g.fillText("arrival",L+15,ly+13);
+    g.fillText("realized, γᵢ < 0 (earlier is better)",L+cw+15,ly+13);
+    g.fillText("number at the right: min and max information over the "+
+               "time window [eᵢ, ℓᵢ]",L+15,ly+26);
+  }
 }
 function drawWindows(){
   if(!D) return;
