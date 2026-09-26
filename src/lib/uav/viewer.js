@@ -292,6 +292,10 @@ export function createViewer(root) {
       (iters?st("Iterations",fmt(iters)):"")+
       st("Frames shown",fmt(D.frames.length));
     render();
+    // loading another dataset while a panel is open refreshes it: render()
+    // redraws the windows, the statistics have to be rebuilt here
+    const sp=document.getElementById("soStats");
+    if(sp&&sp.classList.contains("open")) fillStats();
   }
 
   function wire(){
@@ -399,6 +403,9 @@ function fillStats(){
     // the timer is newer than some datasets: show the count, not a fabricated 0
     h+=cell("SOCP share",s.socp.pct?s.socp.pct+"% of wall":"not timed");
     h+=cell("SOCP solves",fmt(s.socp.calls)+(s.socp.ms_each?" · "+s.socp.ms_each+" ms each":""));
+    const spi=(s.socp.s&&t.iterations)?1000*s.socp.s/t.iterations:0;
+    h+=cell("SOCP per iteration",spi?spi.toFixed(2)+" ms ("+
+            Math.round(100*spi/(s.ms_per_iter||spi))+"% of the iteration)":"not timed");
   }else{
     h+=cell("SOCP solves",fmt(s.solved||0)+" evaluated");
     h+=cell("SOCP share","not recorded");
