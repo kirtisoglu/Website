@@ -242,7 +242,12 @@ export function createViewer(root) {
 
   function render(){drawMap();drawTL();rail();
     $("pos").textContent=
-      D.frames[i].t.toFixed(1)+" s  ·  event "+(i+1)+" of "+D.frames.length;}
+      D.frames[i].t.toFixed(1)+" s  ·  event "+(i+1)+" of "+D.frames.length;
+    const wp=$("winPos"), A=D.lopt||[], k=A.indexOf(i);
+    if(wp) wp.textContent=A.length?(k>=0?"local optimum "+(k+1)+" of "+A.length
+                                        :A.length+" local optima"):"";
+    const w=document.getElementById("soWins");   // the left figure tracks the playhead
+    if(w&&w.classList.contains("open")) drawWindows();}
 
   function go(n){i=Math.max(0,Math.min(D.frames.length-1,n));render();}
 
@@ -264,6 +269,8 @@ export function createViewer(root) {
       Math.round(D.budget)+" s from the "+(D.start||"greedy")+" start";
     document.title=D.instance.replace(/\s*\(\d+\)/,"")+" Search Replay";
     D.horizon=Math.max(...D.nodes.map(n=>n.l));
+    // the routes the search settled on: the frame before each shake
+    D.lopt=[...new Set(D.frames.map((f,k)=>f.v==="shake"?k-1:-1).filter(k=>k>=0))];
     soWire();
     const fs=D.frames.map(f=>f.f).filter(v=>v!=null).concat(D.frames.map(f=>f.b));
     D.lo=Math.min(...fs)*0.997;D.hi=Math.max(...fs)*1.003;
@@ -295,6 +302,9 @@ export function createViewer(root) {
       e.target.textContent=playing?"Pause":"Play";if(playing)requestAnimationFrame(tick);};
     $("next").onclick=()=>go(i+1);
     $("prev").onclick=()=>go(i-1);
+    const wn=$("winNext");
+    if(wn) wn.onclick=()=>{const A=D.lopt||[];if(!A.length)return;
+      const k=A.find(j=>j>i);go(k!=null?k:A[0]);};
     $("tobest").onclick=()=>{
       let bi=0,bv=-Infinity;D.frames.forEach((f,k)=>{if(f.b>bv){bv=f.b;bi=k;}});go(bi);};
     ["tProp","tWin","tIds"].forEach(id=>$(id).onchange=render);
@@ -398,24 +408,39 @@ function drawOne(cv,cap,fr,label){
   // route grows the figure instead of shrinking the rows; the panel scrolls.
   const rowH=Math.max(11,Math.min(15,520/Math.max(1,n)));
   const W=cv.clientWidth||cv.parentElement.clientWidth||cv.getBoundingClientRect().width||460;
-  const top=8, axisY=top+n*rowH+7, H=Math.round(axisY+64);
-  cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+"px";
-  const g=cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
   const T=D.horizon||Math.max(...D.nodes.map(x=>x.l));
-  const yOf=q=>top+(n-1-q)*rowH;           // q=0, the depot, at the bottom
-  const C={line:css("--line"),ink:css("--ink"),muted:css("--muted"),
-           pos:css("--twoopt"),neg:css("--replace"),ghost:css("--ghost"),
-           arr:css("--shake")};
-  cap.textContent=label+" — iteration "+fmt(fr.it)+", "+(n-1)+" targets, objective "+fmt(fr.f);
-  g.font="9px "+getComputedStyle(root).fontFamily; g.textBaseline="middle";
+  const g=cv.getContext("2d"), FONT="9px "+getComputedStyle(root).fontFamily;
+  // Measure before sizing the canvas, because setting its width resets the
+  // context: the right gutter and the legend layout both depend on the text.
+  g.font=FONT;
   // The information on offer over the whole time window: I is linear in the
   // arrival, so its extremes are the two ends of [e,l]. These labels get a
   // gutter of their own on the right, where they cannot cover a bar.
   const lbl=r.map((id,q)=>{ if(!q) return "";
     const nd=D.byId[id], i1=nd.i0, i2=nd.g*(nd.l-nd.e)+nd.i0;
-    return Math.round(Math.min(i1,i2))+"\u2013"+Math.round(Math.max(i1,i2)); });
+    return Math.round(Math.min(i1,i2))+"–"+Math.round(Math.max(i1,i2)); });
   const gut=Math.max(...lbl.map(s=>g.measureText(s).width))+10;
   const L=44, R=W-8-gut, X=v=>L+(R-L)*Math.max(0,Math.min(1,v/T));
+  const KEY=[["win","time window [eᵢ, ℓᵢ]"],
+             ["pos","realized, γᵢ > 0 (later is better)"],
+             ["dot","arrival"],
+             ["neg","realized, γᵢ < 0 (earlier is better)"]];
+  const cw=(W-8-L)/2;
+  const two=KEY.every(([,t])=>15+g.measureText(t).width<=cw-6);   // else one column
+  const NOTE=["number at the right: min and max information over the time window [eᵢ, ℓᵢ]",
+              "right: min–max information over [eᵢ, ℓᵢ]"];
+  const note=NOTE.find(t=>15+g.measureText(t).width<=W-8-L)||NOTE[NOTE.length-1];
+  const legRows=(two?2:KEY.length)+1;
+  const top=8, axisY=top+n*rowH+7, ly=axisY+24, H=Math.round(ly+(legRows-1)*13+10);
+  if(cv.width!==W*dpr||cv.height!==H*dpr){      // reallocating clears it; only when it changed
+    cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+"px"; }
+  g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
+  g.font=FONT; g.textBaseline="middle";
+  const yOf=q=>top+(n-1-q)*rowH;           // q=0, the depot, at the bottom
+  const C={line:css("--line"),ink:css("--ink"),muted:css("--muted"),
+           pos:css("--twoopt"),neg:css("--replace"),ghost:css("--ghost"),
+           arr:css("--shake")};
+  cap.textContent=label+" — iteration "+fmt(fr.it)+", "+(n-1)+" targets, objective "+fmt(fr.f);
   for(let q=0;q<n;q++){
     const nd=D.byId[r[q]], y=yOf(q), h=Math.max(3,rowH-3), mid=y+h/2, depot=q===0;
     g.fillStyle=C.line; g.globalAlpha=.55;
@@ -444,26 +469,23 @@ function drawOne(cv,cap,fr,label){
   g.textAlign="right"; g.fillText(Math.round(T)+" s",R,axisY+9);
   g.save(); g.translate(9,(top+axisY)/2); g.rotate(-Math.PI/2);
   g.textAlign="center"; g.fillText("visiting order (depot at the bottom)",0,0); g.restore();
-  {                                         // legend, two columns under the axis
-    const ly=axisY+24, cw=(W-8-L)/2;
+  {                                         // legend under the axis
     const sw=(x,yy,c,al)=>{g.fillStyle=c;g.globalAlpha=al||1;g.fillRect(x,yy-3.5,11,7);g.globalAlpha=1;};
-    sw(L,ly,C.line,.55);      sw(L+cw,ly,C.pos);
-    sw(L+cw,ly+13,C.neg);
-    g.fillStyle=C.arr; g.beginPath(); g.arc(L+5,ly+13,1.2,0,6.284); g.fill();
-    g.fillStyle=C.muted; g.textAlign="left";
-    g.fillText("time window [eᵢ, ℓᵢ]",L+15,ly);
-    g.fillText("realized, γᵢ > 0 (later is better)",L+cw+15,ly);
-    g.fillText("arrival",L+15,ly+13);
-    g.fillText("realized, γᵢ < 0 (earlier is better)",L+cw+15,ly+13);
-    g.fillText("number at the right: min and max information over the "+
-               "time window [eᵢ, ℓᵢ]",L+15,ly+26);
+    const mark={win:(x,y)=>sw(x,y,C.line,.55), pos:(x,y)=>sw(x,y,C.pos),
+                neg:(x,y)=>sw(x,y,C.neg),
+                dot:(x,y)=>{g.fillStyle=C.arr;g.beginPath();g.arc(x+5,y,1.2,0,6.284);g.fill();}};
+    g.textAlign="left";
+    KEY.forEach(([k,txt],idx)=>{
+      const x=L+(two?idx%2:0)*cw, y=ly+(two?idx>>1:idx)*13;
+      mark[k](x,y); g.fillStyle=C.muted; g.fillText(txt,x+15,y);
+    });
+    g.fillStyle=C.muted; g.fillText(note,L+15,ly+(legRows-1)*13);
   }
 }
 function drawWindows(){
   if(!D) return;
   const s=D.stats||{};
-  drawOne($("cvPre"),$("capPre"),
-          s.pre_i!=null?D.frames[s.pre_i]:null,"Before the first shake");
+  drawOne($("cvNow"),$("capNow"),D.frames[i],"Route in view");
   drawOne($("cvBest"),$("capBest"),
           s.best_i!=null?D.frames[s.best_i]:null,"Best route");
 }

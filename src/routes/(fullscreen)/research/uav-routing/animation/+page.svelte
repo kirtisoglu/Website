@@ -123,9 +123,10 @@
   <section class="slideover wide" id="soWins" aria-hidden="true">
     <button class="soclose" data-close="soWins" on:click={() => viewer?.closePanel("soWins")}>&times;</button>
     <h3>Realized windows</h3>
-    <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the red dot is the arrival. The number at the right is the least and the most information the target can give over its <strong>time window</strong>, not over its realized window. Both figures are fixed routes — the last one accepted before the first shake, and the best of the run — not the route in the search display.</p>
+    <p class="sub">Grey, the time window [eᵢ, ℓᵢ]; colour, the realized window [aᵢ<sup>min</sup>, aᵢ<sup>max</sup>], blue where the slope is positive and orange where it is negative; the red dot is the arrival. The number at the right is the least and the most information the target can give over its <strong>time window</strong>, not over its realized window. The left figure follows the route in the search display; the right is the best route of the run.</p>
     <div class="wins">
-      <figure><figcaption id="capPre"></figcaption><canvas id="cvPre"></canvas></figure>
+      <figure><figcaption id="capNow"></figcaption><canvas id="cvNow"></canvas>
+        <div class="winnav"><button id="winNext">Next local optimum</button><span id="winPos"></span></div></figure>
       <figure><figcaption id="capBest"></figcaption><canvas id="cvBest"></canvas></figure>
     </div>
   </section>
@@ -195,6 +196,8 @@
 :global(.stab td){font-family:var(--mono)}
 .wins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .wins figure{margin:0}
+.winnav{display:flex;align-items:center;gap:10px;margin-top:8px}
+#winPos{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .wins figcaption{font-size:11.5px;color:var(--muted);margin-bottom:6px}
 .wins canvas{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel-2)}
 @media(max-width:900px){.wins{grid-template-columns:1fr}}
