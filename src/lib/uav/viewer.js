@@ -316,24 +316,22 @@ export function createViewer(root) {
 
 // ---- slide-over panels ----------------------------------------------------
 function soOpen(id,btn){
-  root.querySelectorAll(".slideover").forEach(p=>{
+  const panel=document.getElementById(id);
+  if(!panel) return;
+  document.querySelectorAll(".slideover").forEach(p=>{
     const on = p.id===id && !p.classList.contains("open");
     p.classList.toggle("open",on); p.setAttribute("aria-hidden",String(!on));
   });
-  root.querySelectorAll(".sotab").forEach(b=>
-    b.setAttribute("aria-expanded",String(b===btn && document.getElementById(id).classList.contains("open"))));
-  if($("soWins").classList.contains("open"))
+  document.querySelectorAll(".sotab").forEach(b=>
+    b.setAttribute("aria-expanded",String(b===btn && panel.classList.contains("open"))));
+  const w=document.getElementById("soWins");
+  if(w && w.classList.contains("open"))
     requestAnimationFrame(()=>requestAnimationFrame(drawWindows));   // after layout
 }
 function soWire(){
-  // Move the tabs and panels to <body>. They are position:fixed, and a
-  // transformed ancestor would make that relative to the ancestor instead of the
-  // viewport, which can push them off screen. Delegated clicks so the handlers
-  // do not depend on when this runs.
-  ["sotabsHost","soStats","soWins"].forEach(id=>{
-    const el = id==="sotabsHost" ? document.querySelector(".sotabs") : document.getElementById(id);
-    if(el && el.parentElement !== document.body) document.body.appendChild(el);
-  });
+  // Delegated clicks, so the handlers do not depend on when this runs. The
+  // nodes are left where they are: in the embedded viewer they belong to the
+  // component that rendered them, and moving them breaks its bookkeeping.
   if(soWire._done) return;
   soWire._done = true;
   document.addEventListener("click", e=>{
@@ -346,6 +344,7 @@ function soWire(){
     const x = e.target.closest && e.target.closest(".soclose");
     if(x){
       const p=document.getElementById(x.dataset.close);
+      if(!p) return;
       p.classList.remove("open"); p.setAttribute("aria-hidden","true");
       document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false"));
     }
@@ -354,10 +353,12 @@ function soWire(){
     document.querySelectorAll(".slideover.open").forEach(p=>{
       p.classList.remove("open"); p.setAttribute("aria-hidden","true");
       document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false")); }); });
-  window.addEventListener("resize",()=>{ if($("soWins").classList.contains("open")) drawWindows(); });
+  window.addEventListener("resize",()=>{ const w=document.getElementById("soWins");
+    if(w && w.classList.contains("open")) drawWindows(); });
 }
 const OPLBL={add:"Insert",replace:"Replace",swap:"Swap",two_opt:"2-opt"};
 function fillStats(){
+  if(!D||!document.getElementById("statsBody")) return;
   const s=D.stats||{}, t=D.totals||{};
   $("statsSub").textContent =
     D.instance+" — "+fmt(t.iterations||0)+" iterations, "+fmt(t.accepted||0)+" route changes";
@@ -397,6 +398,7 @@ function fillStats(){
   $("statsBody").innerHTML=h;
 }
 function drawOne(cv,cap,fr,label){
+  if(!cv||!cap) return;
   const dpr=window.devicePixelRatio||1;
   if(!fr||!fr.wlo){ cap.textContent=label+" — not recorded"; cv.height=0; return; }
   const r=fr.r.slice(1), n=r.length, rowH=Math.max(7,Math.min(15,520/Math.max(1,n)));
@@ -434,6 +436,7 @@ function drawOne(cv,cap,fr,label){
   g.textAlign="center"; g.fillText("visiting order",0,0); g.restore();
 }
 function drawWindows(){
+  if(!D) return;
   const s=D.stats||{};
   drawOne($("cvPre"),$("capPre"),
           s.pre_i!=null?D.frames[s.pre_i]:null,"Before the first shake");
