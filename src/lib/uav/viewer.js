@@ -315,6 +315,9 @@ export function createViewer(root) {
   wire();
 
 // ---- slide-over panels ----------------------------------------------------
+function soClose(id){const p=document.getElementById(id);if(!p)return;
+  p.classList.remove('open');p.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.sotab').forEach(t=>t.setAttribute('aria-expanded','false'));}
 function soOpen(id,btn){
   const panel=document.getElementById(id);
   if(!panel) return;
@@ -446,6 +449,12 @@ function drawWindows(){
 
   return {
     load,
+    openPanel(which){            // "stats" | "windows"
+      if(which==="stats") fillStats();
+      soOpen(which==="stats" ? "soStats" : "soWins",
+             document.getElementById(which==="stats" ? "tabStats" : "tabWins"));
+    },
+    closePanel(id){ soClose(id); },
     destroy() {
       playing = false;
       for (const [t, e, f] of listeners) t.removeEventListener(e, f);

@@ -111,17 +111,17 @@
       </aside>
 
   <div class="sotabs">
-    <button class="sotab" id="tabStats" aria-expanded="false">&#9664; Statistics</button>
-    <button class="sotab" id="tabWins"  aria-expanded="false">&#9664; Windows</button>
+    <button class="sotab" id="tabStats" aria-expanded="false" on:click={() => viewer?.openPanel("stats")}>&#9664; Statistics</button>
+    <button class="sotab" id="tabWins"  aria-expanded="false" on:click={() => viewer?.openPanel("windows")}>&#9664; Windows</button>
   </div>
   <section class="slideover" id="soStats" aria-hidden="true">
-    <button class="soclose" data-close="soStats">&times;</button>
+    <button class="soclose" data-close="soStats" on:click={() => viewer?.closePanel("soStats")}>&times;</button>
     <h3>Run statistics</h3>
     <p class="sub" id="statsSub"></p>
     <div id="statsBody"></div>
   </section>
   <section class="slideover wide" id="soWins" aria-hidden="true">
-    <button class="soclose" data-close="soWins">&times;</button>
+    <button class="soclose" data-close="soWins" on:click={() => viewer?.closePanel("soWins")}>&times;</button>
     <h3>Realized windows</h3>
     <p class="sub">Grey, the time window \u005Be\u1D62, \u2113\u1D62\u005D; colour, the realized window \u005Ba\u1D62<sup>min</sup>, a\u1D62<sup>max</sup>\u005D, blue where the slope is positive and orange where it is negative; the dot is the arrival.</p>
     <div class="wins">
