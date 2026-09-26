@@ -326,19 +326,35 @@ function soOpen(id,btn){
     requestAnimationFrame(()=>requestAnimationFrame(drawWindows));   // after layout
 }
 function soWire(){
-  const s=$("tabStats"), w=$("tabWins");
-  if(s) s.onclick=()=>{ fillStats(); soOpen("soStats",s); };
-  if(w) w.onclick=()=>soOpen("soWins",w);
-  root.querySelectorAll(".soclose").forEach(b=>b.onclick=()=>{
-    const p=document.getElementById(b.dataset.close);
-    p.classList.remove("open"); p.setAttribute("aria-hidden","true");
-    root.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false"));
+  // Move the tabs and panels to <body>. They are position:fixed, and a
+  // transformed ancestor would make that relative to the ancestor instead of the
+  // viewport, which can push them off screen. Delegated clicks so the handlers
+  // do not depend on when this runs.
+  ["sotabsHost","soStats","soWins"].forEach(id=>{
+    const el = id==="sotabsHost" ? document.querySelector(".sotabs") : document.getElementById(id);
+    if(el && el.parentElement !== document.body) document.body.appendChild(el);
   });
-  on(document,"keydown",e=>{ if(e.key==="Escape")
-    root.querySelectorAll(".slideover.open").forEach(p=>{
+  if(soWire._done) return;
+  soWire._done = true;
+  document.addEventListener("click", e=>{
+    const tab = e.target.closest && e.target.closest(".sotab");
+    if(tab){
+      if(tab.id==="tabStats") fillStats();
+      soOpen(tab.id==="tabStats" ? "soStats" : "soWins", tab);
+      return;
+    }
+    const x = e.target.closest && e.target.closest(".soclose");
+    if(x){
+      const p=document.getElementById(x.dataset.close);
       p.classList.remove("open"); p.setAttribute("aria-hidden","true");
-      root.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false")); }); });
-  on(window,"resize",()=>{ if($("soWins").classList.contains("open")) drawWindows(); });
+      document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false"));
+    }
+  });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape")
+    document.querySelectorAll(".slideover.open").forEach(p=>{
+      p.classList.remove("open"); p.setAttribute("aria-hidden","true");
+      document.querySelectorAll(".sotab").forEach(t=>t.setAttribute("aria-expanded","false")); }); });
+  window.addEventListener("resize",()=>{ if($("soWins").classList.contains("open")) drawWindows(); });
 }
 const OPLBL={add:"Insert",replace:"Replace",swap:"Swap",two_opt:"2-opt"};
 function fillStats(){
