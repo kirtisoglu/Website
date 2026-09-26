@@ -334,6 +334,9 @@ function soOpen(id,btn){
   document.querySelectorAll(".slideover").forEach(p=>{
     const on = p.id===id && !p.classList.contains("open");
     p.classList.toggle("open",on); p.setAttribute("aria-hidden",String(!on));
+    // an open always starts from the full panel, both figures showing; a drag
+    // narrows it again from there
+    if(on){ p.style.width=""; p.classList.remove("narrow"); }
   });
   document.querySelectorAll(".sotab").forEach(b=>
     b.setAttribute("aria-expanded",String(b===btn && panel.classList.contains("open"))));
