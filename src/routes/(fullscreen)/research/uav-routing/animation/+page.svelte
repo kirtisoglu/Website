@@ -145,10 +145,9 @@
         <button id="next">Forward</button>
         <button id="tobest">Jump to best</button>
         <select id="speed" aria-label="Playback speed">
-          <option value="1">1&times;</option>
-          <option value="3" selected>3&times;</option>
+          <option value="1" selected>1&times;</option>
+          <option value="3">3&times;</option>
           <option value="8">8&times;</option>
-          <option value="20">20&times;</option>
         </select>
         <span class="pos" id="pos">—</span>
         <div class="toggles">
