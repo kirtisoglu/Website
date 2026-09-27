@@ -265,6 +265,34 @@
       </div>
     </div>
 
+    <div class="paper-divider"></div>
+
+    <!-- Paper 6: Robot rendezvous -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">6.</span>
+        <span class="paper-status testing">In Progress</span>
+        <span class="paper-type">Research Paper &amp; Visualizer</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="/research/rendezvous/">Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions</a>
+      </h3>
+      <p class="paper-venue">with Nazlı Dolu Hastürk &amp; Mustafa Tural</p>
+      <p class="paper-abstract">
+        A tanker robot recharges a team of mobile worker robots, meeting each at a rendezvous
+        place of its own choosing, while every robot chooses its speed on every leg under a
+        speed-dependent energy model. We minimise either the total energy under a campaign
+        time limit or the campaign time itself. For a fixed meeting order the problem is a
+        second-order cone program; the meeting order is searched with 2-opt and 3-opt edge
+        exchange heuristics and with fixed-radius, candidate-list and don't-look-bit speed-ups
+        that decide which candidate orders are worth solving.
+      </p>
+      <div class="paper-tools">
+        <span class="tools-label">Tools:</span>
+        <a class="tool-link" href="/research/rendezvous/animation/">Search Replay →</a>
+      </div>
+    </div>
+
   </section>
 
   <div class="divider"></div>

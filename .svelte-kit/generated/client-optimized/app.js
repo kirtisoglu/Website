@@ -17,7 +17,9 @@ export const nodes = [
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
 	() => import('./nodes/15'),
-	() => import('./nodes/16')
+	() => import('./nodes/16'),
+	() => import('./nodes/17'),
+	() => import('./nodes/18')
 ];
 
 export const server_loads = [];
@@ -29,13 +31,15 @@ export const dictionary = {
 		"/(chrome)/portfolio": [7,[2]],
 		"/(chrome)/research": [8,[2]],
 		"/(chrome)/research/chicago-healthcare-network": [9,[2]],
-		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [14,[3]],
+		"/(fullscreen)/research/chicago-healthcare-network/dashboard": [15,[3]],
 		"/(chrome)/research/falcom": [10,[2]],
-		"/(fullscreen)/research/falcom/dashboard": [15,[3]],
-		"/(chrome)/research/uav-routing": [11,[2]],
-		"/(fullscreen)/research/uav-routing/animation": [16,[3]],
-		"/(chrome)/teaching": [12,[2]],
-		"/(chrome)/tools": [13,[2]]
+		"/(fullscreen)/research/falcom/dashboard": [16,[3]],
+		"/(chrome)/research/rendezvous": [11,[2]],
+		"/(fullscreen)/research/rendezvous/animation": [17,[3]],
+		"/(chrome)/research/uav-routing": [12,[2]],
+		"/(fullscreen)/research/uav-routing/animation": [18,[3]],
+		"/(chrome)/teaching": [13,[2]],
+		"/(chrome)/tools": [14,[2]]
 	};
 
 export const hooks = {

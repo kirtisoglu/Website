@@ -1,0 +1,47 @@
+[
+ {
+  "id": "n15_i0_energy_combined_random",
+  "name": "n = 15, instance 0",
+  "algorithm": "Combined 2-opt + 3-opt",
+  "objective": "energy",
+  "start": "random start (seed 1)",
+  "frames": 17,
+  "kb": 195
+ },
+ {
+  "id": "n15_i0_energy_mod3_random",
+  "name": "n = 15, instance 0",
+  "algorithm": "Speed-up, Modification 3",
+  "objective": "energy",
+  "start": "random start (seed 1)",
+  "frames": 23,
+  "kb": 99
+ },
+ {
+  "id": "n15_i0_time_combined_random",
+  "name": "n = 15, instance 0",
+  "algorithm": "Combined 2-opt + 3-opt",
+  "objective": "time",
+  "start": "random start (seed 1)",
+  "frames": 15,
+  "kb": 167
+ },
+ {
+  "id": "n30_i0_energy_base_ncl02n_random",
+  "name": "n = 30, instance 0",
+  "algorithm": "Speed-up, n_cl = 0.2n",
+  "objective": "energy",
+  "start": "random start (seed 1)",
+  "frames": 33,
+  "kb": 305
+ },
+ {
+  "id": "n08_i0_energy_combined_nn",
+  "name": "n = 8, instance 0",
+  "algorithm": "Combined 2-opt + 3-opt",
+  "objective": "energy",
+  "start": "nearest-neighbour start",
+  "frames": 8,
+  "kb": 32
+ }
+]
