@@ -2,99 +2,99 @@
  {
   "id": "r101_50",
   "name": "R101 (50)",
-  "frames": 900,
+  "frames": 564,
   "best": null,
-  "mb": 0.66
+  "mb": 0.4
  },
  {
   "id": "r101_100",
   "name": "R101 (100)",
-  "frames": 900,
+  "frames": 751,
   "best": null,
-  "mb": 1.0
+  "mb": 0.85
  },
  {
   "id": "r1_2_1_200",
   "name": "R1_2_1 (200)",
-  "frames": 901,
+  "frames": 900,
   "best": null,
-  "mb": 1.42
+  "mb": 1.43
  },
  {
   "id": "c101_50",
   "name": "C101 (50)",
-  "frames": 901,
+  "frames": 900,
   "best": null,
-  "mb": 1.87
+  "mb": 1.89
  },
  {
   "id": "c101_100",
   "name": "C101 (100)",
-  "frames": 901,
+  "frames": 902,
   "best": null,
-  "mb": 2.1
+  "mb": 2.09
  },
  {
   "id": "c1_2_1_200",
   "name": "C1_2_1 (200)",
-  "frames": 689,
+  "frames": 901,
   "best": null,
-  "mb": 1.72
+  "mb": 2.28
  },
  {
   "id": "rc1_2_1_200",
   "name": "RC1_2_1 (200)",
-  "frames": 900,
+  "frames": 901,
   "best": null,
   "mb": 1.77
  },
  {
   "id": "r102_100",
   "name": "R102 (100)",
-  "frames": 902,
+  "frames": 901,
   "best": null,
-  "mb": 1.46
+  "mb": 1.42
  },
  {
   "id": "r104_100",
   "name": "R104 (100)",
   "frames": 902,
   "best": null,
-  "mb": 1.78
+  "mb": 1.77
  },
  {
   "id": "c104_100",
   "name": "C104 (100)",
-  "frames": 900,
+  "frames": 902,
   "best": null,
-  "mb": 4.06
+  "mb": 3.5
  },
  {
   "id": "rc104_100",
   "name": "RC104 (100)",
   "frames": 901,
   "best": null,
-  "mb": 1.44
+  "mb": 1.4
  },
  {
   "id": "pr11_48",
   "name": "PR11 (48)",
-  "frames": 902,
+  "frames": 901,
   "best": null,
-  "mb": 1.39
+  "mb": 1.38
  },
  {
   "id": "pr15_240",
   "name": "PR15 (240)",
   "frames": 902,
   "best": null,
-  "mb": 3.76
+  "mb": 3.4
  },
  {
   "id": "pr10_288",
   "name": "PR10 (288)",
-  "frames": 901,
+  "frames": 902,
   "best": null,
-  "mb": 3.01
+  "mb": 2.82
  }
 ]
