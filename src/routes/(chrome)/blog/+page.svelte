@@ -144,11 +144,11 @@
     <!-- Paper 4: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status testing">In Testing</span>
+        <span class="paper-status submitted">Submitted</span>
         <span class="paper-venue">with Melis Boran &amp; Mustafa Tural</span>
       </div>
       <h3 class="paper-title">
-        UAV Routing for Maximum Information Collection under Time Windows
+        Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions
       </h3>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
@@ -354,11 +354,13 @@
   }
 
   .paper-status.published  { background: #dcfce7; color: #15803d; }
+  .paper-status.submitted  { background: #dbeafe; color: #1e40af; }
   .paper-status.submitting { background: #e0e7ff; color: #4338ca; }
   .paper-status.testing    { background: #fef9c3; color: #a16207; }
   .paper-status.design     { background: #fce7f3; color: #9d174d; }
 
   :global(.dark) .paper-status.published  { background: rgba(21,128,61,0.15);  color: #86efac; }
+  :global(.dark) .paper-status.submitted  { background: rgba(30,64,175,0.18);  color: #93c5fd; }
   :global(.dark) .paper-status.submitting { background: rgba(67,56,202,0.15);  color: #a5b4fc; }
   :global(.dark) .paper-status.testing    { background: rgba(161,98,7,0.15);   color: #fde047; }
   :global(.dark) .paper-status.design     { background: rgba(157,23,77,0.15);  color: #f9a8d4; }

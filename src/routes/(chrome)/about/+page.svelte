@@ -204,13 +204,17 @@
       </li>
     </ol>
 
-    <p class="pub-category">Preprint</p>
+    <p class="pub-category">Submitted</p>
     <ol class="pub-list" start="2">
+      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions.</li>
+    </ol>
+
+    <p class="pub-category">Preprint</p>
+    <ol class="pub-list" start="3">
       <li>
         Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.
         <div class="pub-note">Extended abstract accepted for talk at the <a href="https://isco2026.com.tr" target="_blank" rel="noopener">International Symposium on Combinatorial Optimization (ISCO)</a>, 2026.</div>
       </li>
-      <li>Kirtisoglu, A., Boran, M., &amp; Tural, M. UAV Routing for Maximum Information Collection under Time Windows.</li>
     </ol>
 
     <p class="pub-category">In progress</p>

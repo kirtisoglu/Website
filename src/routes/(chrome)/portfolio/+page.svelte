@@ -163,20 +163,34 @@
       <div class="work">
         <div class="work-head">
           <span class="status submitted">Submitted</span>
-          <h3>UAV Routing for Maximum Information Collection under Time Windows and Energy Consumption</h3>
+          <h3>Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions</h3>
         </div>
         <p class="authors">Kirtisoglu, A., Boran, M. &amp; Tural, M. · Manuscript, 2026</p>
         <p class="abstract">
-          Exact convex-optimization framework for UAV reconnaissance routing
-          under time windows, time-dependent rewards, and a nonlinear energy
-          budget. Jointly selects targets, visit order, per-arc travel speed,
-          and a separate loitering time at the minimum-power speed, correctly
-          capturing fixed-wing aerodynamics. The resulting MINLP is
-          reformulated exactly as a mixed-integer second-order cone program
-          via a chain of three rotated cones, and solved by an
-          iterated-local-search matheuristic whose evaluation oracle is a
-          small SOCP. Calibrated on a real-world UAV platform; scales to
-          200-node Solomon-derived instances.
+          We study a routing problem in which a single fixed-wing unmanned
+          aerial vehicle (UAV) selects a subset of targets, each with a time
+          window, and determines the order in which to visit them so as to
+          maximize the total information collected, where the information at
+          a target varies linearly with the arrival time. The UAV chooses a
+          continuous speed on every flight leg and, being unable to hover, may
+          loiter between consecutive targets to delay an arrival when the time
+          window or the information profile makes a later arrival preferable.
+          A nonlinear propulsion model couples speed to energy consumption, and
+          total consumption is bounded by the onboard energy budget. We prove
+          that flying each leg at a single constant speed is energy-optimal,
+          which justifies the per-leg speed model, and formulate the problem as
+          a mixed-integer nonlinear program with an exact reformulation as a
+          mixed-integer second-order cone program. We then develop a
+          matheuristic based on iterated local search in which every candidate
+          route is evaluated using a convex second-order cone program.
+          Experiments on Solomon, Gehring–Homberger, and Cordeau instances
+          calibrated to realistic fixed-wing UAV missions show that the exact
+          approach is limited to small or tightly windowed instances, whereas
+          the matheuristic scales to hundreds of targets and matches or
+          improves on the exact solver’s solutions. Optimizing speed on each
+          leg, rather than cruising at a fixed speed, substantially increases
+          the information collected, and allowing the UAV to loiter adds a
+          further gain.
         </p>
         <div class="links">
           <a href="https://github.com/kirtisoglu/UAV-Routing" target="_blank" rel="noopener">GitHub</a>

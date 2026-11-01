@@ -5,7 +5,7 @@
 
 <svelte:head>
   <title>UAV Routing — Alaittin Kirtisoglu</title>
-  <meta name="description" content="UAV routing for maximum information collection under time windows and energy consumption, with an interactive replay of the search." />
+  <meta name="description" content="Fixed-wing UAV routing for time-dependent information collection with speed and loiter decisions, with an interactive replay of the search." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>
@@ -19,9 +19,9 @@
   <section class="intro" in:fly={{ y: 30, duration: 500, delay: 150 }}>
     <p class="eyebrow">Project</p>
     <h1>UAV Routing</h1>
-    <p class="subtitle">Maximum Information Collection under Time Windows and Energy Consumption</p>
+    <p class="subtitle">Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions</p>
     <div class="meta-row">
-      <span class="status-badge preparing">Preprint</span>
+      <span class="status-badge submitted">Submitted</span>
       <span class="coauthors">with Melis Boran &amp; Mustafa Tural</span>
     </div>
   </section>
@@ -31,13 +31,26 @@
   <section class="section" in:fly={{ y: 30, duration: 500, delay: 250 }}>
     <h2 class="section-title">Overview</h2>
     <p class="body-text">
-      A fixed-wing UAV visits surveillance targets whose information value changes with
-      the time of arrival, under hard time windows and a nonlinear propulsion-energy
-      budget. The model chooses which targets to visit, in what order, the flight speed
-      on every leg, and how long to loiter. The resulting mixed-integer nonlinear program
-      is reformulated exactly as a mixed-integer second-order cone program through a chain
-      of three rotated cones, and solved at scale by an iterated local search whose
-      evaluation oracle is a small SOCP over a fixed route.
+      We study a routing problem in which a single fixed-wing unmanned aerial vehicle
+      (UAV) selects a subset of targets, each with a time window, and determines the
+      order in which to visit them so as to maximize the total information collected,
+      where the information at a target varies linearly with the arrival time. The UAV
+      chooses a continuous speed on every flight leg and, being unable to hover, may
+      loiter between consecutive targets to delay an arrival when the time window or the
+      information profile makes a later arrival preferable. A nonlinear propulsion model
+      couples speed to energy consumption, and total consumption is bounded by the
+      onboard energy budget. We prove that flying each leg at a single constant speed is
+      energy-optimal, which justifies the per-leg speed model, and formulate the problem
+      as a mixed-integer nonlinear program with an exact reformulation as a mixed-integer
+      second-order cone program. We then develop a matheuristic based on iterated local
+      search in which every candidate route is evaluated using a convex second-order cone
+      program. Experiments on Solomon, Gehring–Homberger, and Cordeau instances
+      calibrated to realistic fixed-wing UAV missions show that the exact approach is
+      limited to small or tightly windowed instances, whereas the matheuristic scales to
+      hundreds of targets and matches or improves on the exact solver’s solutions.
+      Optimizing speed on each leg, rather than cruising at a fixed speed, substantially
+      increases the information collected, and allowing the UAV to loiter adds a further
+      gain.
     </p>
   </section>
 
@@ -147,6 +160,8 @@
 
   .status-badge.preparing { background: #e0e7ff; color: #4338ca; }
   :global(.dark) .status-badge.preparing { background: rgba(67,56,202,0.15); color: #a5b4fc; }
+  .status-badge.submitted { background: #dbeafe; color: #1e40af; }
+  :global(.dark) .status-badge.submitted { background: rgba(30,64,175,0.18); color: #93c5fd; }
 
   .coauthors {
     font-size: 0.85rem;
