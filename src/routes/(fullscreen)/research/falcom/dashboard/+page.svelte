@@ -1,425 +1,190 @@
 <script>
   /**
-   * FalCom Visualizer Dashboard
-   * ---------------------------
-   * Fullscreen, embedded animation of recorded MCMC trajectories produced
-   * by FalcomChain (Recorder + EnsembleStats). Datasets are pre-recorded
-   * and shipped under /static/falcomplot/<id>/. The dashboard reads
-   * /falcomplot/datasets.json to populate the picker.
+   * FalCom explorer (London Ambulance Service).
+   * Chain animation of one FalcomChain run, plus a separate ensemble
+   * analysis compared with today's LAS structure. The rendering logic is
+   * in $lib/falcomexplorer/explorer.js; data in /static/falcomplot/las/explorer/.
    */
-  import { onMount } from 'svelte';
-  import FalcomPlot from '$lib/falcomplot/FalcomPlot.svelte';
-  import FalcomPlotControls from '$lib/falcomplot/FalcomPlotControls.svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { replaceState } from '$app/navigation';
+  import '$lib/falcomexplorer/explorer.css';
 
-  let datasets = [];
-  let selectedId = null;
-  let loadErr = null;
-  // Host element for the playback controls — bound to the sidebar
-  // wrapper so FalcomPlot wires its buttons there instead of floating
-  // them over the canvas.
-  let controlsEl;
+  let root;
+  let explorer = null;
+  let dark = false;
+  let themeClass = '';
 
-  // First-visit explainer card. Dismissal is remembered per browser.
-  let showIntro = false;
-  const INTRO_KEY = 'falcom-dashboard-intro-dismissed';
-  function dismissIntro() {
-    showIntro = false;
-    try { localStorage.setItem(INTRO_KEY, '1'); } catch {}
+  function systemDark() {
+    try { return matchMedia('(prefers-color-scheme: dark)').matches; } catch { return false; }
   }
 
-  $: dataPath = selectedId ? `/falcomplot/${selectedId}` : null;
-  $: selected = datasets.find((d) => d.id === selectedId) || null;
+  function toggleTheme() {
+    dark = !dark;
+    themeClass = dark ? 'dark' : 'light';
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
+  }
 
   onMount(async () => {
-    try {
-      showIntro = !localStorage.getItem(INTRO_KEY);
-    } catch {
-      showIntro = true;
-    }
-    try {
-      const r = await fetch('/falcomplot/datasets.json', { cache: 'no-cache' });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const data = await r.json();
-      datasets = data.datasets || [];
-      if (datasets.length > 0) selectedId = datasets[0].id;
-    } catch (err) {
-      loadErr = err.message || String(err);
-    }
+    let stored = null;
+    try { stored = localStorage.getItem('theme'); } catch {}
+    if (stored === 'dark' || stored === 'light') { themeClass = stored; dark = stored === 'dark'; }
+    else dark = systemDark();
+
+    // CSP build + separate worker file: the default build creates its worker
+    // from inlined source, which Vite's production minifier breaks.
+    const [mlMod, { default: workerUrl }, { createExplorer }] = await Promise.all([
+      import('maplibre-gl/dist/maplibre-gl-csp.js'),
+      import('maplibre-gl/dist/maplibre-gl-csp-worker.js?url'),
+      import('$lib/falcomexplorer/explorer.js'),
+      import('maplibre-gl/dist/maplibre-gl.css')
+    ]);
+    const maplibregl = mlMod.default || mlMod;
+    maplibregl.setWorkerUrl(workerUrl);
+    if (!root) return;
+    explorer = createExplorer(root, {
+      base: '/falcomplot/las/explorer',
+      maplibregl,
+      initialTab: location.hash === '#ensemble' ? 'ensemble' : 'chain',
+      onTab: (t) => { try { replaceState(t === 'ensemble' ? '#ensemble' : '#chain', {}); } catch {} }
+    });
   });
 
+  onDestroy(() => { if (explorer) explorer.destroy(); });
 </script>
 
 <svelte:head>
   <title>FalCom Visualizer — Alaittin Kirtisoglu</title>
-  <meta
-    name="description"
-    content="Animated FalCom Markov chain Monte Carlo for hierarchical capacitated facility location and redistricting."
-  />
+  <meta name="description" content="FalCom on London ambulance demand: one Markov chain animated step by step, and an ensemble analysis of 450 plans compared with today's London Ambulance Service structure." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:wght@500;600&display=swap" />
 </svelte:head>
 
-<div class="dash">
-  <header class="topbar">
-    <a class="back" href="/research/falcom/" aria-label="Back to FalCom">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-      <span>FalCom</span>
-    </a>
-    <div class="title">FalCom Visualizer</div>
-    <div class="picker">
-      {#if datasets.length > 0}
-        <label for="ds">Dataset</label>
-        <select id="ds" bind:value={selectedId}>
-          {#each datasets as d}
-            <option value={d.id}>{d.label}</option>
-          {/each}
-        </select>
-      {:else if loadErr}
-        <span class="err">load error: {loadErr}</span>
-      {:else}
-        <span class="muted">loading datasets…</span>
-      {/if}
-    </div>
+<div class="fx {themeClass}" bind:this={root}>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="/research/falcom/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>FalCom research</a>
+    <button type="button" class="themebtn" on:click={toggleTheme} aria-label="Switch colour theme">{dark ? 'Light theme' : 'Dark theme'}</button>
+  </div>
+  <header>
+    <p class="eyebrow">FalCom · London Ambulance Service</p>
+    <h1>FalCom on London's ambulance demand</h1>
+    <p class="lede">4,994 LSOAs carry annual attended incidents as demand. FalCom draws two-level service plans: districts served by one facility with 1–3 teams, grouped into super-districts. Watch one chain move, or read what an ensemble of plans says about the current LAS structure.</p>
   </header>
 
-  <main class="stage">
-    <FalcomPlot
-      {dataPath}
-      showEnsembleSelect={false}
-      showStatusLog={false}
-      inlineControls={false}
-      externalControlsEl={controlsEl}
-    />
-    {#if !dataPath}
-      <div class="empty muted">
-        {#if loadErr}
-          <span class="err">Could not load <code>/falcomplot/datasets.json</code>: {loadErr}</span>
-        {:else}
-          Initialising…
-        {/if}
-      </div>
-    {/if}
+  <div class="tabs" role="tablist" aria-label="Analysis">
+    <button type="button" role="tab" id="t-chain" aria-selected="true" aria-controls="map-card"><strong>Chain animation</strong><span>one run · 1,000 steps</span></button>
+    <button type="button" role="tab" id="t-ens" aria-selected="false" aria-controls="map-card"><strong>Ensemble analysis</strong><span>450 plans · many chains</span></button>
+  </div>
+  <p class="scope" id="scope"></p>
 
-    {#if showIntro}
-      <div class="intro-card" role="note">
-        <button class="intro-close" on:click={dismissIntro} aria-label="Dismiss">×</button>
-        <h4>What you're watching</h4>
-        <p>
-          A Markov chain sampling <strong>service-district plans</strong>: each
-          colored region is a district served by one facility (gold stars are
-          candidate sites), and thick dark lines group districts into
-          super-districts — the two-level hierarchy. Every step proposes a new
-          feasible plan by merging districts and re-splitting them along a
-          random spanning tree.
-        </p>
-        <p>
-          Press <strong>▶</strong> to run the chain, scrub with the energy
-          trace below, and switch the <strong>Overlay</strong> to
-          <em>boundary frequency</em> to see which borders the ensemble
-          considers non-negotiable.
-        </p>
-        <button class="intro-ok" on:click={dismissIntro}>Got it</button>
+  <div class="row">
+    <section class="card mapcard" id="map-card" aria-label="Map">
+      <div class="mapwrap">
+        <div id="map" role="img" aria-label="Map of London LSOAs"></div>
+        <div class="loading" id="loading">Loading 4,994 LSOAs…</div>
+        <div class="mapleft" id="ensctl" hidden>
+          <div class="seg" role="group" aria-label="Ensemble map view">
+            <button type="button" id="v-rob" aria-pressed="true">Border robustness</button>
+            <button type="button" id="v-las" aria-pressed="false">LAS today</button>
+          </div>
+          <div class="thresh" id="thresh">
+            <label for="th"><span>Show borders kept in at least</span><strong id="th-v">50%</strong></label>
+            <input type="range" id="th" min="5" max="95" step="5" value="50">
+            <div class="note" id="th-n"></div>
+          </div>
+        </div>
+        <div class="mapctl">
+          <div class="zb">
+            <button type="button" id="z-in" aria-label="Zoom in">+</button>
+            <button type="button" id="z-out" aria-label="Zoom out">−</button>
+            <button type="button" id="z-fit" aria-label="Show all of London"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5V1h4M15 5V1h-4M1 11v4h4M15 11v4h-4"/></svg></button>
+          </div>
+          <label class="chip"><input type="checkbox" id="facs"> Facilities</label>
+          <label class="chip" id="lasov-wrap"><input type="checkbox" id="lasov"> LAS group borders</label>
+          <label class="chip"><input type="checkbox" id="bnames"> Borough names</label>
+        </div>
+        <div class="tip" id="tip" hidden></div>
       </div>
-    {/if}
-  </main>
-
-  <aside class="meta">
-    <section class="meta-section">
-      <h3 class="meta-title">Playback</h3>
-      <div class="controls-host" bind:this={controlsEl}>
-        <FalcomPlotControls showEnsembleSelect={true} />
+      <div class="legend" id="legend"></div>
+      <div class="transport" id="transport" aria-label="Chain playback">
+        <button type="button" class="play" id="play" aria-label="Play the chain">
+          <svg id="ic-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+          <svg id="ic-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" hidden><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>
+        </button>
+        <div class="stepinfo" id="stepinfo" aria-live="polite"></div>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">Speed
+          <select id="speed"><option value="4">4 steps/s</option><option value="12" selected>12 steps/s</option><option value="40">40 steps/s</option></select>
+        </label>
+        <div class="trace">
+          <svg id="trace" viewBox="0 0 800 96" aria-hidden="true"></svg>
+          <input type="range" id="scrub" min="1" max="1000" value="1" aria-label="Chain step">
+          <div class="focusring"></div>
+        </div>
       </div>
     </section>
 
-    {#if selected}
-      <section class="meta-section">
-        <h3 class="meta-title">Dataset</h3>
-        <div class="meta-row">
-          <span class="k">Steps</span>
-          <span class="v">{selected.total_steps}</span>
-        </div>
-        <div class="meta-row">
-          <span class="k">Nodes</span>
-          <span class="v">{selected.graph_nodes}</span>
-        </div>
-        <p class="desc">{selected.description}</p>
-      </section>
+    <aside class="card side" id="side-chain" aria-labelledby="cur-h">
+      <div>
+        <p class="eyebrow" id="cur-eyebrow">Current plan</p>
+        <h2 id="cur-h">This plan, step 1</h2>
+      </div>
+      <p class="steptext" id="steptext"></p>
+      <table class="kv"><tbody id="cur-b"></tbody></table>
+      <div class="chart" id="series"></div>
+      <p class="note">These figures describe one state of one chain. For conclusions about FalCom plans in general, use the ensemble tab.</p>
+    </aside>
 
-      <!--
-        Tooltip drop-zone for FalcomPlot's inputHandler.  When the cursor
-        hovers an active district on the canvas, inputHandler.attachMouseListeners
-        looks up `document.getElementById("districtMetadata")` and writes a
-        formatted block into it (district id, colour, blocks count, iteration,
-        root, population, hired teams, debt).  Without this element the
-        tooltip silently drops; with it the sidebar updates on hover.
-      -->
-      <section class="meta-section">
-        <h3 class="meta-title">Hover info</h3>
-        <div id="districtMetadata" class="district-metadata">
-          <span class="dm-placeholder">Hover over a district…</span>
-        </div>
-      </section>
-    {/if}
+    <aside class="card side" id="side-ens" aria-labelledby="ens-h" hidden>
+      <div>
+        <p class="eyebrow">Ensemble vs today</p>
+        <h2 id="ens-h">What 450 FalCom plans say about the LAS structure</h2>
+      </div>
+      <table class="cmp">
+        <thead><tr><th scope="col">Measure</th><th scope="col">LAS today</th><th scope="col">Ensemble</th></tr></thead>
+        <tbody id="cmp-b"></tbody>
+      </table>
+      <p class="takeaway" id="take"></p>
+    </aside>
+  </div>
 
-    <section class="meta-section">
-      <h3 class="meta-title">Run it on your data</h3>
-      <p class="desc">
-        These trajectories are pre-recorded with
-        <a href="https://falcomchain.readthedocs.io" target="_blank" rel="noopener">FalcomChain</a>.
-        To record and replay your own chains locally, see the
-        <a
-          href="https://falcomchain.readthedocs.io/en/latest/visualization.html"
-          target="_blank"
-          rel="noopener">visualization guide</a
-        >.
-      </p>
+  <div class="row" id="below-chain">
+    <section class="card panel" aria-labelledby="bal-h">
+      <div>
+        <p class="eyebrow" id="bal-eyebrow">Workload in the current plan</p>
+        <h2 id="bal-h">Annual incidents per unit, one dot each</h2>
+      </div>
+      <div class="chart" id="strip"></div>
+      <p class="note">FalCom sizes each district to 1–3 teams of about 10,887 incidents (±15%), so load per team stays tight at every step. Super-districts group 2–6 districts and are not balanced on demand directly.</p>
     </section>
-  </aside>
+  </div>
+
+  <div class="row" id="below-ens" hidden>
+    <section class="card panel" aria-labelledby="rob-h">
+      <div>
+        <p class="eyebrow">Borders</p>
+        <h2 id="rob-h">Few borders are fixed across plans</h2>
+      </div>
+      <p style="margin:0" id="rob-text"></p>
+      <div class="chart" id="robhist"></div>
+    </section>
+    <section class="card panel" aria-labelledby="fac-h">
+      <div>
+        <p class="eyebrow">Facility sites</p>
+        <h2 id="fac-h">Where the ensemble places facilities</h2>
+      </div>
+      <p style="margin:0" id="fac-text"></p>
+      <div class="chart" id="facrank"></div>
+    </section>
+  </div>
+
+  <details class="card params">
+    <summary>Parameters and data notes</summary>
+    <div class="pgrid">
+      <dl id="pdl"></dl>
+      <div>
+        <p>Chain animation replays one FalcomChain run from the FalComPlot LAS dataset. Ensemble statistics come from that dataset's ensemble file, which pools 450 plans from many chains.</p>
+        <p>LSOA polygons are the 2021 boundaries, simplified with shared edges kept intact. LAS sector and group membership comes from the hierarchy map on akirtisoglu.me: most LSOAs follow their borough, 425 are assigned by station proximity inside a borough, and 83 are manual overrides. LAS station areas are taken as nearest station.</p>
+      </div>
+    </div>
+  </details>
 </div>
-
-<style>
-  .dash {
-    position: fixed;
-    inset: 0;
-    display: grid;
-    grid-template-rows: 44px 1fr;
-    grid-template-columns: 1fr 300px;
-    background: #07090e;
-    color: #e7eaf0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    overflow: hidden;
-  }
-
-  .topbar {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 0 16px;
-    background: #0c1018;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    z-index: 10;
-  }
-
-  .back {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: #90caf9;
-    text-decoration: none;
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background 120ms;
-  }
-  .back:hover { background: rgba(33, 150, 243, 0.12); }
-
-  .title {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: #fff;
-    flex: 1;
-  }
-
-  .picker {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-  }
-  .picker label { color: #90caf9; }
-  .picker select {
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
-    border: 1px solid rgba(33, 150, 243, 0.55);
-    border-radius: 4px;
-    padding: 3px 8px;
-    font-size: 12px;
-    min-width: 180px;
-  }
-  .picker select option {
-    background: #0c1018;
-    color: #fff;
-  }
-  .err { color: #ef5350; font-size: 11px; }
-  .muted { color: rgba(255,255,255,0.5); font-size: 11px; }
-
-  .stage {
-    position: relative;
-    overflow: hidden;
-    background: #000;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    /* Prevent the canvas column from being pushed by long sidebar
-       content — grid items default to min-width:auto. */
-    min-width: 0;
-    min-height: 0;
-  }
-
-  .meta {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    background: #0c1018;
-    border-left: 1px solid rgba(255,255,255,0.08);
-    padding: 14px 16px;
-    overflow: hidden auto;        /* clip overlong words horizontally */
-    font-size: 12px;
-    color: #cbd2dc;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    /* Lock the column to its 300 px slot regardless of content. */
-    min-width: 0;
-    word-break: break-word;
-    overflow-wrap: anywhere;
-  }
-
-  .meta-section { display: flex; flex-direction: column; gap: 6px; }
-  .meta-title {
-    margin: 0 0 6px 0;
-    font-size: 10px;
-    font-weight: 700;
-    color: #90caf9;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .controls-host { width: 100%; }
-
-  .meta-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px dashed rgba(255,255,255,0.06);
-  }
-  .meta-row:last-of-type { border-bottom: none; }
-  .meta-row .k { color: #90caf9; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .meta-row .v { color: #fff; font-weight: 600; }
-
-  .desc {
-    margin-top: 12px;
-    line-height: 1.55;
-    font-size: 12px;
-    color: rgba(255,255,255,0.65);
-  }
-
-  .desc a {
-    color: #7db3e8;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .desc a:hover {
-    color: #a8ccf0;
-  }
-
-  /* First-visit explainer card */
-  .intro-card {
-    position: absolute;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(460px, calc(100% - 32px));
-    background: rgba(13, 17, 26, 0.94);
-    border: 1px solid rgba(90, 140, 200, 0.5);
-    border-radius: 8px;
-    padding: 14px 18px 12px;
-    z-index: 1200;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  }
-
-  .intro-card h4 {
-    margin: 0 0 8px;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: #cfe1f5;
-  }
-
-  .intro-card p {
-    margin: 0 0 8px;
-    font-size: 12px;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.78);
-  }
-
-  .intro-card strong {
-    color: #fff;
-  }
-
-  .intro-close {
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 16px;
-    cursor: pointer;
-    line-height: 1;
-  }
-
-  .intro-close:hover {
-    color: #fff;
-  }
-
-  .intro-ok {
-    background: rgba(90, 140, 200, 0.25);
-    border: 1px solid rgba(90, 140, 200, 0.6);
-    color: #dbe9f8;
-    border-radius: 5px;
-    padding: 4px 14px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  .intro-ok:hover {
-    background: rgba(90, 140, 200, 0.45);
-  }
-
-  .district-metadata {
-    font-size: 11.5px;
-    line-height: 1.5;
-    color: rgba(255,255,255,0.85);
-    /* inputHandler.renderDistrictMetadata generates inline-styled HTML.
-       We just need a readable container with a sane default state. */
-  }
-  .district-metadata :global(b) { color: #fff; font-weight: 600; }
-  .district-metadata :global(div) { padding: 1px 0; }
-  .dm-placeholder {
-    color: rgba(255,255,255,0.4);
-    font-style: italic;
-    font-size: 11px;
-  }
-
-  .empty {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-    font-size: 14px;
-  }
-  .empty code {
-    color: #90caf9;
-    background: rgba(33, 150, 243, 0.08);
-    padding: 2px 6px;
-    border-radius: 3px;
-  }
-
-  @media (max-width: 900px) {
-    .dash {
-      grid-template-columns: 1fr;
-      grid-template-rows: 44px 1fr 120px;
-    }
-    .stage { grid-column: 1 / -1; grid-row: 2 / 3; }
-    .meta {
-      grid-column: 1 / -1;
-      grid-row: 3 / 4;
-      border-left: none;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-  }
-</style>
+</div>
