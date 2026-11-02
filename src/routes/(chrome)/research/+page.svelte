@@ -59,10 +59,15 @@
   <header>
     <h1>Research</h1>
     <p class="lead">
-      I work on optimization and sampling for allocation problems on graphs: districting,
-      facility location, routing and scheduling. Most projects come with open-source code
-      and an interactive tool. If you have a problem that overlaps with this work, I'd be
-      glad to hear from you by email.
+      I work on Markov chain Monte Carlo sampling for location-allocation and districting
+      problems, on optimization methods for routing and scheduling, and occasionally on
+      extremal graph theory.
+    </p>
+    <p class="lead">
+      I am especially drawn to problems that pose rich theoretical challenges and also come
+      from real-world needs with significant social impact, and I like to make experiments
+      and applications as realistic as possible. Below are my completed and ongoing papers;
+      most come with open-source code and an interactive tool.
     </p>
     <nav class="jump" aria-label="Page sections">
       <a href="#papers">Papers</a>
@@ -171,6 +176,7 @@
     margin: 0;
   }
   :global(.dark) .lead { color: rgba(255,255,255,0.68); }
+  .lead + .lead { margin-top: 0.75rem; }
 
   .jump {
     display: flex;
