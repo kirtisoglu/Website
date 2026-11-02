@@ -1,13 +1,7 @@
 <script>
-  import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-  import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import { afterNavigate } from '$app/navigation';
-
-  const scholar = 'https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en';
-  const github = 'https://github.com/kirtisoglu';
-  const linkedIn = 'https://www.linkedin.com/in/alaittin-kirtisoglu';
 
   const links = [
     { href: '/research/', label: 'Research', match: '/research' },
@@ -46,11 +40,6 @@
         {/each}
         <a href="/cv.pdf" target="_blank" rel="noopener" aria-label="CV (PDF, opens in a new tab)">CV <span class="ext" aria-hidden="true">↗</span></a>
         <span class="divider" aria-hidden="true"></span>
-        <a class="icon scholar" href={scholar} target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-        </a>
-        <a class="icon github" href={github} target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><FaGithub /></a>
-        <a class="icon linkedin" href={linkedIn} target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><FaLinkedin /></a>
       </div>
 
       <button class="theme-toggle" on:click={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} title={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
@@ -73,13 +62,6 @@
             <a href={l.href} aria-current={isCurrent(l.match, path) ? 'page' : undefined}>{l.label}</a>
           {/each}
           <a href="/cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
-          <div class="mobile-icons">
-            <a class="icon scholar" href={scholar} target="_blank" rel="noopener" aria-label="Google Scholar">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-            </a>
-            <a class="icon github" href={github} target="_blank" rel="noopener" aria-label="GitHub"><FaGithub /></a>
-            <a class="icon linkedin" href={linkedIn} target="_blank" rel="noopener" aria-label="LinkedIn"><FaLinkedin /></a>
-          </div>
         </div>
       </details>
     </div>
@@ -136,8 +118,8 @@
     gap: 1.25rem;
   }
 
-  .links > a:not(.icon)[aria-current] { color: #111827; font-weight: 600; }
-  nav.dark .links > a:not(.icon)[aria-current] { color: #f9fafb; }
+  .links > a[aria-current] { color: #111827; font-weight: 600; }
+  nav.dark .links > a[aria-current] { color: #f9fafb; }
 
   .ext { font-size: 0.8em; margin-left: 0.1em; }
 
@@ -148,21 +130,6 @@
   }
   nav.dark .divider { background: rgba(255,255,255,0.2); }
 
-  .icon {
-    display: flex;
-    width: 1.15rem;
-    height: 1.15rem;
-    color: #9ca3af;
-    transition: color 0.15s;
-  }
-  .icon svg { width: 100%; height: 100%; }
-  nav.dark .icon { color: rgba(255,255,255,0.45); }
-  .icon.scholar:hover { color: #4285f4; }
-  .icon.github:hover { color: #24292e; }
-  .icon.linkedin:hover { color: #0a66c2; }
-  nav.dark .icon.scholar:hover { color: #7fb3f5; }
-  nav.dark .icon.github:hover { color: rgba(255,255,255,0.9); }
-  nav.dark .icon.linkedin:hover { color: #4f9de8; }
 
   .theme-toggle {
     display: flex;
@@ -222,9 +189,9 @@
     border-bottom: 1px solid rgba(0,0,0,0.05);
   }
   nav.dark .mobile-menu > a { color: rgba(255,255,255,0.75); border-bottom-color: rgba(255,255,255,0.06); }
+  .mobile-menu > a:last-child { border-bottom: 0; }
   .mobile-menu > a[aria-current] { color: #4f46e5; font-weight: 700; }
   nav.dark .mobile-menu > a[aria-current] { color: #a5b4fc; }
-  .mobile-icons { display: flex; gap: 1.5rem; padding-top: 0.85rem; }
 
   @media (max-width: 40rem) {
     .nav-inner { padding: 0 1rem; }

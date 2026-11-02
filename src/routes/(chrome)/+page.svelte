@@ -11,14 +11,15 @@
     });
   }
 
+  // Mouseover text for each animation.
   const falcom = [
-    { name: "falcom_grid",  title: "FalCom: districts on a 400-cell grid" },
-    { name: "falcom_graph", title: "FalCom: the same chain on the dual graph" },
-    { name: "falcom_tree",  title: "FalCom: cutting a spanning tree" },
+    { name: "falcom_grid",  title: "FalCom on a 400-cell grid: a Markov chain over districting plans. Each step merges neighbouring districts and splits them again; stars mark the facilities." },
+    { name: "falcom_graph", title: "The same FalCom chain drawn on the dual graph of the grid: one node per cell, coloured by district." },
+    { name: "falcom_tree",  title: "One FalCom step: a random spanning tree of the merged districts is cut into new, balanced districts." },
   ];
   const routing = [
-    { name: "uav",        title: "UAV routing: the route on the map" },
-    { name: "rendezvous", title: "Robot rendezvous: the recharging tour" },
+    { name: "uav",        title: "Fixed-wing UAV routing: the local search reshaping a route from the depot through the targets." },
+    { name: "rendezvous", title: "Robot rendezvous: a tanker robot leaves its base and meets each worker robot to recharge it." },
   ];
 </script>
 
@@ -47,6 +48,18 @@
           {/if}
         </button>
       </div>
+      <a class="row link" href="https://github.com/kirtisoglu" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="row link" href="https://www.linkedin.com/in/alaittin-kirtisoglu" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a class="row link" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+        <span>Google Scholar</span>
+      </a>
     </aside>
 
     <div class="text">
@@ -70,6 +83,10 @@
         <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>
         in 2021, under the supervision of
         <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a>.
+      </p>
+      <p>
+        I often generate animations from the kinds of discrete processes that come up in my
+        research. Some examples with brief explanations in the mouseover text are below.
       </p>
 
       <div class="clips" aria-label="Animations from my research">
@@ -114,10 +131,8 @@
 <style>
   /* Sized to fit on one laptop screen (e.g. 1366×768) with the header and footer. */
   .home {
-    --tile: clamp(110px, calc((100vh - 500px) / 2.15), 165px);
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 1.5rem 0 0;
+    --tile: clamp(100px, calc((100vh - 500px) / 2.15), 200px);
+    padding: 1.1rem 0 0;
   }
 
   /* ── Intro: photo card + text ── */
@@ -161,6 +176,9 @@
   :global(.dark) .row { color: rgba(255,255,255,0.55); }
   .row > svg { width: 13px; height: 13px; margin-top: 0.1rem; color: #9ca3af; }
   .email { overflow-wrap: anywhere; }
+  a.row { text-decoration: none; }
+  a.row:hover, a.row:hover > svg { color: #4f46e5; }
+  :global(.dark) a.row:hover, :global(.dark) a.row:hover > svg { color: #a5b4fc; }
 
   .copy {
     display: flex;
@@ -186,15 +204,15 @@
   :global(.dark) .text h1 { color: #f9fafb; }
 
   .role {
-    margin: 0.25rem 0 0.85rem;
+    margin: 0.2rem 0 0.7rem;
     font-size: 0.95rem;
     color: #6b7280;
   }
   :global(.dark) .role { color: rgba(255,255,255,0.55); }
 
   .text p:not(.role) {
-    max-width: 66ch;
-    margin: 0 0 0.7rem;
+    max-width: 82ch;
+    margin: 0 0 0.55rem;
     font-size: 0.97rem;
     line-height: 1.65;
     color: #374151;
@@ -215,7 +233,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 1.1rem;
+    margin-top: 0.3rem;
   }
   .clip-row { display: flex; gap: 10px; }
 

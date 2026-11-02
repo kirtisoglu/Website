@@ -41,6 +41,7 @@
 
 <style>
   main {
+    width: 100%;
     max-width: 1100px;
     min-height: 70vh;
     margin: 0 auto;
