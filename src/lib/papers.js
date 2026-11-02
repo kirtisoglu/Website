@@ -18,7 +18,6 @@ export const papers = [
     title: 'Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions',
     authors: [ME, 'Melis Boran', 'Mustafa Tural'],
     venue: '2026',
-    summary: 'Choosing a speed on every leg and loitering when it pays off collects substantially more information than flying at a fixed speed.',
     video: { thumb: '/videos/thumbs/uav_flight', full: '/videos/uav_flight.mp4', alt: 'A fixed-wing UAV flying the best route found on a 200-target instance.' },
     links: [
       { label: 'Search replay', href: '/research/uav-routing/animation/' },
@@ -33,7 +32,6 @@ export const papers = [
     title: 'FalCom: A Sampling Method for Districting and Hierarchical Facility Location',
     authors: [ME, 'Hemanshu Kaul'],
     venue: 'Extended abstract at <a href="https://isco2026.com.tr/" target="_blank" rel="noopener">ISCO 2026</a>',
-    summary: 'The first MCMC sampler for hierarchical capacitated facility location and districting, scaling to 50,000 units.',
     video: { thumb: '/videos/thumbs/falcom', full: '/falcom-gif/falcom_linkedin.mp4', alt: 'The FalCom chain on a 400-cell grid, on the cell map and on the dual graph.' },
     links: [
       { label: 'Visualizer', href: '/research/falcom/dashboard/' },
@@ -49,7 +47,6 @@ export const papers = [
     title: 'Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions',
     authors: ['Nazlı Dolu Hastürk', 'Mustafa Tural', ME],
     venue: '2026',
-    summary: 'A tanker robot recharges a team of workers at rendezvous places it chooses, under a campaign time limit.',
     video: { thumb: '/videos/thumbs/rendezvous_schedule', full: '/videos/rendezvous_schedule.mp4', alt: 'A tanker robot recharging 15 worker robots at rendezvous places, with the schedule as a Gantt chart.' },
     links: [],
     abstract: `A tanker robot recharges a team of mobile worker robots, meeting each at a rendezvous place of its own choosing, while every robot chooses its speed on every leg under a speed-dependent energy model. We minimise either the total energy under a campaign time limit or the campaign time itself. For a fixed meeting order the problem is a second-order cone program; the meeting order is searched with 2-opt and 3-opt edge exchange heuristics and with fixed-radius, candidate-list and don't-look-bit speed-ups that decide which candidate orders are worth solving.`,
@@ -60,7 +57,6 @@ export const papers = [
     title: 'Coloring of Graphs Avoiding Bicolored Paths of a Fixed Length',
     authors: [ME, 'Lale Özkahya'],
     venue: '<i>Graphs and Combinatorics</i> 40(1), Art. 11, 2024',
-    summary: 'How many colors you need so that no path of length k alternates between just two colors.',
     links: [
       { label: 'Journal', href: 'https://link.springer.com/article/10.1007/s00373-023-02739-4' },
       { label: 'arXiv', href: 'https://arxiv.org/abs/2012.04560' },
@@ -82,7 +78,6 @@ export const papers = [
     group: 'progress',
     title: 'Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago',
     authors: [ME, 'Hemanshu Kaul'],
-    summary: "Optimization tools for where Chicago's community health centers should expand, built on the FalCom sampler.",
     links: [
       { label: 'Healthcare dashboard', href: '/research/chicago-healthcare-network/dashboard' },
       { label: 'Data sources', href: '/research/chicago-healthcare-network/' },
@@ -95,7 +90,6 @@ export const papers = [
     group: 'progress',
     title: 'The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements',
     authors: [ME],
-    summary: 'A redistricting sampler that adds geometry-aware local refinements to ReCom, cutting 23.9% fewer edges on Iowa precincts.',
     links: [
       { label: 'Code', href: 'https://github.com/kirtisoglu/Redistricting_Diffusion_Model' },
     ],

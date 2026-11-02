@@ -82,7 +82,6 @@
               <p class="meta">
                 {p.authors.join(", ")}{#if p.venue}<span class="dot">&nbsp;·&#32;</span>{@html p.venue}{/if}
               </p>
-              <p class="summary">{p.summary}</p>
               <div class="links">
                 <button
                   type="button"
@@ -261,13 +260,6 @@
   }
   :global(.dark) .meta { color: rgba(255,255,255,0.5); }
 
-  .summary {
-    font-size: 0.93rem;
-    line-height: 1.6;
-    color: #374151;
-    margin: 0.45rem 0 0;
-  }
-  :global(.dark) .summary { color: rgba(255,255,255,0.75); }
 
   .links {
     display: flex;
