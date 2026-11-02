@@ -1,103 +1,84 @@
 <script>
-    import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-    import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
-    import { onMount } from 'svelte';
+  import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
+  import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
+  import { afterNavigate } from '$app/navigation';
 
-    export let segment;
-    let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
-    let github = "https://github.com/kirtisoglu";
+  const scholar = 'https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en';
+  const github = 'https://github.com/kirtisoglu';
+  const linkedIn = 'https://www.linkedin.com/in/alaittin-kirtisoglu';
 
-    let dark = false;
+  const links = [
+    { href: '/research/', label: 'Research', match: '/research' },
+    { href: '/teaching/', label: 'Teaching', match: '/teaching' },
+  ];
 
-    onMount(() => {
-        const stored = localStorage.getItem('theme');
-        dark = stored === 'dark';
-        applyTheme(dark);
-    });
+  $: path = $page.url.pathname;
+  const isCurrent = (match, p) => p === match || p.startsWith(match + '/');
 
-    function toggleTheme() {
-        dark = !dark;
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-        applyTheme(dark);
-    }
+  let dark = false;
+  let menu;
 
-    function applyTheme(isDark) {
-        document.documentElement.classList.toggle('dark', isDark);
-    }
+  onMount(() => {
+    try { dark = localStorage.getItem('theme') === 'dark'; } catch (e) {}
+    document.documentElement.classList.toggle('dark', dark);
+  });
+
+  // Close the phone menu after following one of its links.
+  afterNavigate(() => { if (menu) menu.open = false; });
+
+  function toggleTheme() {
+    dark = !dark;
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    document.documentElement.classList.toggle('dark', dark);
+  }
 </script>
 
-<nav class:dark={dark}>
+<nav class:dark>
   <div class="nav-inner">
-    <a
-      rel="prefetch"
-      aria-label="Home"
-      aria-current={segment === undefined ? 'page' : undefined}
-      href="/"
-      class="site-name">
-      Alaittin's Homepage
-    </a>
+    <a href="/" class="site-name" aria-current={path === '/' ? 'page' : undefined}>Alaittin's Homepage</a>
 
-    <!-- Desktop links -->
-    <div class="links desktop-links">
-      <a aria-label="Research" rel="prefetch" aria-current={segment === 'research' ? 'page' : undefined} href="/research/">Research</a>
-      <a aria-label="Tools" rel="prefetch" aria-current={segment === 'tools' ? 'page' : undefined} href="/tools/">Tools</a>
-      <a aria-label="Teaching" rel="prefetch" aria-current={segment === 'teaching' ? 'page' : undefined} href="/teaching/">Teaching</a>
-      <a aria-label="CV (PDF, opens in a new tab)" href="/cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
-      <div class="divider" />
-      <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
-        <FaLinkedin aria-label="linked in" />
-      </a>
-      <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-      </a>
-      <a aria-label="ResearchGate" target="_blank" class="icon rg-icon rgate-nav" href="https://www.researchgate.net/profile/Alaittin-Kirtisoglu">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.39 12.39 0 0 0-.35 2.133 20.818 20.818 0 0 0-.059 1.055v.78c-.868-.015-1.71.014-2.527.09V5.55c0-.547-.043-1.244-.13-2.09-.085-.848-.333-1.598-.742-2.25C12.092.562 11.388.187 10.48.03 9.573-.127 8.523.015 7.332.44L0 3.217v17.8l7.332-2.9c1.19-.47 2.24-.612 3.148-.426.907.185 1.61.607 2.11 1.267.5.66.8 1.49.9 2.49H24V0h-4.414zM10.48 16.5c-.496 0-.97-.065-1.42-.194l-2.73 1.082V5.966l2.73-1.082c.45-.178.917-.267 1.4-.267.483 0 .917.128 1.302.384.385.255.69.63.913 1.123.225.493.337 1.1.337 1.82 0 .72-.112 1.332-.337 1.836-.222.503-.528.883-.913 1.14-.385.255-.82.383-1.302.383-.483 0-.95-.09-1.4-.267v3.363c.45-.13.924-.194 1.42-.194.983 0 1.824.222 2.524.667.7.444 1.05 1.1 1.05 1.967 0 .867-.35 1.522-1.05 1.967-.7.444-1.54.667-2.524.667zm10.106-2.2h-2.4V9.067h-1.6V7.267h1.6V5.4c0-.8.2-1.4.6-1.8.4-.4.933-.6 1.6-.6.267 0 .533.033.8.1v1.867c-.2-.067-.4-.1-.6-.1-.4 0-.6.2-.6.6v1.8h1.2l-.2 1.8h-1v5.233z"/></svg>
-      </a>
-      <a aria-label="GitHub" target="_blank" class="icon github-nav" href={github}>
-        <FaGithub aria-label="GitHub" />
-      </a>
-      <button class="theme-toggle" aria-label="Toggle dark mode" on:click={toggleTheme} title={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
-        {dark ? '☀️' : '🌙'}
-      </button>
-    </div>
+    <div class="right">
+      <div class="links desktop">
+        {#each links as l}
+          <a href={l.href} aria-current={isCurrent(l.match, path) ? 'page' : undefined}>{l.label}</a>
+        {/each}
+        <a href="/cv.pdf" target="_blank" rel="noopener" aria-label="CV (PDF, opens in a new tab)">CV <span class="ext" aria-hidden="true">↗</span></a>
+        <span class="divider" aria-hidden="true"></span>
+        <a class="icon scholar" href={scholar} target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+        </a>
+        <a class="icon github" href={github} target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><FaGithub /></a>
+        <a class="icon linkedin" href={linkedIn} target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><FaLinkedin /></a>
+      </div>
 
-    <!-- Mobile right side: theme toggle + menu (CSS-only <details>, works without JS) -->
-    <div class="mobile-controls">
-      <button class="theme-toggle" aria-label="Toggle dark mode" on:click={toggleTheme}>
-        {dark ? '☀️' : '🌙'}
+      <button class="theme-toggle" on:click={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} title={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
+        {#if dark}
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/><line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/></g></svg>
+        {:else}
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        {/if}
       </button>
-      <details class="mobile-nav">
-        <summary class="hamburger" aria-label="Toggle menu">
-          <svg class="ham-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-          <svg class="ham-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
+
+      <!-- Phone menu: a CSS-only disclosure, so it works before the page hydrates -->
+      <details class="mobile" bind:this={menu}>
+        <summary aria-label="Menu">
+          <svg class="open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </summary>
-        <div class="mobile-menu" class:dark={dark}>
-          <a href="/" aria-current={segment === undefined ? 'page' : undefined}>Home</a>
-          <a href="/research/" aria-current={segment === 'research' ? 'page' : undefined}>Research</a>
-          <a href="/tools/" aria-current={segment === 'tools' ? 'page' : undefined}>Tools</a>
-          <a href="/teaching/" aria-current={segment === 'teaching' ? 'page' : undefined}>Teaching</a>
+        <div class="mobile-menu">
+          <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+          {#each links as l}
+            <a href={l.href} aria-current={isCurrent(l.match, path) ? 'page' : undefined}>{l.label}</a>
+          {/each}
           <a href="/cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
-          <div class="mobile-menu-divider"></div>
-          <div class="mobile-menu-icons">
-            <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
-              <FaLinkedin aria-label="linked in" />
-            </a>
-            <a aria-label="Google Scholar" target="_blank" class="icon scholar-icon scholar-nav" href="https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en">
+          <div class="mobile-icons">
+            <a class="icon scholar" href={scholar} target="_blank" rel="noopener" aria-label="Google Scholar">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
             </a>
-            <a aria-label="ResearchGate" target="_blank" class="icon rg-icon rgate-nav" href="https://www.researchgate.net/profile/Alaittin-Kirtisoglu">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.39 12.39 0 0 0-.35 2.133 20.818 20.818 0 0 0-.059 1.055v.78c-.868-.015-1.71.014-2.527.09V5.55c0-.547-.043-1.244-.13-2.09-.085-.848-.333-1.598-.742-2.25C12.092.562 11.388.187 10.48.03 9.573-.127 8.523.015 7.332.44L0 3.217v17.8l7.332-2.9c1.19-.47 2.24-.612 3.148-.426.907.185 1.61.607 2.11 1.267.5.66.8 1.49.9 2.49H24V0h-4.414zM10.48 16.5c-.496 0-.97-.065-1.42-.194l-2.73 1.082V5.966l2.73-1.082c.45-.178.917-.267 1.4-.267.483 0 .917.128 1.302.384.385.255.69.63.913 1.123.225.493.337 1.1.337 1.82 0 .72-.112 1.332-.337 1.836-.222.503-.528.883-.913 1.14-.385.255-.82.383-1.302.383-.483 0-.95-.09-1.4-.267v3.363c.45-.13.924-.194 1.42-.194.983 0 1.824.222 2.524.667.7.444 1.05 1.1 1.05 1.967 0 .867-.35 1.522-1.05 1.967-.7.444-1.54.667-2.524.667zm10.106-2.2h-2.4V9.067h-1.6V7.267h1.6V5.4c0-.8.2-1.4.6-1.8.4-.4.933-.6 1.6-.6.267 0 .533.033.8.1v1.867c-.2-.067-.4-.1-.6-.1-.4 0-.6.2-.6.6v1.8h1.2l-.2 1.8h-1v5.233z"/></svg>
-            </a>
-            <a aria-label="GitHub" target="_blank" class="icon github-nav" href={github}>
-              <FaGithub aria-label="GitHub" />
-            </a>
+            <a class="icon github" href={github} target="_blank" rel="noopener" aria-label="GitHub"><FaGithub /></a>
+            <a class="icon linkedin" href={linkedIn} target="_blank" rel="noopener" aria-label="LinkedIn"><FaLinkedin /></a>
           </div>
         </div>
       </details>
@@ -105,251 +86,150 @@
   </div>
 </nav>
 
-
 <style>
-    nav {
-      position: sticky;
-      top: 0;
-      height: 4rem;
-      display: flex;
-      flex-direction: column;
-      z-index: 3;
-      background-color: #ffffff;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      transition: background-color 0.2s, border-color 0.2s;
-    }
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  nav.dark {
+    background: #242424;
+    border-bottom-color: rgba(255,255,255,0.07);
+  }
 
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      box-sizing: border-box;
-      position: relative;
-      height: 4rem;
-      flex-shrink: 0;
-    }
+  .nav-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 1100px;
+    height: 4rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
 
-    nav.dark {
-      background-color: #242424;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
+  a { text-decoration: none; color: #6b7280; }
+  nav.dark a { color: rgba(255,255,255,0.6); }
+  a:hover { color: #111827; }
+  nav.dark a:hover { color: #f9fafb; }
 
-    .site-name {
-      font-weight: 500;
-      white-space: nowrap;
-      flex-shrink: 0;
-      color: #111827;
-      width: 200px;
-    }
+  .site-name {
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+  }
+  nav.dark .site-name { color: #f9fafb; }
 
-    nav.dark .site-name {
-      color: #f9fafb;
-    }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
 
-    .links {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 1.25rem;
-    }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
 
-    .icon {
-      width: 1.2rem;
-      height: 1.2rem;
-      display: flex;
-      align-items: center;
-      color: #9ca3af;
-      transition: color 0.15s;
-    }
+  .links > a:not(.icon)[aria-current] { color: #111827; font-weight: 600; }
+  nav.dark .links > a:not(.icon)[aria-current] { color: #f9fafb; }
 
-    a {
-      text-decoration: none;
-      color: #6b7280;
-    }
+  .ext { font-size: 0.8em; margin-left: 0.1em; }
 
-    nav.dark a {
-      color: rgba(255,255,255,0.55);
-    }
+  .divider {
+    width: 1px;
+    height: 1.4rem;
+    background: rgba(0,0,0,0.15);
+  }
+  nav.dark .divider { background: rgba(255,255,255,0.2); }
 
-    .icon:hover { color: #111827; }
+  .icon {
+    display: flex;
+    width: 1.15rem;
+    height: 1.15rem;
+    color: #9ca3af;
+    transition: color 0.15s;
+  }
+  .icon svg { width: 100%; height: 100%; }
+  nav.dark .icon { color: rgba(255,255,255,0.45); }
+  .icon.scholar:hover { color: #4285f4; }
+  .icon.github:hover { color: #24292e; }
+  .icon.linkedin:hover { color: #0a66c2; }
+  nav.dark .icon.scholar:hover { color: #7fb3f5; }
+  nav.dark .icon.github:hover { color: rgba(255,255,255,0.9); }
+  nav.dark .icon.linkedin:hover { color: #4f9de8; }
 
-    .icon.linkedin-nav:hover  { color: #0a66c2; }
-    .icon.scholar-nav:hover   { color: #4285f4; }
-    .icon.rgate-nav:hover     { color: #00ccbb; }
-    .icon.github-nav:hover    { color: #24292e; }
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #f5b400;
+    cursor: pointer;
+  }
+  .theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+  .theme-toggle:focus-visible, a:focus-visible, summary:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 
-    nav.dark .icon { color: rgba(255,255,255,0.4); }
-    nav.dark .icon.linkedin-nav:hover  { color: #4f9de8; }
-    nav.dark .icon.scholar-nav:hover   { color: #7fb3f5; }
-    nav.dark .icon.rgate-nav:hover     { color: #33ddcc; }
-    nav.dark .icon.github-nav:hover    { color: rgba(255,255,255,0.9); }
+  /* Phone menu, hidden on desktop */
+  .mobile { display: none; }
+  .mobile summary {
+    list-style: none;
+    display: flex;
+    padding: 0.25rem;
+    color: #6b7280;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  nav.dark .mobile summary { color: rgba(255,255,255,0.6); }
+  .mobile summary::-webkit-details-marker { display: none; }
+  .mobile summary::marker { content: ""; }
+  .mobile summary svg { width: 1.4rem; height: 1.4rem; }
+  .close-icon { display: none; }
+  .mobile[open] .open-icon { display: none; }
+  .mobile[open] .close-icon { display: block; }
 
-    .theme-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      font-size: 1.1rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      border-radius: 4px;
-    }
-    .theme-toggle:hover {
-      border-color: transparent;
-    }
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1.5rem 1rem;
+    background: #ffffff;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  }
+  nav.dark .mobile-menu {
+    background: #242424;
+    border-top-color: rgba(255,255,255,0.07);
+  }
+  .mobile-menu > a {
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  nav.dark .mobile-menu > a { color: rgba(255,255,255,0.75); border-bottom-color: rgba(255,255,255,0.06); }
+  .mobile-menu > a[aria-current] { color: #4f46e5; font-weight: 700; }
+  nav.dark .mobile-menu > a[aria-current] { color: #a5b4fc; }
+  .mobile-icons { display: flex; gap: 1.5rem; padding-top: 0.85rem; }
 
-    .ext {
-      font-size: 0.8em;
-      margin-left: 0.1em;
-    }
-
-    .divider {
-      height: 1.5rem;
-      width: 1px;
-      background-color: rgba(0,0,0,0.15);
-    }
-
-    nav.dark .divider {
-      background-color: rgba(255,255,255,0.2);
-    }
-
-    [aria-current] {
-      color: #111827;
-      font-weight: 600;
-      position: relative;
-      display: inline-block;
-    }
-
-    nav.dark [aria-current] {
-      color: #f9fafb;
-    }
-
-    .scholar-icon svg,
-    .rg-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Mobile controls (hamburger + theme) — hidden on desktop */
-    .mobile-controls {
-      display: none;
-    }
-
-    /* CSS-only disclosure menu — works without JS/hydration */
-    .mobile-nav { position: static; }
-    .mobile-nav summary {
-      list-style: none;
-      display: flex;
-    }
-    .mobile-nav summary::-webkit-details-marker { display: none; }
-    .mobile-nav summary::marker { content: ""; }
-
-    .hamburger {
-      cursor: pointer;
-      padding: 0.25rem;
-      display: flex;
-      align-items: center;
-      color: #6b7280;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    nav.dark .hamburger { color: rgba(255,255,255,0.6); }
-
-    .hamburger svg {
-      width: 1.4rem;
-      height: 1.4rem;
-    }
-
-    .ham-close { display: none; }
-    .mobile-nav[open] .ham-open { display: none; }
-    .mobile-nav[open] .ham-close { display: block; }
-
-    /* Mobile dropdown menu */
-    .mobile-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 4;
-      background: #ffffff;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-      padding: 0.75rem 1.5rem 1rem;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .mobile-nav[open] .mobile-menu { display: flex; }
-
-    .mobile-menu.dark {
-      background: #242424;
-      border-top-color: rgba(255,255,255,0.07);
-    }
-
-    .mobile-menu a {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #374151;
-      padding: 0.55rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .mobile-menu.dark a {
-      color: rgba(255,255,255,0.7);
-      border-bottom-color: rgba(255,255,255,0.05);
-    }
-
-    .mobile-menu a:last-of-type {
-      border-bottom: none;
-    }
-
-    .mobile-menu [aria-current] {
-      color: #4f46e5;
-      font-weight: 700;
-    }
-
-    .mobile-menu.dark [aria-current] {
-      color: #818cf8;
-    }
-
-    .mobile-menu-divider {
-      height: 1px;
-      background: rgba(0,0,0,0.08);
-      margin: 0.5rem 0;
-    }
-
-    .mobile-menu.dark .mobile-menu-divider {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .mobile-menu-icons {
-      display: flex;
-      gap: 1.25rem;
-      padding-top: 0.25rem;
-    }
-
-    @media (max-width: 40rem) {
-      nav {
-        height: auto;
-      }
-
-      .desktop-links {
-        display: none;
-      }
-
-      .mobile-controls {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-left: auto;
-      }
-    }
+  @media (max-width: 40rem) {
+    .nav-inner { padding: 0 1rem; }
+    .desktop { display: none; }
+    .mobile { display: block; }
+    .right { gap: 0.9rem; }
+  }
 </style>

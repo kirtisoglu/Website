@@ -57,6 +57,10 @@
 				]
 			}
 		</script>
+		<script>
+			// Apply the saved dark theme before the first paint to avoid a white flash.
+			try { if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark'); } catch (e) {}
+		</script>
 		%sveltekit.head%
 	</head>
 	<!--

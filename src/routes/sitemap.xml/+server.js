@@ -5,7 +5,6 @@ const SITE = 'https://akirtisoglu.me';
 const pages = [
   { path: '/',                                        priority: '1.0', changefreq: 'monthly' },
   { path: '/research',                                priority: '0.9', changefreq: 'weekly'  },
-  { path: '/tools',                                   priority: '0.8', changefreq: 'monthly' },
   { path: '/teaching',                                priority: '0.7', changefreq: 'monthly' },
   { path: '/research/chicago-healthcare-network',     priority: '0.8', changefreq: 'monthly' },
 ];
