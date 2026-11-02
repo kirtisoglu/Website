@@ -35,12 +35,13 @@
   <header>
     <h1>Research</h1>
     <p class="lead">
-      My research lies at the intersection of graph theory, combinatorial optimization,
-      data science and Markov chain Monte Carlo.
+      My research lies at the intersection of graph theory, stochastic processes, operations
+      research, and data science.
     </p>
     <p class="lead">
-      I develop sampling methods for location-allocation and districting problems,
-      optimization methods for routing and scheduling in operations research, and
+      I develop Markov chain Monte Carlo sampling methods for location-allocation and
+      districting problems, analyze spatial data and perform statistical inference, and design
+      optimization models and heuristics for routing and scheduling problems. I also
       occasionally work on problems in extremal graph theory.
     </p>
     <p class="lead">
