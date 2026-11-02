@@ -39,10 +39,10 @@
 
     <!-- Desktop links -->
     <div class="links desktop-links">
-      <a aria-label="About" rel="prefetch" aria-current={segment === 'about' ? 'page' : undefined} href="/about/">About</a>
       <a aria-label="Research" rel="prefetch" aria-current={segment === 'research' ? 'page' : undefined} href="/research/">Research</a>
       <a aria-label="Tools" rel="prefetch" aria-current={segment === 'tools' ? 'page' : undefined} href="/tools/">Tools</a>
       <a aria-label="Teaching" rel="prefetch" aria-current={segment === 'teaching' ? 'page' : undefined} href="/teaching/">Teaching</a>
+      <a aria-label="CV (PDF, opens in a new tab)" href="/cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
       <div class="divider" />
       <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
         <FaLinkedin aria-label="linked in" />
@@ -80,10 +80,10 @@
         </summary>
         <div class="mobile-menu" class:dark={dark}>
           <a href="/" aria-current={segment === undefined ? 'page' : undefined}>Home</a>
-          <a href="/about/" aria-current={segment === 'about' ? 'page' : undefined}>About</a>
           <a href="/research/" aria-current={segment === 'research' ? 'page' : undefined}>Research</a>
           <a href="/tools/" aria-current={segment === 'tools' ? 'page' : undefined}>Tools</a>
           <a href="/teaching/" aria-current={segment === 'teaching' ? 'page' : undefined}>Teaching</a>
+          <a href="/cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
           <div class="mobile-menu-divider"></div>
           <div class="mobile-menu-icons">
             <a aria-label="LinkedIn" target="_blank" class="icon linkedin-nav" href={linkedIn}>
@@ -203,6 +203,11 @@
     }
     .theme-toggle:hover {
       border-color: transparent;
+    }
+
+    .ext {
+      font-size: 0.8em;
+      margin-left: 0.1em;
     }
 
     .divider {
