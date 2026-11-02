@@ -12,6 +12,21 @@ const ME = 'Alaittin Kirtisoglu';
 
 export const papers = [
   {
+    id: 'falcom',
+    group: 'review',
+    status: 'Submitted',
+    title: 'FalCom: A Sampling Method for Districting and Hierarchical Facility Location',
+    authors: [ME, 'Hemanshu Kaul'],
+    venue: 'Extended abstract at <a href="https://isco2026.com.tr/" target="_blank" rel="noopener">ISCO 2026</a>',
+    video: { thumb: '/videos/thumbs/falcom', full: '/falcom-gif/falcom_linkedin.mp4', alt: 'The FalCom chain on a 400-cell grid, on the cell map and on the dual graph.' },
+    links: [
+      { label: 'Visualizer', href: '/research/falcom/dashboard/' },
+      { label: 'London case study', href: '/falcomplot/las_hierarchy.html' },
+      { label: 'Code', href: 'https://github.com/kirtisoglu/FalcomChain' },
+    ],
+    abstract: `<p>Districting partitions geographic areas into balanced, contiguous, and compact service districts. Recent advances in political redistricting have demonstrated the potential of recombination-type Markov chain Monte Carlo (MCMC) methods for exploring the space of feasible districting plans and revealing structural alternatives. The hierarchical capacitated facility location problem, in contrast, concerns facility placement and demand allocation across multiple service levels, subject to capacity constraints, but does not generally require districts to be contiguous.</p><p>In this paper, we introduce <em>FalCom</em> (Facility Location Combination), a recombination-type MCMC sampler for hierarchical districting with capacitated facility assignments. FalCom partitions a geographic region at two hierarchical levels, assigns a facility and a capacity to every district, balance districts according to the capacity constraints, and allows the number of districts to emerge from capacity and demand requirements. We validate FalCom against exact enumeration on small instances and evaluate its computational scaling on synthetic grids with up to 50,000 basic units. We also run it as an annealing optimizer on grids of 100 and 400 basic units under different demand scenarios, FalCom finds nearly the same or better solutions than the mixed-integer programming solver. Finally, we apply FalCom to the London Ambulance Service, using data on its 66 real ambulance stations. The resulting ensemble characterizes the variation of response-area boundaries, station workloads and operational groupings under the sampler's law, and provides a distributional reference for assessing the existing service layout.</p>`,
+  },
+  {
     id: 'uav-routing',
     group: 'review',
     status: 'Submitted',
@@ -24,21 +39,6 @@ export const papers = [
       { label: 'Code', href: 'https://github.com/kirtisoglu/UAV-Routing' },
     ],
     abstract: `We study a routing problem in which a single fixed-wing unmanned aerial vehicle (UAV) selects a subset of targets, each with a time window, and determines the order in which to visit them so as to maximize the total information collected, where the information at a target varies linearly with the arrival time. The UAV chooses a continuous speed on every flight leg and, being unable to hover, may loiter between consecutive targets to delay an arrival when the time window or the information profile makes a later arrival preferable. A nonlinear propulsion model couples speed to energy consumption, and total consumption is bounded by the onboard energy budget. We prove that flying each leg at a single constant speed is energy-optimal, which justifies the per-leg speed model, and formulate the problem as a mixed-integer nonlinear program with an exact reformulation as a mixed-integer second-order cone program. We then develop a matheuristic based on iterated local search in which every candidate route is evaluated using a convex second-order cone program. Experiments on Solomon, Gehring–Homberger, and Cordeau instances calibrated to realistic fixed-wing UAV missions show that the exact approach is limited to small or tightly windowed instances, whereas the matheuristic scales to hundreds of targets and matches or improves on the exact solver’s solutions. Optimizing speed on each leg, rather than cruising at a fixed speed, substantially increases the information collected, and allowing the UAV to loiter adds a further gain.`,
-  },
-  {
-    id: 'falcom',
-    group: 'review',
-    status: 'Preprint',
-    title: 'FalCom: A Sampling Method for Districting and Hierarchical Facility Location',
-    authors: [ME, 'Hemanshu Kaul'],
-    venue: 'Extended abstract at <a href="https://isco2026.com.tr/" target="_blank" rel="noopener">ISCO 2026</a>',
-    video: { thumb: '/videos/thumbs/falcom', full: '/falcom-gif/falcom_linkedin.mp4', alt: 'The FalCom chain on a 400-cell grid, on the cell map and on the dual graph.' },
-    links: [
-      { label: 'Visualizer', href: '/research/falcom/dashboard/' },
-      { label: 'London case study', href: '/falcomplot/las_hierarchy.html' },
-      { label: 'Code', href: 'https://github.com/kirtisoglu/FalcomChain' },
-    ],
-    abstract: `<p>Districting partitions geographic areas into balanced, contiguous, and compact service districts. Recent advances in political redistricting have demonstrated the potential of recombination-type Markov chain Monte Carlo (MCMC) methods for exploring the space of feasible districting plans and revealing structural alternatives. The hierarchical capacitated facility location problem, in contrast, concerns facility placement and demand allocation across multiple service levels, subject to capacity constraints, but does not generally require districts to be contiguous.</p><p>In this paper, we introduce <em>FalCom</em> (Facility Location Combination), a recombination-type MCMC sampler for hierarchical districting with capacitated facility assignments. FalCom partitions a geographic region at two hierarchical levels, assigns a facility and a capacity to every district, balance districts according to the capacity constraints, and allows the number of districts to emerge from capacity and demand requirements. We validate FalCom against exact enumeration on small instances and evaluate its computational scaling on synthetic grids with up to 50,000 basic units. We also run it as an annealing optimizer on grids of 100 and 400 basic units under different demand scenarios, FalCom finds nearly the same or better solutions than the mixed-integer programming solver. Finally, we apply FalCom to the London Ambulance Service, using data on its 66 real ambulance stations. The resulting ensemble characterizes the variation of response-area boundaries, station workloads and operational groupings under the sampler's law, and provides a distributional reference for assessing the existing service layout.</p>`,
   },
   {
     id: 'rendezvous',
