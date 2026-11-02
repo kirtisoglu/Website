@@ -99,7 +99,7 @@
                   </button>
                 {/if}
               </div>
-              <p id={"abs-" + p.id} class="abstract" hidden={!open[p.id]}>{@html p.abstract}</p>
+              <div id={"abs-" + p.id} class="abstract" hidden={!open[p.id]}>{@html p.abstract}</div>
             </div>
           </article>
         {/each}
@@ -299,6 +299,8 @@
     color: #1f2937;
     max-width: 70ch;
   }
+  .abstract :global(p) { margin: 0 0 0.7rem; }
+  .abstract :global(p:last-child) { margin-bottom: 0; }
   :global(.dark) .abstract { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
 
   /* ── Talks ── */
