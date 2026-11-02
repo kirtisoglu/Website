@@ -59,15 +59,18 @@
   <header>
     <h1>Research</h1>
     <p class="lead">
-      I work on Markov chain Monte Carlo sampling for location-allocation and districting
-      problems, on optimization methods for routing and scheduling, and occasionally on
-      extremal graph theory.
+      My research lies at the intersection of graph theory, combinatorial optimization,
+      data science and Markov chain Monte Carlo.
     </p>
     <p class="lead">
-      I am especially drawn to problems that pose rich theoretical challenges and also come
-      from real-world needs with significant social impact, and I like to make experiments
-      and applications as realistic as possible. Below are my completed and ongoing papers;
-      most come with open-source code and an interactive tool.
+      I develop sampling methods for location-allocation and districting problems,
+      optimization methods for routing and scheduling in operations research, and
+      occasionally work on problems in extremal graph theory.
+    </p>
+    <p class="lead">
+      I am particularly interested in problems motivated by real-world needs and with the
+      potential for meaningful social impact. Below are my completed and ongoing research
+      projects, many of which are accompanied by open-source code and interactive tools.
     </p>
     <nav class="jump" aria-label="Page sections">
       <a href="#papers">Papers</a>
