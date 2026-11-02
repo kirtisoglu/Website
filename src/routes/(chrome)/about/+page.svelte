@@ -215,11 +215,12 @@
         Kirtisoglu, A., &amp; Kaul, H. FalCom: A Sampling Method for Districting and Hierarchical Facility Location.
         <div class="pub-note">Extended abstract accepted for talk at the <a href="https://isco2026.com.tr" target="_blank" rel="noopener">International Symposium on Combinatorial Optimization (ISCO)</a>, 2026.</div>
       </li>
+      <li>Dolu Hastürk, N., Tural, M., &amp; Kirtisoglu, A. Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions.</li>
     </ol>
 
     <p class="pub-category">In progress</p>
-    <ol class="pub-list" start="4">
-      <li>Kirtisoglu, A. A Diffusion Model for Political Redistricting.</li>
+    <ol class="pub-list" start="5">
+      <li>Kirtisoglu, A. The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements.</li>
       <li>Kirtisoglu, A., &amp; Kaul, H. Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago.</li>
     </ol>
   </section>

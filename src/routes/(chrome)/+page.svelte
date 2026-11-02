@@ -12,6 +12,30 @@
     "I build equitable networks.",
   ];
 
+  const clips = [
+    {
+      src: "/videos/uav_flight.mp4",
+      href: "/research/uav-routing/",
+      title: "UAV Routing",
+      alt: "A fixed-wing UAV flying the best route found on a 200-target instance.",
+      desc: "The best route found on a 200-target instance, flown in time. The UAV visits 30 targets, sets its speed on every leg, and loiters (purple) to delay an arrival when a later one collects more information.",
+    },
+    {
+      src: "/falcom-gif/falcom_linkedin.mp4",
+      href: "/research/falcom/",
+      title: "FalCom",
+      alt: "The FalCom chain on a 400-cell grid, on the cell map and on the dual graph.",
+      desc: "The FalCom Markov chain on a 400-cell grid, shown on the cell map and on the dual graph. It samples ensembles of feasible districting and facility location plans rather than a single optimum.",
+    },
+    {
+      src: "/videos/rendezvous_schedule.mp4",
+      href: "/research/rendezvous/",
+      title: "Robot Rendezvous",
+      alt: "A tanker robot recharging 15 worker robots at rendezvous places, with the schedule as a Gantt chart.",
+      desc: "A recharging schedule for 15 worker robots. The tanker meets each worker at the rendezvous place the cone program chose and recharges it; batteries drain on the road and fill at every meeting, and the campaign ends within its time limit.",
+    },
+  ];
+
   let typedText = "";
   let showCursor = true;
 
@@ -242,6 +266,76 @@
     50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
   }
 
+  /* ── Research videos ── */
+  .clips {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0.5rem 0 1.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .clips-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    margin: 0;
+  }
+
+  :global(.dark) .clips-label { color: #818cf8; }
+
+  .clip {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .clip video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  :global(.dark) .clip video { border-color: rgba(255,255,255,0.1); }
+
+  .clip-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.35rem;
+  }
+
+  :global(.dark) .clip-title { color: #f9fafb; }
+
+  .clip-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .clip-title a:hover { color: #4f46e5; }
+  :global(.dark) .clip-title a:hover { color: #a5b4fc; }
+
+  .clip-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #4b5563;
+    margin: 0;
+  }
+
+  :global(.dark) .clip-desc { color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 640px) {
+    .clip { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+  }
+
   /* ── Tools teaser ── */
   .tools-teaser {
     padding: 0.5rem 0 1.5rem;
@@ -340,6 +434,19 @@
     <span class="collab-dot"></span>
     Open to collaboration &amp; consulting
   </div>
+</section>
+
+<section class="clips" in:fade={{ duration: 400, delay: 150 }}>
+  <p class="clips-label">Research in motion</p>
+  {#each clips as c}
+    <article class="clip">
+      <video src={c.src} autoplay loop muted playsinline aria-label={c.alt} title={c.alt}></video>
+      <div>
+        <h2 class="clip-title"><a href={c.href}>{c.title}</a></h2>
+        <p class="clip-desc">{c.desc}</p>
+      </div>
+    </article>
+  {/each}
 </section>
 
 <section class="tools-teaser" in:fade={{ duration: 400, delay: 150 }}>

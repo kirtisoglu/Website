@@ -5,7 +5,7 @@
 
 <svelte:head>
   <title>Robot Rendezvous — Alaittin Kirtisoglu</title>
-  <meta name="description" content="Energy efficient multi-place robot rendezvous: a tanker robot recharges mobile worker robots at rendezvous places it chooses, under campaign time and energy restrictions, with an interactive replay of the search." />
+  <meta name="description" content="Energy efficient multi-place robot rendezvous: a tanker robot recharges mobile worker robots at rendezvous places it chooses, under campaign time and energy restrictions." />
 </svelte:head>
 
 <div class="page" in:fade={{ duration: 500, delay: 100 }}>
@@ -21,7 +21,7 @@
     <h1>Robot Rendezvous</h1>
     <p class="subtitle">Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions</p>
     <div class="meta-row">
-      <span class="status-badge preparing">In Preparation</span>
+      <span class="status-badge preprint">Preprint</span>
       <span class="coauthors">with Nazlı Dolu Hastürk &amp; Mustafa Tural</span>
     </div>
   </section>
@@ -48,26 +48,6 @@
       which candidates are worth solving at all. The work builds on Nazlı Dolu Hastürk's
       MSc thesis at Middle East Technical University.
     </p>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section" in:fly={{ y: 30, duration: 500, delay: 350 }}>
-    <h2 class="section-title">Search Replay</h2>
-    <p class="body-text">
-      An interactive replay of the meeting-order search. The search view steps through every
-      move the heuristic accepts: the tanker's tour through the rendezvous places the cone
-      program chose, the best candidates it rejected, the objective of every candidate it
-      solved, and, for the speed-up algorithm, the fixed-radius balls and the robots whose
-      don't-look bits are on. The schedule view plays the solution of any step in time, with
-      robots driving to their rendezvous places, the tanker recharging them one by one, and
-      every battery draining and filling.
-    </p>
-    <p class="body-text">
-      The runs are on instances generated as in the thesis, with the thesis's energy
-      parameters; they illustrate the method, and the numbers are not the paper's results.
-    </p>
-    <a class="dashboard-btn" href="/research/rendezvous/animation/">Open Search Replay</a>
   </section>
 
 </div>
@@ -152,6 +132,8 @@
 
   .status-badge.preparing { background: #e0e7ff; color: #4338ca; }
   :global(.dark) .status-badge.preparing { background: rgba(67,56,202,0.15); color: #a5b4fc; }
+  .status-badge.preprint { background: #ccfbf1; color: #0f766e; }
+  :global(.dark) .status-badge.preprint { background: rgba(15,118,110,0.18); color: #5eead4; }
 
   .coauthors {
     font-size: 0.85rem;
@@ -198,24 +180,6 @@
   }
 
   :global(.dark) .body-text { color: rgba(255,255,255,0.7); }
-
-  .dashboard-btn {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.6rem 1.25rem;
-    background: #4f46e5;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s;
-    align-self: flex-start;
-  }
-
-  .dashboard-btn:hover { background: #4338ca; }
-  :global(.dark) .dashboard-btn { background: #6366f1; }
-  :global(.dark) .dashboard-btn:hover { background: #818cf8; }
 
   @media (max-width: 640px) {
     .page { padding: 2rem 1.25rem 4rem; }

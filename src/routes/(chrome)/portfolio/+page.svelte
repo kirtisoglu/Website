@@ -199,8 +199,30 @@
 
       <div class="work">
         <div class="work-head">
-          <span class="status preparing">Preparing for Submission</span>
-          <h3>A Diffusion Model for Political Redistricting</h3>
+          <span class="status preprint">Preprint</span>
+          <h3>Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions</h3>
+        </div>
+        <p class="authors">Dolu Hastürk, N., Tural, M. &amp; Kirtisoglu, A. · Manuscript, 2026</p>
+        <p class="abstract">
+          A tanker robot recharges a team of mobile worker robots, meeting each
+          at a rendezvous place of its own choosing, while every robot chooses
+          its speed on every leg under a speed-dependent energy model. Minimizes
+          either the total energy under a campaign time limit or the campaign
+          time itself. For a fixed meeting order the problem is a second-order
+          cone program; the meeting order is searched with 2-opt and 3-opt edge
+          exchange heuristics and with fixed-radius, candidate-list and
+          don't-look-bit speed-ups that decide which candidate orders are worth
+          solving.
+        </p>
+        <div class="links">
+          <a href="/research/rendezvous/">Project page</a>
+        </div>
+      </div>
+
+      <div class="work">
+        <div class="work-head">
+          <span class="status in-progress">In Progress</span>
+          <h3>The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements</h3>
         </div>
         <p class="authors">Kirtisoglu, A. · Manuscript, 2026</p>
         <p class="abstract">

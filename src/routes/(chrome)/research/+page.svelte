@@ -134,45 +134,10 @@
 
      <div class="paper-divider"></div>
 
-    <!-- Paper 2: FalCom -->
+    <!-- Paper 2: UAV routing -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">2.</span>
-        <span class="paper-status preprint">Preprint</span>
-        <span class="paper-type">Research Paper &amp; Visualizer</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
-      </h3>
-      <p class="paper-venue">with Hemanshu Kaul</p>
-      <p class="paper-abstract">
-        We introduce FalCom, the first Markov chain Monte Carlo sampling framework for
-        hierarchical capacitated facility location and districting problems. FalCom extends
-        the spanning-tree proposal of ReCom from single-level political redistricting to
-        multi-level service systems with capacity bounds, demand balance, and facility-aware
-        cut selection. We demonstrate that it scales to graphs of 50,000 basic units, an
-        order of magnitude beyond published hierarchical facility-location methods. Rather
-        than returning a single optimum, FalCom samples ensembles of feasible plans,
-        enabling boundary-robustness maps, essential-vs-substitutable facility analysis,
-        and capacity-utilization distributions that no single-solution method can produce.
-        The framework is validated on synthetic grids and a London Ambulance Service case
-        study and released as an open-source Python library with an interactive visualizer.
-      </p>
-      <div class="paper-links">
-        <a class="paper-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-      <div class="paper-tools">
-        <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="/research/falcom/">FalCom Visualizer →</a>
-      </div>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 3: UAV routing -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">3.</span>
         <span class="paper-status submitted">Submitted</span>
         <span class="paper-type">Research Paper &amp; Visualizer</span>
       </div>
@@ -213,15 +178,74 @@
 
     <div class="paper-divider"></div>
 
-    <!-- Paper 4: Diffusion model redistricting -->
+    <!-- Paper 3: FalCom -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">3.</span>
+        <span class="paper-status preprint">Preprint</span>
+        <span class="paper-type">Research Paper &amp; Visualizer</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="/research/falcom/">FalCom: A Sampling Method for Districting and Hierarchical Facility Location</a>
+      </h3>
+      <p class="paper-venue">with Hemanshu Kaul</p>
+      <p class="paper-abstract">
+        We introduce FalCom, the first Markov chain Monte Carlo sampling framework for
+        hierarchical capacitated facility location and districting problems. FalCom extends
+        the spanning-tree proposal of ReCom from single-level political redistricting to
+        multi-level service systems with capacity bounds, demand balance, and facility-aware
+        cut selection. We demonstrate that it scales to graphs of 50,000 basic units, an
+        order of magnitude beyond published hierarchical facility-location methods. Rather
+        than returning a single optimum, FalCom samples ensembles of feasible plans,
+        enabling boundary-robustness maps, essential-vs-substitutable facility analysis,
+        and capacity-utilization distributions that no single-solution method can produce.
+        The framework is validated on synthetic grids and a London Ambulance Service case
+        study and released as an open-source Python library with an interactive visualizer.
+      </p>
+      <div class="paper-links">
+        <a class="paper-link" href="https://github.com/kirtisoglu/FalcomChain" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <div class="paper-tools">
+        <span class="tools-label">Tools:</span>
+        <a class="tool-link" href="/research/falcom/">FalCom Visualizer →</a>
+      </div>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 4: Robot rendezvous -->
     <div class="paper">
       <div class="paper-meta">
         <span class="paper-num">4.</span>
-        <span class="paper-status submitting">Preparing for Submission</span>
+        <span class="paper-status preprint">Preprint</span>
         <span class="paper-type">Research Paper</span>
       </div>
       <h3 class="paper-title">
-        A Diffusion Model for Political Redistricting
+        <a href="/research/rendezvous/">Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions</a>
+      </h3>
+      <p class="paper-venue">with Nazlı Dolu Hastürk &amp; Mustafa Tural</p>
+      <p class="paper-abstract">
+        A tanker robot recharges a team of mobile worker robots, meeting each at a rendezvous
+        place of its own choosing, while every robot chooses its speed on every leg under a
+        speed-dependent energy model. We minimise either the total energy under a campaign
+        time limit or the campaign time itself. For a fixed meeting order the problem is a
+        second-order cone program; the meeting order is searched with 2-opt and 3-opt edge
+        exchange heuristics and with fixed-radius, candidate-list and don't-look-bit speed-ups
+        that decide which candidate orders are worth solving.
+      </p>
+    </div>
+
+    <div class="paper-divider"></div>
+
+    <!-- Paper 5: Diffusion walk -->
+    <div class="paper">
+      <div class="paper-meta">
+        <span class="paper-num">5.</span>
+        <span class="paper-status testing">In Progress</span>
+        <span class="paper-type">Research Paper</span>
+      </div>
+      <h3 class="paper-title">
+        The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements
       </h3>
       <p class="paper-venue">Alaittin Kirtisoglu</p>
       <p class="paper-abstract">
@@ -241,10 +265,10 @@
 
     <div class="paper-divider"></div>
 
-    <!-- Paper 5: Chicago Healthcare -->
+    <!-- Paper 6: Chicago Healthcare -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-num">5.</span>
+        <span class="paper-num">6.</span>
         <span class="paper-status testing">In Progress</span>
         <span class="paper-type">Research Paper &amp; Dashboard</span>
       </div>
@@ -272,34 +296,6 @@
       <div class="paper-tools">
         <span class="tools-label">Tools:</span>
         <a class="tool-link" href="/research/chicago-healthcare-network/">Healthcare Accessibility Dashboard →</a>
-      </div>
-    </div>
-
-    <div class="paper-divider"></div>
-
-    <!-- Paper 6: Robot rendezvous -->
-    <div class="paper">
-      <div class="paper-meta">
-        <span class="paper-num">6.</span>
-        <span class="paper-status testing">In Progress</span>
-        <span class="paper-type">Research Paper &amp; Visualizer</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="/research/rendezvous/">Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions</a>
-      </h3>
-      <p class="paper-venue">with Nazlı Dolu Hastürk &amp; Mustafa Tural</p>
-      <p class="paper-abstract">
-        A tanker robot recharges a team of mobile worker robots, meeting each at a rendezvous
-        place of its own choosing, while every robot chooses its speed on every leg under a
-        speed-dependent energy model. We minimise either the total energy under a campaign
-        time limit or the campaign time itself. For a fixed meeting order the problem is a
-        second-order cone program; the meeting order is searched with 2-opt and 3-opt edge
-        exchange heuristics and with fixed-radius, candidate-list and don't-look-bit speed-ups
-        that decide which candidate orders are worth solving.
-      </p>
-      <div class="paper-tools">
-        <span class="tools-label">Tools:</span>
-        <a class="tool-link" href="/research/rendezvous/animation/">Search Replay →</a>
       </div>
     </div>
 

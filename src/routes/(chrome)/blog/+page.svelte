@@ -120,10 +120,10 @@
     <!-- Paper 3: Diffusion model redistricting -->
     <div class="paper">
       <div class="paper-meta">
-        <span class="paper-status testing">In Testing</span>
+        <span class="paper-status testing">In Progress</span>
       </div>
       <h3 class="paper-title">
-        A Diffusion Model for Political Redistricting
+        The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements
       </h3>
       <p class="paper-abstract dummy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
