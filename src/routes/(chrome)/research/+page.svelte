@@ -2,7 +2,6 @@
   import { fade } from "svelte/transition";
   import Head from "../../../components/Head.svelte";
   import { groups, papers, talks } from "$lib/papers.js";
-  import { lazyVideo } from "$lib/lazyVideo.js";
 
   // Number papers 1..n in the order they appear on the page (group order).
   const sections = groups.map((g) => ({
@@ -62,17 +61,17 @@
         {#each s.papers as p (p.id)}
           <article id={p.id} class="paper" class:has-video={p.video}>
             {#if p.video}
-              <a class="thumb" href={p.video.full} target="_blank" rel="noopener" title="Open the full video">
-                <video
-                  use:lazyVideo={p.video.thumb + ".mp4"}
-                  poster={p.video.thumb + ".jpg"}
-                  muted
-                  loop
-                  playsinline
-                  preload="none"
-                  aria-label={p.video.alt}
-                ></video>
-              </a>
+              <video
+                class="thumb"
+                src={p.video.thumb + ".mp4"}
+                poster={p.video.thumb + ".jpg"}
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                aria-label={p.video.alt}
+              ></video>
             {/if}
             <div class="body">
               <span class="num">{p.num}.</span>
@@ -198,8 +197,7 @@
   .paper.has-video { grid-template-columns: 210px minmax(0, 1fr); }
   :global(.dark) .paper { border-bottom-color: rgba(255,255,255,0.08); }
 
-  .thumb { display: block; }
-  .thumb video {
+  .thumb {
     width: 100%;
     aspect-ratio: 16 / 9;
     display: block;
@@ -208,7 +206,7 @@
     border-radius: 4px;
     object-fit: contain;
   }
-  :global(.dark) .thumb video { border-color: rgba(255,255,255,0.12); }
+  :global(.dark) .thumb { border-color: rgba(255,255,255,0.12); }
 
   .body {
     position: relative;

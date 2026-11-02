@@ -1,6 +1,5 @@
 <script>
   import Head from "../../components/Head.svelte";
-  import { lazyVideo } from "$lib/lazyVideo.js";
 
   const email = "Alaittin.Kirtisoglu@nyulangone.org";
   let copied = false;
@@ -12,13 +11,14 @@
     });
   }
 
-  // Each clip links to its paper on the Research page.
-  const clips = [
-    { name: "falcom_grid",  href: "/research#falcom",      title: "FalCom: districts on a 400-cell grid", row: 1 },
-    { name: "falcom_graph", href: "/research#falcom",      title: "FalCom: the same chain on the dual graph", row: 1 },
-    { name: "falcom_tree",  href: "/research#falcom",      title: "FalCom: cutting a spanning tree", row: 1 },
-    { name: "uav",          href: "/research#uav-routing", title: "UAV routing: the route on the map", row: 2 },
-    { name: "rendezvous",   href: "/research#rendezvous",  title: "Robot rendezvous: the recharging tour", row: 2 },
+  const falcom = [
+    { name: "falcom_grid",  title: "FalCom: districts on a 400-cell grid" },
+    { name: "falcom_graph", title: "FalCom: the same chain on the dual graph" },
+    { name: "falcom_tree",  title: "FalCom: cutting a spanning tree" },
+  ];
+  const routing = [
+    { name: "uav",        title: "UAV routing: the route on the map" },
+    { name: "rendezvous", title: "Robot rendezvous: the recharging tour" },
   ];
 </script>
 
@@ -71,49 +71,68 @@
         in 2021, under the supervision of
         <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a>.
       </p>
+
+      <div class="clips" aria-label="Animations from my research">
+        <div class="clip-row r1">
+          {#each falcom as c}
+            <video
+              class="clip"
+              src={`/videos/home/${c.name}.mp4`}
+              poster={`/videos/home/${c.name}.jpg`}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              title={c.title}
+              aria-label={c.title}
+            ></video>
+          {/each}
+        </div>
+        <div class="clip-row r2">
+          {#each routing as c}
+            <video
+              class="clip"
+              src={`/videos/home/${c.name}.mp4`}
+              poster={`/videos/home/${c.name}.jpg`}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              title={c.title}
+              aria-label={c.title}
+            ></video>
+          {/each}
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="clips" aria-label="Animations from my research">
-    {#each clips as c}
-      <a class="clip" class:r1={c.row === 1} href={c.href} title={c.title}>
-        <video
-          use:lazyVideo={`/videos/home/${c.name}.mp4`}
-          poster={`/videos/home/${c.name}.jpg`}
-          muted
-          loop
-          playsinline
-          preload="none"
-          aria-label={c.title}
-        ></video>
-      </a>
-    {/each}
-  </section>
 </div>
 
 <style>
+  /* Sized to fit on one laptop screen (e.g. 1366×768) with the header and footer. */
   .home {
-    max-width: 960px;
+    --tile: clamp(110px, calc((100vh - 500px) / 2.15), 165px);
+    max-width: 920px;
     margin: 0 auto;
-    padding: 2.5rem 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2.75rem;
+    padding: 1.5rem 0 0;
   }
 
   /* ── Intro: photo card + text ── */
   .intro {
     display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 2rem;
     align-items: start;
   }
 
   .card {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
-    padding: 1rem;
+    gap: 0.45rem;
+    padding: 0.85rem;
     background: #fafafa;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 10px;
@@ -122,12 +141,12 @@
 
   .card img {
     width: 100%;
-    height: 230px;
+    height: 175px;
     object-fit: cover;
     object-position: top;
     border-radius: 7px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
   }
 
   .row {
@@ -135,12 +154,12 @@
     grid-template-columns: 13px minmax(0, 1fr) auto;
     gap: 0.5rem;
     align-items: start;
-    font-size: 0.78rem;
-    line-height: 1.45;
+    font-size: 0.76rem;
+    line-height: 1.4;
     color: #6b7280;
   }
   :global(.dark) .row { color: rgba(255,255,255,0.55); }
-  .row > svg { width: 13px; height: 13px; margin-top: 0.15rem; color: #9ca3af; }
+  .row > svg { width: 13px; height: 13px; margin-top: 0.1rem; color: #9ca3af; }
   .email { overflow-wrap: anywhere; }
 
   .copy {
@@ -153,30 +172,31 @@
   }
   .copy:hover { color: #4f46e5; }
   :global(.dark) .copy:hover { color: #a5b4fc; }
-  .copy svg { width: 12px; height: 12px; margin-top: 0.15rem; }
+  .copy svg { width: 12px; height: 12px; margin-top: 0.1rem; }
   .copied { font-size: 0.7rem; color: #16a34a; white-space: nowrap; }
 
   .text h1 {
-    font-size: clamp(1.7rem, 4vw, 2.1rem);
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
     color: #111827;
     margin: 0;
   }
   :global(.dark) .text h1 { color: #f9fafb; }
 
   .role {
-    margin: 0.35rem 0 1.1rem;
+    margin: 0.25rem 0 0.85rem;
+    font-size: 0.95rem;
     color: #6b7280;
   }
   :global(.dark) .role { color: rgba(255,255,255,0.55); }
 
   .text p:not(.role) {
-    max-width: 64ch;
-    margin: 0 0 0.85rem;
-    font-size: 1rem;
-    line-height: 1.7;
+    max-width: 66ch;
+    margin: 0 0 0.7rem;
+    font-size: 0.97rem;
+    line-height: 1.65;
     color: #374151;
   }
   :global(.dark) .text p:not(.role) { color: rgba(255,255,255,0.78); }
@@ -190,42 +210,35 @@
   :global(.dark) .text a { color: #a5b4fc; border-bottom-color: rgba(165,180,252,0.3); }
   :global(.dark) .text a:hover { border-bottom-color: #a5b4fc; }
 
-  /* ── Animations: three FalCom clips, then UAV and Rendezvous ── */
+  /* ── Animations under the bio: three FalCom clips, then UAV and Rendezvous ── */
   .clips {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1.1rem;
   }
+  .clip-row { display: flex; gap: 10px; }
 
   .clip {
-    flex: 0 0 calc((100% - 24px) / 3);
     box-sizing: border-box;
     display: block;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #fff;
-    transition: border-color 0.15s;
-  }
-  .clip.r1 { flex-basis: 28%; }
-  .clip:hover { border-color: #a5b4fc; }
-  :global(.dark) .clip { border-color: rgba(255,255,255,0.12); }
-
-  .clip video {
-    display: block;
-    width: 100%;
+    width: var(--tile);
+    min-width: 0;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
   }
+  .r2 .clip { width: calc(var(--tile) * 1.15); }
+  :global(.dark) .clip { border-color: rgba(255,255,255,0.12); }
 
   @media (max-width: 640px) {
-    .home { padding-top: 1.5rem; gap: 2rem; }
-    .intro { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-    .card { max-width: 240px; }
-    .clips { gap: 8px; }
-    .clip.r1 { flex-basis: calc((100% - 16px) / 3); }
-    .clip:not(.r1) { flex-basis: calc((100% - 8px) / 2); }
+    .home { padding-top: 1.25rem; }
+    .intro { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+    .card { max-width: 220px; }
+    .clips, .clip-row { gap: 8px; }
+    .r1 .clip { width: calc((100% - 16px) / 3); }
+    .r2 .clip { width: calc((100% - 8px) / 2); }
   }
 </style>

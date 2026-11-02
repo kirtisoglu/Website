@@ -11,7 +11,7 @@
 
 <style>
   footer {
-    margin-top: 4rem;
+    margin-top: 2rem;
     border-top: 1px solid rgba(0,0,0,0.07);
   }
   :global(.dark) footer { border-top-color: rgba(255,255,255,0.07); }
