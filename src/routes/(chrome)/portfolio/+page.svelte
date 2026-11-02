@@ -35,8 +35,8 @@
       <h1>Alaittin Kirtisoglu</h1>
       <p class="subtitle">Research Scientist · NYU Grossman School of Medicine (CSTAR)</p>
       <p class="lead">
-        I am completing my PhD in Applied Mathematics at the Illinois
-        Institute of Technology, where my research sits at the intersection
+        I completed my PhD in Applied Mathematics at the Illinois
+        Institute of Technology in 2026. My research sits at the intersection
         of combinatorial optimization, network design, and data-driven
         decision making. I am especially interested in problems where
         mathematical modeling can improve service systems in healthcare and

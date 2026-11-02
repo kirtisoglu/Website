@@ -6,7 +6,7 @@
 
     let linkedIn = "https://www.linkedin.com/in/alaittin-kirtisoglu";
     let github = "https://github.com/kirtisoglu";
-    let scholar = "https://scholar.google.com/citations?user=PLACEHOLDER";
+    let scholar = "https://scholar.google.com/citations?user=A1faWlMAAAAJ&hl=en";
     let researchgate = "https://www.researchgate.net/profile/Alaittin-Kirtisoglu";
 </script>
 

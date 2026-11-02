@@ -424,7 +424,7 @@
     <a href="https://www.iit.edu/applied-math" target="_blank" rel="noopener noreferrer">Illinois Institute of Technology</a>,
     in the
     <a href="https://www.math.iit.edu/~kaul/DAM/DAM.html" target="_blank" rel="noopener noreferrer">Discrete Applied Mathematics Group</a> under the supervision of <a href="https://www.math.iit.edu/~kaul/" target="_blank" rel="noopener">Hemanshu Kaul</a>,
-    and will join <a href="https://med.nyu.edu/" target="_blank" rel="noopener">NYU Grossman School of Medicine (CSTAR)</a> as a Research Scientist working on organ allocation optimization.
+    and I am now a Research Scientist at <a href="https://med.nyu.edu/" target="_blank" rel="noopener">NYU Grossman School of Medicine (CSTAR)</a>, working on organ allocation optimization.
     Previously, I was a master's student at <a href="https://www.hacettepe.edu.tr/english/" target="_blank" rel="noopener">Hacettepe University</a>,
     working on graph colorings under the supervision of <a href="https://ozkahya.github.io/" target="_blank" rel="noopener">Lale Özkahya</a>.
     My research spans graph theory, combinatorial optimization, and computational methods
