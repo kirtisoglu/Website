@@ -1,8 +1,8 @@
 <script>
-  import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import Head from "../../../components/Head.svelte";
-  import { groups, papers, talks, ME } from "$lib/papers.js";
+  import { groups, papers, talks } from "$lib/papers.js";
+  import { lazyVideo } from "$lib/lazyVideo.js";
 
   // Number papers 1..n in the order they appear on the page (group order).
   const sections = groups.map((g) => ({
@@ -25,29 +25,6 @@
     });
   }
 
-  // Load each video only when it scrolls into view, pause it when it leaves,
-  // and leave it on its poster frame for visitors who prefer less motion.
-  let reduceMotion = false;
-  onMount(() => {
-    reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-
-  function lazyVideo(node, src) {
-    if (typeof IntersectionObserver === "undefined") {
-      node.src = src;
-      return {};
-    }
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        if (!node.src) node.src = src;
-        if (!reduceMotion) node.play().catch(() => {});
-      } else {
-        node.pause();
-      }
-    }, { rootMargin: "200px" });
-    io.observe(node);
-    return { destroy: () => io.disconnect() };
-  }
 </script>
 
 <svelte:head>
@@ -103,7 +80,7 @@
                 {#if p.status}<span class="status">{p.status}</span>{/if}{p.title}
               </h3>
               <p class="meta">
-                {#each p.authors as a, i}{#if i > 0}, {/if}{#if a === ME}<strong>{a}</strong>{:else}{a}{/if}{/each}{#if p.venue}<span class="dot">&nbsp;·&#32;</span>{@html p.venue}{/if}
+                {p.authors.join(", ")}{#if p.venue}<span class="dot">&nbsp;·&#32;</span>{@html p.venue}{/if}
               </p>
               <p class="summary">{p.summary}</p>
               <div class="links">
@@ -282,9 +259,7 @@
     margin: 0.3rem 0 0;
     line-height: 1.5;
   }
-  .meta strong { color: #111827; font-weight: 600; }
   :global(.dark) .meta { color: rgba(255,255,255,0.5); }
-  :global(.dark) .meta strong { color: rgba(255,255,255,0.9); }
 
   .summary {
     font-size: 0.93rem;

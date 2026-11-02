@@ -8,7 +8,7 @@ export const groups = [
   { id: 'progress', title: 'In progress' },
 ];
 
-export const ME = 'Alaittin Kirtisoglu';
+const ME = 'Alaittin Kirtisoglu';
 
 export const papers = [
   {
