@@ -194,7 +194,8 @@
     border-bottom: 1px solid #e5e7eb;
     scroll-margin-top: 5rem;
   }
-  .paper.has-video { grid-template-columns: 210px minmax(0, 1fr); }
+  .paper.has-video { grid-template-columns: minmax(0, 1fr) 210px; }
+  .paper.has-video .thumb { order: 2; }
   :global(.dark) .paper { border-bottom-color: rgba(255,255,255,0.08); }
 
   .thumb {
@@ -332,6 +333,7 @@
   @media (max-width: 640px) {
     .page { padding: 1.25rem 0 3rem; gap: 2rem; }
     .paper.has-video { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+    .paper.has-video .thumb { order: 0; }
     .thumb { max-width: 420px; }
     .date { width: 5.5rem; }
   }
