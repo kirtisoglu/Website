@@ -35,8 +35,10 @@
   <header>
     <h1>Research</h1>
     <p class="lead">
-      My research lies at the intersection of graph theory, stochastic processes, operations
-      research, and data science.
+      My research interests lie, broadly speaking, in discrete mathematics and operations
+      research, especially graph theory, network optimization and related models, algorithms,
+      and interdisciplinary applications in organ allocation, healthcare networks and political
+      geometry.
     </p>
     <p class="lead">
       I develop Markov chain Monte Carlo sampling methods for location-allocation and
