@@ -31,7 +31,7 @@ export const papers = [
     group: 'review',
     status: 'Submitted',
     title: 'Fixed-Wing UAV Routing for Time-Dependent Information Collection with Speed and Loiter Decisions',
-    authors: [ME, 'Melis Boran', 'Mustafa Tural'],
+    authors: [ME, 'Melis Boran', 'Mustafa Kemal Tural'],
     venue: '2026',
     video: { thumb: '/videos/thumbs/uav_flight', full: '/videos/uav_flight.mp4', alt: 'A fixed-wing UAV flying the best route found on a 200-target instance.' },
     links: [
@@ -45,7 +45,7 @@ export const papers = [
     group: 'review',
     status: 'Preprint',
     title: 'Multi-Place Robot Rendezvous Problem with Campaign Time and Energy Consumption Restrictions',
-    authors: ['Nazlı Dolu Hastürk', 'Mustafa Tural', ME],
+    authors: ['Nazlı Dolu Hastürk', 'Mustafa Kemal Tural', ME],
     venue: '2026',
     video: { thumb: '/videos/thumbs/rendezvous_schedule', full: '/videos/rendezvous_schedule.mp4', alt: 'A tanker robot recharging 15 worker robots at rendezvous places, with the schedule as a Gantt chart.' },
     links: [],
@@ -77,7 +77,7 @@ export const papers = [
     id: 'chicago-fqhc',
     group: 'progress',
     title: 'Optimization-Based Decision Support for Equitable Expansion of Federally Qualified Health Centers in Chicago',
-    authors: [ME, 'Hemanshu Kaul'],
+    authors: [ME, 'Kim Erwin', 'Hemanshu Kaul'],
     links: [
       { label: 'Healthcare dashboard', href: '/research/chicago-healthcare-network/dashboard' },
       { label: 'Data sources', href: '/research/chicago-healthcare-network/' },
@@ -89,7 +89,7 @@ export const papers = [
     id: 'diffusion-walk',
     group: 'progress',
     title: 'The Diffusion Walk: Sampling Graph Partitions with Kernel-Aware Local Refinements',
-    authors: [ME],
+    authors: [ME, 'Onur Ongun'],
     links: [
       { label: 'Code', href: 'https://github.com/kirtisoglu/Redistricting_Diffusion_Model' },
     ],
